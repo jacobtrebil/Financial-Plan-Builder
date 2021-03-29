@@ -1,0 +1,18 @@
+.nav-img {
+    padding: 50px 0px 0px 0px;
+    border-radius: 0px;
+  }
+
+  #sidebar {
+    height: 100%;
+    width: 64px;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+    position: fixed;
+    z-index: 1;
+    border-right: 0px solid black;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
+  }
+
+  

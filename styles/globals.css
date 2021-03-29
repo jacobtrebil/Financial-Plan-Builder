@@ -1,0 +1,464 @@
+/* Universal Styles */
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    text-align: center;
+  background-color: rgb(241, 241, 241);
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  text-align: left;
+  margin: 0px 0px 0px 40px;
+  font-size: 16px;
+  color:black;
+  font-weight: bold;
+}
+
+h1 {
+  text-align: left;
+  font-size: 28px;
+  margin: 0px 0px 0px 40px;
+  padding: 40px 0px 0px 0px;
+}
+
+.app {
+  text-align: center;
+  background-color: rgb(241, 241, 241);
+  padding: 0px 0px 0px 100px;
+  height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+/* Dashbaord Section */
+
+#green-bar {
+  border-radius: 4px;
+  width: 80%;
+  background-color: green;
+  margin: 10% 10% 0px 10%;
+  padding: 40px 0px 0px 0px;
+}
+
+#green-bar-section {
+  width: 80%;
+  background-color: rgb(216, 214, 214);
+  border-radius: 4px;
+  margin: 20px 0px 0px 0px;
+}
+
+#file {
+  width: 80%;
+  height: 60px;
+  margin: 20px 0px 0px 0px;
+}
+
+#file2 {
+  width: 80%;
+  height: 60px;
+  margin: 0px 10% 0px 10%;
+  color: red;
+}
+
+.nav-img {
+  padding: 50px 0px 0px 0px;
+  border-radius: 0px;
+}
+
+#tracking-section {
+  background-color: white;
+  width: 100%;
+  height: 60%;
+  padding: 30px 0px 65px 0px;
+  margin: 40px auto 40px auto;
+  text-align: center;
+  border-radius: 8px;
+  border: 0px solid rgb(216, 214, 214);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
+}
+
+#plans-section {
+  background-color: white;
+  width: 100%;
+  height: 60%;
+  text-align: center;
+  padding: 30px 0px 60px 0px;
+  margin: 30px auto 100px auto;
+  border-radius: 8px;
+  border: 0px solid rgb(216, 214, 214);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
+}
+
+#left-section {
+  display: inline-block;
+  width: 60%;
+}
+
+#right-section {
+  background-color: white;
+  width: 30%;
+  height: 503px;
+  padding: 30px 0px 100px 0px;
+  margin: 40px 5% 0px 20px;
+  border-radius: 8px;
+  border: 0px solid rgb(170, 170, 170);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
+  float: right;
+  top: 0px;
+  right: 40px;
+}
+
+.times {
+  display: inline-block;
+  margin: 0px;
+  padding: 10px;
+  color: rgb(156, 156, 156);
+  font-size: 16px;
+}
+
+.times:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+#timelines {
+  margin: -10px 40px 0px 0px;
+  float: right;
+}
+
+#march2021 {
+  float: left;
+}
+
+#bar1 {
+  padding: 15px;
+  background-color: green;
+  width: 90%;
+  border-radius: 20px;
+  margin: 0px 0px 0px 0px;
+}
+
+#bar1-section {
+  padding: 0px;
+  margin: 80px 0px 0px 10%;
+  background-color: green;
+  border-radius: 20px;
+  width: 80%;
+}
+
+#bar2 {
+  padding: 15px;
+  background-color: red;
+  width: 50%;
+  border-radius: 20px;
+}
+
+#bar2-section {
+  padding: 0px;
+  margin: 20px 0px 0px 10%;
+  background-color: red;
+  border-radius: 20px;
+  width: 40%;
+}
+
+#earnings {
+  margin: 15px 0px 0px 120px;
+}
+
+#spendings {
+  margin: 15px 0px 0px 120px;
+}
+
+#savings {
+  float: right;
+  margin: -15px 80px 0px 0px;
+  color: green;
+}
+
+#plan1 {
+  background-color: rgb(240, 240, 240);
+  width: 90%;
+  margin: 30px auto 20px auto;
+  padding: 20px 10px;
+  border-radius: 8px;
+  border: 1px solid rgb(170, 170, 170);
+}
+
+#plan1:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+#monthly-savings {
+  float: right;
+  margin: -18px 20px 0px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Images */
+
+.education:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.home:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.fpblogo:hover {
+  opacity: 75%;
+  cursor: pointer;
+}
+
+.analytics:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.integrations:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.settings:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+#plus {
+  width: 40px;
+  text-align: right;
+  margin: -10px 0px 0px 600px;
+}
+
+.plus {
+  float: right;
+  margin: 0px 10% 0px 20px;
+  padding: 0px;
+}
+
+.plus:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+.home2 {
+  width: 30px;
+  display: block;
+  margin: 0px auto;
+  position: relative;
+}
+
+.home2:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+.plans {
+  width: 50px;
+  display: block;
+  margin: 0px auto;
+}
+
+.plans:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+.chart:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+.home-img {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hover Elements */
+
+#home-img {
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 20px auto 0px auto;
+  padding: 0px 0px 0px 0px;
+}
+
+#home-img:hover {
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.percent-change {
+  font-size: 12px;
+  color: green;
+  float: right;
+  margin: 5px 0px 0px 40px;
+  padding: 0px 10% 0px 0px;
+}
+
+.percent-box {
+  width: 100%;
+  float: right;
+}
+
+.asset {
+  float: left;
+}
+
+.asset-number {
+  float: right;
+  margin-right: 30px;
+}
+
+.asset-section {
+  margin: 40px 0px 0px 0px;
+}
+
+.asset-box {
+  width: 100%;
+}
+
+.asset-section2 {
+  margin: 40px 0px 0px 0px;
+  padding: 40px 0px 0px 0px;
+}
+
+.asset-number2 {
+  float: right;
+  margin: 20px 40px 0px 0px;
+}
+
+.asset2 {
+  float: left;
+  margin: 20px 0px 0px 40px;
+  padding: 0px 30px 0px 0px;
+}
+
+.red {
+  color: red;
+}
+
+.chart {
+  margin: 20px 0px 0px 0px;
+}
+
+
+
+
+
+
+/* Plans Page */
+
+#sidebar {
+  height: 100%;
+  width: 64px;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  position: fixed;
+  z-index: 1;
+  border-right: 0px solid black;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
+}
+
+#plans {
+  margin: 20px 0px 0px 120px;
+}
+
+
+
+
+
+
+
+/* Settings Page */
+
+.settings-h1 {
+  margin: 20px 0px 0px 120px;
+}
+
+.integrations-h1 {
+  margin: 20px 0px 0px 120px;
+}
+
+
+
+
+
+
+
+/* Sidebar Section */
+
+#fpb-top-logo {
+  margin: 40px auto 0px auto;
+}
+
+.sidebar-logo {
+  display: block;
+  margin: 40px 0px 0px 0px;
+}
+
+#home-side-logo {
+  margin: 40px 0px 0px 0px;
+}
+
+#plans-side-logo {
+  margin: 40px 0px 0px 0px;
+}
+
+#integrations-side-logo {
+  margin: 40px 0px 0px 0px;
+}
+
+#settings-side-logo {
+  margin: 40px 0px 0px 0px;
+}
