@@ -297,11 +297,6 @@ h1 {
   opacity: 70%;
 }
 
-.chart:hover {
-  cursor: pointer;
-  opacity: 70%;
-}
-
 .home-img {
   cursor: pointer;
   opacity: 70%;
@@ -439,26 +434,96 @@ h1 {
 /* Sidebar Section */
 
 #fpb-top-logo {
-  margin: 40px auto 0px auto;
+  margin: 60px auto 0px auto;
 }
 
 .sidebar-logo {
   display: block;
-  margin: 40px 0px 0px 0px;
+  margin: 60px 0px 0px 0px;
 }
 
 #home-side-logo {
-  margin: 40px 0px 0px 0px;
+  margin: 60px 0px 0px 0px;
 }
 
 #plans-side-logo {
-  margin: 40px 0px 0px 0px;
+  margin: 60px 0px 0px 0px;
 }
 
 #integrations-side-logo {
-  margin: 40px 0px 0px 0px;
+  margin: 60px 0px 0px 0px;
 }
 
 #settings-side-logo {
+  margin: 60px 0px 0px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Plans Section */
+
+#full-width-box {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: auto;
+}
+
+#plan-form-popup-section {
+  background-color: white;
+  width: 80%;
+  margin: 10% auto 60px auto;
+  padding: 20px 0px 40px 0px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
+  border-radius: 8px;
+}
+
+#plan-button {
+  background-color: rgb(0, 132, 255);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 16px 32px;
+  font-size: 18px;
+  margin: 40px 20px;
+}
+
+#plan-button:hover {
+  cursor: pointer;
+  opacity: 75%;
+}
+
+#plan-form-page-1 {
+  vertical-align: center;
+  margin: 20px auto;
+}
+
+#plan-title {
+  text-align: center;
+  margin: 0px auto 0px auto;
+}
+
+.plan-input-box {
   margin: 40px 0px 0px 0px;
+}
+
+#plan-form-popup-section label {
+  font-size: 18px;
+}
+
+#plan-form-popup-section select {
+  font-size: 16px;
+  padding: 5px;
+  margin-left: 10px;
 }

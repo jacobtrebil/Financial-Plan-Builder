@@ -3,12 +3,21 @@ import _Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
+import { PlanFormPopup } from '../components/plan-form-popup';
 
 const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
 )
 
- function App() {
+const GraphComponent = _dynamic(() =>
+import ('../components/nav').then((mod) => mod.Graph)
+)
+
+const PlanComponent = _dynamic(() =>
+import ('../components/plan-form-popup').then((mod) => mod.PlanFormPopup)
+)
+
+export function App() {
   return (
      <div className="app">
         <div id="header">
@@ -49,6 +58,7 @@ const NavComponent = _dynamic(() =>
         <div id="right-section">
           <p className="p">Assets</p>
           <img className="chart" src="/images/graph.png" width={300} height={250} />
+          <GraphComponent />
           <div className="asset-box">
             <div className="asset-section">
               <p className="p asset">401(k)</p>
