@@ -2,7 +2,7 @@ import React from 'react';
 import _Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import _Style from './nav.module.css';
+import _styles from './nav.module.css';
 
 export function SideBar() {
       return (

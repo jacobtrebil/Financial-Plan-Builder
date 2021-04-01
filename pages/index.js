@@ -17,6 +17,10 @@ const PlanComponent = _dynamic(() =>
 import ('../components/plan-form-popup').then((mod) => mod.PlanFormPopup)
 )
 
+const FooterComponent = _dynamic(() =>
+  import('../components/footer').then((mod) => mod.Footer)
+)
+
 export function App() {
   return (
      <div className="app">

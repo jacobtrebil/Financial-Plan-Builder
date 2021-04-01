@@ -7,12 +7,31 @@ const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
 )
 
+const ProfileComponent = _dynamic(() =>
+  import('../components/profile').then((mod) => mod.Profile)
+)
+
+const FooterComponent = _dynamic(() =>
+  import('../components/footer').then((mod) => mod.Footer)
+)
+
 function Settings() {
     return (
+      <div id="settings-container">
        <div className="settings-section">
            <h1 className="settings-h1">Settings</h1>
            <NavComponent />
-            </div>
+           <div id="settings-content">
+             <nav>
+               <p id="settings-nav-profile" className="settings-nav-p">Profile</p>
+               <p id="settings-nav-middle-p" className="settings-nav-p">Payment Methods</p>
+               <p className="settings-nav-p">Account</p>
+             </nav>
+             <ProfileComponent />
+           </div>
+       </div>
+       <FooterComponent />
+      </div>
     );
   } 
   
