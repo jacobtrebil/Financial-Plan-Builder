@@ -7,7 +7,7 @@ const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
 )
 
-const PlanComponent = _dynamic(() => 
+const PlanPopupComponent = _dynamic(() => 
   import ('../components/plan-form-popup').then((mod) => mod.PlanFormPopup)
 )
 
@@ -19,8 +19,14 @@ function Plans() {
     return (
        <div className="plans2">
            <h1 id="plans">Plans</h1>
-           <NavComponent />
-           <PlanComponent />
+           <div id="plans-section2">
+              <p className="plans-subtitle">Plans</p>
+              <button className="plans-button">+ Add Plan</button>
+              <hr className="plans-solid-hr"></hr>
+              <p id="no-plans-message">You currently have 0 plans created. Click the button above to create a plan.</p>
+           </div>
+        <NavComponent />
+        <FooterComponent />
        </div>
     );
   } 

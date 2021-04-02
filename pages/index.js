@@ -9,10 +9,6 @@ const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
 )
 
-const GraphComponent = _dynamic(() =>
-import ('../components/nav').then((mod) => mod.Graph)
-)
-
 const PlanComponent = _dynamic(() =>
 import ('../components/plan-form-popup').then((mod) => mod.PlanFormPopup)
 )
@@ -21,8 +17,13 @@ const FooterComponent = _dynamic(() =>
   import('../components/footer').then((mod) => mod.Footer)
 )
 
+const GraphComponent = _dynamic(() =>
+  import('../components/graph').then((mod) => mod.Graph)
+)
+
 export function App() {
   return (
+    <div>
      <div className="app">
         <div id="header">
           <h1 className="h1">Jacob's Dashboard</h1>
@@ -56,7 +57,7 @@ export function App() {
               <p className="p" id="retirement-word">Retirement Plan</p>
               <p className="p" id="monthly-savings">Invest $450 a Month in 401(k)</p>
             </div>
-            <img className="plus" src='/images/plus.png' width={25} height={25} />
+            <button id="dashboard-add-plan-button">+ Add Plan</button>
           </div>
         </div>
         <div id="right-section">
@@ -84,6 +85,8 @@ export function App() {
         </div>
         <NavComponent />
     </div> 
+    <FooterComponent />
+    </div>
   );
 } 
 

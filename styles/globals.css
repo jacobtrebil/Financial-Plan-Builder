@@ -215,6 +215,23 @@ h1 {
   margin: -18px 20px 0px 0px;
 }
 
+#dashboard-add-plan-button {
+  float: right;
+  display: inline-block;
+  margin: 0px 70px 0px 0px;
+  background-color: rgb(0, 132, 255);
+  color: white;
+  border: 0px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  padding: 12px 24px;
+  font-size: 12px;
+}
+
+#dashboard-add-plan-button:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
 
 
 
@@ -409,6 +426,61 @@ h1 {
   margin: 20px 0px 0px 120px;
 }
 
+#plans-h1 {
+  margin: 20px 0px 0px 120px;
+}
+
+#plans-side-logo {
+  margin: 60px 0px 0px 0px;
+}
+
+#plans-section2 {
+  background-color: white;
+  border-radius: 8px;
+  width: 80%;
+  margin: 40px auto 80px auto;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
+  padding: 0px 0px 40px 0px;
+}
+
+.plans-subtitle {
+  margin: 50px 0px 20px 60px;
+  display: inline-block;
+  float: left;
+}
+
+.plans-solid-hr {
+  width: 92%;
+  border: 1px solid rgb(226, 225, 225);
+  margin: 0px auto 0px auto;
+}
+
+.plans-button {
+  float: right;
+  display: inline-block;
+  margin: 40px 70px 0px 0px;
+  background-color: rgb(0, 132, 255);
+  color: white;
+  border: 0px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  padding: 12px 24px;
+  font-size: 12px;
+  bottom: 0;
+  position: relative;
+}
+
+.plans-button:hover {
+  cursor: pointer;
+  border: 0px solid black;
+  opacity: 70%;
+}
+
+#no-plans-message {
+  font-weight: normal;
+  text-align: center;
+  margin: 40px 0px 0px 0px;
+}
+
 
 
 
@@ -443,7 +515,7 @@ h1 {
 .settings-nav-p:hover {
   cursor: pointer;
   opacity: 70%;
-  color: rgb(4, 93, 177);
+  color: rgb(0, 132, 255);
 }
 
 #settings-nav-middle-p {
@@ -451,7 +523,7 @@ h1 {
 }
 
 #settings-nav-profile {
-  color: rgb(4, 93, 177);
+  color: rgb(0, 132, 255);
 }
 
 
@@ -474,20 +546,48 @@ h1 {
   background-color: white;
   border-radius: 8px;
   width: 80%;
-  margin: 40px auto 80px auto;
+  margin: 40px auto 120px auto;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
-  padding: 0px 0px 40px 0px;
+  padding: 0px 0px 80px 0px;
 }
 
 .integrations-subtitle {
-  margin: 60px 0px 20px 40px;
+  margin: 50px 0px 20px 60px;
+  display: inline-block;
+  float: left;
 }
 
 .integrations-solid-hr {
   width: 92%;
   border: 1px solid rgb(226, 225, 225);
+  margin: 0px auto 0px auto;
 }
 
+.integrations-button {
+  float: right;
+  display: inline-block;
+  margin: 40px 70px 0px 0px;
+  background-color: rgb(0, 132, 255);
+  color: white;
+  border: 0px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  padding: 12px 24px;
+  font-size: 12px;
+  bottom: 0;
+  position: relative;
+}
+
+.integrations-button:hover {
+  cursor: pointer;
+  border: 0px solid black;
+  opacity: 70%;
+}
+
+.no-integrations-message {
+  font-weight: normal;
+  text-align: center;
+  margin: 40px 0px 0px 0px;
+}
 
 
 
@@ -515,7 +615,6 @@ h1 {
 }
 
 .profile-form-label {
-  font-size: 18px;
   text-align: left;
   margin: 0px 0px 0px 40px;
   padding: 0px;
@@ -525,9 +624,9 @@ h1 {
   background-color: rgb(0, 132, 255);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 2px;
   padding: 14px 28px;
-  font-size: 16px;
+  font-size: 14px;
   margin: 20px 40px;
 }
 
@@ -535,6 +634,98 @@ h1 {
   cursor: pointer;
   opacity: 80%;
 }
+
+
+
+
+
+/* Payment Methods Component */
+
+#payment-method-title {
+  margin: 15px 0px 10px 50px;
+  display: inline-block;
+  float: left;
+  padding: 0px;
+}
+
+.payment-button {
+  float: right;
+  display: inline-block;
+  margin: 0px 70px 15px 0px;
+  background-color: rgb(0, 132, 255);
+  color: white;
+  border: 0px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  padding: 12px 24px;
+  font-size: 12px;
+  bottom: 0;
+  position: relative;
+}
+
+.payment-button:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.payment-solid-hr {
+  width: 92%;
+  border: 1px solid rgb(226, 225, 225);
+  margin: 10px auto 0px auto;
+}
+
+#no-payment-message {
+  font-weight: normal;
+  text-align: center;
+  margin: 40px 0px 60px 0px;
+}
+
+
+
+
+
+
+/* Close Account */
+
+#cancel-method-title {
+  margin: 15px 0px 10px 50px;
+  display: inline-block;
+  float: left;
+  padding: 0px;
+}
+
+.cancel-button {
+  float: right;
+  display: inline-block;
+  margin: 0px 70px 15px 0px;
+  background-color: red;
+  color: white;
+  border: 0px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  padding: 12px 24px;
+  font-size: 12px;
+  bottom: 0;
+  position: relative;
+}
+
+.cancel-button:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.cancel-solid-hr {
+  width: 92%;
+  border: 1px solid rgb(226, 225, 225);
+  margin: 10px auto 0px auto;
+}
+
+#cancel-account-message {
+  font-weight: normal;
+  text-align: center;
+  margin: 40px 0px 60px 0px;
+}
+
+
+
 
 
 
@@ -632,6 +823,10 @@ h1 {
   margin-left: 10px;
 }
 
+#plans-section2 {
+  margin: 60px auto 450px auto;
+}
+
 
 
 
@@ -685,4 +880,31 @@ h1 {
 .footer-nav-item:hover {
   cursor: pointer;
   opacity: 70%;
+}
+
+
+
+
+
+
+
+/* Legal Page */
+
+.legal-section {
+  padding: 0px 0px 80px 0px;
+}
+
+#legal-h1 {
+  margin: 20px 0px 0px 120px;
+}
+
+.terms {
+  font-weight: normal;
+  margin: 20px 60px 0px 120px;
+}
+
+.terms-h2 {
+  text-align: left;
+  margin: 20px 0px 0px 120px;
+  font-size: 20px;
 }

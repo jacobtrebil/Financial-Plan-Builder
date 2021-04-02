@@ -3,29 +3,13 @@ import _Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export function PlanFormPopup() {
+export function Payment() {
     return (
-    <div id="full-width-box">
-        <div id="plan-form-popup-section">
-            <h1 id="plan-title">Create A Plan</h1>
-            <form id="plan-form-page-1">
-                <div class="plan-input-box">
-                <label>Plan Type:   </label>
-                <select>
-                    <option>Retirement Plan</option>
-                    <option>Financial Plan</option>
-                </select><br></br>
-                </div>
-                <div class="plan-input-box">
-                <label>Would You Like To Include A Spouse?</label>
-                <select defaultValue="No">
-                    <option>Yes</option>
-                    <option>No</option>
-                </select><br></br>
-                </div>
-                <button id="plan-button">Next Step &#187;</button>
-            </form>
-        </div>
+    <div>
+        <p id="payment-method-title">Payment Methods</p>   
+        <button className="payment-button">+ Add Payment Method</button>           
+        <hr className="payment-solid-hr"></hr>
+        <p id="no-payment-message">You currently have 0 payment methods added. Click the button above to add a payment method.</p>
     </div>
     );
   }
