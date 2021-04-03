@@ -25,19 +25,15 @@ export function App() {
   return (
     <div>
      <div className="app">
-        <div id="header">
-          <h1 className="h1">Jacob's Plans</h1>
+        <div className="plans">
+        <h1 className="h1">Jacob's Plans</h1>
+           <div id="plans-section">
+              <p className="plans-subtitle">Plans</p>
+              <button className="plans-button">+ Add Plan</button>
+              <hr className="plans-solid-hr"></hr>
+              <p id="no-plans-message">You currently have 0 plans created. Click the button above to create a plan.</p>
         </div>
-        <div id="left-section">
-          <div id="plans-section">
-            <p className="p">Plans</p>
-            <div id="plan1">
-              <p className="p" id="retirement-word">Retirement Plan</p>
-              <p className="p" id="monthly-savings">Invest $450 a Month in 401(k)</p>
-            </div>
-            <button id="dashboard-add-plan-button">+ Add Plan</button>
-          </div>
-        </div>
+    </div>
         <NavComponent />
     </div> 
     <FooterComponent />
@@ -48,13 +44,3 @@ export function App() {
 
 
 export default App;
-
-/* <nav id="sidebar">
-        <img id="fpblogo" className="nav-img" src={_fpblogo}></img>
-        <div id="home-img" className="nav-img" data-tooltip="Home"></div>
-        <img id="plans" className="nav-img" src={_plans}></img>
-        <img id="analytics" className="nav-img" src={_analytics}></img>
-        <img id="education" className="nav-img" src={_education}></img>
-        <img id="integrations" className="nav-img" src={_integrations}></img>
-        <img id="settings" className="nav-img" src={_settings}></img>
-      </nav> */
