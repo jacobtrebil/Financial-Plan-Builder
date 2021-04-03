@@ -53,21 +53,6 @@ h1 {
 
 /* Dashbaord Section */
 
-#green-bar {
-  border-radius: 4px;
-  width: 80%;
-  background-color: green;
-  margin: 10% 10% 0px 10%;
-  padding: 40px 0px 0px 0px;
-}
-
-#green-bar-section {
-  width: 80%;
-  background-color: rgb(216, 214, 214);
-  border-radius: 4px;
-  margin: 20px 0px 0px 0px;
-}
-
 #file {
   width: 80%;
   height: 60px;
