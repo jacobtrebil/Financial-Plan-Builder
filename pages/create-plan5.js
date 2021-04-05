@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -12,32 +12,42 @@ const FooterComponent = _dynamic(() =>
 )
 
 function CreatePlan5() {
+
+  const [showForm, setShowForm] = useState(false)
+  const [showForm2, setShowForm2] = useState(false)
+
     return (
       <div>
         <h1 id="create-a-plan">Step 5: Portfolio Management</h1>
       <form id="plan-form-page-1">
         <div className="plan-input-box">
-      <label className="retirement-form-label">Plan Type: </label>
-      <select defaultValue="Financial Plan">
-          <option>Retirement Plan</option>
-          <option>Financial Plan</option>
-      </select><br></br>
-      </div>
-      <div class="plan-input-box">
-      <label className="retirement-form-label">Would You Like To Include A Spouse? </label>
-      <select defaultValue="No">
+      <label className="retirement-form-label">Do you have any investments? </label>
+      <select defaultValue="No" onChange= {() => setShowForm(!showForm) }>
           <option>Yes</option>
           <option>No</option>
       </select><br></br>
       </div>
+      {
+      showForm && (
       <div className="plan-input-box">
-        <label className="retirement-form-label">What's Your Full Name?</label>
+        <label className="retirement-form-label">How much do you have in investments? </label>
         <input></input>
       </div>
+      )}
       <div className="plan-input-box">
-      <label className="retirement-form-label">What's Your Spouses Full Name?</label>
-      <input></input>
+      <label className="retirement-form-label">Do you have any real estate? </label>
+      <select defaultValue="No" onChange= {() => setShowForm2(!showForm2) }>
+          <option>Yes</option>
+          <option>No</option>
+      </select><br></br>
       </div>
+      {
+      showForm2 && (
+      <div className="plan-input-box">
+        <label className="retirement-form-label">How much do you have in real estate? </label>
+        <input></input>
+      </div>
+      )}
       <Link href="/create-plan6"><button id="plan-button">Next Step &#187;</button></Link>
   </form>
         <NavComponent />
