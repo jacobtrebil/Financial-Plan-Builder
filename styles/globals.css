@@ -339,13 +339,14 @@ h1 {
 .settings-nav-p {
   display: inline-block;
   font-weight: 500;
-  padding: 20px 0px 0px 0px;
+  padding: 20px 10px 0px 10px;
+  margin: 0px 0px 0px 0px;
 }
 
 .settings-nav-p:hover {
   cursor: pointer;
   opacity: 70%;
-  color: rgb(4, 187, 172);
+  color: black;
 }
 
 #settings-nav-middle-p {
@@ -353,7 +354,7 @@ h1 {
 }
 
 #settings-nav-profile {
-  color: rgb(4, 187, 172);
+  color: black;
 }
 
 
@@ -789,4 +790,17 @@ h1 {
 #plan-button2:hover {
   cursor: pointer;
   opacity: 75%;
+}
+
+
+
+
+/* Color Classes */
+
+.green {
+  color: rgb(4, 187, 172);
+}
+
+.black {
+  color: black;
 }

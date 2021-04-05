@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import _dynamic from 'next/dynamic';
@@ -24,20 +24,38 @@ const FooterComponent = _dynamic(() =>
 )
 
 function Settings() {
+
+  const [showAccount, setShowAccount] = useState(true)
+  const [showAccount2, setShowAccount2] = useState()
+
     return (
       <div id="settings-container">
        <div className="settings-section">
            <h1 className="settings-h1">Settings</h1>
            <NavComponent />
            <div id="settings-content">
-             <nav>
-               <p id="settings-nav-profile" className="settings-nav-p">Profile</p>
-               <p id="settings-nav-middle-p" className="settings-nav-p">Payment Methods</p>
-               <p className="settings-nav-p">Account</p>
+             <nav defaultValue="Profile">
+               <p id="settings-nav-profile" className="settings-nav-p" onClick= {function setProfile() {
+                  setShowAccount(true) 
+                  setShowAccount2(false) 
+                  }}>Profile</p>
+               <p className="settings-nav-p" onClick={function setAccount() {
+                 setShowAccount(false)
+                 setShowAccount2(true)
+               }}>Account</p>
              </nav>
-             <ProfileComponent />
-             <PaymentComponent />
-             <AccountComponent />
+             {
+            showAccount && (
+              <div>
+              <ProfileComponent />
+              </div>
+            )}
+            {
+            showAccount2 && (
+              <div>
+              <AccountComponent />
+              </div>
+            )}
            </div>
        </div>
        <FooterComponent />

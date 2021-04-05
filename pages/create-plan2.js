@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -12,6 +12,9 @@ const FooterComponent = _dynamic(() =>
 )
 
 function CreatePlan2() {
+
+  const [showForm, setShowForm] = useState(false)
+
     return (
       <div>
         <h1 id="create-a-plan">Step 2: Your Financial Statements</h1>
@@ -34,6 +37,20 @@ function CreatePlan2() {
       <label className="retirement-form-label">What is the total amount of debt that you have?</label>
       <input></input>
       </div>
+      <div className="plan-input-box">
+        <label className="retirement-form-label">Do you expect your income to increase within the next 10 years?</label> 
+        <select defaultValue="No" onChange= {() => setShowForm(!showForm) }>
+          <option>Yes</option>
+          <option>No</option>
+      </select><br></br>
+      </div>
+      {
+      showForm && (
+      <div className="plan-input-box">
+        <label className="retirement-form-label">How much do you expect your income to increase by? (total) </label>
+        <input></input>
+      </div>
+      )}
       <Link href="/create-plan3"><button id="plan-button">Next Step &#187;</button></Link>
   </form>
         <NavComponent />
