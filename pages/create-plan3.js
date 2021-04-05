@@ -14,22 +14,12 @@ const FooterComponent = _dynamic(() =>
 function CreatePlan3() {
     return (
       <div>
-        <h1 id="create-a-plan">Step 3: Risk Mitigation</h1>
+        <h1 id="create-a-plan">At what age would you like to retire?</h1>
+        <h2 id="create-a-plan-h2">Not sure? Enter your best guess.</h2>
       <form id="plan-form-page-1">
       <div class="plan-input-box">
-      <label className="retirement-form-label">Do you forsee being out of work for 1+ years in the future due to getting fired or business failure? </label>
-      <select defaultValue="No">
-          <option>Yes</option>
-          <option>No</option>
-      </select><br></br>
-      </div>
-      <div className="plan-input-box">
-      <label className="retirement-form-label">Do you have life insurance?</label>
-      <select defaultValue="No">
-          <option>Yes</option>
-          <option>No</option>
-      </select><br></br>
-      </div>
+          <input id="large-input" min="1" max="100" type="number" placeholder ="60" required></input>
+        </div>
       <Link href="/create-plan4"><button id="plan-button">Next &#8594;</button></Link>
   </form>
         <NavComponent />

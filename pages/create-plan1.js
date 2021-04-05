@@ -22,7 +22,7 @@ function CreatePlan1() {
 
     return (
       <div>
-        <h1 id="create-a-plan">Step 1: Your Vision & Goals</h1>
+        <h1 id="create-a-plan">Section 1: Your Vision & Goals</h1>
         <h2 id="create-a-plan-h2">We are going to ask a few questions to get clarity on your lifestyle vision and goals.</h2>
       <form id="plan-form-page-1">
         <div className="plan-input-box">

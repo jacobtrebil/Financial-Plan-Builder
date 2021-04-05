@@ -814,6 +814,14 @@ h1 {
   text-align: center
 }
 
+#large-input {
+  font-size: 28px;
+  font-weight: normal;
+  padding: 20px 20px;
+  width: 40%;
+  border: rgb(207, 207, 207) solid 2px;
+}
+
 
 
 
