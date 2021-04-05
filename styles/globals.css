@@ -740,19 +740,28 @@ h1 {
 /* Create a Plan */
 
 #create-a-plan {
-  margin: 20px 0px 5% 120px;
-  text-align: left;
+  margin: 6% auto 1% auto;
+  text-align: center;
+  font-size: 42px;
+}
+
+#create-a-plan-h2 {
+  font-weight: normal;
+  font-size: 16px;
+  margin: 0px 0px 5% 0px;
 }
 
 .plan-input-box {
-  text-align: left;
-  margin: 20px 0px 0px 0px;
+  text-align: center;
+  margin: 20px auto 0px auto;
 }
 
 .retirement-form-label {
   text-align: center;
-  margin: 40px 0px 0px 120px;
+  margin: 40px 0px 0px 0px;
   padding: 40px 0px 0px 0px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .plan-input-box select {
@@ -775,6 +784,7 @@ h1 {
   padding: 16px 32px;
   font-size: 18px;
   margin: 5% 0px 15% 0px;
+  font-weight: bold;
 }
 
 #plan-button:hover {
@@ -795,6 +805,13 @@ h1 {
 #plan-button2:hover {
   cursor: pointer;
   opacity: 75%;
+}
+
+#note {
+  margin: 15px auto 0px auto;
+  font-weight: normal;
+  line-height: 28px;
+  text-align: center
 }
 
 

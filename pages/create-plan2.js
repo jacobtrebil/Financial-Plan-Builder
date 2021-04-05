@@ -34,10 +34,6 @@ function CreatePlan2() {
       <input></input>
       </div>
       <div className="plan-input-box">
-      <label className="retirement-form-label">What is the total amount of debt that you have?</label>
-      <input></input>
-      </div>
-      <div className="plan-input-box">
         <label className="retirement-form-label">Do you expect your income to increase within the next 10 years?</label> 
         <select defaultValue="No" onChange= {() => setShowForm(!showForm) }>
           <option>Yes</option>

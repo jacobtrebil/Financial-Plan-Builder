@@ -23,6 +23,7 @@ function CreatePlan1() {
     return (
       <div>
         <h1 id="create-a-plan">Step 1: Your Vision & Goals</h1>
+        <h2 id="create-a-plan-h2">We are going to ask a few questions to get clarity on your financial vision and goals.</h2>
       <form id="plan-form-page-1">
         <div className="plan-input-box">
       <label className="retirement-form-label">Do you have kids or expect to have kids in the future? </label>

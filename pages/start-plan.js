@@ -35,6 +35,7 @@ function CreatePlan() {
     return (
       <div>
         <h1 id="create-a-plan">Create a Plan</h1>
+        <h2 id="create-a-plan-h2">Time to complete: 15 minutes</h2>
       <form id="plan-form-page-1">
         <div className="plan-input-box">
       <label className="retirement-form-label">Plan type: </label>
@@ -60,10 +61,12 @@ function CreatePlan() {
       <div>
       <label className="retirement-form-label">What's your spouses full name?</label>
       <input></input>
+      <p id="note">* NOTE throughout the entire form, provide the total of <br></br>you and your spouses assets, liabilities, and financial goals. 
+      </p>
       </div>
       )}
       </div>
-      <Link href="/create-plan1"><button id="plan-button">Next Step &#187;</button></Link>
+      <Link href="/create-plan1"><button id="plan-button">Next &#8594;</button></Link>
   </form>
         <NavComponent />
         <FooterComponent />
