@@ -23,7 +23,7 @@ function CreatePlan1() {
     return (
       <div>
         <h1 id="create-a-plan">Step 1: Your Vision & Goals</h1>
-        <h2 id="create-a-plan-h2">We are going to ask a few questions to get clarity on your financial vision and goals.</h2>
+        <h2 id="create-a-plan-h2">We are going to ask a few questions to get clarity on your lifestyle vision and goals.</h2>
       <form id="plan-form-page-1">
         <div className="plan-input-box">
       <label className="retirement-form-label">Do you have kids or expect to have kids in the future? </label>
@@ -147,7 +147,21 @@ function CreatePlan1() {
         <label className="retirement-form-label">How long do you expect to live?  </label>
         <input></input>
       </div>
-      <Link href="/create-plan2"><button id="plan-button2">Next Step &#187;</button></Link>
+      <div className="plan-input-box">
+      <label className="retirement-form-label">Would you like to do volunteer work throughout retirement? </label>
+      <select defaultValue="No">
+          <option>Yes</option>
+          <option>No</option>
+      </select><br></br>
+      </div>
+      <div class="plan-input-box">
+      <label className="retirement-form-label">Would you like to give to charity throughout retirement? </label>
+      <select defaultValue="No">
+          <option>Yes</option>
+          <option>No</option>
+      </select><br></br>
+      </div>
+      <Link href="/create-plan2"><button id="plan-button2">Next &#8594;</button></Link>
   </form>
         <NavComponent />
         <FooterComponent />

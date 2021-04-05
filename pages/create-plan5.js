@@ -13,7 +13,7 @@ const FooterComponent = _dynamic(() =>
 
 function CreatePlan5() {
 
-  const [showForm, setShowForm] = useState(false)
+  const [showForm1, setShowForm1] = useState(false)
   const [showForm2, setShowForm2] = useState(false)
 
     return (
@@ -22,13 +22,13 @@ function CreatePlan5() {
       <form id="plan-form-page-1">
         <div className="plan-input-box">
       <label className="retirement-form-label">Do you have any investments? </label>
-      <select defaultValue="No" onChange= {() => setShowForm(!showForm) }>
+      <select defaultValue="No" onChange= {() => setShowForm1(!showForm1) }>
           <option>Yes</option>
           <option>No</option>
       </select><br></br>
       </div>
       {
-      showForm && (
+      showForm1 && (
       <div className="plan-input-box">
         <label className="retirement-form-label">How much do you have in investments? </label>
         <input></input>
@@ -48,7 +48,7 @@ function CreatePlan5() {
         <input></input>
       </div>
       )}
-      <Link href="/create-plan6"><button id="plan-button">Next Step &#187;</button></Link>
+      <Link href="/create-plan6"><button id="plan-button">Next &#8594;</button></Link>
   </form>
         <NavComponent />
         <FooterComponent />

@@ -30,7 +30,7 @@ function CreatePlan8() {
             <option>No</option>
         </select><br></br>
       </div>
-      <Link href="/create-plan9"><button id="plan-button">Next Step &#187;</button></Link>
+      <Link href="/create-plan9"><button id="plan-button">Next &#8594;</button></Link>
   </form>
         <NavComponent />
         <FooterComponent />

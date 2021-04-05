@@ -13,8 +13,6 @@ const FooterComponent = _dynamic(() =>
 
 function CreatePlan6() {
 
-  const [showForm, setShowForm] = useState(false)
-  const [showForm2, setShowForm2] = useState(false)
   const [showForm3, setShowForm3] = useState(false)
   const [showForm4, setShowForm4] = useState(false)
   const [showForm5, setShowForm5] = useState(false)
@@ -23,6 +21,8 @@ function CreatePlan6() {
   const [showForm8, setShowForm8] = useState(false)
   const [showForm9, setShowForm9] = useState(false)
   const [showForm10, setShowForm10] = useState(false)
+  const [showForm11, setShowForm11] = useState(false)
+  const [showForm12, setShowForm12] = useState(false)
 
     return (
       <div>
@@ -30,34 +30,6 @@ function CreatePlan6() {
       <form id="plan-form-page-1">
       <div className="plan-input-box">
       <label className="retirement-form-label">Do you have any Commodoties, Collectibiles, Cryptocurrencies, or other digital properties? </label>
-      <select defaultValue="No" onChange= {() => setShowForm(!showForm) }>
-          <option>Yes</option>
-          <option>No</option>
-      </select><br></br>
-      </div>
-      {
-      showForm && (
-      <div className="plan-input-box">
-        <label className="retirement-form-label">How much do you have in these assets? </label>
-        <input></input>
-      </div>
-      )}
-        <div className="plan-input-box">
-      <label className="retirement-form-label">Do you have any other assets? </label>
-      <select defaultValue="No" onChange= {() => setShowForm2(!showForm2) }>
-          <option>Yes</option>
-          <option>No</option>
-      </select><br></br>
-      </div>
-      {
-      showForm2 && (
-      <div className="plan-input-box">
-        <label className="retirement-form-label">How much do you have in other assets? </label>
-        <input></input>
-      </div>
-      )}
-      <div className="plan-input-box">
-      <label className="retirement-form-label">Do you have any debt or liabilities? </label>
       <select defaultValue="No" onChange= {() => setShowForm3(!showForm3) }>
           <option>Yes</option>
           <option>No</option>
@@ -65,16 +37,44 @@ function CreatePlan6() {
       </div>
       {
       showForm3 && (
+      <div className="plan-input-box">
+        <label className="retirement-form-label">How much do you have in these assets? </label>
+        <input></input>
+      </div>
+      )}
+        <div className="plan-input-box">
+      <label className="retirement-form-label">Do you have any other assets? </label>
+      <select defaultValue="No" onChange= {() => setShowForm4(!showForm4) }>
+          <option>Yes</option>
+          <option>No</option>
+      </select><br></br>
+      </div>
+      {
+      showForm4 && (
+      <div className="plan-input-box">
+        <label className="retirement-form-label">How much do you have in other assets? </label>
+        <input></input>
+      </div>
+      )}
+      <div className="plan-input-box">
+      <label className="retirement-form-label">Do you have any debt or liabilities? </label>
+      <select defaultValue="No" onChange= {() => setShowForm5(!showForm5) }>
+          <option>Yes</option>
+          <option>No</option>
+      </select><br></br>
+      </div>
+      {
+      showForm5 && (
       <div>
         <div className="plan-input-box">
           <label className="retirement-form-label">Do you have a mortgage? </label>
-          <select defaultValue="No" onChange= {() => setShowForm4(!showForm4) }>
+          <select defaultValue="No" onChange= {() => setShowForm6(!showForm6) }>
           <option>Yes</option>
           <option>No</option>
           </select><br></br>
         </div>
       {
-        showForm4 && (
+        showForm6 && (
           <div>
         <div className="plan-input-box">
           <label className="retirement-form-label">How much of your mortgage do you still have to pay off? (enter dollar amount)</label>
@@ -82,13 +82,13 @@ function CreatePlan6() {
         </div>
         <div className="plan-input-box">
           <label className="retirement-form-label">Do you have additional mortgages? </label>
-          <select defaultValue="No" onChange= {() => setShowForm5(!showForm5) }>
+          <select defaultValue="No" onChange= {() => setShowForm7(!showForm7) }>
           <option>Yes</option>
           <option>No</option>
           </select><br></br>
         </div>
         {
-        showForm5 && (
+        showForm7 && (
         <div className="plan-input-box">
           <label className="retirement-form-label">How much of your mortgage do you still have to pay off? (enter dollar amount)</label>
           <input></input>
@@ -98,13 +98,13 @@ function CreatePlan6() {
       )}
         <div className="plan-input-box">
           <label className="retirement-form-label">Do you have credit card debt? </label>
-          <select defaultValue="No" onChange= {() => setShowForm6(!showForm6) }>
+          <select defaultValue="No" onChange= {() => setShowForm8(!showForm8) }>
           <option>Yes</option>
           <option>No</option>
           </select><br></br>
         </div>
         {
-        showForm6 && (
+        showForm8 && (
         <div>
           <div className="plan-input-box">
             <label className="retirement-form-label">How much credit card debt do you have? (enter dollar amount)</label>
@@ -118,13 +118,13 @@ function CreatePlan6() {
         )}
         <div className="plan-input-box">
           <label className="retirement-form-label">Do you have any medical debt? </label>
-          <select defaultValue="No" onChange= {() => setShowForm7(!showForm7) }>
+          <select defaultValue="No" onChange= {() => setShowForm9(!showForm9) }>
           <option>Yes</option>
           <option>No</option>
           </select><br></br>
         </div>
         {
-        showForm7 && (
+        showForm9 && (
         <div className="plan-input-box">
           <label className="retirement-form-label">How much medical debt? (enter dollar amount)</label>
           <input></input>
@@ -132,13 +132,13 @@ function CreatePlan6() {
         )}
         <div className="plan-input-box">
           <label className="retirement-form-label">Do you have car financing? </label>
-          <select defaultValue="No" onChange= {() => setShowForm8(!showForm8) }>
+          <select defaultValue="No" onChange= {() => setShowForm10(!showForm10) }>
           <option>Yes</option>
           <option>No</option>
           </select><br></br>
         </div>
         {
-        showForm8 && (
+        showForm10 && (
         <div>
           <div className="plan-input-box">
             <label className="retirement-form-label">How much do you still have to pay off on your car? (enter dollar amount)</label>
@@ -156,13 +156,13 @@ function CreatePlan6() {
         )}
         <div className="plan-input-box">
           <label className="retirement-form-label">Do you have student loans? </label>
-          <select defaultValue="No" onChange= {() => setShowForm9(!showForm9) }>
+          <select defaultValue="No" onChange= {() => setShowForm11(!showForm11) }>
           <option>Yes</option>
           <option>No</option>
           </select><br></br>
         </div>
         {
-        showForm9 && (
+        showForm11 && (
         <div>
           <div className="plan-input-box">
             <label className="retirement-form-label">How much do you still have to pay off on your student loans? (enter dollar amount)</label>
@@ -180,13 +180,13 @@ function CreatePlan6() {
         )}
         <div className="plan-input-box">
           <label className="retirement-form-label">Do you have any additional loans or debt? </label>
-          <select defaultValue="No" onChange= {() => setShowForm10(!showForm10) }>
+          <select defaultValue="No" onChange= {() => setShowForm12(!showForm12) }>
           <option>Yes</option>
           <option>No</option>
           </select><br></br>
         </div>
         {
-        showForm10 && (
+        showForm12 && (
         <div>
           <div className="plan-input-box">
             <label className="retirement-form-label">How much do you still have to pay off on your loans/debt? (enter dollar amount)</label>
@@ -204,7 +204,7 @@ function CreatePlan6() {
         )}
       </div>
       )}
-      <Link href="/create-plan7"><button id="plan-button">Next Step &#187;</button></Link>
+      <Link href="/create-plan7"><button id="plan-button">Next &#8594;</button></Link>
   </form>
         <NavComponent />
         <FooterComponent />
