@@ -10,10 +10,10 @@ export function SideBar() {
         <nav id="sidebar">
                 <img id="fpb-top-logo" className="sidebar-logo" src="/images/fpblogo.png" width={35} height={35}/>
               <div id="plans-side-logo">
-                <Link href="/"><Image className="plans" src="/images/PlansIcon.png" width={25} height={25}/></Link>
+                <Link href="/"><Image className="plans" src="/images/PlansIcon1.png" width={28} height={28}/></Link>
               </div>
               <div id="settings-side-logo">
-                <Link href="/settings"><Image className="settings" src="/images/settings.png" width={25} height={25}/></Link>
+                <Link href="/settings"><Image className="settings" src="/images/settings1.png" width={25} height={25}/></Link>
               </div>
               </nav>
       </div>

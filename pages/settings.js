@@ -34,7 +34,7 @@ function Settings() {
            <h1 className="settings-h1">Settings</h1>
            <NavComponent />
            <div id="settings-content">
-             <nav defaultValue="Profile">
+             <nav id="settings-nav">
                <p id="settings-nav-profile" className="settings-nav-p" onClick= {function setProfile() {
                   setShowAccount(true) 
                   setShowAccount2(false) 
