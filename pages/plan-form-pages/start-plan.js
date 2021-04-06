@@ -33,7 +33,7 @@ function CreatePlan() {
   const [showForm, setShowForm] = useState(false)
 
     return (
-      <div>
+      <div id="section-1-start-box">
         <h1 id="create-a-plan">Create a Plan</h1>
         <h2 id="create-a-plan-h2">Time to complete: 15 minutes</h2>
       <form id="plan-form-page-1">
@@ -53,7 +53,7 @@ function CreatePlan() {
       </div>
       <div className="plan-input-box">
         <label className="retirement-form-label">What's your full name?</label>
-        <input require></input>
+        <input></input>
       </div>
       <div className="plan-input-box">
       {
@@ -66,7 +66,7 @@ function CreatePlan() {
       </div>
       )}
       </div>
-      <Link href="/create-plan1"><button id="plan-button">Next &#8594;</button></Link>
+      <Link href="/section-1-start"><button id="plan-button">Next &#8594;</button></Link>
   </form>
         <NavComponent />
         <FooterComponent />

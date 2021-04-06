@@ -614,15 +614,14 @@ h1 {
 #plan-form-popup-section {
   background-color: white;
   width: 80%;
-  margin: 10% auto 60px auto;
+  margin: 10% auto 0px auto;
   padding: 20px 0px 40px 0px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
   border-radius: 8px;
 }
 
 #plan-form-page-1 {
-  vertical-align: center;
-  margin: 20px auto;
+  margin: 20px auto 0px 0px;
 }
 
 #plan-title {
@@ -821,6 +820,43 @@ h1 {
   width: 40%;
   border: rgb(207, 207, 207) solid 2px;
 }
+
+#section-start-h1 {
+  margin: 15% auto 1% auto;
+  text-align: center;
+  font-size: 42px;
+}
+
+#section-start-h2 {
+  font-weight: normal;
+  font-size: 16px;
+  margin: 0px 0px 2% 0px;
+}
+
+#section-start-button {
+    background-color: rgb(4, 187, 172);
+    color: white;
+    border: none;
+    border-radius: 2px;
+    padding: 16px 32px;
+    font-size: 18px;
+    margin: 3% 0px 20% 0px;
+  }
+  
+  #section-start-button:hover {
+    cursor: pointer;
+    opacity: 75%;
+  }
+
+  #section-1-start-box {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .section-1-start-box {
+    margin: 0px;
+    padding: 0px;
+  }
 
 
 

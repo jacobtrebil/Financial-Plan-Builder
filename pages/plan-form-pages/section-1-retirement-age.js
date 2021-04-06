@@ -16,11 +16,11 @@ function CreatePlan3() {
       <div>
         <h1 id="create-a-plan">At what age would you like to retire?</h1>
         <h2 id="create-a-plan-h2">Not sure? Enter your best guess.</h2>
-      <form id="plan-form-page-1">
+      <form id="plan-form-page-1" required>
       <div class="plan-input-box">
           <input id="large-input" min="1" max="100" type="number" placeholder ="60" required></input>
         </div>
-      <Link href="/create-plan4"><button id="plan-button">Next &#8594;</button></Link>
+      <Link href="/create-plan1"><button id="plan-button">Next &#8594;</button></Link>
   </form>
         <NavComponent />
         <FooterComponent />
