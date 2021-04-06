@@ -11,23 +11,6 @@ const FooterComponent = _dynamic(() =>
   import('../components/footer').then((mod) => mod.Footer)
 )
 
-/*return (
-  <>
-  <div>
-    <input type="checkbox" checked={showForm} onClick= {() => setShowForm(!showForm) } />
-  </div>
-  {
-    showForm && (
-      <div>
-        <label></label>
-        <input value={value}
-        />
-      </div>
-    )
-  }
-  </>
-);*/
-
 function CreatePlan() {
 
   const [showForm, setShowForm] = useState(false)
