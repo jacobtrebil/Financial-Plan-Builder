@@ -16,11 +16,14 @@ function Kids() {
     const [showForm, setShowForm] = useState(false)
     const [showForm2, setShowForm2] = useState(false)
 
+    function addToDatabase() {
+    }
+
     return (
       <div>
         <h1 id="plan-form-h1">Do you have kids?</h1>
         <h2 id="plan-form-h2"></h2>
-        <form id="plan-form-page-1" required>
+        <form id="plan-form-page-1" onSubmit={addToDatabase}>
             <select className="custom-select" defaultValue="No" onChange= {() => setShowForm(!showForm) }>
                 <option>Yes</option>
                 <option>No</option>
