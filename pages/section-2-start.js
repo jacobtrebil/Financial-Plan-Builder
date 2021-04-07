@@ -11,16 +11,16 @@ const FooterComponent = _dynamic(() =>
   import('../components/footer').then((mod) => mod.Footer)
 )
 
-function Section1() {
+function Start() {
       return (
         <div className="section-1-start-box">
-          <h1 id="section-start-h1">Section 1: Your Vision & Goals</h1>
-          <h2 id="section-start-h2">We are going to ask a few questions to get clarity on your lifestyle vision and goals.</h2>
-            <Link href="/section-1-kids"><button id="section-start-button">Next &#8594;</button></Link>
+          <h1 id="section-start-h1">Section 2: Your Financial Statements</h1>
+          <h2 id="section-start-h2">We are going to ask a few questions to get clarity on your current and future finances.</h2>
+            <Link href="/section-2-income"><button id="section-start-button">Next &#8594;</button></Link>
             <NavComponent />
             <FooterComponent />
         </div>
       );
     } 
 
-    export default Section1;
+    export default Start;

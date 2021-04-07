@@ -12,16 +12,20 @@ const FooterComponent = _dynamic(() =>
   import('../components/footer').then((mod) => mod.Footer)
 )
 
-function RetirementAge() {
+function Longevity() {
     return (
       <div>
-        <h1 id="plan-form-h1">At what age would you like to retire?</h1>
+        <h1 id="plan-form-h1">How long do you expect to live?</h1>
         <h2 id="plan-form-h2">Not sure? Enter your best guess.</h2>
       <form id="plan-form-page-1" required>
-      <div class="plan-input-box">
-          <input id="large-input" min="1" max="100" type="number" placeholder ="60" required></input>
+      <div>
+          <select className="custom-select" defaultValue="70-80 years">
+              <option>70-80 years</option>
+              <option>80-90 years</option>
+              <option>90+ years</option>
+          </select><br></br>
         </div>
-      <Link href="/section-1-retirement-income"><button id="plan-button">Next &#8594;</button></Link>
+      <Link href="/section-2-start"><button id="plan-button">Next &#8594;</button></Link>
   </form>
         <NavComponent />
         <FooterComponent />
@@ -29,4 +33,4 @@ function RetirementAge() {
     );
   } 
   
-  export default RetirementAge; 
+  export default Longevity; 

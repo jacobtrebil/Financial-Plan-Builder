@@ -42,7 +42,7 @@ function CreatePlan2() {
       <input></input>
       </div>
       <div className="plan-input-box">
-        <label className="retirement-form-label">How much do you save per year? (on average)</label>
+        <label className="retirement-form-label">How much do you currently save per year? </label>
         <input></input>
       </div>
       <div className="plan-input-box">
@@ -351,7 +351,7 @@ function CreatePlan2() {
             <option>No</option>
         </select><br></br>
       </div>
-      <Link href="/create-plan3"><button id="plan-button">Next &#8594;</button></Link>
+      <Link href="/section-2-start"><button id="plan-button">Next &#8594;</button></Link>
   </form>
         <NavComponent />
         <FooterComponent />
