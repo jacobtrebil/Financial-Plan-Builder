@@ -708,7 +708,6 @@ h1 {
 
 
 /* Legal Page */
-
 .legal-section {
   padding: 0px 0px 80px 0px;
 }
@@ -726,8 +725,7 @@ h1 {
   text-align: left;
   margin: 20px 0px 0px 120px;
   font-size: 20px;
-}
-
+} 
 
 
 
@@ -746,7 +744,13 @@ h1 {
 #create-a-plan-h2 {
   font-weight: normal;
   font-size: 16px;
-  margin: 0px 0px 5% 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+#create-a-plan-2-h2 {
+  font-weight: normal;
+  font-size: 16px;
+  margin: 10px 20% 2% 20%;
 }
 
 .plan-input-box {
@@ -878,4 +882,11 @@ h1 {
   padding: 20px;
   font-size: 24px;
   display: inline-block;
+}
+
+.errors {
+  color: red;
+  margin: 20px 0px 0px 0px;
+  padding: 20px 0px 0px 0px;
+  font-size: 14px;
 }

@@ -19,6 +19,8 @@ function CreatePlan() {
       <div id="section-1-start-box">
         <h1 id="create-a-plan">Create a Plan</h1>
         <h2 id="create-a-plan-h2">Time to complete: 15 minutes</h2>
+        <h2 id="create-a-plan-2-h2">What to expect: Just answer a few basic questions about your goals & finances and we will provide you with a personalized financial plan. 
+        The plan will be simple and easy to understand, with the ability to add more specific details and track your progress within the plan.</h2>
       <form id="plan-form-page-1">
         <div className="plan-input-box">
       <label className="retirement-form-label">Plan type: </label>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
-import { useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Alert } from 'react-bootstrap';
 
 const NavComponent = _dynamic(() =>
@@ -16,8 +16,8 @@ const FooterComponent = _dynamic(() =>
 function Kids() {
 
     const [showForm, setShowForm] = useState(false)
-    const [showForm2, setShowForm2] = useState(false)
-    const { register, handleSubmit, errors } = useForm();
+    const [showForm1, setShowForm1] = useState(false)
+    const { register, handleSubmit, watch, formState: { errors } } = useForm()
     const onSubmit = (data) => {
       alert(JSON.stringify(data));
     }
@@ -41,7 +41,10 @@ function Kids() {
         <div>
       <div class="plan-input-box">
       <label className="retirement-form-label">How many kids do you have?</label>
-      <select name="numberofkids" {...register('kids', {required: true})} defaultValue="2">
+      <select 
+      name="numberofkids" 
+      {...register('kids', {required: true})} 
+      defaultValue="2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -56,24 +59,30 @@ function Kids() {
         {...register('kids', {required: true})} 
         className="custom-select" 
         defaultValue="No" 
-        onChange= {() => setShowForm2(!showForm2) }>
+        onChange= {() => setShowForm1(!showForm1) }>
                 <option>Yes</option>
                 <option>No</option>
             </select><br></br>
       </div>
       {
-      showForm2 && (
+      showForm1 && (
         <div>
           <div className="plan-input-box">
             <label name="kidscollegespending" className="retirement-form-label">How much will you spend on each of your kids college?</label>
             <input 
             name="kidsspending" 
-            {...register('kids', {required: true})} 
+            {...register('kids', {required: true, minLength: 1, maxLength: 10})} 
             placeholder="100000" 
             defaultValue="10000" 
             type="number">
             </input>
-            {errors?.kidsspending && <p>This field is required</p>}
+            {errors?.kidsspending && 
+            <Alert variant="danger">
+              { errors.kidsspending?.type === 'required' && <p>This field is required</p> }
+              { errors.kidsspending?.type === 'minLength' && <p>You must enter at least 1 character</p> }
+              { errors.kidsspending?.type === 'maxLength' && <p>You must enter less than 10 characters</p> }
+              </Alert>
+              }
           </div>
         </div>
       )}

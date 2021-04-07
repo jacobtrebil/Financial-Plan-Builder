@@ -18,7 +18,7 @@ function Care() {
 
     return (
       <div>
-        <h1 id="plan-form-h1">Will you live in care during retirement?</h1>
+        <h1 id="plan-form-h1">Will you live in Long-Term Care, Nursing or Retirement Community?</h1>
         <h2 id="plan-form-h2">If you think you'll be in long-term care throughout retirement, select yes.</h2>
       <form id="plan-form-page-1" required>
       <div>
