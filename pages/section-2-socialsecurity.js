@@ -27,22 +27,34 @@ function Socialsecurity() {
         <h2 id="plan-form-h2">Not sure? Most US residents qualify.</h2>
       <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-pension">
       <div>
-        <select className="custom-select" defaultValue="No" onChange= {() => setShowForm(!showForm) }>
+        <select 
+        {...register('socialsecurity', {required: true})}
+        name="socialsecurity"
+        className="custom-select" 
+        defaultValue="No" 
+        onChange= {() => setShowForm(!showForm) }>
             <option>Yes</option>
             <option>No</option>
         </select><br></br>
+              { errors.socialsecurity && errors.socialsecurity.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
       </div>
       {
       showForm && (
       <div className="plan-input-box">
         <label className="retirement-form-label">Would you like to delay social security to earn more? </label>
-        <select defaultValue="Yes">
+        <select 
+        {...register('delaysocialsecurity', {required: true})}
+        name="delaysocialsecurity"
+        defaultValue="Yes">
           <option>Yes</option>
           <option>No</option>
       </select><br></br>
+              { errors.delaysocialsecurity && errors.delaysocialsecurity.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
       </div>
       )}
-      <Link href="/section-2-pension"><button id="plan-button">Next &#8594;</button></Link>
+      <button type="submit" id="plan-button">Next &#8594;</button>
   </form>
         <NavComponent />
         <FooterComponent />
