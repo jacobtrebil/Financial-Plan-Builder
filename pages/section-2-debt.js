@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
-import { useForm, FormContext } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { Alert } from 'react-bootstrap';
 
 const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
@@ -14,21 +15,28 @@ const FooterComponent = _dynamic(() =>
 
 function Debt() {
 
-  const [showForm, setShowForm] = useState(false)
-  const [showForm1, setShowForm1] = useState(false)
-  const [showForm2, setShowForm2] = useState(false)
+  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+  }
 
     return (
       <div>
         <h1 id="plan-form-h1">Do you have any debt or liabilities?</h1>
-      <form id="plan-form-page-1" required>
+      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-mortgage">
       <div>
-        <select className="custom-select" defaultValue="No">
+        <select 
+        {...register('debt', {required: true})}
+        name="debt"
+        className="custom-select" 
+        defaultValue="No">
             <option>Yes</option>
             <option>No</option>
         </select><br></br>
+              { errors.debt && errors.debt.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
       </div>
-      <Link href="/section-2-mortgage"><button id="plan-button">Next &#8594;</button></Link>
+      <button type="submit" id="plan-button">Next &#8594;</button>
   </form>
         <NavComponent />
         <FooterComponent />

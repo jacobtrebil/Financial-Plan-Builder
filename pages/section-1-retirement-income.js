@@ -29,11 +29,11 @@ function RetirementIncome() {
           <input 
           {...register('retirementincome', {required: true, maxLength: 15, pattern: /(?=.*\d)/ })}
           name="retirementincome"
+          placeholder ="$100,000" 
           id="large-input" 
           min="1" 
           max="1000000" 
           type="" 
-          placeholder ="$100,000" 
           >
           </input><br></br>
               { errors.retirementincome && errors.retirementincome.type === "required" && 
