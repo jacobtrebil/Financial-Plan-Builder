@@ -2,7 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
-import { useForm, FormContext } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { Alert } from 'react-bootstrap';
 
 const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
@@ -13,17 +14,29 @@ const FooterComponent = _dynamic(() =>
 )
 
 function Insurance() {
+
+  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+  }
+
     return (
       <div>
         <h1 id="plan-form-h1">Do you have life insurance?</h1>
-      <form id="plan-form-page-1" required>
+      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-tax">
       <div>
-        <select className="custom-select" defaultValue="No">
+        <select 
+        {...register('insurance', {required: true })}
+        name="insurance"
+        className="custom-select" 
+        defaultValue="No">
             <option>Yes</option>
             <option>No</option>
         </select><br></br>
+        { errors.insurance && errors.insurance.type === "required" && 
+        ( <span className="errors">*This field is required</span> )}
       </div>
-      <Link href="/section-2-tax"><button id="plan-button">Next &#8594;</button></Link>
+      <button id="plan-button">Next &#8594;</button>
   </form>
         <NavComponent />
         <FooterComponent />
