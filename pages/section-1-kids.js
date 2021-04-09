@@ -16,7 +16,8 @@ const FooterComponent = _dynamic(() =>
 function Kids() {
 
     const [showForm, setShowForm] = useState(false)
-    const [showForm1, setShowForm1] = useState(false)
+    const [showForm2, setShowForm2] = useState(false)
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
     const onSubmit = (data) => {
       alert(JSON.stringify(data));
@@ -26,24 +27,26 @@ function Kids() {
       <div>
         <h1 id="plan-form-h1">Do you have kids?</h1>
         <h2 id="plan-form-h2"></h2>
-        <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)}>
+        <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-1-supporting-others">
             <select 
             {...register('kids', {required: true})}
-            name="kids" 
+            name="kids"
             className="custom-select" 
             defaultValue="No" 
             onChange= {() => setShowForm(!showForm) }>
                 <option>Yes</option>
                 <option>No</option>
             </select><br></br>
+              { errors.kids && errors.kids.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
             {
       showForm && (
         <div>
       <div class="plan-input-box">
       <label className="retirement-form-label">How many kids do you have?</label>
       <select 
-      name="numberofkids" 
-      {...register('kids', {required: true})} 
+      {...register('numberofkids', {required: true})}
+      name="numberofkids"
       defaultValue="2">
           <option>1</option>
           <option>2</option>
@@ -51,44 +54,45 @@ function Kids() {
           <option>4</option>
           <option>5+</option>
       </select><br></br>
+              { errors.numberofkids && errors.numberofkids.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
       </div>
       <div className="plan-input-box">
         <label className="retirement-form-label">Do you plan to help pay for your kids college?</label>
         <select 
-        name="payforkids" 
-        {...register('kids', {required: true})} 
+        {...register('payforkidscollege', {required: true})}
+        name="payforkidscollege"
         className="custom-select" 
         defaultValue="No" 
-        onChange= {() => setShowForm1(!showForm1) }>
+        onChange= {() => setShowForm2(!showForm2) }>
                 <option>Yes</option>
                 <option>No</option>
             </select><br></br>
+              { errors.payforkidscollege && errors.payforkidscollege.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
       </div>
       {
-      showForm1 && (
+      showForm2 && (
         <div>
           <div className="plan-input-box">
-            <label name="kidscollegespending" className="retirement-form-label">How much will you spend on each of your kids college?</label>
-            <input 
-            name="kidsspending" 
-            {...register('kids', {required: true, minLength: 1, maxLength: 10})} 
-            placeholder="100000" 
-            defaultValue="10000" 
-            type="number">
-            </input>
-            {errors?.kidsspending && 
-            <Alert variant="danger">
-              { errors.kidsspending?.type === 'required' && <p>This field is required</p> }
-              { errors.kidsspending?.type === 'minLength' && <p>You must enter at least 1 character</p> }
-              { errors.kidsspending?.type === 'maxLength' && <p>You must enter less than 10 characters</p> }
-              </Alert>
-              }
+            <label className="retirement-form-label">How much will you spend on each of your kids college?</label>
+            <input
+            {...register('collegespendingseach', {required: true, maxLength: 15, pattern: /(?=.*\d)/ })}
+            name="collegespendingseach"
+            placeholder ="$100,000" 
+            ></input><br></br>
+              { errors.collegespendingseach && errors.collegespendingseach.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
+              { errors.collegespendingseach && errors.collegespendingseach.type === "maxLength" && 
+              ( <span className="errors">*Please enter a smaller number</span> )}
+              { errors.collegespendingseach && errors.collegespendingseach.type === "pattern" && 
+              ( <span className="errors">*Please enter at least one number</span> )}
           </div>
         </div>
       )}
       </div>
       )}
-      <button type="submit" id="plan-button">Next &#8594;</button>
+            <button type="submit" id="plan-button">Next &#8594;</button>
         </form>
         <NavComponent />
         <FooterComponent />

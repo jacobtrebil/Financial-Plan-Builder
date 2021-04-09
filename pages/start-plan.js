@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
+import { useForm } from "react-hook-form";
+import { Alert } from 'react-bootstrap';
 
 const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
@@ -13,7 +15,11 @@ const FooterComponent = _dynamic(() =>
 
 function CreatePlan() {
 
-  const [showForm, setShowForm] = useState(false)
+  const [showForm, setShowForm] = useState(false)  
+  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+  }
 
     return (
       <div id="section-1-start-box">
@@ -21,37 +27,60 @@ function CreatePlan() {
         <h2 id="create-a-plan-h2">Time to complete: 15 minutes</h2>
         <h2 id="create-a-plan-2-h2">What to expect: Just answer a few basic questions about your goals & finances and we will provide you with a personalized financial plan. 
         The plan will be simple and easy to understand, with the ability to add more specific details and track your progress within the plan.</h2>
-      <form id="plan-form-page-1">
+      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-1-start">
         <div className="plan-input-box">
       <label className="retirement-form-label">Plan type: </label>
-      <select defaultValue="Financial Plan">
+      <select 
+      {...register('plantype', {required: true})}
+      name="plantype"
+      defaultValue="Financial Plan">
           <option>Retirement Plan</option>
           <option>Financial Plan</option>
       </select><br></br>
+              { errors.plantype && errors.plantype.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
       </div>
       <div class="plan-input-box">
       <label className="retirement-form-label">Would you like to include a spouse? </label>
-      <select defaultValue="No" onChange= {() => setShowForm(!showForm) }>
+      <select 
+      {...register('spouse', {required: true})}
+      name="spouse"
+      defaultValue="No" 
+      onChange= {() => setShowForm(!showForm) }>
           <option>Yes</option>
           <option>No</option>
       </select><br></br>
+              { errors.spouse && errors.spouse.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
       </div>
       <div className="plan-input-box">
         <label className="retirement-form-label">What's your full name?</label>
-        <input></input>
+        <input
+        {...register('name', {required: true})}
+        name="name"
+        placeholder ="Enter Name" 
+        ></input><br></br>
+              { errors.name && errors.name.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
       </div>
       <div className="plan-input-box">
       {
       showForm && (
       <div>
       <label className="retirement-form-label">What's your spouses full name?</label>
-      <input></input>
+      <input
+      {...register('spousesname', {required: true})}
+      name="spousesname"
+      placeholder ="Enter Name" 
+      ></input><br></br>
+              { errors.spousesname && errors.spousesname.type === "required" && 
+              ( <span className="errors">*This field is required</span> )}
       <p id="note">* NOTE throughout the entire form, provide the total of <br></br>you and your spouses assets, liabilities, and financial goals. 
       </p>
       </div>
       )}
       </div>
-      <Link href="/section-1-start"><button id="plan-button">Next &#8594;</button></Link>
+      <button type="submit" id="plan-button">Next &#8594;</button>
   </form>
         <NavComponent />
         <FooterComponent />
