@@ -20,6 +20,26 @@ function RetirementAge() {
     alert(JSON.stringify(data));
   }
 
+  const postData = async (data) => {
+    try {
+      const res = await fetch('/api/', {
+        method: 'POST', 
+        headers: {
+          Accept: contentType,
+          'Content-Type': contentType,
+        },
+        body: JSON.stringify(data)
+      })
+
+      if(!res.ok) {
+        throw new Error(res.status)
+      }
+    }
+    catch(error) {
+      setMessage('Failed to add data')
+    }
+  }
+
     return (
       <div>
         <h1 id="plan-form-h1">At what age would you like to retire?</h1>
