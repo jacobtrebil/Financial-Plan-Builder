@@ -22,11 +22,11 @@ function RetirementAge() {
 
   const postData = async (data) => {
     try {
-      const res = await fetch('/api/', {
+      const res = await fetch('/api/retirementagedata', {
         method: 'POST', 
         headers: {
           Accept: contentType,
-          'Content-Type': contentType,
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(data)
       })
@@ -44,7 +44,7 @@ function RetirementAge() {
       <div>
         <h1 id="plan-form-h1">At what age would you like to retire?</h1>
         <h2 id="plan-form-h2">Not sure? Enter your best guess.</h2>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-1-retirement-income">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-1-retirement-income">
       <div class="plan-input-box">
           <input 
           {...register('retirementage', {required: true, maxLength: 3})}
