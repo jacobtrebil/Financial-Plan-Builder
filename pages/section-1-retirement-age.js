@@ -25,10 +25,11 @@ function RetirementAge() {
       const res = await fetch('/api/retirementagedata', {
         method: 'POST', 
         headers: {
-          Accept: contentType,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+          retirementage: {retirementage}
+        })
       })
 
       if(!res.ok) {
