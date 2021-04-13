@@ -13,6 +13,14 @@ const FooterComponent = _dynamic(() =>
   import('../components/footer').then((mod) => mod.Footer)
 )
 
+/* fetch('/api/retirementagedata', {
+  method: 'POST', 
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data)
+}) */
+
 function RetirementAge() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
@@ -20,25 +28,14 @@ function RetirementAge() {
     alert(JSON.stringify(data));
   }
 
-  const postData = async (data) => {
-    try {
-      const res = await fetch('/api/retirementagedata', {
+  const postData = (data) => {
+        fetch('/api/retirementagedata', {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          retirementage: {retirementage}
-        })
+        body: JSON.stringify(data)
       })
-
-      if(!res.ok) {
-        throw new Error(res.status)
-      }
-    }
-    catch(error) {
-      setMessage('Failed to add data')
-    }
   }
 
     return (
@@ -46,7 +43,7 @@ function RetirementAge() {
         <h1 id="plan-form-h1">At what age would you like to retire?</h1>
         <h2 id="plan-form-h2">Not sure? Enter your best guess.</h2>
       <form id="plan-form-page-1" onSubmit={postData} action="/section-1-retirement-income">
-      <div class="plan-input-box">
+      <div className="plan-input-box">
           <input 
           {...register('retirementage', {required: true, maxLength: 3})}
           id="large-input" 
