@@ -9,12 +9,12 @@ const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
 )
 
-const PlanComponent = _dynamic(() =>
-import ('../components/plan-form-popup').then((mod) => mod.PlanFormPopup)
-)
-
 const FooterComponent = _dynamic(() =>
   import('../components/footer').then((mod) => mod.Footer)
+)
+
+const PlanComponent = _dynamic(() =>
+  import('../components/plan').then((mod) => mod.Plan)
 )
 
 export function App() {
@@ -27,6 +27,7 @@ export function App() {
               <p className="plans-subtitle">Plans</p>
               <Link href="/start-plan"><button className="plans-button">+ Add Plan</button></Link>
               <hr className="plans-solid-hr"></hr>
+              <PlanComponent />
               <p id="no-plans-message">You currently have 0 plans created. Click the button above to create a plan.</p>
         </div>
     </div>

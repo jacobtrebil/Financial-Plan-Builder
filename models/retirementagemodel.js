@@ -1,4 +1,4 @@
-import db from 'dbconnect';
+import connectToDatabase from '../util/dbconnect.js';
 import mongoose from "mongoose";
 
 const MODEL_NAME = "model1"

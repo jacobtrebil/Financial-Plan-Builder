@@ -23,7 +23,7 @@ function Crypto() {
 
     return (
       <div>
-        <h1 id="plan-form-h1">Do you have any Commodoties, Collectibiles, Cryptocurrencies, or other digital properties?</h1>
+        <h1 id="plan-form-h1">Do you have any Commodoties, Collectibiles, <br></br>Cryptocurrencies, or other digital properties?</h1>
       <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-otherassets">
       <div>
         <select 

@@ -28,15 +28,15 @@ function RetirementAge() {
     alert(JSON.stringify(data));
   }
 
-  const postData = (data) => {
-        fetch('/api/retirementagedata', {
+  /* const postData = (data) => {
+        fetch('../pages/api/retirementagedata', {
         method: 'POST', 
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'text/html',
         },
         body: JSON.stringify(data)
       })
-  }
+  } */
 
     return (
       <div>

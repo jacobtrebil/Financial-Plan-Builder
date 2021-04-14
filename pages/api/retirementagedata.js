@@ -1,12 +1,12 @@
-
+import { postData } from '../../pages/section-1-retirement-age';
 
 export default function (req, res) {
+    res.status(200).json(postData).end();
+}
 
-    console.log('REQUEST BODY', req.body)
 
-    res.json(JSON.stringify(req.body))
 
-    /* if (req.method === 'POST') {
+/* if (req.method === 'POST') {
         return res.status(405).end();
     }
 
@@ -15,4 +15,3 @@ export default function (req, res) {
     console.log(retirementage);
 
     res.end(); */
-};

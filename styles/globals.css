@@ -66,7 +66,7 @@ h1 {
   width: 80%;
   margin: 50px auto 70px auto;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
-  padding: 0px 0px 28% 0px;
+  padding: 0px 0px 15% 0px;
 }
 
 .plans-subtitle {
@@ -145,6 +145,7 @@ h1 {
   font-weight: normal;
   text-align: center;
   margin: 40px 0px 0px 0px;
+  display: none;
 }
 
 
@@ -889,4 +890,104 @@ h1 {
   margin: 20px 0px 0px 0px;
   padding: 20px 0px 0px 0px;
   font-size: 14px;
+}
+
+
+
+
+
+
+/* Plan Styles */
+
+#plan-box {
+  margin: 30px auto 0px auto;
+  background-color: white;
+  border-radius: 4px;
+  width: 90%;
+  padding: 3% 0px 6% 0px;
+  border: #E2E1E1 2px solid;
+}
+
+.plan-title {
+  text-align: left;
+  padding: 0px 0px 0px 0px;
+  font-size: 20px;
+  display: inline-block;
+  position: relative;
+  margin: 17px 240px 0px 40px;
+}
+
+#plan-key-metric {
+  float: right;
+  display: inline-block;
+  font-weight: 500;
+  margin: 20px 5% 0px 0px;
+}
+
+#down-arrow {
+  float: right;
+  margin: 20px 20px 40px 0px;
+}
+
+#down-arrow:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+.display-on-down-click {
+  display: block;
+  margin: 80px 0px 500px 0px;
+}
+
+.plan-p {
+  font-weight: 500;
+  text-align: left;
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
+  font-size: 16px;
+}
+
+.plan-button-3 {
+  background-color: rgb(4, 187, 172);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 6px 12px;
+  font-size: 12px;
+  margin: 10px 0px 10px 0px;
+  font-weight: normal;
+}
+
+.plan-button-3:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+#plan-section-1 {
+  display: inline-block;
+  margin: 0px 20px 0px 20px;
+  text-align: center;
+}
+
+#plan-section-2 {
+  display: inline-block;
+  margin: 0px 20px 0px 20px;
+  text-align: left;
+}
+
+#plan-section-3 {
+  display: inline-block;
+  margin: 0px 20px 0px 20px;
+}
+
+#plan-section-3 p {
+  top: 0;
+  margin: 0px;
+  padding: 0px;
+}
+
+.to-do-checklist {
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left;
 }
