@@ -57,7 +57,7 @@ function RetirementAge() {
               { errors.retirementage && errors.retirementage.type === "maxLength" && 
               ( <span className="errors">*Please enter a smaller number</span> )}
         </div>
-      <button type="submit" id="plan-button">Next &#8594;</button>
+      <input value="Next &#8594;" type="submit" id="plan-button"></input>
   </form>
         <NavComponent />
         <FooterComponent />
