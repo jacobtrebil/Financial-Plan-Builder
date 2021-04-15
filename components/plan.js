@@ -7,9 +7,9 @@ import { getDisplayName } from 'next/dist/next-server/lib/utils';
 export function Plan() {
 
   const [showResults, setShowResults] = useState(false)
-  function onClick() {
+ /* function onClick() {
       setShowResults ? setShowResults(true) : setShowResults(false);
-    } 
+    } */
 
     return (
     <div>
@@ -18,8 +18,14 @@ export function Plan() {
             <h2 className="plan-title">Jacob's Financial Plan</h2>
             <p id="plan-key-metric">Invest $300 a Month Into 401(k)</p>
         </div>
-        { showResults ? <FullPlan /> : null}
-        <div onClick={onClick}>
+        { showResults ? <FullPlan /> : null }
+        <div onClick={function onClick2() {
+          if(setShowResults(false)){
+            setShowResults(true)
+          } else if (setShowResults(true)){
+            setShowResults(false)
+          }
+        }}>
         { showResults ? <UpArrow /> : <DownArrow />}
         </div>
     </div>
@@ -54,8 +60,6 @@ const FullPlan = () => {
         <div id="plan-section-1">
             <p className="plan-p-center">Total Savings</p>
             <p className="plan-p-center">$27,000 / $1,000,000 Goal</p>
-            <p className="plan-p-center">(by age 60)</p>
-            <button className="plan-button-3">Update Savings Amount</button>
         </div>
         <div id="plan-section-2">
         </div>
@@ -69,11 +73,18 @@ const FullPlan = () => {
         <hr className="final-plan-solid-hr"></hr>
         <h1 className="final-plan-h1">Goals</h1>
         <div>
-          <p className="plan-p-center">Vision and Goals</p>
-          <p className="plan-p-center">Retirement</p>
-          <p className="plan-p-center">Kids College</p>
-          <p className="plan-p-center">Home</p>
-          <p className="plan-p-center">Boat</p>
+        <div className="goals-box">
+          <p className="goals-title">Retirement</p>
+        </div>
+        <div className="goals-box">
+          <p className="goals-title">Kids College</p>
+        </div>
+        <div className="goals-box">
+          <p className="goals-title">Home</p>
+        </div>
+        <div className="goals-box">
+          <p className="goals-title">Car</p>
+        </div>
         </div>
         <hr className="final-plan-solid-hr"></hr>
         <h1 className="final-plan-h1">Projections</h1>
@@ -84,9 +95,7 @@ const FullPlan = () => {
           <p className="plan-p-center">Investments: $54,000/Year</p>
           <p className="plan-p-center">Total: $94,000/Year</p>
         </div>
-        <div>
           <p className="plan-p-center">Risk Profile</p>
-        </div>
         <hr className="final-plan-solid-hr"></hr>
         <h1 className="final-plan-h1">Now</h1>
         <div className="plan-box-now">
@@ -100,7 +109,7 @@ const FullPlan = () => {
           <p className="plan-p-left">Retirement Readiness Score: B+</p>
           <p className="plan-p-left">Retirement Age: 60</p>
         </div>
-        <div >
+        <div>
         </div>
     </div>
       )

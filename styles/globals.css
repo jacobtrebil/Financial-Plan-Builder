@@ -1029,3 +1029,27 @@ h1 {
   cursor: pointer;
   opacity: 70%;
 }
+
+.goals-box {
+  background-color: white;
+  border-radius: 8px;
+  width: 40%;
+  display: inline-block;
+  margin: 10px 10px 10px 10px;
+  padding: 0px 0px 5% 0px;
+  border: 2px solid rgb(226, 225, 225);
+}
+
+.goals-box:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+.goals-title {
+  font-weight: 500;
+  text-align: left;
+  margin: 40px 0px 0px 20px;
+  padding: 0px;
+  font-size: 16px;
+  vertical-align: center;
+}
