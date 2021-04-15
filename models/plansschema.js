@@ -284,4 +284,6 @@ const plansschema = new mongoose.Schema({
     }
 });
 
+Db.close()
+
 const Plan = mongoose.model('Plan', plansschema);

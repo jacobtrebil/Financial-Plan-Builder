@@ -64,9 +64,9 @@ h1 {
   background-color: white;
   border-radius: 8px;
   width: 80%;
-  margin: 50px auto 70px auto;
+  margin: 50px auto 200px auto;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
-  padding: 0px 0px 15% 0px;
+  padding: 0px 0px 5% 0px;
 }
 
 .plans-subtitle {
@@ -924,22 +924,20 @@ h1 {
   margin: 20px 5% 0px 0px;
 }
 
-#down-arrow {
-  float: right;
-  margin: 20px 20px 40px 0px;
-}
-
-#down-arrow:hover {
-  cursor: pointer;
-  opacity: 70%;
-}
-
 .display-on-down-click {
   display: block;
-  margin: 80px 0px 500px 0px;
+  margin: 80px 0px 40px 0px;
 }
 
-.plan-p {
+.plan-p-center{
+  font-weight: 500;
+  text-align: center;
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
+  font-size: 16px;
+}
+
+.plan-p-left{
   font-weight: 500;
   text-align: left;
   margin: 0px 0px 10px 0px;
@@ -978,6 +976,7 @@ h1 {
 #plan-section-3 {
   display: inline-block;
   margin: 0px 20px 0px 20px;
+  text-align: left;
 }
 
 #plan-section-3 p {
@@ -990,4 +989,43 @@ h1 {
   font-weight: 400;
   font-size: 14px;
   text-align: left;
+  margin: 20px 0px 0px 0px;
+  padding: 0px;
+}
+
+.final-plan-h1 {
+  font-size: 20px;
+  margin: 0px 0px 20px 60px;
+  padding: 0px;
+}
+
+.final-plan-solid-hr {
+  width: 92%;
+  border: 1px solid rgb(226, 225, 225);
+  margin: 40px auto 40px auto;
+}
+
+.plan-box-now {
+  margin: 40px 40px 40px 40px;
+  display: inline-block;
+}
+
+#up-arrow {
+  float: right;
+  margin: 20px 20px 40px 0px;
+}
+
+#up-arrow:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+#down-arrow {
+  float: right;
+  margin: 20px 20px 40px 0px;
+}
+
+#down-arrow:hover {
+  cursor: pointer;
+  opacity: 70%;
 }
