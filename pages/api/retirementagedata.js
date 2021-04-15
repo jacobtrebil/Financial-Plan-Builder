@@ -1,7 +1,8 @@
+import { parseBody } from 'next/dist/next-server/server/api-utils';
 import { postData } from '../../pages/section-1-retirement-age';
 
 export default function handler(req, res) {
-    res.status(200).json({ name: 45})
+    res.status(200).json({})
 } 
 
 

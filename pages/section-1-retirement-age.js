@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -24,20 +24,19 @@ const FooterComponent = _dynamic(() =>
 function RetirementAge() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [retirementage, setRetirementage] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
 
-  const postData = () => {
-        event.preventDefault();
-        fetch('../pages/api/retirementagedata', {
+  const postData = e => {
+        e.preventDefault();
+        fetch('/api/retirementagedata', {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          retirementage: event.target.retirementage.value 
-        }), 
+        body: JSON.stringify({ retirementage }), 
       })
   }
 
@@ -53,6 +52,7 @@ function RetirementAge() {
           name="retirementage"
           type="number" 
           placeholder ="60" 
+          onChange={e=> setRetirementage(e.target.value)}
           >
           </input><br></br>
               { errors.retirementage && errors.retirementage.type === "required" && 
