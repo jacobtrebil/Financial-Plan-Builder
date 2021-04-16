@@ -1,7 +1,7 @@
 import connectToDatabase from '../util/dbconnect.js';
 import mongoose from "mongoose";
 
-const plansschema = new mongoose.Schema({
+const Plans = new mongoose.Schema({
     plantype: {
         type: String,
         required: true
@@ -19,7 +19,7 @@ const plansschema = new mongoose.Schema({
         required: false
     },
     kids: {
-        type: String,
+        type: Boolean,
         required: true
     },
     numberofkids: {
@@ -284,6 +284,6 @@ const plansschema = new mongoose.Schema({
     }
 });
 
-Db.close()
+const Plan = mongoose.model('Plan', Plans);
 
-const Plan = mongoose.model('Plan', plansschema);
+export default Plan;

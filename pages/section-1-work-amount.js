@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -16,21 +16,34 @@ const FooterComponent = _dynamic(() =>
 function WorkAmount() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [workamount, setWorkamount] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
+
+  const postData = e => {
+    e.preventDefault();
+    fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ workamount }), 
+  })
+}
 
     return (
       <div>
         <h1 id="plan-form-h1">How much will you work during retirement?</h1>
         <h2 id="plan-form-h2">Not sure? Enter your best guess.</h2>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-1-new-purchases">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-1-new-purchases">
       <div>
         <select 
         {...register('workamount', {required: true})}
         name="workamount"
         className="custom-select" 
-        defaultValue="No work">
+        defaultValue="No work"
+        onChange={e=> setWorkamount(e.target.value)}>
           <option>No work</option>
           <option>Part-time work</option>
           <option>Full-time work</option>

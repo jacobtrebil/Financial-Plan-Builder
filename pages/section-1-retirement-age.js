@@ -31,7 +31,7 @@ function RetirementAge() {
 
   const postData = e => {
         e.preventDefault();
-        fetch('/api/retirementagedata', {
+        fetch('/api/formdata', {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',

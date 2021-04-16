@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -16,21 +16,34 @@ const FooterComponent = _dynamic(() =>
 function Volunteer() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [volunteer, setVolunteer] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
+
+  const postData = e => {
+    e.preventDefault();
+    fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ volunteer }), 
+  })
+}
 
     return (
       <div>
         <h1 id="plan-form-h1">Will you volunteer throughout retirement?</h1>
         <h2 id="plan-form-h2">Not sure? Enter your best guess.</h2>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-1-charity">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-1-charity">
       <div>
         <select 
         {...register('volunteer', {required: true})}
         name="volunteer"
         className="custom-select" 
-        defaultValue="No">
+        defaultValue="No"
+        onChange={e=> setVolunteer(e.target.value)}>
             <option>Yes</option>
             <option>No</option>
         </select><br></br>

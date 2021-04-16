@@ -20,9 +20,9 @@ export function Plan() {
         </div>
         { showResults ? <FullPlan /> : null }
         <div onClick={function onClick2() {
-          if(setShowResults(false)){
+          if(!showResults){
             setShowResults(true)
-          } else if (setShowResults(true)){
+          } else if (showResults){
             setShowResults(false)
           }
         }}>

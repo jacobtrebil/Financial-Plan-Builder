@@ -86,6 +86,12 @@ if (differenceBetweenDesiredAndActualIncome >= 40000) {
         retirementReadinessWithAdvisor = 'A';
     }
 
+/* Social Security Calculations */
+
+/* Social Security At 60 */
+
+
+
 /* Console Logs */
 
 console.log(Math.ceil(estimatedRetirementIncome));

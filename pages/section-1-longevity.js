@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -16,21 +16,34 @@ const FooterComponent = _dynamic(() =>
 function Longevity() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [longevity, setLongevity] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
+
+  const postData = e => {
+    e.preventDefault();
+    fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ longevity }), 
+  })
+}
 
     return (
       <div>
         <h1 id="plan-form-h1">How long do you expect to live?</h1>
         <h2 id="plan-form-h2">Not sure? Enter your best guess.</h2>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-start">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-2-start">
       <div>
           <select 
           {...register('longevity', {required: true})}
           name="longevity"
           className="custom-select" 
-          defaultValue="70-80 years">
+          defaultValue="70-80 years"
+          onChange={e=> setLongevity(e.target.value)}>
               <option>70-80 years</option>
               <option>80-90 years</option>
               <option>90+ years</option>

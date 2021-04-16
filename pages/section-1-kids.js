@@ -17,23 +17,39 @@ function Kids() {
 
     const [showForm, setShowForm] = useState(false)
     const [showForm2, setShowForm2] = useState(false)
+    const [kids, setKids] = useState('')
+    const [numberofkids, setNumberOfKids] = useState('')
+    const [payforkidscollege, setPayForKidsCollege] = useState('')
+    const [collegespendingseach, setCollegeSpendingsEach] = useState('')
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
     const onSubmit = (data) => {
       alert(JSON.stringify(data));
     }
 
+    const postData = e => {
+      e.preventDefault();
+      fetch('/api/formdata', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ kids, numberofkids, payforkidscollege, collegespendingseach }), 
+    })
+}
+
     return (
       <div>
         <h1 id="plan-form-h1">Do you have kids?</h1>
         <h2 id="plan-form-h2"></h2>
-        <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-1-supporting-others">
+        <form id="plan-form-page-1" onSubmit={postData} action="/section-1-supporting-others">
             <select 
             {...register('kids', {required: true})}
             name="kids"
             className="custom-select" 
             defaultValue="No" 
-            onChange= {() => setShowForm(!showForm) }>
+            onChange= {() => setShowForm(!showForm) }
+            onSubmit={e=> setKids(e.target.value)}>
                 <option>Yes</option>
                 <option>No</option>
             </select><br></br>
@@ -47,7 +63,8 @@ function Kids() {
       <select 
       {...register('numberofkids', {required: true})}
       name="numberofkids"
-      defaultValue="2">
+      defaultValue="2"
+      onSubmit={e=> setNumberOfKids(e.target.value)}>
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -64,7 +81,8 @@ function Kids() {
         name="payforkidscollege"
         className="custom-select" 
         defaultValue="No" 
-        onChange= {() => setShowForm2(!showForm2) }>
+        onChange= {() => setShowForm2(!showForm2) }
+        onSubmit={e=> setPayForKidsCollege(e.target.value)}>
                 <option>Yes</option>
                 <option>No</option>
             </select><br></br>
@@ -80,6 +98,7 @@ function Kids() {
             {...register('collegespendingseach', {required: true, maxLength: 15, pattern: /(?=.*\d)/ })}
             name="collegespendingseach"
             placeholder ="$100,000" 
+            onSubmit={e=> setCollegeSpendingsEach(e.target.value)}
             ></input><br></br>
               { errors.collegespendingseach && errors.collegespendingseach.type === "required" && 
               ( <span className="errors">*This field is required</span> )}
