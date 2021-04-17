@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -16,21 +16,34 @@ const FooterComponent = _dynamic(() =>
 function Failure() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [failure, setFailure] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
+
+  const postData = e => {
+    e.preventDefault();
+    fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ failure }), 
+  })
+}
 
     return (
       <div>
         <h1 id="plan-form-h1">Will you be out of work prior to retirement?</h1>
         <h2 id="plan-form-h2">This includes being out of work for 1+ year due to being fired or business failure. Not sure? Enter your best guess.</h2>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-insurance">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-2-insurance">
       <div>
         <select 
         {...register('failure', {required: true })}
         className="custom-select" 
         defaultValue="No"
-        name="failure">
+        name="failure"
+        onChange={e=> setFailure(e.target.value)}>
             <option>Yes</option>
             <option>No</option>
         </select><br></br>

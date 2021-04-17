@@ -16,20 +16,33 @@ const FooterComponent = _dynamic(() =>
 function Debt() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [debt, setDebt] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
 
+  const postData = e => {
+    e.preventDefault();
+    fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ debt }), 
+  })
+}
+
     return (
       <div>
         <h1 id="plan-form-h1">Do you have any debt or liabilities?</h1>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-mortgage">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-2-mortgage">
       <div>
         <select 
         {...register('debt', {required: true})}
         name="debt"
         className="custom-select" 
-        defaultValue="No">
+        defaultValue="No"
+        onChange={e=> setDebt(e.target.value)}>
             <option>Yes</option>
             <option>No</option>
         </select><br></br>

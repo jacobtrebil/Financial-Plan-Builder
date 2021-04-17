@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -16,20 +16,33 @@ const FooterComponent = _dynamic(() =>
 function Insurance() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [insurance, setInsurance] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
 
+  const postData = e => {
+    e.preventDefault();
+    fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ insurance }), 
+  })
+}
+
     return (
       <div>
         <h1 id="plan-form-h1">Do you have life insurance?</h1>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-tax">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-2-tax">
       <div>
         <select 
         {...register('insurance', {required: true })}
         name="insurance"
         className="custom-select" 
-        defaultValue="No">
+        defaultValue="No"
+        onChange={e=> setInsurance(e.target.value)}>
             <option>Yes</option>
             <option>No</option>
         </select><br></br>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -16,20 +16,33 @@ const FooterComponent = _dynamic(() =>
 function Will() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [will, setWill] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
 
+  const postData = e => {
+    e.preventDefault();
+    fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ will }), 
+  })
+}
+
     return (
       <div>
         <h1 id="plan-form-h1">Do you have a will?</h1>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-powerofattorney">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-2-powerofattorney">
       <div>
         <select 
         {...register('will', {required: true})}
         className="custom-select" 
         defaultValue="No"
-        name="will">
+        name="will"
+        onChange={e=> setWill(e.target.value)}>
             <option>Yes</option>
             <option>No</option>
         </select><br></br>

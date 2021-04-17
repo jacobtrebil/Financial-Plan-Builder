@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -16,20 +16,33 @@ const FooterComponent = _dynamic(() =>
 function Tax() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [tax, setTax] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
 
+  const postData = e => {
+    e.preventDefault();
+    fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ tax }), 
+  })
+}
+
     return (
       <div>
         <h1 id="plan-form-h1">Do you have a tax plan?</h1>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-investments">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-2-investments">
       <div>
         <select 
         {...register('tax', {required: true})}
         name="tax"
         className="custom-select" 
-        defaultValue="No">
+        defaultValue="No"
+        onChange={e=> setTax(e.target.value)}>
             <option>Yes</option>
             <option>No</option>
         </select><br></br>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -17,15 +17,27 @@ const FooterComponent = _dynamic(() =>
 function Savings() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [savings, setSavings] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
+
+  const postData = e => {
+    e.preventDefault();
+    fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ savings }), 
+  })
+}
 
     return (
       <div>
         <h1 id="plan-form-h1">How much do you currently save per year? </h1>
         <h2 id="plan-form-h2">Enter numbers only, as annual USD income.</h2>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-2-assets">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-2-assets">
       <div>
       <input 
       {...register('savings', {required: true, maxLength: 15, pattern: /(?=.*\d)/ })}
@@ -33,6 +45,7 @@ function Savings() {
       id="large-input" 
       type="" 
       placeholder ="$100,000" 
+      onChange={e=> setSavings(e.target.value)}
       ></input>
               { errors.savings && errors.savings.type === "required" && 
               ( <span className="errors">*This field is required</span> )}

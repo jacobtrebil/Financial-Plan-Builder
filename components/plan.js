@@ -16,7 +16,7 @@ export function Plan() {
     <div id="plan-box">
         <div>
             <h2 className="plan-title">Jacob's Financial Plan</h2>
-            <p id="plan-key-metric">Invest $300 a Month Into 401(k)</p>
+            <p id="plan-key-metric"><b>Key Metric:</b> Invest $300 a Month Into 401(k)</p>
         </div>
         { showResults ? <FullPlan /> : null }
         <div onClick={function onClick2() {
@@ -54,36 +54,73 @@ const UpArrow = () => {
 }
 
 const FullPlan = () => {
+
+  const [showResults2, setShowResults2] = useState(false)
+  const [showResults3, setShowResults3] = useState(false)
+  const [showResults4, setShowResults4] = useState(false)
+  const [showResults5, setShowResults5] = useState(false)
+
       return (
     <div className="display-on-down-click">
         <h1 className="final-plan-h1">Progress</h1>
         <div id="plan-section-1">
-            <p className="plan-p-center">Total Savings</p>
-            <p className="plan-p-center">$27,000 / $1,000,000 Goal</p>
+            <hr className="goal-bar"></hr>
+            <hr className="savings-bar"></hr>
+            <p className="plan-p-center" id="savings-goal">$27K / $1M Savings Goal</p>
         </div>
         <div id="plan-section-2">
         </div>
-        <div id="plan-section-3">
+        <div id="to-do-section">
             <p className="plan-p-left">To Do:</p>
             <label className="to-do-checklist">Set up 401(k)</label>
             <input type="checkbox"></input><br></br>
             <label className="to-do-checklist" >Automate $300 a month into 401(k)</label>
+            <input type="checkbox"></input><br></br>
+            <label className="to-do-checklist" >Set up investment LLC</label>
             <input type="checkbox"></input>
         </div>
         <hr className="final-plan-solid-hr"></hr>
         <h1 className="final-plan-h1">Goals</h1>
         <div>
-        <div className="goals-box">
+        <div className="goals-box" onClick={function onClick() {
+          if(!showResults2){
+            setShowResults2(true)
+          } else if (showResults2){
+            setShowResults2(false)
+          }
+        }}>
           <p className="goals-title">Retirement</p>
+        { showResults2 ? <GoalsBox /> : null }
         </div>
-        <div className="goals-box">
+        <div className="goals-box" onClick={function onClick() {
+          if(!showResults3){
+            setShowResults3(true)
+          } else if (showResults3){
+            setShowResults3(false)
+          }
+        }}>
           <p className="goals-title">Kids College</p>
+          { showResults3 ? <GoalsBox /> : null }
         </div>
-        <div className="goals-box">
+        <div className="goals-box" onClick={function onClick() {
+          if(!showResults4){
+            setShowResults4(true)
+          } else if (showResults4){
+            setShowResults4(false)
+          }
+        }}>
           <p className="goals-title">Home</p>
+          { showResults4 ? <GoalsBox /> : null }
         </div>
-        <div className="goals-box">
+        <div className="goals-box" onClick={function onClick() {
+          if(!showResults5){
+            setShowResults5(true)
+          } else if (showResults5){
+            setShowResults5(false)
+          }
+        }}>
           <p className="goals-title">Car</p>
+          { showResults5 ? <GoalsBox /> : null }
         </div>
         </div>
         <hr className="final-plan-solid-hr"></hr>
@@ -114,3 +151,22 @@ const FullPlan = () => {
     </div>
       )
       }
+
+      const GoalsBox = () => {
+        return (
+          <div className="goals-box-2">
+            <p className="goals-text">Stuff</p>
+          </div>
+        )}
+
+      const GoalsBox1 = () => {
+          return (
+            <div className="goals-box-2">
+            </div>
+          )}
+
+      const GoalsBox2 = () => {
+            return (
+              <div className="goals-box-2">
+              </div>
+            )}

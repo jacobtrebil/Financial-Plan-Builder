@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
@@ -16,20 +16,33 @@ const FooterComponent = _dynamic(() =>
 function Powerofattorney() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [powerofattorney, setPowerofattorney] = useState('')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
 
+  const postData = e => {
+    e.preventDefault();
+    fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ powerofattorney }), 
+  })
+}
+
     return (
       <div>
         <h1 id="plan-form-h1">Do you have a power of attorney?</h1>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/">
+      <form id="plan-form-page-1" onSubmit={postData} action="/">
       <div>
         <select 
         {...register('powerofattorney', {required: true})}
         name="powerofattorney"
         className="custom-select" 
-        defaultValue="No">
+        defaultValue="No"
+        onChange={e=> setPowerofattorney(e.target.value)}>
             <option>Yes</option>
             <option>No</option>
         </select><br></br>
