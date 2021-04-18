@@ -16,7 +16,7 @@ const FooterComponent = _dynamic(() =>
 function WorkAmount() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const [workamount, setWorkamount] = useState('')
+  const [workamount, setWorkamount] = useState('No work')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
@@ -42,7 +42,7 @@ function WorkAmount() {
         {...register('workamount', {required: true})}
         name="workamount"
         className="custom-select" 
-        defaultValue="No work"
+        value={workamount}
         onChange={e=> setWorkamount(e.target.value)}>
           <option>No work</option>
           <option>Part-time work</option>

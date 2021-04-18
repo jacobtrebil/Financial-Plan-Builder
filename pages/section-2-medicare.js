@@ -16,7 +16,7 @@ const FooterComponent = _dynamic(() =>
 function Medicare() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const [medicare, setMedicare] = useState('')
+  const [medicare, setMedicare] = useState('No')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
@@ -42,7 +42,7 @@ function Medicare() {
         {...register('medicare', {required: true})}
         name="medicare"
         className="custom-select" 
-        defaultValue="No"
+        value={medicare}
         onChange={e=> setMedicare(e.target.value)}>
             <option>Yes</option>
             <option>No</option>

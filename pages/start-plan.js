@@ -17,9 +17,21 @@ function CreatePlan() {
 
   const [showForm, setShowForm] = useState(false)  
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
-  }
+  const [plantype, setPlanType] = useState('Financial Plan')
+  const [spouse, setSpouse] = useState('No')
+  const [name, setName] = useState('')
+  const [spousesname, setSpousesName] = useState('')
+
+  const postData = async e => {
+    const response = await fetch('/api/formdata', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ plantype, spouse, name, spousesname }), 
+  })
+  return await response.json();
+}
 
     return (
       <div id="section-1-start-box">
@@ -27,13 +39,13 @@ function CreatePlan() {
         <h2 id="create-a-plan-h2">Time to complete: 15 minutes</h2>
         <h2 id="create-a-plan-2-h2">What to expect: Just answer a few basic questions about your goals & finances and we will provide you with a personalized financial plan. 
         The plan will be simple and easy to understand, with the ability to add more specific details and track your progress within the plan.</h2>
-      <form id="plan-form-page-1" onSubmit={handleSubmit(onSubmit)} action="/section-1-start">
+      <form id="plan-form-page-1" onSubmit={postData} action="/section-1-start">
         <div className="plan-input-box">
       <label className="retirement-form-label">Plan type: </label>
       <select 
       {...register('plantype', {required: true})}
       name="plantype"
-      defaultValue="Financial Plan">
+      value={plantype}>
           <option>Retirement Plan</option>
           <option>Financial Plan</option>
       </select><br></br>
@@ -45,7 +57,7 @@ function CreatePlan() {
       <select 
       {...register('spouse', {required: true})}
       name="spouse"
-      defaultValue="No" 
+      value={spouse}
       onChange= {() => setShowForm(!showForm) }>
           <option>Yes</option>
           <option>No</option>
@@ -59,6 +71,8 @@ function CreatePlan() {
         {...register('name', {required: true})}
         name="name"
         placeholder ="Enter Name" 
+        value={name}
+        onChange={e=> setName(e.target.value)}
         ></input><br></br>
               { errors.name && errors.name.type === "required" && 
               ( <span className="errors">*This field is required</span> )}
@@ -72,6 +86,8 @@ function CreatePlan() {
       {...register('spousesname', {required: true})}
       name="spousesname"
       placeholder ="Enter Name" 
+      value={spousesname}
+      onChange={e=> setSpousesName(e.target.value)}
       ></input><br></br>
               { errors.spousesname && errors.spousesname.type === "required" && 
               ( <span className="errors">*This field is required</span> )}

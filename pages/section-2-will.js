@@ -16,7 +16,7 @@ const FooterComponent = _dynamic(() =>
 function Will() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const [will, setWill] = useState('')
+  const [will, setWill] = useState('No')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
@@ -40,7 +40,7 @@ function Will() {
         <select 
         {...register('will', {required: true})}
         className="custom-select" 
-        defaultValue="No"
+        value={will}
         name="will"
         onChange={e=> setWill(e.target.value)}>
             <option>Yes</option>
@@ -49,7 +49,7 @@ function Will() {
         { errors.will && errors.will.type === "required" && 
         ( <span className="errors">*This field is required</span> )}
       </div>
-      <button type="submit" id="plan-button">Next &#8594;</button>
+      <input type="submit" id="plan-button" value="Next &#8594;" />
   </form>
         <NavComponent />
         <FooterComponent />

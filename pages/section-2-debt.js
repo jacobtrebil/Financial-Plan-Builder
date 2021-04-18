@@ -16,7 +16,7 @@ const FooterComponent = _dynamic(() =>
 function Debt() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const [debt, setDebt] = useState('')
+  const [debt, setDebt] = useState('No')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
@@ -41,7 +41,7 @@ function Debt() {
         {...register('debt', {required: true})}
         name="debt"
         className="custom-select" 
-        defaultValue="No"
+        value={debt}
         onChange={e=> setDebt(e.target.value)}>
             <option>Yes</option>
             <option>No</option>

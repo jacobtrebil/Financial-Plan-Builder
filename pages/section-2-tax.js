@@ -16,7 +16,7 @@ const FooterComponent = _dynamic(() =>
 function Tax() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const [tax, setTax] = useState('')
+  const [tax, setTax] = useState('No')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
@@ -41,7 +41,7 @@ function Tax() {
         {...register('tax', {required: true})}
         name="tax"
         className="custom-select" 
-        defaultValue="No"
+        value={tax}
         onChange={e=> setTax(e.target.value)}>
             <option>Yes</option>
             <option>No</option>

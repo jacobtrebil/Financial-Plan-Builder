@@ -16,7 +16,7 @@ const FooterComponent = _dynamic(() =>
 function Longevity() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const [longevity, setLongevity] = useState('')
+  const [longevity, setLongevity] = useState('70-80 years')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
@@ -42,7 +42,7 @@ function Longevity() {
           {...register('longevity', {required: true})}
           name="longevity"
           className="custom-select" 
-          defaultValue="70-80 years"
+          value={longevity}
           onChange={e=> setLongevity(e.target.value)}>
               <option>70-80 years</option>
               <option>80-90 years</option>

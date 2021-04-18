@@ -16,7 +16,7 @@ const FooterComponent = _dynamic(() =>
 function Powerofattorney() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const [powerofattorney, setPowerofattorney] = useState('')
+  const [powerofattorney, setPowerofattorney] = useState('No')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
@@ -41,7 +41,7 @@ function Powerofattorney() {
         {...register('powerofattorney', {required: true})}
         name="powerofattorney"
         className="custom-select" 
-        defaultValue="No"
+        value={powerofattorney}
         onChange={e=> setPowerofattorney(e.target.value)}>
             <option>Yes</option>
             <option>No</option>

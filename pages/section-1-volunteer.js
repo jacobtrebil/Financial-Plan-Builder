@@ -16,7 +16,7 @@ const FooterComponent = _dynamic(() =>
 function Volunteer() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const [volunteer, setVolunteer] = useState('')
+  const [volunteer, setVolunteer] = useState('No')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
@@ -42,7 +42,7 @@ function Volunteer() {
         {...register('volunteer', {required: true})}
         name="volunteer"
         className="custom-select" 
-        defaultValue="No"
+        value={volunteer}
         onChange={e=> setVolunteer(e.target.value)}>
             <option>Yes</option>
             <option>No</option>

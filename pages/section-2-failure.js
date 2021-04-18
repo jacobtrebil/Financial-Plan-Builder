@@ -16,7 +16,7 @@ const FooterComponent = _dynamic(() =>
 function Failure() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const [failure, setFailure] = useState('')
+  const [failure, setFailure] = useState('No')
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   }
@@ -41,7 +41,7 @@ function Failure() {
         <select 
         {...register('failure', {required: true })}
         className="custom-select" 
-        defaultValue="No"
+        value={failure}
         name="failure"
         onChange={e=> setFailure(e.target.value)}>
             <option>Yes</option>
