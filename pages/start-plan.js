@@ -45,19 +45,21 @@ function CreatePlan() {
       <select 
       {...register('plantype', {required: true})}
       name="plantype"
-      value={plantype}>
+      value={plantype}
+      onChange={e=> setPlanType(e.target.value)}>
           <option>Retirement Plan</option>
           <option>Financial Plan</option>
       </select><br></br>
               { errors.plantype && errors.plantype.type === "required" && 
               ( <span className="errors">*This field is required</span> )}
       </div>
-      <div class="plan-input-box">
+      <div className="plan-input-box">
       <label className="retirement-form-label">Would you like to include a spouse? </label>
       <select 
       {...register('spouse', {required: true})}
       name="spouse"
       value={spouse}
+      onChange={e=> setSpouse(e.target.value)}
       onChange= {() => setShowForm(!showForm) }>
           <option>Yes</option>
           <option>No</option>

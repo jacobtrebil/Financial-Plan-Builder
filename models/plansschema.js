@@ -1,289 +1,76 @@
-import connectToDatabase from '../util/dbconnect.js';
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const Plans = new mongoose.Schema({
-    plantype: {
-        type: String,
-        required: true
-    },
-    spouse: {
-        type: String,
-        required: true
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    spousesname: {
-        type: String,
-        required: false
-    },
-    kids: {
-        type: Boolean,
-        required: true
-    },
-    numberofkids: {
-        type: Number,
-        required: false
-    },
-    payforkidscollege: {
-        type: String, 
-        required: false
-    },
-    collegespendingseach: {
-        type: String, Number,
-        required: true
-    },
-    supportothers: {
-        type: String, 
-        required: true
-    },
-    annualspendingtosupportothers: {
-        type: String, Number,
-        required: false
-    },
-    retirementage: {
-        type: Number, 
-        required: true
-    },
-    retirementincome: {
-        type: String, Number,
-        requred: true
-    },
-    workamount: {
-        type: String, 
-        required: true
-    },
-    majorpurchases: {
-        type: String,
-        required: true
-    },
-    majorpurchasesspending: {
-        type: String, Number,
-        required: false
-    },
-    business: {
-        type: String,
-        required: true
-    },
-    businesscapitalneeded: {
-        type: String, Number,
-        required: false
-    },
-    volunteer: {
-        type: String,
-        required: true
-    },
-    charity: {
-        type: String, 
-        required: true
-    },
-    charitablegivingamount: {
-        type: String, Number,
-        required: false
-    },
-    care: {
-        type: String,
-        required: true
-    },
-    carelength: {
-        type: String, Number, 
-        required: false
-    },
-    health: {
-        type: String,
-        required: true
-    },
-    healthcosts: {
-        type: String, Number,
-        required: false
-    },
-    longevity: {
-        type: String, Number,
-        required: true
-    },
-    income: {
-        type: String, Number,
-        required: true
-    },
-    savings: {
-        type: String, Number,
-        required: true
-    },
-    assets: {
-        type: String, Number,
-        required: true
-    },
-    increase: {
-        type: String,
-        required: true
-    },
-    increaseamount: {
-        type: String, Number,
-        required: false
-    },
-    failure: {
-        type: String, 
-        required: true
-    },
-    insurance: {
-        type: String, 
-        required: true
-    },
-    tax: {
-        type: String, 
-        required: true
-    },
-    investments: {
-        type: String,
-        required: true
-    },
-    investmentamount: {
-        type: String, Number,
-        required: false
-    },
-    realestate: {
-        type: String, 
-        required: true
-    },
-    amountinrealestate: {
-        type: String, Number,
-        required: false
-    },
-    crypto: {
-        type: String,
-        required: true
-    },
-    cryptoamount: {
-        type: String, Number,
-        required: false
-    },
-    otherassets: {
-        type: String,
-        required: true
-    },
-    otherassetsamount: {
-        type: String, Number,
-        required: false
-    },
-    debt: {
-        type: String, 
-        required: true
-    },
-    mortgage: {
-        type: String,
-        required: true
-    },
-    mortgageamount: {
-        type: String, Number,
-        required: false
-    },
-    othermortgages: {
-        type: String,
-        required: false
-    },
-    othermortgagesamount: {
-        type: String, Number,
-        required: false
-    },
-    creditcarddebt: {
-        type: String, 
-        required: true
-    },
-    creditcarddebtamount: {
-        type: String, Number,
-        required: false
-    },
-    creditcardinterest: {
-        type: String, Number,
-        required: false
-    },
-    medicaldebt: {
-        type: String,
-        required: true
-    },
-    medicaldebtamount: {
-        type: String, Number,
-        required: false
-    },
-    carfinancing: {
-        type: String,
-        required: true
-    },
-    remainingcardebt: {
-        type: String, Number,
-        required: false
-    },
-    monthlycarpayment: {
-        type: String, Number,
-        required: false
-    },
-    cardebtinterestrate: {
-        type: String, Number,
-        required: false
-    },
-    studentloans: {
-        type: String,
-        required: true
-    },
-    studentloanamount: {
-        type: Number, String,
-        required: false
-    },
-    studentloanmonthlypayments: {
-        type: Number, String,
-        required: false
-    },
-    studentloaninterestrates: {
-        type: Number, String,
-        required: false
-    },
-    additionnalloans: {
-        type: String,
-        required: true
-    },
-    remainingadditionaldebtamount: {
-        type: String, Number,
-        required: false
-    },
-    debtamountbeingpaidpermonth: {
-        type: String, Number,
-        required: false
-    },
-    interestrateofremainingdebt: {
-        type: String, Number,
-        required: false
-    },
-    socialsecurity: {
-        type: String, 
-        required: true
-    },
-    delaysocialsecurity: {
-        type: String,
-        required: false
-    },
-    pension: {
-        type: String,
-        required: true
-    },
-    pensionamount: {
-        type: String, Number,
-        required: false
-    },
-    medicare: {
-        type: String,
-        required: true
-    },
-    will: {
-        type: String, 
-        required: true
-    },
-    powerofattorney: {
-        type: String, 
-        required: true
-    }
+    plantype: String, 
+    spouse: Boolean,
+    name: String,
+    spousesname: String,
+    kids: Boolean,
+    numberofkids: Number,
+    payforkidscollege: Boolean, 
+    collegespendingseach: String, Number,
+    supportothers: String, 
+    annualspendingtosupportothers: String, Number,
+    retirementage: Number, 
+    retirementincome: String, Number,
+    workamount: String, 
+    majorpurchases: String,
+    majorpurchasesspending: String, Number,
+    business: String,
+    businesscapitalneeded: String, Number,
+    volunteer: String,
+    charity: String, 
+    charitablegivingamount: String, Number,
+    care: String,
+    carelength: String, Number, 
+    health: String,
+    healthcosts: String, Number,
+    longevity: String, Number,
+    income: String, Number,
+    savings: String, Number,
+    assets: String, Number,
+    increase: String,
+    increaseamount: String, Number,
+    failure: String, 
+    insurance: String, 
+    tax: String, 
+    investments: String,
+    investmentamount: String, Number,
+    realestate: String, 
+    amountinrealestate: String, Number,
+    crypto: String,
+    cryptoamount: String, Number,
+    otherassets: String,
+    otherassetsamount: String, Number,
+    debt: String, 
+    mortgage: String,
+    mortgageamount: String, Number,
+    othermortgages: String,
+    othermortgagesamount: String, Number,
+    creditcarddebt: String, 
+    creditcarddebtamount: String, Number,
+    creditcardinterest: String, Number,
+    medicaldebt: String,
+    medicaldebtamount: String, Number,
+    carfinancing: String,
+    remainingcardebt: String, Number,
+    monthlycarpayment: String, Number,
+    cardebtinterestrate: String, Number,
+    studentloans: String,
+    studentloanamount: Number, String,
+    studentloanmonthlypayments: Number, String,
+    studentloaninterestrates: Number, String,
+    additionnalloans: String,
+    remainingadditionaldebtamount: String, Number,
+    debtamountbeingpaidpermonth: String, Number,
+    interestrateofremainingdebt: String, Number,
+    socialsecurity: String, 
+    delaysocialsecurity: String,
+    pension: String,
+    pensionamount: String, Number,
+    medicare: String,
+    will: String, 
+    powerofattorney: String, 
 });
 
-const Plan = mongoose.model('Plan', Plans);
-
-export default Plan;
+module.exports = mongoose.model('Plan', Plans);
