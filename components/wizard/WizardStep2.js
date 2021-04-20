@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import WizardStepTemplate from './WizardStepTemplate';
 
-export default ({
-    plan, 
-    onComplete
-}) => {
+export default function Step2({ plan, onComplete }) {
 
     const [_plan, _setPlan] = useState(plan);
 
@@ -14,7 +11,7 @@ export default ({
 
     const complete = () => onComplete(_plan);
 
-    const { addressLine1, addressLinne2, city} = _plan;
+    const { addressLine1, addressLine2, city} = _plan;
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -31,7 +28,7 @@ export default ({
             <input
             placeholder={'City'}
             value={city}
-            onnChange={(e) => updatePlan({ city: e.target.value })}
+            onChange={(e) => updatePlan({ city: e.target.value })}
             />
         </WizardStepTemplate>
     )

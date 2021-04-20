@@ -1,8 +1,6 @@
 import React from 'react';
 
-export default ({
-    plan
-}) => {
+export default function Summary({plan}) {
 
     return (
         <div>

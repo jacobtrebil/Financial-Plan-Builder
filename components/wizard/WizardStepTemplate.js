@@ -1,9 +1,7 @@
 import React from 'react';
 
-const WizardStepTemplate = ({
-    children, 
-    onNext
-}) => (
+export default function WizardStepTemplate({ children, onNext }) { 
+    return (
     <div className='wizard-step'>
         <div className="wizard-step-content">
             { children }
@@ -15,5 +13,4 @@ const WizardStepTemplate = ({
         </div>
     </div>
 )
-
-export default WizardStepTemplate;
+}

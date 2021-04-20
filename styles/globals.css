@@ -1100,3 +1100,47 @@ h1 {
   margin: 20px 0px 0px 0px;
   font-weight: normal;
 }
+
+/* Wizard Section */
+
+.container {
+  display: flex;
+  width: 40%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.wizard {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  width: 40%;
+  vertical-align: middle;
+  margin: 20% auto 0px auto;
+}
+
+.wizard-title {
+  padding: 8px;
+}
+
+.wizard-step {
+  display: flex;
+  flex-direction: column;
+}
+
+.wizard-step-content {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+
+.wizard-step-content input {
+  margin: 5px 0px 0px 0px;
+  padding: 10px 10px;
+}
+
+.wizard-controls {
+  padding: 12px;
+}
