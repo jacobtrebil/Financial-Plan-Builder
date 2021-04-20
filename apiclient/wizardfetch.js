@@ -1,5 +1,5 @@
 export const createPlan = async (plan) => {
-    const response = await fetch('/api/wizardapi', {
+    const response = await fetch('/api/wizardpostapi', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -11,7 +11,7 @@ export const createPlan = async (plan) => {
   }
   
   export const updatePlan = async (id, plan) => {
-    const response = await fetch(`/api/wizardapi/${id}`, {
+    const response = await fetch(`/api/wizardputapi/${id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
