@@ -1,24 +1,22 @@
-export const createPlan = async (plan) => {
-    const response = await fetch('/api/wizardapi', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(plan)
-    })
-    return await response.json();
-  }
-  
-  export const updatePlan = async (id, plan) => {
-    const response = await fetch(`/api/wizardapi/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(plan)
-    })
-    return await response.json();
-  }
-  
+require('../util/wizarddbconnect');
+const Plan = require('../models/wizardschema');
+
+app.post('/api/wizardapi', async (req, res) => {
+    const { firstname, surname } = req.body;
+    const newPlan = await Plan.create({ firstname, surname })
+    res.send(newPlan);
+});
+
+export function handler(req,res) {
+    
+}
+
+app.put('/api/wizardapi/:id', async (req, res) => {
+    const id = req.params.id;
+    const myPlan = await Plan.findOne({ id })
+    const updatedPlan = { ...myPlan, ...req.body }
+    Plan.updateOne(id, updatedPlan);
+    res.send(updatedPlan);
+});
+
+  // Put the back end code here and front end code should go in the components
