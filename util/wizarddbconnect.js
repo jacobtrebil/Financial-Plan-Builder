@@ -4,7 +4,7 @@ const handleError = (error) => {
   log.error('Error connecting', error)
 }
 
-mongoose.connect('mongodb://localhost:27017/fpbdatabase').catch(error => handleError(error))
+mongoose.connect('mongodb://localhost:27017/fpbdatabase', {useNewUrlParser: true}, { useUnifiedTopology: true }).catch(error => handleError(error))
 
 const db = mongoose.connection
 
