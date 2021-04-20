@@ -1144,3 +1144,69 @@ h1 {
 .wizard-controls {
   padding: 12px;
 }
+
+.wizard-header {
+  background-color: white;
+  color: black;
+  margin: 0px 0px 0px 0px;
+  padding: 20px 0px 20px 5%;
+  top: 0;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.wizard-header-h2 {
+  display: inline-block;
+  margin: 11px 10px 10px 16px;
+  font-size: 16px;
+}
+
+.wizard-footer {
+  background-color: white;
+  padding: 20px 0px 60px 0px;
+  margin: 150px 0px 0px 0px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+}
+
+.wizard-footer-button {
+  float: right;
+  margin: 0px 5% 0px 0px;
+  position: static;
+  background-color:rgb(4, 187, 172);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 12px 26px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.wizard-footer-button:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.wizard-header-hr {
+  color: rgb(211, 211, 211);
+  background-color: rgb(211, 211, 211);
+  border: 1px solid rgb(211, 211, 211);
+  width: 5%;
+  display: inline-block;
+  margin: 0px 0px 3px 0px;
+  padding: 0px;
+}
+
+.circle {
+  background-color:rgb(224, 224, 224);
+  color: black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px 0px 0px 20px
+}
+
+.circle-state {
+  background-color:rgb(4, 187, 172);
+  color: white;
+}

@@ -16,6 +16,7 @@ export default function Step1({plan, onComplete}) {
     const { firstname, surname } = _plan;
     
     return (
+        <div>
         <WizardStepTemplate onNext={complete} >
             <input
             placeholder="First name"
@@ -28,5 +29,6 @@ export default function Step1({plan, onComplete}) {
             onChange={(e) => updatePlan({ surname: e.target.value })} 
             />
         </WizardStepTemplate>
+        </div>
     )
 }

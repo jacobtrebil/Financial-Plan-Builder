@@ -1,4 +1,4 @@
-import connectToDatabase from '../util/dbconnect.js';
+/* import connectToDatabase from '../util/dbconnect.js';
 import mongoose from "mongoose";
 
 const MODEL_NAME = "model1"
@@ -12,5 +12,5 @@ const schema = new Schema({
 
 console.log(Schema.retirementage)
 
-export default mongoose.model[MODEL_NAME] || mongoose.model(MODEL_NAME, schema, "model1")
+export default mongoose.model[MODEL_NAME] || mongoose.model(MODEL_NAME, schema, "model1") */
 

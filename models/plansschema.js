@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/* const mongoose = require('mongoose');
 
 const Plans = new mongoose.Schema({
     plantype: String, 
@@ -73,4 +73,4 @@ const Plans = new mongoose.Schema({
     powerofattorney: String, 
 });
 
-module.exports = mongoose.model('Plan', Plans);
+module.exports = mongoose.model('Plan', Plans); */

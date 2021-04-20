@@ -1,5 +1,5 @@
-require('../util/wizarddbconnect');
-const Plan = require('../models/wizardschema');
+require('../../util/wizarddbconnect');
+const Plan = require('../../models/wizardschema');
 
 export default async function handler(req,res) {
     const id = req.params.id;

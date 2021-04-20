@@ -25,7 +25,8 @@ export default function Wizard() {
     }
 
     return (
-        <div className="wizard-box">
+        <div>
+            <div className="wizard-box">
             <div className="wizard-title">
                 Step {step}
             </div>
@@ -41,6 +42,7 @@ export default function Wizard() {
             {
                 (step === 4) && (<WizardSummary plan={plan} />)
             }
+            </div>
         </div>
     )
 };
