@@ -1,6 +1,6 @@
 /* const mongoose = require('mongoose');
 
-const Plans = new mongoose.Schema({
+const Plans2 = new mongoose.Schema({
     plantype: String, 
     spouse: Boolean,
     name: String,
@@ -73,4 +73,4 @@ const Plans = new mongoose.Schema({
     powerofattorney: String, 
 });
 
-module.exports = mongoose.model('Plan', Plans); */
+module.exports = mongoose.model('Plan2', Plans2); */

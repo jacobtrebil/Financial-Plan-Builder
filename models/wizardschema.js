@@ -10,4 +10,4 @@ var PlanModel = new mongoose.Schema({
     numberOfKids: Boolean
 });
 
-/* module.exports = mongoose.model ('Plan', PlanModel); */
+module.exports = mongoose.model ('Plan', PlanModel);

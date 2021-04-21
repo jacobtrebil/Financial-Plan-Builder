@@ -1,8 +1,8 @@
-require('../../util/wizarddbconnect');
-const Plan = require('../../models/wizardschema');
+import Plan from '../../models/wizardschema';
+import db from '../../util/wizarddbconnect';
 
 export default async function handler(req,res) {
-    const { firstname, surname } = req.body;
-    const newPlan = insertOne({ firstname, surname })
-    res.status(200).json({ Plan: req.body })
+    const { firstname, surname } = req
+    const newPlan = await Plan.create( req.body )
+    res.status(200).json({ plans: newPlan })
 }
