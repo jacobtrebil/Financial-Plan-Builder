@@ -99,7 +99,7 @@ function CreatePlan() {
       )}
       </div>
       <button type="submit" id="plan-button">Next &#8594;</button>
-  </form>
+  </form> */
         <NavComponent />
         <FooterComponent />
        </div>

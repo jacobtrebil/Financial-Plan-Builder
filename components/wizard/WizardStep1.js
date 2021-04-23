@@ -16,7 +16,7 @@ export default function Step1({plan, onComplete}) {
         onComplete(_plan)
     };
 
-    const { fullname, spousesfullname } = _plan;
+    const { spouse, fullname, spousesfullname } = _plan;
     
     return (
         <div>
@@ -28,16 +28,25 @@ export default function Step1({plan, onComplete}) {
             <label className="input-label">Name</label><br></br>
             <input
             className="form-input"
-            placeholder="Full Name"
+            placeholder=""
             value={fullname}
             onChange={(e) => updatePlan({ fullname: e.target.value })}
             /><br></br>
             </div>
             <div className="input-div">
+            <label className="input-label">Would you like to include a spouse? </label><br></br>
+            <input
+            className="form-input"
+            placeholder=""
+            value={spouse}
+            onChange={(e) => updatePlan({ spouse: e.target.value })} 
+            />
+            </div>
+            <div className="input-div">
             <label className="input-label">Spouses Name</label><br></br>
             <input
             className="form-input"
-            placeholder="Spouses Full Name"
+            placeholder=""
             value={spousesfullname}
             onChange={(e) => updatePlan({ spousesfullname: e.target.value })} 
             />

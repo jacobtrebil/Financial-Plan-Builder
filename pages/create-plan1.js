@@ -34,8 +34,8 @@ function CreatePlan1() {
       </div>
       {
       showForm && (
-        <div>
-      <div class="plan-input-box">
+      <div>
+      <div className="plan-input-box">
       <label className="retirement-form-label">How many kids do you have/expect?</label>
       <select defaultValue="2">
           <option>1</option>

@@ -739,7 +739,7 @@ h1 {
 /* Create a Plan */
 
 #create-a-plan {
-  margin: 6% auto 1% auto;
+  margin: 15% auto 1% auto;
   text-align: center;
   font-size: 42px;
 }
@@ -1175,7 +1175,7 @@ h1 {
 .wizard-footer {
   background-color: white;
   padding: 40px 0px 40px 0px;
-  margin: 10% 0px 0px 0px;
+  margin: 15% 0px 0px 0px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   width: 100%;
 }
@@ -1225,7 +1225,7 @@ h1 {
 
 .wizard-headline {
   text-align: left;
-  margin: 3% 0px 0px 8%;
+  margin: 5% 0px 0px 8%;
 }
 
 .wizard-subheadline {
@@ -1245,18 +1245,34 @@ h1 {
   width: 40%;
   margin: 0px 0px 0px 0px;
   border: 1px rgb(221, 221, 221) solid;
-  padding: 20px 0px 0px 0px;
-  font-size: 16px;
+  padding: 20px 0px 20px 0px;
+  font-size: 14px;
   border-radius: 4px;
 }
 
 .input-label {
   font-size: 16px;
-  margin: 10px 0px 5px 5px;
+  margin: 0px 0px 5px 5px;
   color: rgb(0, 0, 0);
   padding: 20px 0px 20px 0px;
 }
 
 .input-div {
   margin: 0px 0px 20px 0px;
+}
+
+#start-plan-button {
+  background-color: rgb(4, 187, 172);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 16px 32px;
+  font-size: 18px;
+  margin: 20px 0px 200px 0px;
+  font-weight: normal;
+}
+
+#start-plan-button:hover {
+  cursor: pointer;
+  opacity: 75%;
 }
