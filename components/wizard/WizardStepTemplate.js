@@ -6,8 +6,8 @@ export default function WizardStepTemplate({ children, onNext }) {
         <div className="wizard-step-content">
             { children }
         </div>
-        <div className="wizard-controls">
-            <button onClick={onNext}>
+        <div className='wizard-footer'>
+            <button className="wizard-footer-button" onClick={onNext}>
                 Next
             </button>
         </div>

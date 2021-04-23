@@ -28,9 +28,6 @@ export default function Wizard() {
     return (
         <div>
             <div className="wizard-box">
-            <div className="wizard-title">
-                Step {step}
-            </div>
             {
                 (step === 1) && (<WizardStep1 plan={plan} onComplete={onCreatePlan} />)
             }

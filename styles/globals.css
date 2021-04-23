@@ -8,6 +8,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     text-align: center;
   background-color: rgb(241, 241, 241);
+  width: 100%;
+  overflow-x: none;
 }
 
 a {
@@ -1116,13 +1118,11 @@ h1 {
 }
 
 .wizard {
-  padding: 8px;
   display: flex;
   flex-direction: column;
-  border: 1px solid gray;
-  width: 40%;
+  width: 100%;
   vertical-align: middle;
-  margin: 5% 0px 0px 8%;
+  margin: 0px 0px 0px 0px;
 }
 
 .wizard-title {
@@ -1174,9 +1174,10 @@ h1 {
 
 .wizard-footer {
   background-color: white;
-  padding: 20px 0px 60px 0px;
-  margin: 150px 0px 0px 0px;
+  padding: 40px 0px 40px 0px;
+  margin: 18% 0px 0px 0px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  width: 100%;
 }
 
 .wizard-footer-button {
@@ -1231,4 +1232,16 @@ h1 {
   text-align: left;
   margin: 1% 0px 0px 8%;
   font-weight: normal;
+}
+
+.inputs-div-1 {
+  margin: 3% 0px 0px 0px;
+  width: 100%;
+  padding: 10px 0px 0px 8%;
+  text-align: left;
+}
+
+.form-input {
+  width: 40%;
+  margin: 210px 0px 210px 0px;
 }

@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import WizardHeader from './WizardHeader';
+import WizardHeadline from './WizardHeadline';
 import WizardStepTemplate from './WizardStepTemplate';
 
 export default function Step1({plan, onComplete}) {
 
     const [_plan, _setPlan] = useState(plan);
+
 
     function updatePlan( changes ){
         _setPlan({ ..._plan, ...changes})
@@ -13,29 +16,27 @@ export default function Step1({plan, onComplete}) {
         onComplete(_plan)
     };
 
-    const { spouse, fullname, spousesfullname } = _plan;
+    const { fullname, spousesfullname } = _plan;
     
     return (
         <div>
+        <WizardHeader></WizardHeader>
         <WizardStepTemplate onNext={complete} >
-            <label className="retirement-form-label">Would you like to include a spouse? </label>
-            <select 
-            name="spouse"
-            value={spouse}
-            onChange={e=> updatePlan({ spouse: e.target.value })}>
-            <option>Yes</option>
-            <option>No</option>
-            </select><br></br>
+        <WizardHeadline></WizardHeadline>
+            <div className="inputs-div-1">
             <input
+            className="form-input"
             placeholder="Full Name"
             value={fullname}
             onChange={(e) => updatePlan({ fullname: e.target.value })}
             /><br></br>
             <input
+            className="form-input"
             placeholder="Spouses Full Name"
             value={spousesfullname}
             onChange={(e) => updatePlan({ spousesfullname: e.target.value })} 
             />
+            </div>
         </WizardStepTemplate>
         </div>
     )
