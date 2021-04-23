@@ -13,7 +13,7 @@ export default function Step2({ plan, onComplete }) {
 
     const complete = () => onComplete(_plan);
 
-    const { lifeexpectancy, workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, business} = _plan;
+    const { lifeexpectancy, workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business} = _plan;
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -144,6 +144,72 @@ export default function Step2({ plan, onComplete }) {
                     placeholder ="$100,000" 
                     value={purchasescost}
                     onChange={e=> updatePlan( { purchasescost: e.target.value } )}
+                    >
+                    </input><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">Do you plan on financially supporting your parents or other family members?</label><br></br>
+                    <input 
+                    className="form-input"
+                    name="support"
+                    placeholder ="Yes or No" 
+                    value={support}
+                    onChange={e=> updatePlan( { support: e.target.value } )}
+                    >
+                    </input><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">How much do you expect spending to support others?</label><br></br>
+                    <input 
+                    className="form-input"
+                    name="supportcost"
+                    placeholder ="$50,000" 
+                    value={supportcost}
+                    onChange={e=> updatePlan( { supportcost: e.target.value } )}
+                    >
+                    </input><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">Do you have kids or expect to have kids in the future?</label><br></br>
+                    <input 
+                    className="form-input"
+                    name="kids"
+                    placeholder ="Yes or No" 
+                    value={kids}
+                    onChange={e=> updatePlan( { kids: e.target.value } )}
+                    >
+                    </input><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">How many kids do you have/expect?</label><br></br>
+                    <input 
+                    className="form-input"
+                    name="numberofkids"
+                    placeholder ="2" 
+                    value={numberofkids}
+                    onChange={e=> updatePlan( { numberofkids: e.target.value } )}
+                    >
+                    </input><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">Do you plan on paying for some or all of your kids college?</label><br></br>
+                    <input 
+                    className="form-input"
+                    name="college"
+                    placeholder ="Yes or No" 
+                    value={college}
+                    onChange={e=> updatePlan( { college: e.target.value } )}
+                    >
+                    </input><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">How much would you like to spend on your kids college? (total)</label><br></br>
+                    <input 
+                    className="form-input"
+                    name="collegespendingamount"
+                    placeholder ="$50,000" 
+                    value={collegespendingamount}
+                    onChange={e=> updatePlan( { collegespendingamount: e.target.value } )}
                     >
                     </input><br></br>
                 </div>

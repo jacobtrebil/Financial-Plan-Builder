@@ -15,7 +15,14 @@ var PlanModel = new mongoose.Schema({
     care: String,
     charity: String,
     majorpurchases: String,
-    health: String
+    purchasescost: Number,
+    support: String,
+    supportcost: Number,
+    health: String,
+    collegespendingamount: Number,
+    kids: String, 
+    college: String, 
+    numberofkids: Number
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);
