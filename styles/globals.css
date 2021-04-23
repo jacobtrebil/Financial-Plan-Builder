@@ -1175,7 +1175,7 @@ h1 {
 .wizard-footer {
   background-color: white;
   padding: 40px 0px 40px 0px;
-  margin: 18% 0px 0px 0px;
+  margin: 10% 0px 0px 0px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   width: 100%;
 }
@@ -1235,7 +1235,7 @@ h1 {
 }
 
 .inputs-div-1 {
-  margin: 3% 0px 0px 0px;
+  margin: 20px 0px 0px 0px;
   width: 100%;
   padding: 10px 0px 0px 8%;
   text-align: left;
@@ -1243,5 +1243,20 @@ h1 {
 
 .form-input {
   width: 40%;
-  margin: 210px 0px 210px 0px;
+  margin: 0px 0px 0px 0px;
+  border: 1px rgb(221, 221, 221) solid;
+  padding: 20px 0px 0px 0px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.input-label {
+  font-size: 16px;
+  margin: 10px 0px 5px 5px;
+  color: rgb(0, 0, 0);
+  padding: 20px 0px 20px 0px;
+}
+
+.input-div {
+  margin: 0px 0px 20px 0px;
 }

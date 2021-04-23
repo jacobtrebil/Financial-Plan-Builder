@@ -13,7 +13,7 @@ export default function Step2({ plan, onComplete }) {
 
     const complete = () => onComplete(_plan);
 
-    const { addressLine1, addressLine2, city} = _plan;
+    const { addressLine1, addressLine2, city, retirementage} = _plan;
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -37,7 +37,16 @@ export default function Step2({ plan, onComplete }) {
             placeholder={'City'}
             value={city}
             onChange={(e) => updatePlan({ city: e.target.value })}
-            />
+            /><br></br>
+            <input 
+            className="form-input"
+            name="retirementage"
+            type="number" 
+            placeholder ="60" 
+            value={retirementage}
+            onChange={e=> updatePlan( { retirementage: e.target.value } )}
+            >
+          </input><br></br>
             </div>
         </WizardStepTemplate>
     )

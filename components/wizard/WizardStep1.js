@@ -24,18 +24,24 @@ export default function Step1({plan, onComplete}) {
         <WizardStepTemplate onNext={complete} >
         <WizardHeadline></WizardHeadline>
             <div className="inputs-div-1">
+            <div className="input-div">
+            <label className="input-label">Name</label><br></br>
             <input
             className="form-input"
             placeholder="Full Name"
             value={fullname}
             onChange={(e) => updatePlan({ fullname: e.target.value })}
             /><br></br>
+            </div>
+            <div className="input-div">
+            <label className="input-label">Spouses Name</label><br></br>
             <input
             className="form-input"
             placeholder="Spouses Full Name"
             value={spousesfullname}
             onChange={(e) => updatePlan({ spousesfullname: e.target.value })} 
             />
+            </div>
             </div>
         </WizardStepTemplate>
         </div>

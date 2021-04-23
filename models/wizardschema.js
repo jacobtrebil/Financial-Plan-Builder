@@ -6,6 +6,7 @@ var PlanModel = new mongoose.Schema({
     addressLine1: String, 
     addressLine2: String, 
     city: String,
+    retirementage: Number,
     kids: String,
     numberOfKids: Number
 });
