@@ -1122,7 +1122,7 @@ h1 {
   border: 1px solid gray;
   width: 40%;
   vertical-align: middle;
-  margin: 10% auto 0px auto;
+  margin: 5% 0px 0px 8%;
 }
 
 .wizard-title {
@@ -1224,7 +1224,7 @@ h1 {
 
 .wizard-headline {
   text-align: left;
-  margin: 5% 0px 0px 8%;
+  margin: 3% 0px 0px 8%;
 }
 
 .wizard-subheadline {
