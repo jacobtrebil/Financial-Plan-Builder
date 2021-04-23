@@ -1,11 +1,34 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
-const handleError = (error) => {
-  log.error('Error connecting', error)
+const MONGODB_URI = 'mongodb://localhost:27017/fpbdatabase'
+
+let cached = global.mongoose
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null }
 }
 
-mongoose.connect('mongodb://localhost:27017/fpbdatabase', {useNewUrlParser: true}, { useUnifiedTopology: true }).catch(error => handleError(error))
+async function dbConnect() {
+  if (cached.conn) {
+    return cached.conn
+  }
 
-const db = mongoose.connection
+  if (!cached.promise) {
+    const opts = {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      bufferCommands: false,
+      bufferMaxEntries: 0,
+      useFindAndModify: false,
+      useCreateIndex: true,
+    }
 
-module.exports = db
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      return mongoose
+    })
+  }
+  cached.conn = await cached.promise
+  return cached.conn
+}
+
+export default dbConnect

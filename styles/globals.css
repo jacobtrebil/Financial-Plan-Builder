@@ -1070,10 +1070,14 @@ h1 {
 
 .goals-text {
   color:black;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 14px;
-  margin: 20px 0px 0px 20px;
+  margin: 10px 0px 0px 20px;
   padding: 0px;
+}
+
+.goals-text-box {
+  margin: 30px 0px 0px 0px;
 }
 
 .key-metric {
@@ -1118,7 +1122,7 @@ h1 {
   border: 1px solid gray;
   width: 40%;
   vertical-align: middle;
-  margin: 20% auto 0px auto;
+  margin: 10% auto 0px auto;
 }
 
 .wizard-title {
@@ -1156,6 +1160,13 @@ h1 {
 }
 
 .wizard-header-h2 {
+  display: inline-block;
+  margin: 11px 10px 10px 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.wizard-header-h2-selected {
   display: inline-block;
   margin: 11px 10px 10px 16px;
   font-size: 16px;
@@ -1209,4 +1220,15 @@ h1 {
 .circle-state {
   background-color:rgb(4, 187, 172);
   color: white;
+}
+
+.wizard-headline {
+  text-align: left;
+  margin: 5% 0px 0px 8%;
+}
+
+.wizard-subheadline {
+  text-align: left;
+  margin: 1% 0px 0px 8%;
+  font-weight: normal;
 }

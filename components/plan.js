@@ -155,7 +155,11 @@ const FullPlan = () => {
       const GoalsBox = () => {
         return (
           <div className="goals-box-2">
-            <p className="goals-text">Stuff</p>
+            <div className="goals-text-box">
+            <p className="goals-text">Amount Needed: $50,000</p>
+            <p className="goals-text">Date Needed: 10/23/2029</p>
+            <p className="goals-text">Savings Needed Per Month: $200</p>
+            </div>
           </div>
         )}
 

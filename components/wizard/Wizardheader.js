@@ -6,7 +6,7 @@ export default function WizardHeader({}) {
         <div className="circle circle-state">
             <h2 className="wizard-header-h2">1</h2>
         </div>
-        <h2 className="wizard-header-h2">Personal Info</h2>
+        <h2 className="wizard-header-h2-selected">Personal Info</h2>
         <hr className="wizard-header-hr"></hr>
         <div className="circle">
             <h2 className="wizard-header-h2">2</h2>

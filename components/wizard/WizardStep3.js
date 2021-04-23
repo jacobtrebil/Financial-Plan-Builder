@@ -23,7 +23,8 @@ export default function Step3 ({ plan, onComplete }) {
             <input
             placeholder={'Number of kids'}
             value={numberOfKids}
-            onChange={(e) => updatePlan({ numberOfKids: e.target.value })}
+            type="number"
+            onChange={(e) => updatePlan({ numberOfKids: parseInt(e.target.value) })}
             />
         </WizardStepTemplate>
     )
