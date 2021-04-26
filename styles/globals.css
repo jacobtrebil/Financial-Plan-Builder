@@ -1276,3 +1276,12 @@ h1 {
   cursor: pointer;
   opacity: 75%;
 }
+
+.form-select {
+  text-align: center;
+  margin: 10px 0px 0px 0px;
+  border: 1px rgb(221, 221, 221) solid;
+  padding: 10px 0px 10px 9px;
+  font-size: 14px;
+  border-radius: 4px;
+}

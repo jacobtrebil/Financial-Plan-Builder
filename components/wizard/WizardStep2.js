@@ -32,6 +32,7 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">How much do you expect to work throughout retirement?</label><br></br>
                     <select
+                    className="form-select"
                     defaultValue="No work"
                     value={workamount}
                     onChange={(e) => updatePlan({ workamount: e.target.value })}
@@ -44,6 +45,7 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">Would you like to do volunteer work throughout retirement?</label><br></br>
                     <select
+                    className="form-select"
                     defaultValue="Yes"
                     value={volunteer}
                     onChange={(e) => updatePlan({ volunteer: e.target.value })}
@@ -78,6 +80,7 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">Would you like to give to charity throughout retirement?</label><br></br>
                     <select 
+                    className="form-select"
                     name="charity"
                     defaultValue="No"
                     value={charity}
@@ -90,6 +93,7 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">Would you like to start a business during retirement?</label><br></br>
                     <select
+                    className="form-select"
                     name="business"
                     defaultValue="No"
                     value={business}
@@ -113,6 +117,7 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">Do you plan on living in long-term care throughout retirement?</label><br></br>
                     <select
+                    className="form-select"
                     defaultValue="No"
                     name="care"
                     value={care}
@@ -125,6 +130,7 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">Do you expect to have any major health issues in the future?</label><br></br>
                     <select
+                    className="form-select"
                     name="health"
                     defaultValue="No"
                     value={health}
@@ -137,6 +143,7 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">Would you like to make any major purchases in the future?</label><br></br>
                     <select 
+                    className="form-select"
                     defaultValue="No"
                     name="majorpurchases"
                     value={majorpurchases}
@@ -160,6 +167,7 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">Do you plan on financially supporting your parents or other family members?</label><br></br>
                     <select 
+                    className="form-select"
                     name="support"
                     defaultValue="No"
                     value={support}
@@ -183,6 +191,7 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">Do you have kids or expect to have kids in the future?</label><br></br>
                     <select
+                    className="form-select"
                     defaultValue="No"
                     name="kids"
                     value={kids}
@@ -206,6 +215,7 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">Do you plan on paying for some or all of your kids college?</label><br></br>
                     <select
+                    className="form-select"
                     name="college"
                     defaultValue="No"
                     value={college}

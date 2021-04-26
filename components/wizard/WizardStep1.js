@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import WizardHeader from './WizardHeader';
 import WizardHeadline from './WizardHeadline';
 import WizardStepTemplate from './WizardStepTemplate';
+import { useForm } from "react-hook-form";
 
 export default function Step1({plan, onComplete}) {
 
@@ -17,6 +18,7 @@ export default function Step1({plan, onComplete}) {
     };
 
     const { spouse, fullname, spousesfullname } = _plan;
+    const [showForm, setShowForm] = useState(false)  
 
     
     return (
@@ -37,14 +39,18 @@ export default function Step1({plan, onComplete}) {
                 <div className="input-div">
                     <label className="input-label">Would you like to include a spouse? </label><br></br>
                     <select
+                    className="form-select"
                     placeholder=""
                     defaultValue="No"
                     value={spouse}
-                    onChange={e=> updatePlan({ spouse: e.target.value })}>
+                    onChange={e=> updatePlan({ spouse: e.target.value })}
+                    onChange={() => setShowForm(!showForm) }>
                     <option>Yes</option>
                     <option>No</option>
                     </select><br></br>
                 </div>
+                {
+                showForm && (
                 <div className="input-div">
                     <label className="input-label">Spouses Name</label><br></br>
                     <input
@@ -54,6 +60,7 @@ export default function Step1({plan, onComplete}) {
                     onChange={(e) => updatePlan({ spousesfullname: e.target.value })} 
                     />
                 </div>
+                )}
             </div>
         </WizardStepTemplate>
         </div>
