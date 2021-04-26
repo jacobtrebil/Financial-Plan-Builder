@@ -31,21 +31,26 @@ export default function Step2({ plan, onComplete }) {
                 </div>
                 <div className="input-div">
                     <label className="input-label">How much do you expect to work throughout retirement?</label><br></br>
-                    <input
-                    className="form-input"
-                    placeholder={'no work, part-time, or full-time'}
+                    <select
+                    defaultValue="No work"
                     value={workamount}
                     onChange={(e) => updatePlan({ workamount: e.target.value })}
-                    /><br></br>
+                    >
+                    <option>No work</option>
+                    <option>Part-time</option>
+                    <option>Full-time</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Would you like to do volunteer work throughout retirement?</label><br></br>
-                    <input
-                    className="form-input"
-                    placeholder={'Yes or No'}
+                    <select
+                    defaultValue="Yes"
                     value={volunteer}
                     onChange={(e) => updatePlan({ volunteer: e.target.value })}
-                    /><br></br>
+                    >
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">At what age would you like to retire?</label><br></br>
@@ -72,25 +77,27 @@ export default function Step2({ plan, onComplete }) {
                 </div>
                 <div className="input-div">
                     <label className="input-label">Would you like to give to charity throughout retirement?</label><br></br>
-                    <input 
-                    className="form-input"
+                    <select 
                     name="charity"
-                    placeholder ="Yes or No" 
+                    defaultValue="No"
                     value={charity}
                     onChange={e=> updatePlan( { charity: e.target.value } )}
                     >
-                    </input><br></br>
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Would you like to start a business during retirement?</label><br></br>
-                    <input 
-                    className="form-input"
+                    <select
                     name="business"
-                    placeholder ="Yes or No" 
+                    defaultValue="No"
                     value={business}
                     onChange={e=> updatePlan( { business: e.target.value } )}
                     >
-                    </input><br></br>
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">How much will you need to start the business?</label><br></br>
@@ -105,36 +112,39 @@ export default function Step2({ plan, onComplete }) {
                 </div>
                 <div className="input-div">
                     <label className="input-label">Do you plan on living in long-term care throughout retirement?</label><br></br>
-                    <input 
-                    className="form-input"
+                    <select
+                    defaultValue="No"
                     name="care"
-                    placeholder ="Yes or No" 
                     value={care}
                     onChange={e=> updatePlan( { care: e.target.value } )}
                     >
-                    </input><br></br>
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Do you expect to have any major health issues in the future?</label><br></br>
-                    <input 
-                    className="form-input"
+                    <select
                     name="health"
-                    placeholder ="Yes or No" 
+                    defaultValue="No"
                     value={health}
                     onChange={e=> updatePlan( { health: e.target.value } )}
                     >
-                    </input><br></br>
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Would you like to make any major purchases in the future?</label><br></br>
-                    <input 
-                    className="form-input"
+                    <select 
+                    defaultValue="No"
                     name="majorpurchases"
-                    placeholder ="Yes or No" 
                     value={majorpurchases}
                     onChange={e=> updatePlan( { majorpurchases: e.target.value } )}
                     >
-                    </input><br></br>
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">How much would you like to spend on these purchases?</label><br></br>
@@ -149,14 +159,15 @@ export default function Step2({ plan, onComplete }) {
                 </div>
                 <div className="input-div">
                     <label className="input-label">Do you plan on financially supporting your parents or other family members?</label><br></br>
-                    <input 
-                    className="form-input"
+                    <select 
                     name="support"
-                    placeholder ="Yes or No" 
+                    defaultValue="No"
                     value={support}
                     onChange={e=> updatePlan( { support: e.target.value } )}
                     >
-                    </input><br></br>
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">How much do you expect spending to support others?</label><br></br>
@@ -171,14 +182,15 @@ export default function Step2({ plan, onComplete }) {
                 </div>
                 <div className="input-div">
                     <label className="input-label">Do you have kids or expect to have kids in the future?</label><br></br>
-                    <input 
-                    className="form-input"
+                    <select
+                    defaultValue="No"
                     name="kids"
-                    placeholder ="Yes or No" 
                     value={kids}
                     onChange={e=> updatePlan( { kids: e.target.value } )}
                     >
-                    </input><br></br>
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">How many kids do you have/expect?</label><br></br>
@@ -193,14 +205,15 @@ export default function Step2({ plan, onComplete }) {
                 </div>
                 <div className="input-div">
                     <label className="input-label">Do you plan on paying for some or all of your kids college?</label><br></br>
-                    <input 
-                    className="form-input"
+                    <select
                     name="college"
-                    placeholder ="Yes or No" 
+                    defaultValue="No"
                     value={college}
                     onChange={e=> updatePlan( { college: e.target.value } )}
                     >
-                    </input><br></br>
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">How much would you like to spend on your kids college? (total)</label><br></br>
