@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import WizardHeadline2 from './WizardHeadline2';
 import WizardHeader2 from './WizardHeader2';
 import WizardStepTemplate from './WizardStepTemplate';
+import { useForm } from "react-hook-form";
 
 export default function Step2({ plan, onComplete }) {
 
@@ -14,6 +15,10 @@ export default function Step2({ plan, onComplete }) {
     const complete = () => onComplete(_plan);
 
     const { lifeexpectancy, workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business} = _plan;
+    const [showForm, setShowForm] = useState(false)  
+    const [showForm2, setShowForm2] = useState(false) 
+    const [showForm3, setShowForm3] = useState(false) 
+    const [showForm4, setShowForm4] = useState(false) 
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -98,11 +103,14 @@ export default function Step2({ plan, onComplete }) {
                     defaultValue="No"
                     value={business}
                     onChange={e=> updatePlan( { business: e.target.value } )}
+                    onChange={() => setShowForm(!showForm) }
                     >
                     <option>No</option>
                     <option>Yes</option>
                     </select><br></br>
                 </div>
+                {
+                showForm && (
                 <div className="input-div">
                     <label className="input-label">How much will you need to start the business?</label><br></br>
                     <input 
@@ -114,6 +122,7 @@ export default function Step2({ plan, onComplete }) {
                     >
                     </input><br></br>
                 </div>
+                )}
                 <div className="input-div">
                     <label className="input-label">Do you plan on living in long-term care throughout retirement?</label><br></br>
                     <select
@@ -148,11 +157,14 @@ export default function Step2({ plan, onComplete }) {
                     name="majorpurchases"
                     value={majorpurchases}
                     onChange={e=> updatePlan( { majorpurchases: e.target.value } )}
+                    onChange={() => setShowForm2(!showForm2) }
                     >
                     <option>No</option>
                     <option>Yes</option>
                     </select><br></br>
                 </div>
+                {
+                showForm2 && (
                 <div className="input-div">
                     <label className="input-label">How much would you like to spend on these purchases?</label><br></br>
                     <input 
@@ -164,6 +176,7 @@ export default function Step2({ plan, onComplete }) {
                     >
                     </input><br></br>
                 </div>
+                )}
                 <div className="input-div">
                     <label className="input-label">Do you plan on financially supporting your parents or other family members?</label><br></br>
                     <select 
@@ -172,11 +185,14 @@ export default function Step2({ plan, onComplete }) {
                     defaultValue="No"
                     value={support}
                     onChange={e=> updatePlan( { support: e.target.value } )}
+                    onChange={() => setShowForm3(!showForm3) }
                     >
                     <option>No</option>
                     <option>Yes</option>
                     </select><br></br>
                 </div>
+                {
+                showForm3 && (
                 <div className="input-div">
                     <label className="input-label">How much do you expect spending to support others?</label><br></br>
                     <input 
@@ -188,6 +204,7 @@ export default function Step2({ plan, onComplete }) {
                     >
                     </input><br></br>
                 </div>
+                )}
                 <div className="input-div">
                     <label className="input-label">Do you have kids or expect to have kids in the future?</label><br></br>
                     <select
@@ -196,11 +213,15 @@ export default function Step2({ plan, onComplete }) {
                     name="kids"
                     value={kids}
                     onChange={e=> updatePlan( { kids: e.target.value } )}
+                    onChange={() => setShowForm4(!showForm4) }
                     >
                     <option>No</option>
                     <option>Yes</option>
                     </select><br></br>
                 </div>
+                {
+                showForm4 && (
+                <div>
                 <div className="input-div">
                     <label className="input-label">How many kids do you have/expect?</label><br></br>
                     <input 
@@ -236,6 +257,8 @@ export default function Step2({ plan, onComplete }) {
                     >
                     </input><br></br>
                 </div>
+                </div>
+                )}
             </div>
         </WizardStepTemplate>
     )

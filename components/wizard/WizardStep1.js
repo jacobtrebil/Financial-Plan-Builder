@@ -18,6 +18,7 @@ export default function Step1({plan, onComplete}) {
     };
 
     const { spouse, fullname, spousesfullname } = _plan;
+    const { register, handleSubmit, watch, formState: { errors } } = useForm()
     const [showForm, setShowForm] = useState(false)  
 
     
@@ -30,8 +31,10 @@ export default function Step1({plan, onComplete}) {
                 <div className="input-div">
                     <label className="input-label">Name</label><br></br>
                     <input
+                    {...register('fullname', {required: true})}
                     className="form-input"
                     placeholder=""
+                    required
                     value={fullname}
                     onChange={(e) => updatePlan({ fullname: e.target.value })}
                     /><br></br>
