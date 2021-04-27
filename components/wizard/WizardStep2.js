@@ -19,23 +19,23 @@ export default function Step2({ plan, onComplete }) {
     const [showForm3, setShowForm3] = useState(false) 
     const [showForm4, setShowForm4] = useState(false)
     const [lifeexpectancy, setLifeexpectancy] = useState('')
-    const [workamount, setWorkamount] = useState('')
-    const [volunteer, setVolunteer] = useState('')
+    const [workamount, setWorkamount] = useState('No work')
+    const [volunteer, setVolunteer] = useState('Yes')
     const [retirementage, setRetirementage] = useState('')
     const [retirementincome, setRetirementincome] = useState('')
     const [businessmoneyneeded, setBusinessmoneyneeded] = useState('')
-    const [care, setCare] = useState('')
-    const [health, setHealth] = useState('')
-    const [charity, setCharity] = useState('')
-    const [majorpurchases, setMajorpurchases] = useState('')
+    const [care, setCare] = useState('No')
+    const [health, setHealth] = useState('No')
+    const [charity, setCharity] = useState('No')
+    const [majorpurchases, setMajorpurchases] = useState('No')
     const [purchasescost, setPurchasescost] = useState('')
-    const [support, setSupport] = useState('')
+    const [support, setSupport] = useState('No')
     const [supportcost, setSupportcost] = useState('')
     const [collegespendingamount, setCollegespendingamount] = useState('')
-    const [kids, setKids] = useState('')
-    const [college, setCollege] = useState('')
+    const [kids, setKids] = useState('No')
+    const [college, setCollege] = useState('No')
     const [numberofkids, setNumberofkids] = useState('')
-    const [business, setBusiness] = useState('')
+    const [business, setBusiness] = useState('No')
     
     _plan = { lifeexpectancy, workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business};
 
@@ -59,7 +59,6 @@ export default function Step2({ plan, onComplete }) {
                     <select
                     name="workamount"
                     className="form-select"
-                    defaultValue="No work"
                     value={workamount}
                     onChange={e=> setWorkamount(e.target.value)}
                     >
@@ -73,7 +72,6 @@ export default function Step2({ plan, onComplete }) {
                     <select
                     name="volunteer"
                     className="form-select"
-                    defaultValue="Yes"
                     value={volunteer}
                     onChange={e=> setVolunteer(e.target.value)}
                     >
@@ -109,7 +107,6 @@ export default function Step2({ plan, onComplete }) {
                     <select 
                     className="form-select"
                     name="charity"
-                    defaultValue="No"
                     value={charity}
                     onChange={e=> setCharity(e.target.value)}
                     >
@@ -122,7 +119,6 @@ export default function Step2({ plan, onComplete }) {
                     <select
                     className="form-select"
                     name="business"
-                    defaultValue="No"
                     value={business}
                     onChange={e=> {setBusiness(e.target.value); setShowForm(!showForm)}}
                     >
@@ -148,7 +144,6 @@ export default function Step2({ plan, onComplete }) {
                     <label className="input-label">Do you plan on living in long-term care throughout retirement?</label><br></br>
                     <select
                     className="form-select"
-                    defaultValue="No"
                     name="care"
                     value={care}
                     onChange={e=> setCare(e.target.value)}
@@ -162,7 +157,6 @@ export default function Step2({ plan, onComplete }) {
                     <select
                     className="form-select"
                     name="health"
-                    defaultValue="No"
                     value={health}
                     onChange={e=> setHealth(e.target.value)}
                     >
@@ -174,7 +168,6 @@ export default function Step2({ plan, onComplete }) {
                     <label className="input-label">Would you like to make any major purchases in the future?</label><br></br>
                     <select 
                     className="form-select"
-                    defaultValue="No"
                     name="majorpurchases"
                     value={majorpurchases}
                     onChange={e=> {setMajorpurchases(e.target.value); setShowForm2(!showForm2)}}
@@ -202,7 +195,6 @@ export default function Step2({ plan, onComplete }) {
                     <select 
                     className="form-select"
                     name="support"
-                    defaultValue="No"
                     value={support}
                     onChange={e=> {setSupport(e.target.value); setShowForm3(!showForm3)}}
                     >
@@ -228,7 +220,6 @@ export default function Step2({ plan, onComplete }) {
                     <label className="input-label">Do you have kids or expect to have kids in the future?</label><br></br>
                     <select
                     className="form-select"
-                    defaultValue="No"
                     name="kids"
                     value={kids}
                     onChange={e=> {setKids(e.target.value); setShowForm4(!showForm4)}}
@@ -256,7 +247,6 @@ export default function Step2({ plan, onComplete }) {
                     <select
                     className="form-select"
                     name="college"
-                    defaultValue="No"
                     value={college}
                     onChange={e=> setCollege(e.target.value)}
                     >
