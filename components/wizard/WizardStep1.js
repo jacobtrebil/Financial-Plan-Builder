@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import WizardHeader from './WizardHeader';
 import WizardHeadline from './WizardHeadline';
 import WizardStepTemplate from './WizardStepTemplate';
+import _dynamic from 'next/dynamic';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useForm } from "react-hook-form";
+import { Alert } from 'react-bootstrap';
 
 export default function Step1({plan, onComplete}) {
 
-    const [_plan, _setPlan] = useState(plan);
+    let [_plan, _setPlan] = useState(plan);
 
 
     function updatePlan( changes ){
@@ -17,9 +21,13 @@ export default function Step1({plan, onComplete}) {
         onComplete(_plan)
     };
 
-    const { spouse, fullname, spousesfullname } = _plan;
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
     const [showForm, setShowForm] = useState(false)  
+    const [spouse, setSpouse] = useState('No')
+    const [fullname, setFullname] = useState('')
+    const [spousesfullname, setSpousesfullname] = useState('')
+
+    _plan = { spouse, fullname, spousesfullname };
 
     
     return (
@@ -31,23 +39,19 @@ export default function Step1({plan, onComplete}) {
                 <div className="input-div">
                     <label className="input-label">Name</label><br></br>
                     <input
-                    {...register('fullname', {required: true})}
+                    name="fullname"
                     className="form-input"
-                    placeholder=""
-                    required
                     value={fullname}
-                    onChange={(e) => updatePlan({ fullname: e.target.value })}
+                    onChange={e=> setFullname(e.target.value)}
                     /><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Would you like to include a spouse? </label><br></br>
                     <select
+                    name="spouse"
                     className="form-select"
-                    placeholder=""
-                    defaultValue="No"
                     value={spouse}
-                    onChange={e=> updatePlan({ spouse: e.target.value })}
-                    onChange={() => setShowForm(!showForm) }>
+                    onChange={e=> { setSpouse(e.target.value); setShowForm(!showForm)}}>
                     <option>Yes</option>
                     <option>No</option>
                     </select><br></br>
@@ -57,10 +61,10 @@ export default function Step1({plan, onComplete}) {
                 <div className="input-div">
                     <label className="input-label">Spouses Name</label><br></br>
                     <input
+                    name="spousesfullname"
                     className="form-input"
-                    placeholder=""
                     value={spousesfullname}
-                    onChange={(e) => updatePlan({ spousesfullname: e.target.value })} 
+                    onChange={e=> setSpousesfullname(e.target.value)}
                     />
                 </div>
                 )}

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 
 export default function Step2({ plan, onComplete }) {
 
-    const [_plan, _setPlan] = useState(plan);
+    let [_plan, _setPlan] = useState(plan);
 
     const updatePlan = (changes) => {
         _setPlan({ ..._plan, ...changes})
@@ -14,11 +14,30 @@ export default function Step2({ plan, onComplete }) {
 
     const complete = () => onComplete(_plan);
 
-    const { lifeexpectancy, workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business} = _plan;
     const [showForm, setShowForm] = useState(false)  
     const [showForm2, setShowForm2] = useState(false) 
     const [showForm3, setShowForm3] = useState(false) 
-    const [showForm4, setShowForm4] = useState(false) 
+    const [showForm4, setShowForm4] = useState(false)
+    const [lifeexpectancy, setLifeexpectancy] = useState('')
+    const [workamount, setWorkamount] = useState('')
+    const [volunteer, setVolunteer] = useState('')
+    const [retirementage, setRetirementage] = useState('')
+    const [retirementincome, setRetirementincome] = useState('')
+    const [businessmoneyneeded, setBusinessmoneyneeded] = useState('')
+    const [care, setCare] = useState('')
+    const [health, setHealth] = useState('')
+    const [charity, setCharity] = useState('')
+    const [majorpurchases, setMajorpurchases] = useState('')
+    const [purchasescost, setPurchasescost] = useState('')
+    const [support, setSupport] = useState('')
+    const [supportcost, setSupportcost] = useState('')
+    const [collegespendingamount, setCollegespendingamount] = useState('')
+    const [kids, setKids] = useState('')
+    const [college, setCollege] = useState('')
+    const [numberofkids, setNumberofkids] = useState('')
+    const [business, setBusiness] = useState('')
+    
+    _plan = { lifeexpectancy, workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business};
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -28,19 +47,21 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">How long do you expect to live?</label><br></br>
                     <input
+                    name="lifeexpectancy"
                     className="form-input"
                     placeholder="78"
                     value={lifeexpectancy}
-                    onChange={(e) => updatePlan({ lifeexpectancy: e.target.value })}
+                    onChange={e=> setLifeexpectancy(e.target.value)}
                     /><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">How much do you expect to work throughout retirement?</label><br></br>
                     <select
+                    name="workamount"
                     className="form-select"
                     defaultValue="No work"
                     value={workamount}
-                    onChange={(e) => updatePlan({ workamount: e.target.value })}
+                    onChange={e=> setWorkamount(e.target.value)}
                     >
                     <option>No work</option>
                     <option>Part-time</option>
@@ -50,10 +71,11 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">Would you like to do volunteer work throughout retirement?</label><br></br>
                     <select
+                    name="volunteer"
                     className="form-select"
                     defaultValue="Yes"
                     value={volunteer}
-                    onChange={(e) => updatePlan({ volunteer: e.target.value })}
+                    onChange={e=> setVolunteer(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -67,7 +89,7 @@ export default function Step2({ plan, onComplete }) {
                     type="number" 
                     placeholder ="60" 
                     value={retirementage}
-                    onChange={e=> updatePlan( { retirementage: e.target.value } )}
+                    onChange={e=> setRetirementage(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -78,7 +100,7 @@ export default function Step2({ plan, onComplete }) {
                     name="retirementincome"
                     placeholder ="$100,000" 
                     value={retirementincome}
-                    onChange={e=> updatePlan( { retirementincome: e.target.value } )}
+                    onChange={e=> setRetirementincome(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -89,7 +111,7 @@ export default function Step2({ plan, onComplete }) {
                     name="charity"
                     defaultValue="No"
                     value={charity}
-                    onChange={e=> updatePlan( { charity: e.target.value } )}
+                    onChange={e=> setCharity(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -102,8 +124,7 @@ export default function Step2({ plan, onComplete }) {
                     name="business"
                     defaultValue="No"
                     value={business}
-                    onChange={e=> updatePlan( { business: e.target.value } )}
-                    onChange={() => setShowForm(!showForm) }
+                    onChange={e=> {setBusiness(e.target.value); setShowForm(!showForm)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -118,7 +139,7 @@ export default function Step2({ plan, onComplete }) {
                     name="businessmoneyneeded"
                     placeholder ="$200,000" 
                     value={businessmoneyneeded}
-                    onChange={e=> updatePlan( { businessmoneyneeded: e.target.value } )}
+                    onChange={e=> setBusinessmoneyneeded(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -130,7 +151,7 @@ export default function Step2({ plan, onComplete }) {
                     defaultValue="No"
                     name="care"
                     value={care}
-                    onChange={e=> updatePlan( { care: e.target.value } )}
+                    onChange={e=> setCare(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -143,7 +164,7 @@ export default function Step2({ plan, onComplete }) {
                     name="health"
                     defaultValue="No"
                     value={health}
-                    onChange={e=> updatePlan( { health: e.target.value } )}
+                    onChange={e=> setHealth(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -156,8 +177,7 @@ export default function Step2({ plan, onComplete }) {
                     defaultValue="No"
                     name="majorpurchases"
                     value={majorpurchases}
-                    onChange={e=> updatePlan( { majorpurchases: e.target.value } )}
-                    onChange={() => setShowForm2(!showForm2) }
+                    onChange={e=> {setMajorpurchases(e.target.value); setShowForm2(!showForm2)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -172,7 +192,7 @@ export default function Step2({ plan, onComplete }) {
                     name="purchasescost"
                     placeholder ="$100,000" 
                     value={purchasescost}
-                    onChange={e=> updatePlan( { purchasescost: e.target.value } )}
+                    onChange={e=> setPurchasescost(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -184,8 +204,7 @@ export default function Step2({ plan, onComplete }) {
                     name="support"
                     defaultValue="No"
                     value={support}
-                    onChange={e=> updatePlan( { support: e.target.value } )}
-                    onChange={() => setShowForm3(!showForm3) }
+                    onChange={e=> {setSupport(e.target.value); setShowForm3(!showForm3)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -200,7 +219,7 @@ export default function Step2({ plan, onComplete }) {
                     name="supportcost"
                     placeholder ="$50,000" 
                     value={supportcost}
-                    onChange={e=> updatePlan( { supportcost: e.target.value } )}
+                    onChange={e=> setSupportcost(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -212,8 +231,7 @@ export default function Step2({ plan, onComplete }) {
                     defaultValue="No"
                     name="kids"
                     value={kids}
-                    onChange={e=> updatePlan( { kids: e.target.value } )}
-                    onChange={() => setShowForm4(!showForm4) }
+                    onChange={e=> {setKids(e.target.value); setShowForm4(!showForm4)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -229,7 +247,7 @@ export default function Step2({ plan, onComplete }) {
                     name="numberofkids"
                     placeholder ="2" 
                     value={numberofkids}
-                    onChange={e=> updatePlan( { numberofkids: e.target.value } )}
+                    onChange={e=> setNumberofkids(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -240,7 +258,7 @@ export default function Step2({ plan, onComplete }) {
                     name="college"
                     defaultValue="No"
                     value={college}
-                    onChange={e=> updatePlan( { college: e.target.value } )}
+                    onChange={e=> setCollege(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -253,7 +271,7 @@ export default function Step2({ plan, onComplete }) {
                     name="collegespendingamount"
                     placeholder ="$50,000" 
                     value={collegespendingamount}
-                    onChange={e=> updatePlan( { collegespendingamount: e.target.value } )}
+                    onChange={e=> setCollegespendingamount(e.target.value)}
                     >
                     </input><br></br>
                 </div>
