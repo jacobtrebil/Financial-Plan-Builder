@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import WizardHeadline3 from './WizardHeadline3';
 import WizardHeader3 from './WizardHeader3';
 import WizardStepTemplate from './WizardStepTemplate';
-import { useForm } from "react-hook-form";
 
 export default function Step3 ({ plan, onComplete }) {
 
@@ -12,8 +11,32 @@ export default function Step3 ({ plan, onComplete }) {
         _setPlan({ ..._plan, ...changes })
     }
 
-    const complete = () => onComplete(_plan);
+    function complete(){
+        if (currentearnings.length === 0 || currentsavings.length === 0 || assetvalue.length === 0) {
+            if (currentearnings.length === 0) {
+                setErrors('*Please enter a valid number')
+            } else if (currentearnings.length > 0) {
+                setErrors('')
+            }
+            if (currentsavings.length === 0) {
+                setErrors2('*Please enter a valid number')
+            } else if (currentsavings.length > 0) {
+                setErrors2('')
+            }
+            if (assetvalue.length === 0) {
+                setErrors3('*Please enter a valid number')
+            } else if (assetvalue.length > 0) {
+                setErrors3('')
+            }
+        } 
+        else {
+            onComplete(_plan)
+        }
+    }
 
+    const [errors, setErrors] = useState('')
+    const [errors2, setErrors2] = useState('')
+    const [errors3, setErrors3] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [showForm2, setShowForm2] = useState(false) 
     const [showForm3, setShowForm3] = useState(false) 
@@ -79,17 +102,19 @@ export default function Step3 ({ plan, onComplete }) {
                     name="currentearnings"
                     onChange={e=> setCurrentearnings(e.target.value)}
                     /><br></br>
+                    <p className="errors">{errors}</p>
                 </div>
                 <div className="input-div">
                     <label className="input-label">How much do you currently save per year?</label><br></br>
                     <input
                     className="form-input"
-                    placeholder={'Number of kids'}
+                    placeholder={'$50,000'}
                     value={currentsavings}
                     type="number"
                     name="currentsavings"
                     onChange={e=> setCurrentsavings(e.target.value)}
-                    />
+                    /><br></br>
+                    <p className="errors">{errors2}</p>
                 </div>
                 <div className="input-div">
                     <label className="input-label">What is the total value of the assets that you own?</label><br></br>
@@ -100,7 +125,8 @@ export default function Step3 ({ plan, onComplete }) {
                     type="number"
                     name="assetvalue"
                     onChange={e=> setAssetvalue(e.target.value)}
-                    />
+                    /><br></br>
+                    <p className="errors">{errors3}</p>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Do you expect your income to increase within the next 10 years?</label><br></br>

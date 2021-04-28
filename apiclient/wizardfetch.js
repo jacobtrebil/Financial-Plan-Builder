@@ -22,9 +22,9 @@ export const createPlan = async (plan) => {
     return await response.json();
   }
 
-  export const getData = async (id, plan) => {
-    const response = await fetch('mongodb://localhost:27017/fpbdatabase/plans/[id]', {
-      method: 'GET',
+  export const updatePlan2 = async (id, plan) => {
+    const response = await fetch(`/api/wizardputapi2/${id}`, {
+      method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

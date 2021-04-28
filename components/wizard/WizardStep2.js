@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import WizardHeadline2 from './WizardHeadline2';
 import WizardHeader2 from './WizardHeader2';
 import WizardStepTemplate from './WizardStepTemplate';
-import { useForm } from "react-hook-form";
 
 export default function Step2({ plan, onComplete }) {
 
@@ -12,10 +11,8 @@ export default function Step2({ plan, onComplete }) {
         _setPlan({ ..._plan, ...changes})
     }
 
-    const complete = () => onComplete(_plan);
-
-    /* function complete(){
-        if (lifeexpectancy.length === 0 || retirementage.length === 0) {
+    function complete(){
+        if (lifeexpectancy.length === 0 || retirementage.length === 0 || retirementincome.length === 0) {
             if (lifeexpectancy.length === 0) {
                 setErrors('*This field is required')
             } else if (lifeexpectancy.length > 0) {
@@ -26,14 +23,20 @@ export default function Step2({ plan, onComplete }) {
             } else if (retirementage.length > 0) {
                 setErrors2('')
             } 
-        }   else {
-            onComplete(_plan)
+            if (retirementincome.length === 0) {
+                setErrors3('*Please enter a valid number')
+            } else if (retirementincome > 0) {
+                setErrors3('')
+            }
         } 
-        onComplete(_plan)
-    } */
+        else {
+            onComplete(_plan)
+        }
+    }
 
     const [errors, setErrors] = useState('')
     const [errors2, setErrors2] = useState('')
+    const [errors3, setErrors3] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [showForm2, setShowForm2] = useState(false) 
     const [showForm3, setShowForm3] = useState(false) 
@@ -123,6 +126,7 @@ export default function Step2({ plan, onComplete }) {
                     onChange={e=> setRetirementincome(e.target.value)}
                     >
                     </input><br></br>
+                    <p className="errors">{errors3}</p>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Would you like to give to charity throughout retirement?</label><br></br>

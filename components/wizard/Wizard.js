@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createPlan, updatePlan } from '../../apiclient/wizardfetch';
+import { createPlan, updatePlan, updatePlan2 } from '../../apiclient/wizardfetch';
 import WizardStep1 from './WizardStep1';
 import WizardStep2 from './WizardStep2';
 import WizardStep3 from './WizardStep3';
@@ -24,6 +24,12 @@ export default function Wizard() {
         setStep(step + 1);
     }
 
+    const onUpdatePlan2 = async (newPlan) => {
+        const updatedPlan = await updatePlan2(_id, newPlan);
+        setPlan(updatedPlan)
+        setStep(step + 1);
+    }
+
     return (
         <div>
             <div className="wizard-box">
@@ -34,7 +40,7 @@ export default function Wizard() {
                 (step === 2) && (<WizardStep2 plan={plan} onComplete={onUpdatePlan} />)
             }
             {
-                (step === 3) && (<WizardStep3 plan={plan} onComplete={onUpdatePlan} />)
+                (step === 3) && (<WizardStep3 plan={plan} onComplete={onUpdatePlan2} />)
             }
             {
                 (step === 4) && (<WizardSummary plan={plan} />)
