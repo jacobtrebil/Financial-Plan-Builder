@@ -14,7 +14,6 @@ export default function Wizard() {
 
     const onCreatePlan = async (newPlan) => {
         const createdPlan = await createPlan(newPlan);
-        console.log(createdPlan);
         setPlan(createdPlan)
         setStep(step + 1);
     }

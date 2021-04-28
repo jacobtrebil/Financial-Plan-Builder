@@ -14,6 +14,26 @@ export default function Step2({ plan, onComplete }) {
 
     const complete = () => onComplete(_plan);
 
+    /* function complete(){
+        if (lifeexpectancy.length === 0 || retirementage.length === 0) {
+            if (lifeexpectancy.length === 0) {
+                setErrors('*This field is required')
+            } else if (lifeexpectancy.length > 0) {
+                setErrors('')
+            }
+            if (retirementage.length === 0) {
+                setErrors2('*Please enter a valid number')
+            } else if (retirementage.length > 0) {
+                setErrors2('')
+            } 
+        }   else {
+            onComplete(_plan)
+        } 
+        onComplete(_plan)
+    } */
+
+    const [errors, setErrors] = useState('')
+    const [errors2, setErrors2] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [showForm2, setShowForm2] = useState(false) 
     const [showForm3, setShowForm3] = useState(false) 
@@ -53,6 +73,7 @@ export default function Step2({ plan, onComplete }) {
                     value={lifeexpectancy}
                     onChange={e=> setLifeexpectancy(e.target.value)}
                     /><br></br>
+                    <p className="errors">{errors}</p>
                 </div>
                 <div className="input-div">
                     <label className="input-label">How much do you expect to work throughout retirement?</label><br></br>
@@ -90,6 +111,7 @@ export default function Step2({ plan, onComplete }) {
                     onChange={e=> setRetirementage(e.target.value)}
                     >
                     </input><br></br>
+                    <p className="errors">{errors2}</p>
                 </div>
                 <div className="input-div">
                     <label className="input-label">What is your desired retirement income?</label><br></br>

@@ -18,10 +18,15 @@ export default function Step1({plan, onComplete}) {
     }
 
     function complete(){
-        onComplete(_plan)
+        if (fullname.length === 0) {
+            setErrors('*This field is required')
+        } else {
+            onComplete(_plan)          
+        }
     };
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+    const { register, handleSubmit, watch } = useForm()
+    const [errors, setErrors] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [spouse, setSpouse] = useState('No')
     const [fullname, setFullname] = useState('')
@@ -44,6 +49,7 @@ export default function Step1({plan, onComplete}) {
                     value={fullname}
                     onChange={e=> setFullname(e.target.value)}
                     /><br></br>
+                    <p className="errors">{errors}</p>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Would you like to include a spouse? </label><br></br>

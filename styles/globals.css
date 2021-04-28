@@ -889,9 +889,10 @@ h1 {
 
 .errors {
   color: red;
-  margin: 20px 0px 0px 0px;
-  padding: 20px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
   font-size: 14px;
+  font-weight: normal;
 }
 
 
