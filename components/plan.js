@@ -63,12 +63,10 @@ const FullPlan = () => {
       return (
     <div className="display-on-down-click">
         <h1 className="final-plan-h1">Progress</h1>
-        <div id="plan-section-1">
-            <hr className="goal-bar"></hr>
-            <hr className="savings-bar"></hr>
-            <p className="plan-p-center" id="savings-goal">$27K / $1M Savings Goal</p>
-        </div>
         <div id="plan-section-2">
+            <p className="plan-p-center" id="investment-goal">$250/300 Invested In Past 30 Days</p>
+            <hr className="investments-goal-bar"></hr>
+            <hr className="investments-actual-bar"></hr>
         </div>
         <div id="to-do-section">
             <p className="plan-p-left">To Do:</p>
@@ -78,6 +76,21 @@ const FullPlan = () => {
             <input type="checkbox"></input><br></br>
             <label className="to-do-checklist" >Set up investment LLC</label>
             <input type="checkbox"></input>
+        </div>
+        <div id="plan-section-1">
+            <h1 className="goal-plan-h1">Goal: Save $1,000,000 by age 60</h1>
+            <hr className="goal-bar"></hr>
+            <hr className="savings-bar"></hr>
+            <p className="plan-p-center" id="savings-goal">Current Savings: $27,000</p>
+        </div>
+        <hr className="final-plan-solid-hr"></hr>
+        <h1 className="final-plan-h1">Overview</h1>
+        <div>
+          <p className="plan-p-center">Retirement Income (After Savings - Based On Our Plan)</p>
+          <p className="plan-p-center">Pension: $34,000/Year</p>
+          <p className="plan-p-center">Social Security: $6,000/Year</p>
+          <p className="plan-p-center">Investments: $54,000/Year</p>
+          <p className="plan-p-center">Total: $94,000/Year</p>
         </div>
         <hr className="final-plan-solid-hr"></hr>
         <h1 className="final-plan-h1">Goals</h1>

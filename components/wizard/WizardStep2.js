@@ -12,12 +12,7 @@ export default function Step2({ plan, onComplete }) {
     }
 
     function complete(){
-        if (lifeexpectancy.length === 0 || retirementage.length === 0 || retirementincome.length === 0) {
-            if (lifeexpectancy.length === 0) {
-                setErrors('*This field is required')
-            } else if (lifeexpectancy.length > 0) {
-                setErrors('')
-            }
+        if (retirementage.length === 0 || retirementincome.length === 0) {
             if (retirementage.length === 0) {
                 setErrors2('*Please enter a valid number')
             } else if (retirementage.length > 0) {
@@ -41,7 +36,6 @@ export default function Step2({ plan, onComplete }) {
     const [showForm2, setShowForm2] = useState(false) 
     const [showForm3, setShowForm3] = useState(false) 
     const [showForm4, setShowForm4] = useState(false)
-    const [lifeexpectancy, setLifeexpectancy] = useState('')
     const [workamount, setWorkamount] = useState('No work')
     const [volunteer, setVolunteer] = useState('Yes')
     const [retirementage, setRetirementage] = useState('')
@@ -60,23 +54,37 @@ export default function Step2({ plan, onComplete }) {
     const [numberofkids, setNumberofkids] = useState('')
     const [business, setBusiness] = useState('No')
     
-    _plan = { lifeexpectancy, workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business};
+    _plan = { workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business};
 
     return (
         <WizardStepTemplate onNext={complete}>
         <WizardHeader2></WizardHeader2>
         <WizardHeadline2></WizardHeadline2>
             <div className="inputs-div-1">
-                <div className="input-div">
-                    <label className="input-label">How long do you expect to live?</label><br></br>
-                    <input
-                    name="lifeexpectancy"
+            <div className="input-div">
+                    <label className="input-label">At what age would you like to retire?</label><br></br>
+                    <input 
                     className="form-input"
-                    placeholder="78"
-                    value={lifeexpectancy}
-                    onChange={e=> setLifeexpectancy(e.target.value)}
-                    /><br></br>
-                    <p className="errors">{errors}</p>
+                    name="retirementage"
+                    type="number" 
+                    placeholder ="60" 
+                    value={retirementage}
+                    onChange={e=> setRetirementage(e.target.value)}
+                    >
+                    </input><br></br>
+                    <p className="errors">{errors2}</p>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">What is your desired retirement income?</label><br></br>
+                    <input 
+                    className="form-input"
+                    name="retirementincome"
+                    placeholder ="$100,000" 
+                    value={retirementincome}
+                    onChange={e=> setRetirementincome(e.target.value)}
+                    >
+                    </input><br></br>
+                    <p className="errors">{errors3}</p>
                 </div>
                 <div className="input-div">
                     <label className="input-label">How much do you expect to work throughout retirement?</label><br></br>
@@ -102,31 +110,6 @@ export default function Step2({ plan, onComplete }) {
                     <option>No</option>
                     <option>Yes</option>
                     </select><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">At what age would you like to retire?</label><br></br>
-                    <input 
-                    className="form-input"
-                    name="retirementage"
-                    type="number" 
-                    placeholder ="60" 
-                    value={retirementage}
-                    onChange={e=> setRetirementage(e.target.value)}
-                    >
-                    </input><br></br>
-                    <p className="errors">{errors2}</p>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">What is your desired retirement income?</label><br></br>
-                    <input 
-                    className="form-input"
-                    name="retirementincome"
-                    placeholder ="$100,000" 
-                    value={retirementincome}
-                    onChange={e=> setRetirementincome(e.target.value)}
-                    >
-                    </input><br></br>
-                    <p className="errors">{errors3}</p>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Would you like to give to charity throughout retirement?</label><br></br>

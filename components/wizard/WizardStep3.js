@@ -94,7 +94,7 @@ export default function Step3 ({ plan, onComplete }) {
         <WizardHeadline3></WizardHeadline3>
             <div className="inputs-div-1">
                 <div className="input-div">
-                    <label className="input-label">How much do you currently make per year?</label><br></br>
+                    <label className="input-label">What are your average earnings over the past 5 years?</label><br></br>
                     <input
                     className="form-input"
                     placeholder={'$50,000'}

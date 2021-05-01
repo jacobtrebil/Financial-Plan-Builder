@@ -4,7 +4,8 @@ export default function Summary({plan}) {
 
     return (
         <div>
-            { JSON.stringify(plan) }
+            <p className="ssamount">Social Security Amount:</p>
+            { plan.currentearnings }
         </div>
     )
 };

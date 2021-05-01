@@ -1,6 +1,14 @@
+import PlanModel from '../models/wizardschema';
+
+const { lifeexpectancy, workamount, volunteer, retirementage, retirementincome, charity, business, businessmoneyneeded, care, health, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, additionaldebt, additionaldebtamount} = plan;
+
+
+const lifeexpectancy = { lifeexpectancy };
+const retirementage = { retirementage };
+const retirementlength = lifeexpectancy - retirementage;
+
 // Could be determined as their estimated retirement income / their desired retirement income. Example: $60,000 estimated / $80,000
 // desired = 75% retirement readiness score, which will also be shown as a C. 
-
 
 /* Variables */
 
@@ -98,6 +106,7 @@ console.log(Math.ceil(estimatedRetirementIncome));
 console.log(Math.ceil(estimatedRetirementAge));
 console.log(Math.ceil(differenceBetweenDesiredAndActualIncome));
 console.log(retirementReadiness);
+console.log(retirementlength);
 
 /* console.log(Math.ceil(estimatedRetirementAgeWithAdvisor)); */
 /* console.log(retirementReadinessWithAdvisor); */

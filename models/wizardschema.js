@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 var PlanModel = new mongoose.Schema({
+    socialsecurityearnings: String, Number,
     fullname: String, 
     spouse: String,
     spousesfullname: String,
-    lifeexpectancy: Number, 
     workamount: String, 
     volunteer: String,
     retirementage: Number,
@@ -57,7 +57,7 @@ var PlanModel = new mongoose.Schema({
     studentloans: String,
     studentloanamount: String, Number,
     additionaldebt: String,
-    additionaldebtamount: String, Number
+    additionaldebtamount: String, Number,
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);
