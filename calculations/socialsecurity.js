@@ -1,10 +1,10 @@
-/* import React from 'react';
+import React from 'react';
 import dbConnect from '../util/wizarddbconnect';
-import { PlanModel } from '../models/wizardschema'; */
+import { PlanModel } from '../models/wizardschema';
 
 /* const PlanModel = { workamount, volunteer, retirementage, retirementincome, charity, business, businessmoneyneeded, care, health, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, additionaldebt, additionaldebtamount, currentearnings}; */
 
-/* function calculatesocialsecurity() { */
+export function calculatesocialsecurity() { 
 
     const averageincome = 40000;
     const allsocialsecurityearningschunkone = 896.40;
@@ -51,9 +51,33 @@ import { PlanModel } from '../models/wizardschema'; */
     console.log(agesixtytwoearnings);
     console.log(ageseventyearnings);
 
-    /* handler(); */
+    handler(); 
 
-/* } */
+    async function handler() {
+
+        await dbConnect();
+    
+        switch (method) {
+            case 'PUT':
+                try {
+                    console.log('working')
+                    const plan = await Plan.findOne({ _id: id }, { socialsecurityearnings, agesixtytwoearnings, ageseventyearnings })
+                    await Plan.updateOne({ socialsecurityearnings, agesixtytwoearnings, ageseventyearnings }) 
+                    const plan2 = await Plan.findById(id)
+                    res.status(200).json( plan2 )
+                    return;
+                } catch (error) {
+                    console.log(error)
+                    res.status(400).json()
+                    return;
+                }
+                default:
+                res.status(400).json()
+                break
+        }
+    }
+
+ } 
 
 
 
@@ -70,9 +94,9 @@ import { PlanModel } from '../models/wizardschema'; */
 
 
 
+/* 
 
-
-/* export async function handler() {
+export async function handler() {
 
     await dbConnect();
 
@@ -80,10 +104,10 @@ import { PlanModel } from '../models/wizardschema'; */
         case 'PUT':
             try {
                 console.log('working')
-                const plan = await Plan.findOne({ _id: id })
-                await Plan.updateOne({ socialsecurityearnings }) 
-                const plan3 = await Plan.findById(id)
-                res.status(200).json( plan3 )
+                const plan = await Plan.findOne({ _id: id }, { socialsecurityearnings, agesixtytwoearnings, ageseventyearnings })
+                await Plan.updateOne({ socialsecurityearnings, agesixtytwoearnings, ageseventyearnings }) 
+                const plan2 = await Plan.findById(id)
+                res.status(200).json( plan2 )
                 return;
             } catch (error) {
                 console.log(error)

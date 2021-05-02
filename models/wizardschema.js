@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
 var PlanModel = new mongoose.Schema({
-    socialsecurityearnings: String, Number,
+    socialsecurityearnings: Number,
+    agesixtytwoearnings: Number,
+    ageseventyearnings: Number,
     fullname: String, 
     spouse: String,
     spousesfullname: String,

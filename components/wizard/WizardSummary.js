@@ -7,9 +7,9 @@ export default function Summary({plan}) {
             <p className="ssamount">Social Security Amount at 67:</p>
             { plan.currentearnings }
             <p className="ssamount">Social Security Amount at 62:</p>
-            { plan.currentearnings }
+            { plan.currentsavings }
             <p className="ssamount">Social Security Amount at 70:</p>
-            { plan.socialsecurityearnings }
+            { plan.kids }
         </div>
     )
 };
