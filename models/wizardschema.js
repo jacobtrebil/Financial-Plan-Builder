@@ -36,6 +36,7 @@ var PlanModel = new mongoose.Schema({
     riskattitude: String,
     volatility: String, 
     changeportfolio: String,
+    portfoliotradeoff: String,
     investments: String,
     investmentsamount: String, Number,
     realestate: String,

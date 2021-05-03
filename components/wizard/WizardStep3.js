@@ -55,6 +55,7 @@ export default function Step3 ({ plan, onComplete }) {
     const [assetvalue, setAssetvalue] = useState('')
     const [changeportfolio, setChangeportfolio] = useState('I would immediately change to options that are more conservative')
     const [volatility, setVolatility] = useState('Disagree')
+    const [portfoliotradeoff, setPortfoliotradeoff] = useState('Portfolio A')
     const [increaseincome, setIncreaseincome] = useState('No')
     const [increaseincomeamount, setIncreaseincomeamount] = useState('')
     const [outofwork, setOutofwork] = useState('No')
@@ -88,7 +89,7 @@ export default function Step3 ({ plan, onComplete }) {
     const [additionaldebt, setAdditionaldebt] = useState('No')
     const [additionaldebtamount, setAdditionaldebtamount] = useState('')
 
-    _plan = { currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, riskattitude, volatility, changeportfolio, additionaldebt, additionaldebtamount };
+    _plan = { currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, riskattitude, volatility, changeportfolio, portfoliotradeoff, additionaldebt, additionaldebtamount };
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -392,6 +393,23 @@ export default function Step3 ({ plan, onComplete }) {
                     <option>I would wait at least 1 year before changing to options that are more conservative</option>
                     <option>I would immediately change to options that are more conservative</option>
                     </select><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">The table below presents a potential best-case result, probable result and potential worst-case result of five sample portfolios over a 1-year period with an initial $10,000 investment. Understanding the potential upsides and downsides of each portfolio, which portfolio would you prefer to hold? Investing involves a trade–off between risk and return. Which statement best describes your investment goals?</label><br></br>
+                    <select
+                    name="portfoliotradeoff"
+                    className="form-select"
+                    value={portfoliotradeoff}
+                    onChange={e=> {setPortfoliotradeoff(e.target.value)}}
+                    >
+                    <option>Portfolio A</option>
+                    <option>Portfolio B</option>
+                    <option>Portfolio C</option>
+                    <option>Portfolio D</option>
+                    <option>Portfolio E</option>
+                    </select>
+                    
+                    <br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Are you eligible for social security? (If unsure, choose yes)</label><br></br>
