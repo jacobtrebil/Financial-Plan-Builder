@@ -43,7 +43,6 @@ export default function Step3 ({ plan, onComplete }) {
     const [showForm4, setShowForm4] = useState(false)
     const [showForm5, setShowForm5] = useState(false)
     const [showForm6, setShowForm6] = useState(false)
-    const [showForm7, setShowForm7] = useState(false)
     const [showForm8, setShowForm8] = useState(false)
     const [showForm9, setShowForm9] = useState(false)
     const [showForm10, setShowForm10] = useState(false)
@@ -52,6 +51,7 @@ export default function Step3 ({ plan, onComplete }) {
     const [showForm13, setShowForm13] = useState(false)
     const [currentearnings, setCurrentearnings] = useState('')
     const [currentsavings, setCurrentsavings] = useState('')
+    const [riskattitude, setRiskattitude] = useState('')
     const [assetvalue, setAssetvalue] = useState('')
     const [increaseincome, setIncreaseincome] = useState('No')
     const [increaseincomeamount, setIncreaseincomeamount] = useState('')
@@ -86,7 +86,7 @@ export default function Step3 ({ plan, onComplete }) {
     const [additionaldebt, setAdditionaldebt] = useState('No')
     const [additionaldebtamount, setAdditionaldebtamount] = useState('')
 
-    _plan = { currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, additionaldebt, additionaldebtamount };
+    _plan = { currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, riskattitude, additionaldebt, additionaldebtamount };
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -351,32 +351,31 @@ export default function Step3 ({ plan, onComplete }) {
                 </div>
                 )}
                 <div className="input-div">
+                    <label className="input-label">Which of these best reflects your attitude toward inflation and risk?</label><br></br>
+                    <select
+                    name="riskattitude"
+                    className="form-select"
+                    value={riskattitude}
+                    onChange={e=> {setRiskattitude(e.target.value)}}
+                    >
+                    <option>My main goal is to avoid loss, even though I may only keep pace with inflation.</option>
+                    <option>My main goal is to earn slightly more than inflation, while taking on a low level of risk.</option>
+                    <option>My main goal is to increase my portfolio’s value. Therefore, I am willing to accept short-term losses, but I am not comfortable with extreme performance shifts that may be experienced in the most aggressive investment options.</option>
+                    <option>My main goal is to maximize my portfolio value, and I am willing to take on more extreme levels of risk and performance shifts in my portfolio to do so.</option>
+                    </select><br></br>
+                </div>
+                <div className="input-div">
                     <label className="input-label">Are you eligible for social security? (If unsure, choose yes)</label><br></br>
                     <select
                     name="socialsecurity"
                     className="form-select"
                     value={socialsecurity}
-                    onChange={e=> {setSocialsecurity(e.target.value); setShowForm7(!showForm7)}}
+                    onChange={e=> setSocialsecurity(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
                     </select><br></br>
                 </div>
-                {
-                    showForm7 && (
-                <div className="input-div">
-                    <label className="input-label">Would you like to delay social security to earn more?</label><br></br>
-                    <select
-                    name="socialsecurityamount"
-                    className="form-select"
-                    value={socialsecurityamount}
-                    onChange={e=> setSocialsecurityamount(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                )}
                 <div className="input-div">
                     <label className="input-label">Do you have a mortgage?</label><br></br>
                     <select
