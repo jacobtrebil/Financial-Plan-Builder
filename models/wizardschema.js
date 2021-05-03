@@ -26,12 +26,6 @@ var PlanModel = new mongoose.Schema({
     college: String, 
     numberofkids: Number,
     currentearnings: Number,
-    currentmonthlyearnings: { 
-        type: Number, 
-        default: function() {
-            currentearnings / 12;
-        }
-    }, 
     currentsavings: Number,
     assetvalue: Number,
     increaseincome: String,
@@ -40,6 +34,8 @@ var PlanModel = new mongoose.Schema({
     lifeinsurance: String,
     taxplan: String,
     riskattitude: String,
+    volatility: String, 
+    changeportfolio: String,
     investments: String,
     investmentsamount: String, Number,
     realestate: String,
@@ -70,3 +66,10 @@ var PlanModel = new mongoose.Schema({
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);
+
+/* currentmonthlyearnings: { 
+    type: Number, 
+    default: function() {
+        currentearnings / 12;
+    }
+}, */

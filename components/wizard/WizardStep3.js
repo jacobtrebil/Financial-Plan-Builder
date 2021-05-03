@@ -51,8 +51,10 @@ export default function Step3 ({ plan, onComplete }) {
     const [showForm13, setShowForm13] = useState(false)
     const [currentearnings, setCurrentearnings] = useState('')
     const [currentsavings, setCurrentsavings] = useState('')
-    const [riskattitude, setRiskattitude] = useState('')
+    const [riskattitude, setRiskattitude] = useState('My main goal is to avoid loss, even though I may only keep pace with inflation.')
     const [assetvalue, setAssetvalue] = useState('')
+    const [changeportfolio, setChangeportfolio] = useState('I would immediately change to options that are more conservative')
+    const [volatility, setVolatility] = useState('Disagree')
     const [increaseincome, setIncreaseincome] = useState('No')
     const [increaseincomeamount, setIncreaseincomeamount] = useState('')
     const [outofwork, setOutofwork] = useState('No')
@@ -86,7 +88,7 @@ export default function Step3 ({ plan, onComplete }) {
     const [additionaldebt, setAdditionaldebt] = useState('No')
     const [additionaldebtamount, setAdditionaldebtamount] = useState('')
 
-    _plan = { currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, riskattitude, additionaldebt, additionaldebtamount };
+    _plan = { currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, riskattitude, volatility, changeportfolio, additionaldebt, additionaldebtamount };
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -362,6 +364,33 @@ export default function Step3 ({ plan, onComplete }) {
                     <option>My main goal is to earn slightly more than inflation, while taking on a low level of risk.</option>
                     <option>My main goal is to increase my portfolio’s value. Therefore, I am willing to accept short-term losses, but I am not comfortable with extreme performance shifts that may be experienced in the most aggressive investment options.</option>
                     <option>My main goal is to maximize my portfolio value, and I am willing to take on more extreme levels of risk and performance shifts in my portfolio to do so.</option>
+                    </select><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">I am comfortable with investments that may frequently experience large declines in value if there is a potential for higher returns. Does this describe you?</label><br></br>
+                    <select
+                    name="volatility"
+                    className="form-select"
+                    value={volatility}
+                    onChange={e=> {setVolatility(e.target.value)}}
+                    >
+                    <option>Disagree</option>
+                    <option>Strongly disagree</option>
+                    <option>Agree</option>
+                    </select><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">Historically, markets have experience downturns, both short-term and prolonged, followed by market recoveries. Suppose you owned a well-diversified portfolio that fell by 20% over a short period, consistent with the overall market. Example: $100,000 initial investment is now worth $80,000. Assuming you still have 10 years until you begin withdrawals, how would you react?</label><br></br>
+                    <select
+                    name="changeportfolio"
+                    className="form-select"
+                    value={changeportfolio}
+                    onChange={e=> {setChangeportfolio(e.target.value)}}
+                    >
+                    <option>I would change to options that are more aggressive</option>
+                    <option>I would not change my portfolio</option>
+                    <option>I would wait at least 1 year before changing to options that are more conservative</option>
+                    <option>I would immediately change to options that are more conservative</option>
                     </select><br></br>
                 </div>
                 <div className="input-div">
