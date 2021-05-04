@@ -30,9 +30,11 @@ export default function Step1({plan, onComplete}) {
     const [showForm, setShowForm] = useState(false)  
     const [spouse, setSpouse] = useState('No')
     const [fullname, setFullname] = useState('')
+    const [dateofbirth, setDateofbirth] = useState('')
+    const [maritalstatus, setMaritalstatus] = useState('Married')
     const [spousesfullname, setSpousesfullname] = useState('')
 
-    _plan = { spouse, fullname, spousesfullname };
+    _plan = { spouse, dateofbirth, maritalstatus, fullname, spousesfullname };
 
     
     return (
@@ -50,6 +52,30 @@ export default function Step1({plan, onComplete}) {
                     onChange={e=> setFullname(e.target.value)}
                     /><br></br>
                     <p className="errors">{errors}</p>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">What's your date of birth?</label><br></br>
+                    <input
+                    name="dateofbirth"
+                    id="dateofbirth"
+                    className="form-input"
+                    value={dateofbirth}
+                    onChange={e=> setDateofbirth(e.target.value)}
+                    type="date"
+                    /><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">What's your marital status? </label><br></br>
+                    <select
+                    name="maritalstatus"
+                    className="form-select"
+                    value={maritalstatus}
+                    onChange={e=> { setMaritalstatus(e.target.value)}}>
+                    <option>Married</option>
+                    <option>Divorced</option>
+                    <option>Widowed</option>
+                    <option>Single</option>
+                    </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Would you like to include a spouse? </label><br></br>

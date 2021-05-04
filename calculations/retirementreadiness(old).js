@@ -94,10 +94,6 @@ if (differenceBetweenDesiredAndActualIncome >= 40000) {
         retirementReadinessWithAdvisor = 'A';
     }
 
-/* Social Security Calculations */
-
-/* Social Security At 60 */
-
 
 
 /* Console Logs */

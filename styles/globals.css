@@ -1346,3 +1346,7 @@ h1 {
   text-align: center;
   margin: 100px 0px 0px 0px;
 }
+
+#dateofbirth:hover {
+  cursor: pointer;
+}

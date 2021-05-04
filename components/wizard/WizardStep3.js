@@ -120,7 +120,7 @@ export default function Step3 ({ plan, onComplete }) {
                     <p className="errors">{errors2}</p>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">What is the total value of the assets that you own?</label><br></br>
+                    <label className="input-label">What is the total value of your savings and assets that you own?</label><br></br>
                     <input
                     className="form-input"
                     placeholder={'$100,000'}
