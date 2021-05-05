@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function Summary({plan}) {
+
+    
 
     return (
         <div>
@@ -9,7 +11,7 @@ export default function Summary({plan}) {
             <p className="ssamount">Social Security Amount at 62:</p>
             { plan.currentsavings }
             <p className="ssamount">Social Security Amount at 70:</p>
-            { plan.currenntmonthlyearnings }
+            { plan.currentmonthlyearnings }
         </div>
     )
 };

@@ -16,6 +16,8 @@ const monthlysocialsecurityincome = 1000;
 const monthlypensionincome = 1500;
 const monthlyretirementworkincome = 1000; 
 
+function retirementreadinessfunction(currentearnings, currentsavings, assetvalue, retirementage, retirementincome, age, ageofdeath, monthlysocialsecurityincome, monthlypensionincome, monthlyretirementworkincome) {
+
 const monthlyretirementincome = retirementincome / 12;
 
 // Age of death that Advisors use is typically 90 for men and 93 for women
@@ -53,12 +55,17 @@ if (readinessratio < 0.5) {
     retirementreadiness = 'A';
 }
 
+return retirementreadiness;
+
+}
+
+module.exports = retirementreadinessfunction;
 
 // Console Logs
 
-console.log(totalsavings);
+/* console.log(totalsavings);
 console.log(estimatedmonthlyretirementincome);
 console.log(monthlyretirementincome);
 console.log(readinessratio);
-console.log(retirementreadiness);
+console.log(retirementreadiness); */
 

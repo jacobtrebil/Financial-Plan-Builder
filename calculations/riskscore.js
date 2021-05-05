@@ -9,6 +9,8 @@ let changeportfolioscore = 0;
 let riskattitudescore = 0;
 let volatilityscore = 0;
 
+function riskscore(portfoliotradeoff, changeportfolio, riskattitude, volatility) {
+
 if (portfoliotradeoff === 'Portfolio A') {
     portfoliotradeoffscore = 16;
 } else if (portfoliotradeoff === 'Portfolio B') {
@@ -52,8 +54,6 @@ if (volatility === 'Disagree') {
 }
 
 
-
-
 //Top total score possible is 66. 
 
 
@@ -76,6 +76,12 @@ if (totalscore < 10) {
     rateofreturn = 1.08;
 }
 
-console.log(totalscore);
+return rateofreturn;
+
+}
+
+module.exports = riskscore;
+
+/* console.log(totalscore);
 console.log(riskscore);
-console.log(rateofreturn)
+console.log(rateofreturn) */

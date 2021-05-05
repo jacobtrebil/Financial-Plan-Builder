@@ -1,12 +1,8 @@
-import React from 'react';
-import dbConnect from '../util/wizarddbconnect';
-import { PlanModel } from '../models/wizardschema';
 
-/* const PlanModel = { workamount, volunteer, retirementage, retirementincome, charity, business, businessmoneyneeded, care, health, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, additionaldebt, additionaldebtamount, currentearnings}; */
 
-export function calculatesocialsecurity() { 
+function calculatesocialsecurity(averageincome) { 
 
-    const averageincome = 40000;
+    /* const averageincome = 40000; */
     const allsocialsecurityearningschunkone = 896.40;
     const allsocialsecurityearningschunktwo = 2498.32;
     let socialsecurityearnings = 0;
@@ -47,79 +43,12 @@ export function calculatesocialsecurity() {
         ageseventyearnings;
     }
 
-    console.log(socialsecurityearnings);
-    console.log(agesixtytwoearnings);
-    console.log(ageseventyearnings);
-
-    handler(); 
-
-    async function handler() {
-
-        await dbConnect();
-    
-        switch (method) {
-            case 'PUT':
-                try {
-                    console.log('working')
-                    const plan = await Plan.findOne({ _id: id }, { socialsecurityearnings, agesixtytwoearnings, ageseventyearnings })
-                    await Plan.updateOne({ socialsecurityearnings, agesixtytwoearnings, ageseventyearnings }) 
-                    const plan2 = await Plan.findById(id)
-                    res.status(200).json( plan2 )
-                    return;
-                } catch (error) {
-                    console.log(error)
-                    res.status(400).json()
-                    return;
-                }
-                default:
-                res.status(400).json()
-                break
-        }
-    }
+    return socialsecurityearnings;
 
  } 
 
+module.exports = calculatesocialsecurity;
 
 
-
-
-// Maximum that people can earn is $3,895 for people who file at age 70
-// $3,148 for people that file at age 67
-// $2,324 for people that file at age 62
-
-//Maximums are included and their benefits at different ages are included as well.
-
-
-
-
-
-
-/* 
-
-export async function handler() {
-
-    await dbConnect();
-
-    switch (method) {
-        case 'PUT':
-            try {
-                console.log('working')
-                const plan = await Plan.findOne({ _id: id }, { socialsecurityearnings, agesixtytwoearnings, ageseventyearnings })
-                await Plan.updateOne({ socialsecurityearnings, agesixtytwoearnings, ageseventyearnings }) 
-                const plan2 = await Plan.findById(id)
-                res.status(200).json( plan2 )
-                return;
-            } catch (error) {
-                console.log(error)
-                res.status(400).json()
-                return;
-            }
-            default:
-            res.status(400).json()
-            break
-    }
-} */
-
-//
 
 
