@@ -1,10 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { wizardcalcalculations } from '../../pages/api/wizardcalculations';
 
 export default function Summary({plan}) {
 
-    
+    const [calculations, setCalculations] = useState();
 
-    return (
+    useEffect(() => {
+        wizardcalcalculations()
+    }, []);
+
+    if (!calculations) return (
+        <div>
+            <p>Loading...</p>
+        </div>
+    );
+
+    else return ( 
         <div>
             <p className="ssamount">Social Security Amount at 67:</p>
             { plan.currentearnings }

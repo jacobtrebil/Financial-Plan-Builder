@@ -1,6 +1,6 @@
 
 
-function calculatesocialsecurity(averageincome) { 
+export function calculatesocialsecurity(averageincome) { 
 
     /* const averageincome = 40000; */
     const allsocialsecurityearningschunkone = 896.40;
