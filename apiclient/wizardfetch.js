@@ -33,3 +33,15 @@ export const createPlan = async (plan) => {
     })
     return await response.json();
   }
+
+  export const planCalculations = async (id, plan) => {
+    const response = await fetch(`/api/wizardcalculations/${id}`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(plan)
+    })
+    return await response.json();
+  }

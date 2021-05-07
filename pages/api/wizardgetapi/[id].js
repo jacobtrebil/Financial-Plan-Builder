@@ -1,4 +1,3 @@
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import Plan from '../../../models/wizardschema';
 import dbConnect from '../../../util/wizarddbconnect';
 

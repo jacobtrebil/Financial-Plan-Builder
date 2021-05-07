@@ -70,10 +70,3 @@ var PlanModel = new mongoose.Schema({
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);
-
-/* currentmonthlyearnings: { 
-    type: Number, 
-    default: function() {
-        currentearnings / 12;
-    }
-}, */

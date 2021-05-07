@@ -1,12 +1,12 @@
 
 
-export function calculatesocialsecurity(averageincome) { 
+export function calculatesocialsecurity(currentearnings) { 
 
     /* const averageincome = 40000; */
     const allsocialsecurityearningschunkone = 896.40;
     const allsocialsecurityearningschunktwo = 2498.32;
     let socialsecurityearnings = 0;
-    const averagemonthlyincome = averageincome / 12;
+    const averagemonthlyincome = currentearnings / 12;
 
 // This works properly
 

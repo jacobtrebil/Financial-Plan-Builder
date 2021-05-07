@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { wizardcalcalculations } from '../../pages/api/wizardcalculations';
+import { planCalculations } from '../../apiclient/wizardfetch';
 
 export default function Summary({plan}) {
+
+    const getWizardCalculations = async () => {
+        const wizardCalculationsFunction = await planCalculations();
+        setCalculations(wizardCalculationsFunction);
+    }
 
     const [calculations, setCalculations] = useState();
 
     useEffect(() => {
-        wizardcalcalculations()
+        getWizardCalculations();
     }, []);
 
     if (!calculations) return (
@@ -15,7 +20,7 @@ export default function Summary({plan}) {
         </div>
     );
 
-    else return ( 
+    return ( 
         <div>
             <p className="ssamount">Social Security Amount at 67:</p>
             { plan.currentearnings }
