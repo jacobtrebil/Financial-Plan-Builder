@@ -50,6 +50,7 @@ export default function Step3 ({ plan, onComplete }) {
     const [showForm12, setShowForm12] = useState(false)
     const [showForm13, setShowForm13] = useState(false)
     const [currentearnings, setCurrentearnings] = useState('')
+    const [lifeinsurancedocument, setLifeinsurancedocument] = useState()
     const [currentsavings, setCurrentsavings] = useState('')
     const [riskattitude, setRiskattitude] = useState('My main goal is to avoid loss, even though I may only keep pace with inflation.')
     const [assetvalue, setAssetvalue] = useState('')
@@ -73,7 +74,6 @@ export default function Step3 ({ plan, onComplete }) {
     const [will, setWill] = useState('No')
     const [medicare, setMedicare] = useState('No')
     const [pension, setPension] = useState('No')
-    const [pensionamount, setPensionamount] = useState('')
     const [socialsecurity, setSocialsecurity] = useState('No')
     const [socialsecurityamount, setSocialsecurityamount] = useState('No')
     const [mortgage, setMortgage] = useState('No')
@@ -89,7 +89,7 @@ export default function Step3 ({ plan, onComplete }) {
     const [additionaldebt, setAdditionaldebt] = useState('No')
     const [additionaldebtamount, setAdditionaldebtamount] = useState('')
 
-    _plan = { currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, riskattitude, volatility, changeportfolio, portfoliotradeoff, additionaldebt, additionaldebtamount };
+    _plan = { currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, riskattitude, volatility, changeportfolio, portfoliotradeoff, additionaldebt, additionaldebtamount, lifeinsurancedocument };
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -179,6 +179,17 @@ export default function Step3 ({ plan, onComplete }) {
                     <option>No</option>
                     <option>Yes</option>
                     </select><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">Upload your life insurance documents below...</label><br></br>
+                    <input
+                    className="form-input"
+                    name="lifeinsurancedocument"
+                    type="file"
+                    value={lifeinsurancedocument}
+                    onChange={e=> setLifeinsurancedocument(e.target.value)}
+                    >
+                    </input><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Do you have a tax plan?</label><br></br>
@@ -340,19 +351,6 @@ export default function Step3 ({ plan, onComplete }) {
                     <option>Yes</option>
                     </select><br></br>
                 </div>
-                {
-                    showForm6 && (
-                <div className="input-div">
-                    <label className="input-label">How much will you earn per year from your pension?</label><br></br>
-                    <input
-                    name="pensionamount"
-                    className="form-input"
-                    placeholder={'$40,000'}
-                    value={pensionamount}
-                    onChange={e=> setPensionamount(e.target.value)}
-                    />
-                </div>
-                )}
                 <div className="input-div">
                     <label className="input-label">Which of these best reflects your attitude toward inflation and risk?</label><br></br>
                     <select

@@ -4,7 +4,7 @@ import { planCalculations } from '../../apiclient/wizardfetch';
 export default function Summary({plan}) {
 
     const getWizardCalculations = async () => {
-        const wizardCalculationsFunction = await planCalculations();
+        const wizardCalculationsFunction = await planCalculations(plan._id);
         setCalculations(wizardCalculationsFunction);
     }
 
@@ -27,7 +27,7 @@ export default function Summary({plan}) {
             <p className="ssamount">Social Security Amount at 62:</p>
             { plan.currentsavings }
             <p className="ssamount">Social Security Amount at 70:</p>
-            { plan.currentmonthlyearnings }
+            { plan.totalfuturespending }
         </div>
     )
 };

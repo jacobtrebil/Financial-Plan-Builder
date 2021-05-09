@@ -36,7 +36,7 @@ export const createPlan = async (plan) => {
 
   export const planCalculations = async (id, plan) => {
     const response = await fetch(`/api/wizardcalculations/${id}`, {
-      method: 'GET',
+      method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -45,3 +45,21 @@ export const createPlan = async (plan) => {
     })
     return await response.json();
   }
+
+
+
+  /* Commonize the code using somethinng like this: 
+  const sendRequest = async (url, method, body) => fetch(url, {
+  method,
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body ? body: JSON.stringify(body): null
+})
+
+export const updatePlan2 = async (id, plan) => await sendRequest(`/api/wizardapi2/${id}`, 'PUT', plan)
+
+export const planCalculations = async (id, plan) => await sendRequest(`/api/wizardcalculations/${id}`, 'POST', plan)
+
+..etc */

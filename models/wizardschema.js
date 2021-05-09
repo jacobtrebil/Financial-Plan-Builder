@@ -52,7 +52,6 @@ var PlanModel = new mongoose.Schema({
     will: String,
     medicare: String,
     pension: String,
-    pensionamount: String, Number,
     socialsecurity: String,
     socialsecurityamount: String,
     mortgage: String,
@@ -67,6 +66,7 @@ var PlanModel = new mongoose.Schema({
     studentloanamount: String, Number,
     additionaldebt: String,
     additionaldebtamount: String, Number,
+    lifeinsurancedocument: Buffer, 
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);

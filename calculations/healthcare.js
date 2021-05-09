@@ -5,11 +5,17 @@
 // Could add a question of if they're at high risk of health care expense being high 
 // and include 3 seperate starting amounts based on their answer to that question
 
-function healthcare(healthcareinitialcost) {
+// $300k is $4,500 a month, $265k is $4,000 a month, $400k is $6,000 a year,$535k is $8,000 a year
+
+// Starting amount 1 could be $4k, 2 could be $4.5k, and 3 could be $8k, depending on if they're healthy, average, or smokers.
+
+// It'd probably be better to just assume like $4,500 a month
+
+function healthcare() { 
 
 const lengthofretirement = 30;
 const healthcareinflation = 1.05;
-/* const healthcareinitialcost = 3000; */
+const healthcareinitialcost = 4500;
 let totalhealthcarecosts = 0;
 
 const yearonecost = healthcareinitialcost;
@@ -122,7 +128,9 @@ if (lengthofretirement === 1) {
 
 return totalhealthcarecosts;
 
-}
+/* console.log(totalhealthcarecosts); */
+
+} 
 
 module.exports = healthcare;
 
