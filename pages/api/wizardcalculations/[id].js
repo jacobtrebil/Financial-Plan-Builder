@@ -9,15 +9,15 @@ export default async function handler(req,res) {
     await dbConnect();
 
     switch (method) {
-        case 'PUT':
+        case 'POST':
             try {
                 const plan = await Plan.findOne({ _id: id });
-                const { totalfuturespending } = req.body;
                 futurespending();
+                const { totalfuturespending } = req.body;
+                console.log(totalfuturespending);
                 await Plan.updateOne({ _id: id}, { totalfuturespending });
                 const plan2 = await Plan.findById(id);
                 res.status(200).json( plan2 );
-                console.log('Hello!');
                 return;
             } catch (error) {
                 console.log(error)

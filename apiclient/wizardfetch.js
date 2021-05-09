@@ -36,7 +36,7 @@ export const createPlan = async (plan) => {
 
   export const planCalculations = async (id, plan) => {
     const response = await fetch(`/api/wizardcalculations/${id}`, {
-      method: 'PUT',
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
