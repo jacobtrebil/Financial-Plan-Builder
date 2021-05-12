@@ -48,7 +48,7 @@ export const createPlan = async (plan) => {
 
 
 
-  /* Commonize the code using somethinng like this: 
+  /* Consolidate the code using something like this: 
   const sendRequest = async (url, method, body) => fetch(url, {
   method,
   headers: {

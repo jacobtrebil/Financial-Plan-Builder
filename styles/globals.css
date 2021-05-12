@@ -21,14 +21,6 @@ a {
   box-sizing: border-box;
 }
 
-p {
-  text-align: left;
-  margin: 0px 0px 0px 40px;
-  font-size: 16px;
-  color:black;
-  font-weight: bold;
-}
-
 h1 {
   text-align: left;
   font-size: 28px;
@@ -698,6 +690,8 @@ h1 {
 
 .footer-nav-item {
   color: rgb(156, 156, 156);
+  font-size: 16px;
+  margin: 0px 20px 0px 40px;
 }
 
 .footer-nav-item:hover {
@@ -1202,7 +1196,7 @@ h1 {
 .wizard-footer {
   background-color: white;
   padding: 40px 0px 40px 0px;
-  margin: 18% 0px 0px 0px;
+  margin: 75px 0px 0px 0px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   width: 100%;
 }
@@ -1344,9 +1338,62 @@ h1 {
   font-weight: normal;
   font-size: 16px;
   text-align: center;
-  margin: 100px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
 }
 
 #dateofbirth:hover {
   cursor: pointer;
+}
+
+.summaryoptionssection {
+  display: block;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.summaryoption {
+  display: inline-block;
+  margin: 40px 50px 50px 50px;
+}
+
+.loading {
+  margin: 25% auto 20% auto;
+  text-align: center;
+}
+
+.recommendations-h2 {
+  margin: 50px 0px 40px 0px;
+}
+
+.financialhealthscore {
+  margin: 0px auto 0px auto;
+  text-align: center;
+  font-size: 78px;
+  color: red;
+}
+
+.summary {
+  background-color: white;
+  margin: 5% 10% 5% 10%;
+  padding: 2%;
+  border-radius: 32px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.scorecard-button {
+  margin: 40px auto 40px auto;
+  text-align: center;
+  background-color:rgb(4, 187, 172);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 12px 26px;
+  font-size: 16px;
+  font-weight: normal;
+  display: block;
+}
+
+.scorecard-button:hover {
+  cursor: pointer;
+  opacity: 70%;
 }

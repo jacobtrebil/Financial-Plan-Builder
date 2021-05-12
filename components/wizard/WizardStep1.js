@@ -18,7 +18,7 @@ export default function Step1({plan, onComplete}) {
     }
 
     function complete(){
-        if (fullname.length === 0) {
+        if (firstname.length === 0) {
             setErrors('*This field is required')
         } else {
             onComplete(_plan)          
@@ -29,12 +29,12 @@ export default function Step1({plan, onComplete}) {
     const [errors, setErrors] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [spouse, setSpouse] = useState('No')
-    const [fullname, setFullname] = useState('')
+    const [firstname, setFirstname] = useState('')
     const [dateofbirth, setDateofbirth] = useState('')
     const [maritalstatus, setMaritalstatus] = useState('Married')
     const [spousesfullname, setSpousesfullname] = useState('')
 
-    _plan = { spouse, dateofbirth, maritalstatus, fullname, spousesfullname };
+    _plan = { spouse, dateofbirth, maritalstatus, firstname, spousesfullname };
 
     
     return (
@@ -44,12 +44,12 @@ export default function Step1({plan, onComplete}) {
         <WizardHeadline></WizardHeadline>
             <div className="inputs-div-1">
                 <div className="input-div">
-                    <label className="input-label">Name</label><br></br>
+                    <label className="input-label">First Name</label><br></br>
                     <input
-                    name="fullname"
+                    name="firstname"
                     className="form-input"
-                    value={fullname}
-                    onChange={e=> setFullname(e.target.value)}
+                    value={firstname}
+                    onChange={e=> setFirstname(e.target.value)}
                     /><br></br>
                     <p className="errors">{errors}</p>
                 </div>
@@ -91,7 +91,7 @@ export default function Step1({plan, onComplete}) {
                 {
                 showForm && (
                 <div className="input-div">
-                    <label className="input-label">Spouses Name</label><br></br>
+                    <label className="input-label">Spouses First Name</label><br></br>
                     <input
                     name="spousesfullname"
                     className="form-input"

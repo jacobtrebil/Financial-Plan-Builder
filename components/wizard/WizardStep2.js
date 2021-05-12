@@ -35,9 +35,8 @@ export default function Step2({ plan, onComplete }) {
     const [showForm, setShowForm] = useState(false)  
     const [showForm2, setShowForm2] = useState(false) 
     const [showForm3, setShowForm3] = useState(false) 
-    const [showForm4, setShowForm4] = useState(false)
+    const [showForm4, setShowForm4] = useState(false) 
     const [workamount, setWorkamount] = useState('No work')
-    const [volunteer, setVolunteer] = useState('Yes')
     const [retirementage, setRetirementage] = useState('')
     const [retirementincome, setRetirementincome] = useState('')
     const [businessmoneyneeded, setBusinessmoneyneeded] = useState('')
@@ -54,7 +53,7 @@ export default function Step2({ plan, onComplete }) {
     const [numberofkids, setNumberofkids] = useState('')
     const [business, setBusiness] = useState('No')
     
-    _plan = { workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business};
+    _plan = { workamount, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business};
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -97,18 +96,6 @@ export default function Step2({ plan, onComplete }) {
                     <option>No work</option>
                     <option>Part-time</option>
                     <option>Full-time</option>
-                    </select><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">Would you like to do volunteer work throughout retirement?</label><br></br>
-                    <select
-                    name="volunteer"
-                    className="form-select"
-                    value={volunteer}
-                    onChange={e=> setVolunteer(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
                     </select><br></br>
                 </div>
                 <div className="input-div">
