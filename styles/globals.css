@@ -35,6 +35,10 @@ h1 {
   height: 100%;
 }
 
+p {
+  font-size: 16px;
+}
+
 
 
 
@@ -58,7 +62,7 @@ h1 {
   background-color: white;
   border-radius: 8px;
   width: 80%;
-  margin: 50px auto 200px auto;
+  margin: 170px auto 220px auto;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
   padding: 0px 0px 5% 0px;
 }
@@ -323,7 +327,7 @@ h1 {
 
 #settings-content {
   background-color: white;
-  padding: 20px 0px 20px 0px;
+  padding: 50px 0px 20px 0px;
   width: 80%;
   margin: 40px auto 80px auto;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
@@ -1312,7 +1316,6 @@ h1 {
 }
 
 
-
 /* Loader Page */
 
 .loader {
@@ -1396,4 +1399,98 @@ h1 {
 .scorecard-button:hover {
   cursor: pointer;
   opacity: 70%;
+}
+
+
+/* Table Styles */
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  width: 50%;
+  border: solid 1px #E2E1E1;
+  padding: 10px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.threecolumnrow {
+  width: 33.333%;
+  border: solid 1px #E2E1E1;
+  display: inline-block;
+  text-align: center;
+}
+
+tr {
+  display: block;  
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-size: 18px;
+  width: 100%;
+  padding: 0px;
+}
+
+.table-border {
+  border: solid 1px #E2E1E1;
+  padding: 0px 0px 0px 0px;
+  border-collapse: collapse;
+  width: 95%;
+}
+
+.sstabledescription {
+  text-align: left;
+  margin: 10px 0px 15px 0px;
+  font-size: 14px;
+}
+
+.ssquestion {
+  text-align: left;
+  font-weight: bold;
+}
+
+.decisionssocialsecuritysection {
+  display: inline-block;
+  width: 33%;
+  margin: 0px 40px 0px 40px;
+  vertical-align: top;
+}
+
+.decisionssavingssection {
+  display: inline-block;
+  width: 33%;
+  margin: 0px 40px 0px 40px;
+  vertical-align: top;
+}
+
+.rateofreturnsection {
+  display: inline-block;
+  width: 33%;
+  margin: 40px 40px 0px 40px;
+  vertical-align: top;
+}
+
+.reduceexpensessection {
+  display: inline-block;
+  width: 33%;
+  margin: 40px 40px 0px 40px;
+  vertical-align: top;
+}
+
+.table-headers {
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
+
+.projections-p {
+  margin: 0px 0px 20px 0px;
+}
+
+.projections-h2 {
+  margin: 40px 0px 40px 0px;
 }

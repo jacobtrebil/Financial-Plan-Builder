@@ -69,6 +69,7 @@ var PlanModel = new mongoose.Schema({
     additionaldebt: String,
     additionaldebtamount: String, Number,
     lifeinsurancedocument: Buffer, 
+    totalfuturespending: Number, String,
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);

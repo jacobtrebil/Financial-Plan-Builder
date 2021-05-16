@@ -20,10 +20,15 @@ export default function Step1({plan, onComplete}) {
     function complete(){
         if (firstname.length === 0) {
             setErrors('*This field is required')
+            scrollOnError();
         } else {
             onComplete(_plan)          
         }
     };
+
+    function scrollOnError() {
+        window.scrollTo(0, 0);
+    }
 
     const { register, handleSubmit, watch } = useForm()
     const [errors, setErrors] = useState('')

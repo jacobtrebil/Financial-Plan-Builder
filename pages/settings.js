@@ -31,7 +31,6 @@ function Settings() {
     return (
       <div id="settings-container">
        <div className="settings-section">
-           <h1 className="settings-h1">Settings</h1>
            <NavComponent />
            <div id="settings-content">
              <nav id="settings-nav">

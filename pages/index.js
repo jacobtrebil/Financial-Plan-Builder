@@ -22,7 +22,6 @@ export function App() {
     <div>
      <div className="app">
         <div className="plans">
-        <h1 className="h1">Jacob's Plans</h1>
            <div id="plans-section">
               <p className="plans-subtitle">Plans</p>
               <Link href="/start-plan2"><button className="plans-button">+ Add Plan</button></Link>

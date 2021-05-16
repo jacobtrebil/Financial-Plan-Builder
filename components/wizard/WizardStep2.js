@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WizardHeadline2 from './WizardHeadline2';
 import WizardHeader2 from './WizardHeader2';
 import WizardStepTemplate from './WizardStepTemplate';
+import { useRouter } from "next/router";
 
-export default function Step2({ plan, onComplete }) {
+export default function Step2({ plan, onComplete, pageProps }) {
+      
+        useEffect(() => {
+          window.scrollTo(0, 0);
+        }, [pathname]);
+    
 
     let [_plan, _setPlan] = useState(plan);
 
@@ -15,11 +21,13 @@ export default function Step2({ plan, onComplete }) {
         if (retirementage.length === 0 || retirementincome.length === 0) {
             if (retirementage.length === 0) {
                 setErrors2('*Please enter a valid number')
+                scrollOnError();
             } else if (retirementage.length > 0) {
                 setErrors2('')
             } 
             if (retirementincome.length === 0) {
                 setErrors3('*Please enter a valid number')
+                scrollOnError();
             } else if (retirementincome > 0) {
                 setErrors3('')
             }
@@ -29,13 +37,18 @@ export default function Step2({ plan, onComplete }) {
         }
     }
 
+    function scrollOnError() {
+        window.scrollTo(0, 0);
+}
+
+    const { pathname } = useRouter();
     const [errors, setErrors] = useState('')
     const [errors2, setErrors2] = useState('')
     const [errors3, setErrors3] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [showForm2, setShowForm2] = useState(false) 
     const [showForm3, setShowForm3] = useState(false) 
-    const [showForm4, setShowForm4] = useState(false) 
+    const [showForm4, setShowForm4] = useState(false)
     const [workamount, setWorkamount] = useState('No work')
     const [retirementage, setRetirementage] = useState('')
     const [retirementincome, setRetirementincome] = useState('')
@@ -59,7 +72,7 @@ export default function Step2({ plan, onComplete }) {
         <WizardStepTemplate onNext={complete}>
         <WizardHeader2></WizardHeader2>
         <WizardHeadline2></WizardHeadline2>
-            <div className="inputs-div-1">
+            <div className="inputs-div-1" {...pageProps}>
             <div className="input-div">
                     <label className="input-label">At what age would you like to retire?</label><br></br>
                     <input 

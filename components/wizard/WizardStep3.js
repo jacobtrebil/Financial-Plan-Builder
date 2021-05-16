@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import WizardHeadline3 from './WizardHeadline3';
 import WizardHeader3 from './WizardHeader3';
 import WizardStepTemplate from './WizardStepTemplate';
+import { useRouter } from "next/router";
 
-export default function Step3 ({ plan, onComplete }) {
+export default function Step3 ({ plan, onComplete, pageProps }) {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [pathname]);
 
     let [_plan, _setPlan] = useState(plan);
 
@@ -15,16 +21,19 @@ export default function Step3 ({ plan, onComplete }) {
         if (currentearnings.length === 0 || currentsavings.length === 0 || assetvalue.length === 0) {
             if (currentearnings.length === 0) {
                 setErrors('*Please enter a valid number')
+                scrollOnError();
             } else if (currentearnings.length > 0) {
                 setErrors('')
             }
             if (currentsavings.length === 0) {
                 setErrors2('*Please enter a valid number')
+                scrollOnError();
             } else if (currentsavings.length > 0) {
                 setErrors2('')
             }
             if (assetvalue.length === 0) {
                 setErrors3('*Please enter a valid number')
+                scrollOnError();
             } else if (assetvalue.length > 0) {
                 setErrors3('')
             }
@@ -34,6 +43,11 @@ export default function Step3 ({ plan, onComplete }) {
         }
     }
 
+    function scrollOnError() {
+            window.scrollTo(0, 0);
+    }
+
+    const { pathname } = useRouter();
     const [errors, setErrors] = useState('')
     const [errors2, setErrors2] = useState('')
     const [errors3, setErrors3] = useState('')
@@ -100,7 +114,7 @@ export default function Step3 ({ plan, onComplete }) {
         <WizardStepTemplate onNext={complete}>
         <WizardHeader3></WizardHeader3>
         <WizardHeadline3></WizardHeadline3>
-            <div className="inputs-div-1">
+            <div className="inputs-div-1" {...pageProps}>
                 <div className="input-div">
                     <label className="input-label">What are your average earnings over the past 5 years?</label><br></br>
                     <input
@@ -451,7 +465,8 @@ export default function Step3 ({ plan, onComplete }) {
                     </select><br></br>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">The table below presents a potential best-case result, probable result and potential worst-case result of five sample portfolios over a 1-year period with an initial $10,000 investment. Understanding the potential upsides and downsides of each portfolio, which portfolio would you prefer to hold? Investing involves a trade–off between risk and return. Which statement best describes your investment goals?</label><br></br>
+                    <label className="input-label">The table below presents a potential best-case result, probable result and potential worst-case result of five sample portfolios over a 1-year period with an initial $10,000 investment. Understanding the potential upsides and downsides of each portfolio, which portfolio would you prefer to hold?</label><br></br><br></br>
+                    <Image src="/images/chart.jpg" width={360} height={200}/><br></br>
                     <select
                     name="portfoliotradeoff"
                     className="form-select"
