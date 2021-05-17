@@ -18,17 +18,17 @@ export default function Step2({ plan, onComplete, pageProps }) {
     }
 
     function complete(){
-        if (retirementage.length === 0 || retirementincome.length === 0) {
-            if (retirementage.length === 0) {
+        if (retirementAge.length === 0 || retirementIncome.length === 0) {
+            if (retirementAge.length === 0) {
                 setErrors2('*Please enter a valid number')
                 scrollOnError();
-            } else if (retirementage.length > 0) {
+            } else if (retirementAge.length > 0) {
                 setErrors2('')
             } 
-            if (retirementincome.length === 0) {
+            if (retirementIncome.length === 0) {
                 setErrors3('*Please enter a valid number')
                 scrollOnError();
-            } else if (retirementincome > 0) {
+            } else if (retirementIncome > 0) {
                 setErrors3('')
             }
         } 
@@ -42,7 +42,6 @@ export default function Step2({ plan, onComplete, pageProps }) {
 }
 
     const { pathname } = useRouter();
-    const [errors, setErrors] = useState('')
     const [errors2, setErrors2] = useState('')
     const [errors3, setErrors3] = useState('')
     const [showForm, setShowForm] = useState(false)  
@@ -50,8 +49,8 @@ export default function Step2({ plan, onComplete, pageProps }) {
     const [showForm3, setShowForm3] = useState(false) 
     const [showForm4, setShowForm4] = useState(false)
     const [workamount, setWorkamount] = useState('No work')
-    const [retirementage, setRetirementage] = useState('')
-    const [retirementincome, setRetirementincome] = useState('')
+    const [retirementAge, setRetirementAge] = useState('')
+    const [retirementIncome, setRetirementIncome] = useState('')
     const [businessmoneyneeded, setBusinessmoneyneeded] = useState('')
     const [care, setCare] = useState('No')
     const [health, setHealth] = useState('No')
@@ -66,7 +65,7 @@ export default function Step2({ plan, onComplete, pageProps }) {
     const [numberofkids, setNumberofkids] = useState('')
     const [business, setBusiness] = useState('No')
     
-    _plan = { workamount, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business};
+    _plan = { workamount, retirementAge, retirementIncome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business};
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -77,11 +76,11 @@ export default function Step2({ plan, onComplete, pageProps }) {
                     <label className="input-label">At what age would you like to retire?</label><br></br>
                     <input 
                     className="form-input"
-                    name="retirementage"
+                    name="retirementAge"
                     type="number" 
                     placeholder ="60" 
-                    value={retirementage}
-                    onChange={e=> setRetirementage(e.target.value)}
+                    value={retirementAge}
+                    onChange={e=> setRetirementAge(e.target.value)}
                     >
                     </input><br></br>
                     <p className="errors">{errors2}</p>
@@ -90,10 +89,10 @@ export default function Step2({ plan, onComplete, pageProps }) {
                     <label className="input-label">What is your desired retirement income?</label><br></br>
                     <input 
                     className="form-input"
-                    name="retirementincome"
+                    name="retirementIncome"
                     placeholder ="$100,000" 
-                    value={retirementincome}
-                    onChange={e=> setRetirementincome(e.target.value)}
+                    value={retirementIncome}
+                    onChange={e=> setRetirementIncome(e.target.value)}
                     >
                     </input><br></br>
                     <p className="errors">{errors3}</p>

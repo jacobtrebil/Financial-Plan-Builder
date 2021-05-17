@@ -1,5 +1,5 @@
 
-export default function futurespending(retirementage, retirementincome) {
-    const totalfuturespending = retirementage + retirementincome;
+export default function futureSpending(retirementAge, retirementIncome) {
+    const totalfuturespending = retirementAge + retirementIncome;
     return totalfuturespending;
 } 

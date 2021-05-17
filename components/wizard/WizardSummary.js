@@ -71,9 +71,6 @@ export default function Summary({plan}) {
             <div id="profile-section">
             <div className="summaryoptionssection">
                 <h2 className="projections-h2">Your Projections & Decisions</h2>
-                <p className="projections-p">We have created projections for you to help you make important decisions that will help you reach your financial goals. <br></br> 
-                Take a look at the projections and make decisions about how you'd prefer to improve your financial situation <br></br> 
-                and we will craft you a personalized plan based on your decisions.</p>
                 <br></br>
             <div className="decisionssocialsecuritysection">
                 <table>
@@ -154,14 +151,14 @@ export default function Summary({plan}) {
                         <div className="table-border">
                             <tr>
                                 <td className="table-headers">Investment Risk</td>
-                                <td className="table-headers">Rate of Return</td>
+                                <td className="table-headers">Expected Rate of Return</td>
                             </tr>
                             <tr>
                                 <td>Conservative</td>
                                 <td>4%</td>
                             </tr>
                             <tr>
-                                <td>Conservative-Plus</td>
+                                <td>Conservative +</td>
                                 <td>5%</td>
                             </tr>
                             <tr>
@@ -169,7 +166,7 @@ export default function Summary({plan}) {
                                 <td>6%</td>
                             </tr>
                             <tr>
-                                <td>Moderate-Plus</td>
+                                <td>Moderate +</td>
                                 <td>7%</td>
                             </tr>
                             <tr>
@@ -181,9 +178,9 @@ export default function Summary({plan}) {
                         <select 
                         className="form-select">
                             <option>Conservative</option>
-                            <option>Conservative-Plus</option>
+                            <option>Conservative +</option>
                             <option>Moderate</option>
-                            <option>Moderate-Plus</option>
+                            <option>Moderate +</option>
                             <option>Aggressive</option>
                         </select>
                     </table>

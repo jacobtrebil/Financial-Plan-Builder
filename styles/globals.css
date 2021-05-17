@@ -1377,7 +1377,7 @@ p {
 
 .summary {
   background-color: white;
-  margin: 5% 10% 5% 10%;
+  margin: 2% 5% 2% 5%;
   padding: 2%;
   border-radius: 32px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -1455,29 +1455,29 @@ th {
 
 .decisionssocialsecuritysection {
   display: inline-block;
-  width: 33%;
-  margin: 0px 40px 0px 40px;
+  width: 18%;
+  margin: 0px 20px 0px 20px;
   vertical-align: top;
 }
 
 .decisionssavingssection {
   display: inline-block;
-  width: 33%;
-  margin: 0px 40px 0px 40px;
+  width: 26%;
+  margin: 0px 20px 0px 20px;
   vertical-align: top;
 }
 
 .rateofreturnsection {
   display: inline-block;
-  width: 33%;
-  margin: 40px 40px 0px 40px;
+  width: 22%;
+  margin: 0px 20px 0px 20px;
   vertical-align: top;
 }
 
 .reduceexpensessection {
   display: inline-block;
-  width: 33%;
-  margin: 40px 40px 0px 40px;
+  width: 18%;
+  margin: 0px 20px 0px 20px;
   vertical-align: top;
 }
 

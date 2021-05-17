@@ -1,7 +1,5 @@
-/* import { unstable_renderSubtreeIntoContainer } from 'react-dom'; */
 import Plan from '../../../models/wizardschema';
 import dbConnect from '../../../util/wizarddbconnect';
-/* import { calculatesocialsecurity } from '../../../calculations/socialsecurity'; */
 
 export default async function handler(req,res) {
     const { method } = req

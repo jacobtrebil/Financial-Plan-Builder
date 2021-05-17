@@ -15,8 +15,8 @@ import dbConnect from '../../util/wizarddbconnect';
             } catch (error) {
                 res.status(400).json({});
             } 
-            /* default: 
-            res.status(400).json({ success: false}) */
+            default: 
+            res.status(400).json({ success: false})
             break
     }
 }

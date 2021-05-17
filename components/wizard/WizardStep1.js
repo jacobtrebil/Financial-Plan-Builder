@@ -3,10 +3,6 @@ import WizardHeader from './WizardHeader';
 import WizardHeadline from './WizardHeadline';
 import WizardStepTemplate from './WizardStepTemplate';
 import _dynamic from 'next/dynamic';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useForm } from "react-hook-form";
-import { Alert } from 'react-bootstrap';
 
 export default function Step1({plan, onComplete}) {
 
@@ -30,7 +26,6 @@ export default function Step1({plan, onComplete}) {
         window.scrollTo(0, 0);
     }
 
-    const { register, handleSubmit, watch } = useForm()
     const [errors, setErrors] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [spouse, setSpouse] = useState('No')
@@ -51,7 +46,7 @@ export default function Step1({plan, onComplete}) {
                 <div className="input-div">
                     <label className="input-label">First Name</label><br></br>
                     <input
-                    name="firstname"
+                    name="firstName"
                     className="form-input"
                     value={firstname}
                     onChange={e=> setFirstname(e.target.value)}

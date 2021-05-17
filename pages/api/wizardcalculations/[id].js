@@ -1,6 +1,6 @@
 import dbConnect from '../../../util/wizarddbconnect';
 import Plan from '../../../models/wizardschema';
-import futurespending from '../../../calculations/futurespending';
+import futureSpending from '../../../calculations/futurespending';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -11,13 +11,12 @@ export default async function handler(req,res) {
     switch (method) {
         case 'POST':
             try {
-                const plan = await Plan.findOne({ _id: id });
-                futurespending();
-                await Plan.updateOne({ _id: id}, { totalfuturespending });
-                const plan2 = await Plan.findById(id);
-                const { totalfuturespending } = req.body;
-                res.status(200).json( plan2 );
-                console.log(totalfuturespending);
+                let plan = await Plan.findById(id);
+                console.log('The plan is  ', plan.retirementAge, plan.retirementIncome)
+                const totalFutureSpending = futureSpending(plan.retirementAge, plan.retirementIncome);
+                await Plan.updateOne({ _id: id}, { totalfuturespending: totalFutureSpending });
+                plan = await Plan.findById(id);
+                res.status(200).json( plan );
                 return;
             } catch (error) {
                 console.log(error)
