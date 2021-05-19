@@ -6,6 +6,9 @@ import lengthOfRetirementFunction from '../../../calculations/lengthofretirement
 import healthcare from '../../../calculations/healthcare';
 import calculateSocialSecurityAge62 from '../../../calculations/socialSecurity/socialSecurityAge62';
 import calculateSocialSecurityAge70 from '../../../calculations/socialSecurity/socialSecurityAge70';
+import calculateCurrentAge from '../../../calculations/currentAge';
+import calculateYearsUntilRetirement from '../../../calculations/yearsUntilRetirement';
+import calculateSavingsByRetirement from '../../../calculations/savingsByRetirement';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -30,9 +33,9 @@ export default async function handler(req,res) {
                 await Plan.updateOne({ _id: id}, { socialSecurityAge70Earnings: socialSecurityAge70Calculated });
                 console.log('Social Security Age 70: ', socialSecurityAge70Calculated );
 
-                const riskScoreOutput = riskScore(plan.portfolioTradeoff, plan.changePortfolio, plan.riskAttitude, plan.volatility);
-                await Plan.updateOne({ _id: id}, { rateOfReturn: riskScoreOutput });
-                console.log('Risk Score: ', riskScoreOutput);
+                const rateOfReturnOutput = riskScore(plan.portfolioTradeoff, plan.changePortfolio, plan.riskAttitude, plan.volatility);
+                await Plan.updateOne({ _id: id}, { rateOfReturn: rateOfReturnOutput });
+                console.log('Rate Of Return: ', rateOfReturnOutput);
 
                 const lengthOfRetirementOutput = lengthOfRetirementFunction(plan.retirementAge);
                 await Plan.updateOne({ _id: id}, { lengthOfRetirement: lengthOfRetirementOutput });
@@ -42,6 +45,21 @@ export default async function handler(req,res) {
                 const healthcareOutput = healthcare(plan.lengthOfRetirement);
                 await Plan.updateOne({ _id: id}, { totalHealthcareCosts: healthcareOutput });
                 console.log('Healthcare Costs: ', healthcareOutput);
+
+                plan = await Plan.findById(id);
+                const currentAgeOutput = calculateCurrentAge(plan.dateOfBirthYear);
+                await Plan.updateOne({ _id: id}, { currentAge: currentAgeOutput });
+                console.log('Current Age: ', currentAgeOutput);
+
+                plan = await Plan.findById(id);
+                const currentYearsUntilRetirementOutput = calculateYearsUntilRetirement(plan.currentAge, plan.retirementAge);
+                await Plan.updateOne({ _id: id}, { yearsUntilRetirement: currentYearsUntilRetirementOutput });
+                console.log('Years Until Retirement: ', currentYearsUntilRetirementOutput);
+
+                plan = await Plan.findById(id);
+                const savingsByRetirementOutput = calculateSavingsByRetirement(plan.yearsUntilRetirement, plan.currentSavings, plan.assetValue);
+                await Plan.updateOne({ _id: id}, { savingsByRetirement: savingsByRetirementOutput });
+                console.log('Savings By Retirement: ', savingsByRetirementOutput);
 
                 plan = await Plan.findById(id);
                 res.status(200).json( plan );

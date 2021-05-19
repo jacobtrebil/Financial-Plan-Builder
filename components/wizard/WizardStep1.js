@@ -30,11 +30,13 @@ export default function Step1({plan, onComplete}) {
     const [showForm, setShowForm] = useState(false)  
     const [spouse, setSpouse] = useState('No')
     const [firstName, setFirstName] = useState('')
-    const [dateOfBirth, setDateOfBirth] = useState('')
+    const [dateOfBirthDay, setDateOfBirthDay] = useState('')
+    const [dateOfBirthYear, setDateOfBirthYear] = useState('')
+    const [dateOfBirthMonth, setDateOfBirthMonth] = useState('')
     const [maritalStatus, setMaritalStatus] = useState('Married')
     const [spousesFullName, setSpousesFullName] = useState('')
 
-    _plan = { spouse, dateOfBirth, maritalStatus, firstName, spousesFullName };
+    _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, maritalStatus, firstName, spousesFullName };
 
     
     return (
@@ -54,18 +56,46 @@ export default function Step1({plan, onComplete}) {
                     <p className="errors">{errors}</p>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">What's your date of birth?</label><br></br>
+                    <label className="input-label">Birthday</label><br></br>
+                    <select
+                    name="dateOfBirthMonth"
+                    className="form-select"
+                    value={dateOfBirthMonth}
+                    onChange={e=> { setDateOfBirthMonth(e.target.value)}}>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                    </select>
                     <input
-                    name="dateOfBirth"
+                    name="dateOfBirthDay"
                     id="dateofbirth"
-                    className="form-input"
-                    value={dateOfBirth}
-                    onChange={e=> setDateOfBirth(e.target.value)}
-                    type="date"
+                    className="form-input-dob"
+                    value={dateOfBirthDay}
+                    placeholder="Day"
+                    onChange={e=> setDateOfBirthDay(e.target.value)}
+                    type="input"
+                    />
+                    <input
+                    name="dateOfBirthYear"
+                    id="dateofbirth"
+                    className="form-input-dob"
+                    value={dateOfBirthYear}
+                    placeholder="Year"
+                    onChange={e=> setDateOfBirthYear(e.target.value)}
+                    type="input"
                     /><br></br>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">What's your marital status? </label><br></br>
+                    <label className="input-label">Marital Status</label><br></br>
                     <select
                     name="maritalStatus"
                     className="form-select"

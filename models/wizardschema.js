@@ -10,7 +10,9 @@ var PlanModel = new mongoose.Schema({
     workAmount: String, 
     retirementAge: Number,
     retirementIncome: Number,
-    dateOfBirth: Number, String, 
+    dateOfBirthDay: Number, String,
+    dateOfBirthYear: Number, String, 
+    dateOfBirthMonth: String, 
     maritalStatus: String, 
     kids: String,
     numberOfKids: Number,
@@ -52,7 +54,6 @@ var PlanModel = new mongoose.Schema({
     pensionEarnings: String, Number,
     pensionTimeframe: String, Number,
     pensionInflation: String, Number, Boolean, 
-    pensionKnowledge: String, Number,
     socialSecurity: String,
     mortgage: String,
     mortgageAmount: String,
@@ -71,6 +72,9 @@ var PlanModel = new mongoose.Schema({
     rateOfReturn: Number,
     lengthOfRetirement: Number,
     totalHealthcareCosts: Number, 
+    currentAge: Number,
+    yearsUntilRetirement: Number,
+    savingsByRetirement: Number,
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);

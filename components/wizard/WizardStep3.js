@@ -88,7 +88,6 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
     const [will, setWill] = useState('No')
     const [medicare, setMedicare] = useState('No')
     const [pension, setPension] = useState('No')
-    const [pensionKnowledge, setPensionKnowledge] = useState('No')
     const [pensionInflation, setPensionInflation] = useState('No')
     const [pensionTimeframe, setPensionTimeframe] = useState('No')
     const [pensionEarnings, setPensionEarnings] = useState('')
@@ -106,7 +105,7 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
     const [additionalDebt, setAdditionalDebt] = useState('No')
     const [additionalDebtAmount, setAdditionalDebtAmount] = useState('')
 
-    _plan = { currentEarnings, currentSavings, assetValue, increaseIncome, increaseIncomeAmount, outOfWork, lifeInsurance, taxPlan, investments, investmentsAmount, realEstate, realEstateAmount, alternativeAssets, alternativeAssetsAmount, otherAssets, otherAssetsAmount, powerOfAttorney, will, medicare, pension, pensionTimeframe, pensionKnowledge, pensionEarnings, pensionInflation, socialSecurity, mortgage, mortgageAmount, creditCardDebt, creditCardDebtAmount, medicalDebt, medicalDebtAmount, carFinancing, carFinancingAmount, studentLoans, studentLoanAmount, riskAttitude, volatility, changePortfolio, portfolioTradeoff, additionalDebt, additionalDebtAmount, lifeInsuranceDocument };
+    _plan = { currentEarnings, currentSavings, assetValue, increaseIncome, increaseIncomeAmount, outOfWork, lifeInsurance, taxPlan, investments, investmentsAmount, realEstate, realEstateAmount, alternativeAssets, alternativeAssetsAmount, otherAssets, otherAssetsAmount, powerOfAttorney, will, medicare, pension, pensionTimeframe, pensionEarnings, pensionInflation, socialSecurity, mortgage, mortgageAmount, creditCardDebt, creditCardDebtAmount, medicalDebt, medicalDebtAmount, carFinancing, carFinancingAmount, studentLoans, studentLoanAmount, riskAttitude, volatility, changePortfolio, portfolioTradeoff, additionalDebt, additionalDebtAmount, lifeInsuranceDocument };
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -372,18 +371,6 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     showForm14 && (
                 <div>
                 <div className="input-div">
-                    <label className="input-label">Do you know how much you'll earn from your pension throughout retirement?</label><br></br>
-                    <select
-                    name="pensionKnowledge"
-                    className="form-select"
-                    value={pensionKnowledge}
-                    onChange={e=> {setPensionKnowledge(e.target.value)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                <div className="input-div">
                     <label className="input-label">At what age will your pension earnings begin?</label><br></br>
                     <select
                     name="pensionTimeframe"
@@ -391,21 +378,22 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     value={pensionTimeframe}
                     onChange={e=> {setPensionTimeframe(e.target.value)}}
                     >
-                    <option>No</option>
-                    <option>Yes</option>
+                    <option>50</option>
+                    <option>55</option>
+                    <option>60</option>
+                    <option>62</option>
+                    <option>65</option>
                     </select><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">How much will you earn per year from your pension?</label><br></br>
-                    <select
+                    <input
+                    className="form-input"
+                    placeholder={'$40,000'}
+                    value={pensionEarnings} 
                     name="pensionEarnings"
-                    className="form-select"
-                    value={pensionEarnings}
-                    onChange={e=> {setPensionEarnings(e.target.value)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
+                    onChange={e=> setPensionEarnings(e.target.value)}
+                    /><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Will your pension earnings increase with the cost of inflation?</label><br></br>
