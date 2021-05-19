@@ -48,24 +48,24 @@ export default function Step2({ plan, onComplete, pageProps }) {
     const [showForm2, setShowForm2] = useState(false) 
     const [showForm3, setShowForm3] = useState(false) 
     const [showForm4, setShowForm4] = useState(false)
-    const [workamount, setWorkamount] = useState('No work')
+    const [workAmount, setWorkAmount] = useState('No work')
     const [retirementAge, setRetirementAge] = useState('')
     const [retirementIncome, setRetirementIncome] = useState('')
-    const [businessmoneyneeded, setBusinessmoneyneeded] = useState('')
+    const [businessMoneyNeeded, setBusinessMoneyNeeded] = useState('')
     const [care, setCare] = useState('No')
     const [health, setHealth] = useState('No')
     const [charity, setCharity] = useState('No')
-    const [majorpurchases, setMajorpurchases] = useState('No')
-    const [purchasescost, setPurchasescost] = useState('')
+    const [majorPurchases, setMajorPurchases] = useState('No')
+    const [purchasesCost, setPurchasesCost] = useState('')
     const [support, setSupport] = useState('No')
-    const [supportcost, setSupportcost] = useState('')
-    const [collegespendingamount, setCollegespendingamount] = useState('')
+    const [supportCost, setSupportCost] = useState('')
+    const [collegeSpendingAmount, setCollegeSpendingAmount] = useState('')
     const [kids, setKids] = useState('No')
     const [college, setCollege] = useState('No')
-    const [numberofkids, setNumberofkids] = useState('')
+    const [numberOfKids, setNumberOfKids] = useState('')
     const [business, setBusiness] = useState('No')
     
-    _plan = { workamount, retirementAge, retirementIncome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business};
+    _plan = { workAmount, retirementAge, retirementIncome, businessMoneyNeeded, care, health, charity, majorPurchases, purchasesCost, support, supportCost, collegeSpendingAmount, kids, college, numberOfKids, business};
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -100,10 +100,10 @@ export default function Step2({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much do you expect to work throughout retirement?</label><br></br>
                     <select
-                    name="workamount"
+                    name="workAmount"
                     className="form-select"
-                    value={workamount}
-                    onChange={e=> setWorkamount(e.target.value)}
+                    value={workAmount}
+                    onChange={e=> setWorkAmount(e.target.value)}
                     >
                     <option>No work</option>
                     <option>Part-time</option>
@@ -140,10 +140,10 @@ export default function Step2({ plan, onComplete, pageProps }) {
                     <label className="input-label">How much will you need to start the business?</label><br></br>
                     <input 
                     className="form-input"
-                    name="businessmoneyneeded"
+                    name="businessMoneyNeeded"
                     placeholder ="$200,000" 
-                    value={businessmoneyneeded}
-                    onChange={e=> setBusinessmoneyneeded(e.target.value)}
+                    value={businessMoneyNeeded}
+                    onChange={e=> setBusinessMoneyNeeded(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -176,9 +176,9 @@ export default function Step2({ plan, onComplete, pageProps }) {
                     <label className="input-label">Would you like to make any major purchases in the future?</label><br></br>
                     <select 
                     className="form-select"
-                    name="majorpurchases"
-                    value={majorpurchases}
-                    onChange={e=> {setMajorpurchases(e.target.value); setShowForm2(!showForm2)}}
+                    name="majorPurchases"
+                    value={majorPurchases}
+                    onChange={e=> {setMajorPurchases(e.target.value); setShowForm2(!showForm2)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -192,8 +192,8 @@ export default function Step2({ plan, onComplete, pageProps }) {
                     className="form-input"
                     name="purchasescost"
                     placeholder ="$100,000" 
-                    value={purchasescost}
-                    onChange={e=> setPurchasescost(e.target.value)}
+                    value={purchasesCost}
+                    onChange={e=> setPurchasesCost(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -216,10 +216,10 @@ export default function Step2({ plan, onComplete, pageProps }) {
                     <label className="input-label">How much do you expect spending to support others?</label><br></br>
                     <input 
                     className="form-input"
-                    name="supportcost"
+                    name="supportCost"
                     placeholder ="$50,000" 
-                    value={supportcost}
-                    onChange={e=> setSupportcost(e.target.value)}
+                    value={supportCost}
+                    onChange={e=> setSupportCost(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -243,10 +243,10 @@ export default function Step2({ plan, onComplete, pageProps }) {
                     <label className="input-label">How many kids do you have/expect?</label><br></br>
                     <input 
                     className="form-input"
-                    name="numberofkids"
+                    name="numberOfKids"
                     placeholder ="2" 
-                    value={numberofkids}
-                    onChange={e=> setNumberofkids(e.target.value)}
+                    value={numberOfKids}
+                    onChange={e=> setNumberOfKids(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -266,10 +266,10 @@ export default function Step2({ plan, onComplete, pageProps }) {
                     <label className="input-label">How much would you like to spend on your kids college? (total)</label><br></br>
                     <input 
                     className="form-input"
-                    name="collegespendingamount"
+                    name="collegeSpendingAmount"
                     placeholder ="$50,000" 
-                    value={collegespendingamount}
-                    onChange={e=> setCollegespendingamount(e.target.value)}
+                    value={collegeSpendingAmount}
+                    onChange={e=> setCollegeSpendingAmount(e.target.value)}
                     >
                     </input><br></br>
                 </div>

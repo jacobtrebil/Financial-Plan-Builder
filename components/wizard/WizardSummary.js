@@ -1,30 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { planCalculations } from '../../apiclient/wizardfetch';
+import { getCalculatedPlan } from '../../apiclient/wizardfetch'; 
+
+/* export async function getServerSideProps(context) {
+
+    const getCalculatedPlanFunction = await getCalculatedPlan(plan._id);
+    setPlanCalculations2(getCalculatedPlanFunction);
+
+    return {
+        props: { plan }
+    }
+} */
 
 export default function Summary({plan}) {
 
-    const getWizardCalculations = async () => {
+    const doWizardCalculations = async () => {
         const wizardCalculationsFunction = await planCalculations(plan._id);
         setCalculations(wizardCalculationsFunction);
+        getCalculatedPlanInfo();
     }
 
+    const getCalculatedPlanInfo = async () => {
+        const getCalculatedPlanFunction = await getCalculatedPlan(plan._id);
+        setPlanCalculations2(getCalculatedPlanFunction);
+    }  
+
     const getGrade = () => {
-        if (plan.currentearnings < 100) {
+        if (plan.currentEarnings < 100) {
             setGrade('A');
-        } else if (plan.currentearnings < 10000){
+        } else if (plan.currentEarnings < 10000){
             setGrade('B');
-        } else if (plan.currentearnings > 10000) {
+        } else if (plan.currentEarnings > 10000) {
             setGrade('C');
         }
     }
 
     const [calculations, setCalculations] = useState();
+    const [planCalculations2, setPlanCalculations2] = useState();
     const [grade, setGrade] = useState();
     const [showForm, setShowForm] = useState(true);
     const [showForm2, setShowForm2] = useState(false);
 
     useEffect(() => {
-        getWizardCalculations();
+        doWizardCalculations();
         getGrade();
     }, []);
 
@@ -46,15 +64,15 @@ export default function Summary({plan}) {
             <div className="summaryoptionssection">
                 <div className="summaryoption">
                     <p className="ssamount">Retirement Income</p>
-                    <p className="">Desired: { plan.retirementincome } <br></br>Actual: { plan.retirementincome }</p>
+                    <p className="">Desired: { plan.retirementIncome } <br></br>Actual: { plan.totalHealthcareCosts }</p>
                 </div>
                 <div className="summaryoption">
                     <p className="ssamount">Retirement Age</p>
-                    <p>Desired: { plan.currentsavings } <br></br> Actual: { plan.currentsavings }</p>
+                    <p>Desired: { plan.currentSavings } <br></br> Actual: { plan.currentSavings }</p>
                 </div>
                 <div className="summaryoption">
                     <p className="ssamount">Retirement Readiness</p>
-                    <p>Desired: { plan.volatility } <br></br> Actual: { plan.currentsavings }</p>
+                    <p>Desired: { plan.volatility } <br></br> Actual: { plan.currentSavings }</p>
                 </div>
                 <p className="ssamount">You can improve your financial situation a few different ways. <br></br>Click the button below to make a few final decisions and we'll craft a custom Financial Plan to reach your goals.</p>
                 </div>
@@ -89,11 +107,11 @@ export default function Summary({plan}) {
                     </tr>
                     <tr>
                         <td>Age 67</td>
-                        <td>{ plan.currentsavings }</td>
+                        <td>{ plan.socialSecurityEarnings }</td>
                     </tr>
                     <tr>
                         <td>Age 70</td>
-                        <td>{ plan.currentearnings }</td>
+                        <td>{ plan.currentSavings }</td>
                     </tr>
                     </div>
                     <p className="ssquestion">When would you prefer to take Social Security?</p>

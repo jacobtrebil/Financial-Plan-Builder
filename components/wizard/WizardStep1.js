@@ -14,7 +14,7 @@ export default function Step1({plan, onComplete}) {
     }
 
     function complete(){
-        if (firstname.length === 0) {
+        if (firstName.length === 0) {
             setErrors('*This field is required')
             scrollOnError();
         } else {
@@ -29,12 +29,12 @@ export default function Step1({plan, onComplete}) {
     const [errors, setErrors] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [spouse, setSpouse] = useState('No')
-    const [firstname, setFirstname] = useState('')
-    const [dateofbirth, setDateofbirth] = useState('')
-    const [maritalstatus, setMaritalstatus] = useState('Married')
-    const [spousesfullname, setSpousesfullname] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [dateOfBirth, setDateOfBirth] = useState('')
+    const [maritalStatus, setMaritalStatus] = useState('Married')
+    const [spousesFullName, setSpousesFullName] = useState('')
 
-    _plan = { spouse, dateofbirth, maritalstatus, firstname, spousesfullname };
+    _plan = { spouse, dateOfBirth, maritalStatus, firstName, spousesFullName };
 
     
     return (
@@ -48,29 +48,29 @@ export default function Step1({plan, onComplete}) {
                     <input
                     name="firstName"
                     className="form-input"
-                    value={firstname}
-                    onChange={e=> setFirstname(e.target.value)}
+                    value={firstName}
+                    onChange={e=> setFirstName(e.target.value)}
                     /><br></br>
                     <p className="errors">{errors}</p>
                 </div>
                 <div className="input-div">
                     <label className="input-label">What's your date of birth?</label><br></br>
                     <input
-                    name="dateofbirth"
+                    name="dateOfBirth"
                     id="dateofbirth"
                     className="form-input"
-                    value={dateofbirth}
-                    onChange={e=> setDateofbirth(e.target.value)}
+                    value={dateOfBirth}
+                    onChange={e=> setDateOfBirth(e.target.value)}
                     type="date"
                     /><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">What's your marital status? </label><br></br>
                     <select
-                    name="maritalstatus"
+                    name="maritalStatus"
                     className="form-select"
-                    value={maritalstatus}
-                    onChange={e=> { setMaritalstatus(e.target.value)}}>
+                    value={maritalStatus}
+                    onChange={e=> { setMaritalStatus(e.target.value)}}>
                     <option>Married</option>
                     <option>Divorced</option>
                     <option>Widowed</option>
@@ -93,10 +93,10 @@ export default function Step1({plan, onComplete}) {
                 <div className="input-div">
                     <label className="input-label">Spouses First Name</label><br></br>
                     <input
-                    name="spousesfullname"
+                    name="spousesFullName"
                     className="form-input"
-                    value={spousesfullname}
-                    onChange={e=> setSpousesfullname(e.target.value)}
+                    value={spousesFullName}
+                    onChange={e=> setSpousesFullName(e.target.value)}
                     />
                 </div>
                 )}

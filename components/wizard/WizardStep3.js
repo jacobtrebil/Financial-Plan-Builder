@@ -18,23 +18,23 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
     }
 
     function complete(){
-        if (currentearnings.length === 0 || currentsavings.length === 0 || assetvalue.length === 0) {
-            if (currentearnings.length === 0) {
+        if (currentEarnings.length === 0 || currentSavings.length === 0 || assetValue.length === 0) {
+            if (currentEarnings.length === 0) {
                 setErrors('*Please enter a valid number')
                 scrollOnError();
-            } else if (currentearnings.length > 0) {
+            } else if (currentEarnings.length > 0) {
                 setErrors('')
             }
-            if (currentsavings.length === 0) {
+            if (currentSavings.length === 0) {
                 setErrors2('*Please enter a valid number')
                 scrollOnError();
-            } else if (currentsavings.length > 0) {
+            } else if (currentSavings.length > 0) {
                 setErrors2('')
             }
-            if (assetvalue.length === 0) {
+            if (assetValue.length === 0) {
                 setErrors3('*Please enter a valid number')
                 scrollOnError();
-            } else if (assetvalue.length > 0) {
+            } else if (assetValue.length > 0) {
                 setErrors3('')
             }
         } 
@@ -56,7 +56,6 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
     const [showForm3, setShowForm3] = useState(false) 
     const [showForm4, setShowForm4] = useState(false)
     const [showForm5, setShowForm5] = useState(false)
-    const [showForm6, setShowForm6] = useState(false)
     const [showForm8, setShowForm8] = useState(false)
     const [showForm9, setShowForm9] = useState(false)
     const [showForm10, setShowForm10] = useState(false)
@@ -64,50 +63,50 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
     const [showForm12, setShowForm12] = useState(false)
     const [showForm13, setShowForm13] = useState(false)
     const [showForm14, setShowForm14] = useState(false)
-    const [currentearnings, setCurrentearnings] = useState('')
-    const [lifeinsurancedocument, setLifeinsurancedocument] = useState()
-    const [currentsavings, setCurrentsavings] = useState('')
-    const [riskattitude, setRiskattitude] = useState('My main goal is to avoid loss, even though I may only keep pace with inflation.')
-    const [assetvalue, setAssetvalue] = useState('')
-    const [changeportfolio, setChangeportfolio] = useState('I would immediately change to options that are more conservative')
+    const [currentEarnings, setCurrentEarnings] = useState('')
+    const [lifeInsuranceDocument, setLifeInsuranceDocument] = useState()
+    const [currentSavings, setCurrentSavings] = useState('')
+    const [riskAttitude, setRiskAttitude] = useState('My main goal is to avoid loss, even though I may only keep pace with inflation.')
+    const [assetValue, setAssetValue] = useState('')
+    const [changePortfolio, setChangePortfolio] = useState('I would immediately change to options that are more conservative')
     const [volatility, setVolatility] = useState('Disagree')
-    const [portfoliotradeoff, setPortfoliotradeoff] = useState('Portfolio A')
-    const [increaseincome, setIncreaseincome] = useState('No')
-    const [increaseincomeamount, setIncreaseincomeamount] = useState('')
-    const [outofwork, setOutofwork] = useState('No')
-    const [lifeinsurance, setLifeinsurance] = useState('No')
-    const [taxplan, setTaxplan] = useState('No')
+    const [portfolioTradeoff, setPortfolioTradeoff] = useState('Portfolio A')
+    const [increaseIncome, setIncreaseIncome] = useState('No')
+    const [increaseIncomeAmount, setIncreaseIncomeAmount] = useState('')
+    const [outOfWork, setOutOfWork] = useState('No')
+    const [lifeInsurance, setLifeInsurance] = useState('No')
+    const [taxPlan, setTaxPlan] = useState('No')
     const [investments, setInvestments] = useState('No')
-    const [investmentsamount, setInvestmentsamount] = useState('')
-    const [realestate, setRealestate] = useState('No')
-    const [realestateamount, setRealestateamount] = useState('')
-    const [alternativeassets, setAlternativeassets] = useState('No')
-    const [alternativeassetsamount, setAlternativeassetsamount] = useState('')
-    const [otherassets, setOtherassets] = useState('No')
-    const [otherassetsamount, setOtherassetsamount] = useState('')
-    const [powerofattorney, setPowerofattorney] = useState('No')
+    const [investmentsAmount, setInvestmentsAmount] = useState('')
+    const [realEstate, setRealEstate] = useState('No')
+    const [realEstateAmount, setRealEstateAmount] = useState('')
+    const [alternativeAssets, setAlternativeAssets] = useState('No')
+    const [alternativeAssetsAmount, setAlternativeAssetsAmount] = useState('')
+    const [otherAssets, setOtherAssets] = useState('No')
+    const [otherAssetsAmount, setOtherAssetsAmount] = useState('')
+    const [powerOfAttorney, setPowerOfAttorney] = useState('No')
     const [will, setWill] = useState('No')
     const [medicare, setMedicare] = useState('No')
     const [pension, setPension] = useState('No')
-    const [pensionknowledge, setPensionknowledge] = useState('')
-    const [pensioninflation, setPensioninflation] = useState('')
-    const [pensiontimeframe, setPensiontimeframe] = useState('')
-    const [pensionearnings, setPensionearnings] = useState('')
-    const [socialsecurity, setSocialsecurity] = useState('No')
+    const [pensionKnowledge, setPensionKnowledge] = useState('No')
+    const [pensionInflation, setPensionInflation] = useState('No')
+    const [pensionTimeframe, setPensionTimeframe] = useState('No')
+    const [pensionEarnings, setPensionEarnings] = useState('')
+    const [socialSecurity, setSocialSecurity] = useState('No')
     const [mortgage, setMortgage] = useState('No')
-    const [mortgageamount, setMortgageamount] = useState('')
-    const [creditcarddebt, setCreditcarddebt] = useState('No')
-    const [creditcarddebtamount, setCreditcarddebtamount] = useState('')
-    const [medicaldebt, setMedicaldebt] = useState('No')
-    const [medicaldebtamount, setMedicaldebtamount] = useState('')
-    const [carfinancing, setCarfinancing] = useState('No')
-    const [carfinancingamount, setCarfinancingamount] = useState('')
-    const [studentloans, setStudentloans] = useState('No')
-    const [studentloanamount, setStudentloanamount] = useState('')
-    const [additionaldebt, setAdditionaldebt] = useState('No')
-    const [additionaldebtamount, setAdditionaldebtamount] = useState('')
+    const [mortgageAmount, setMortgageAmount] = useState('')
+    const [creditCardDebt, setCreditCardDebt] = useState('No')
+    const [creditCardDebtAmount, setCreditCardDebtAmount] = useState('')
+    const [medicalDebt, setMedicalDebt] = useState('No')
+    const [medicalDebtAmount, setMedicalDebtAmount] = useState('')
+    const [carFinancing, setCarFinancing] = useState('No')
+    const [carFinancingAmount, setCarFinancingAmount] = useState('')
+    const [studentLoans, setStudentLoans] = useState('No')
+    const [studentLoanAmount, setStudentLoanAmount] = useState('')
+    const [additionalDebt, setAdditionalDebt] = useState('No')
+    const [additionalDebtAmount, setAdditionalDebtAmount] = useState('')
 
-    _plan = { currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensiontimeframe, pensionknowledge, pensionearnings, pensioninflation, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, riskattitude, volatility, changeportfolio, portfoliotradeoff, additionaldebt, additionaldebtamount, lifeinsurancedocument };
+    _plan = { currentEarnings, currentSavings, assetValue, increaseIncome, increaseIncomeAmount, outOfWork, lifeInsurance, taxPlan, investments, investmentsAmount, realEstate, realEstateAmount, alternativeAssets, alternativeAssetsAmount, otherAssets, otherAssetsAmount, powerOfAttorney, will, medicare, pension, pensionTimeframe, pensionKnowledge, pensionEarnings, pensionInflation, socialSecurity, mortgage, mortgageAmount, creditCardDebt, creditCardDebtAmount, medicalDebt, medicalDebtAmount, carFinancing, carFinancingAmount, studentLoans, studentLoanAmount, riskAttitude, volatility, changePortfolio, portfolioTradeoff, additionalDebt, additionalDebtAmount, lifeInsuranceDocument };
 
     return (
         <WizardStepTemplate onNext={complete}>
@@ -119,9 +118,9 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     <input
                     className="form-input"
                     placeholder={'$50,000'}
-                    value={currentearnings} 
-                    name="currentearnings"
-                    onChange={e=> setCurrentearnings(e.target.value)}
+                    value={currentEarnings} 
+                    name="currentEarnings"
+                    onChange={e=> setCurrentEarnings(e.target.value)}
                     /><br></br>
                     <p className="errors">{errors}</p>
                 </div>
@@ -130,10 +129,10 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     <input
                     className="form-input"
                     placeholder={'$50,000'}
-                    value={currentsavings}
+                    value={currentSavings}
                     type="number"
-                    name="currentsavings"
-                    onChange={e=> setCurrentsavings(e.target.value)}
+                    name="currentSavings"
+                    onChange={e=> setCurrentSavings(e.target.value)}
                     /><br></br>
                     <p className="errors">{errors2}</p>
                 </div>
@@ -142,10 +141,10 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     <input
                     className="form-input"
                     placeholder={'$100,000'}
-                    value={assetvalue}
+                    value={assetValue}
                     type="number"
-                    name="assetvalue"
-                    onChange={e=> setAssetvalue(e.target.value)}
+                    name="assetValue"
+                    onChange={e=> setAssetValue(e.target.value)}
                     /><br></br>
                     <p className="errors">{errors3}</p>
                 </div>
@@ -153,9 +152,9 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     <label className="input-label">Do you expect your income to increase within the next 10 years?</label><br></br>
                     <select
                     className="form-select"
-                    name="increaseincome"
-                    value={increaseincome}
-                    onChange={e=> {setIncreaseincome(e.target.value); setShowForm(!showForm)}}
+                    name="increaseIncome"
+                    value={increaseIncome}
+                    onChange={e=> {setIncreaseIncome(e.target.value); setShowForm(!showForm)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -166,11 +165,11 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much do you expect your income to increase by? (per year)</label><br></br>
                     <input
-                    name="increaseincomeamount"
+                    name="increaseIncomeAmount"
                     className="form-input"
                     placeholder={'$10,000'}
-                    value={increaseincomeamount}
-                    onChange={e=> setIncreaseincomeamount(e.target.value)}
+                    value={increaseIncomeAmount}
+                    onChange={e=> setIncreaseIncomeAmount(e.target.value)}
                     />
                 </div>
                 )}
@@ -178,9 +177,9 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     <label className="input-label">Do you expect being out of work for 1+ year anytime before retirement?</label><br></br>
                     <select
                     className="form-select"
-                    name="outofwork"
-                    value={outofwork}
-                    onChange={e=> setOutofwork(e.target.value)}
+                    name="outOfWork"
+                    value={outOfWork}
+                    onChange={e=> setOutOfWork(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -190,9 +189,9 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     <label className="input-label">Do you have life insurance?</label><br></br>
                     <select
                     className="form-select"
-                    name="lifeinsurance"
-                    value={lifeinsurance}
-                    onChange={e=> setLifeinsurance(e.target.value)}
+                    name="lifeInsurance"
+                    value={lifeInsurance}
+                    onChange={e=> setLifeInsurance(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -202,20 +201,20 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     <label className="input-label">Upload your life insurance documents below</label><br></br>
                     <input
                     className="form-input"
-                    name="lifeinsurancedocument"
+                    name="lifeInsuranceDocument"
                     type="file"
-                    value={lifeinsurancedocument}
-                    onChange={e=> setLifeinsurancedocument(e.target.value)}
+                    value={lifeInsuranceDocument}
+                    onChange={e=> setLifeInsuranceDocument(e.target.value)}
                     >
                     </input><br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Do you have a tax plan?</label><br></br>
                     <select
-                    name="taxplan"
+                    name="taxPlan"
                     className="form-select"
-                    value={taxplan}
-                    onChange={e=> setTaxplan(e.target.value)}
+                    value={taxPlan}
+                    onChange={e=> setTaxPlan(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -238,11 +237,11 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much do you have in investments?</label><br></br>
                     <input
-                    name="investmentsamount"
+                    name="investmentsAmount"
                     className="form-input"
                     placeholder={'$50,000'}
-                    value={investmentsamount}
-                    onChange={e=> setInvestmentsamount(e.target.value)}
+                    value={investmentsAmount}
+                    onChange={e=> setInvestmentsAmount(e.target.value)}
                     />
                 </div>
                     )}
@@ -251,8 +250,8 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     <select
                     name="realestate"
                     className="form-select"
-                    value={realestate}
-                    onChange={e=> {setRealestate(e.target.value); setShowForm3(!showForm3)}}
+                    value={realEstate}
+                    onChange={e=> {setRealEstate(e.target.value); setShowForm3(!showForm3)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -263,11 +262,11 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much do you have in real estate?</label><br></br>
                     <input
-                    name="realestateamount"
+                    name="realEstateAmount"
                     className="form-input"
                     placeholder={'$50,000'}
-                    value={realestateamount}
-                    onChange={e=> setRealestateamount(e.target.value)}
+                    value={realEstateAmount}
+                    onChange={e=> setRealEstateAmount(e.target.value)}
                     />
                 </div>
                     )}
@@ -275,9 +274,9 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     <label className="input-label">Do you have any Commodoties, Collectibiles, Cryptocurrencies, or other digital properties?</label><br></br>
                     <select
                     className="form-select"
-                    name="alternativeassets"
-                    value={alternativeassets}
-                    onChange={e=> {setAlternativeassets(e.target.value); setShowForm4(!showForm4)}}
+                    name="alternativeAssets"
+                    value={alternativeAssets}
+                    onChange={e=> {setAlternativeAssets(e.target.value); setShowForm4(!showForm4)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -288,21 +287,21 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much do you have in these alternative assets?</label><br></br>
                     <input
-                    name="alternativeassetsamount"
+                    name="alternativeAssetsAmount"
                     className="form-input"
                     placeholder={'$50,000'}
-                    value={alternativeassetsamount}
-                    onChange={e=> setAlternativeassetsamount(e.target.value)}
+                    value={alternativeAssetsAmount}
+                    onChange={e=> setAlternativeAssetsAmount(e.target.value)}
                     />
                 </div>
                 )}
                 <div className="input-div">
                     <label className="input-label">Do you have any other assets?</label><br></br>
                     <select
-                    name="otherassets"
+                    name="otherAssets"
                     className="form-select"
-                    value={otherassets}
-                    onChange={e=> {setOtherassets(e.target.value); setShowForm5(!showForm5)}}
+                    value={otherAssets}
+                    onChange={e=> {setOtherAssets(e.target.value); setShowForm5(!showForm5)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -313,21 +312,21 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much do you have in other assets?</label><br></br>
                     <input
-                    name="otherassetsamount"
+                    name="otherAssetsAmount"
                     className="form-input"
                     placeholder={'$50,000'}
-                    value={otherassetsamount}
-                    onChange={e=> setOtherassetsamount(e.target.value)}
+                    value={otherAssetsAmount}
+                    onChange={e=> setOtherAssetsAmount(e.target.value)}
                     />
                 </div>
                     )}
                 <div className="input-div">
                     <label className="input-label">Do you have a power of attorney?</label><br></br>
                     <select
-                    name="powerofattorney"
+                    name="powerOfAttorney"
                     className="form-select"
-                    value={powerofattorney}
-                    onChange={e=> setPowerofattorney(e.target.value)}
+                    value={powerOfAttorney}
+                    onChange={e=> setPowerOfAttorney(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -375,10 +374,10 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">Do you know how much you'll earn from your pension throughout retirement?</label><br></br>
                     <select
-                    name="pensionknowledge"
+                    name="pensionKnowledge"
                     className="form-select"
-                    value={pensionknowledge}
-                    onChange={e=> {setPensionknowledge(e.target.value)}}
+                    value={pensionKnowledge}
+                    onChange={e=> {setPensionKnowledge(e.target.value)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -387,10 +386,10 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">At what age will your pension earnings begin?</label><br></br>
                     <select
-                    name="pensiontimeframe"
+                    name="pensionTimeframe"
                     className="form-select"
-                    value={pensiontimeframe}
-                    onChange={e=> {setPensiontimeframe(e.target.value)}}
+                    value={pensionTimeframe}
+                    onChange={e=> {setPensionTimeframe(e.target.value)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -399,10 +398,10 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much will you earn per year from your pension?</label><br></br>
                     <select
-                    name="pensionearnings"
+                    name="pensionEarnings"
                     className="form-select"
-                    value={pensionearnings}
-                    onChange={e=> {setPensionearnings(e.target.value)}}
+                    value={pensionEarnings}
+                    onChange={e=> {setPensionEarnings(e.target.value)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -411,10 +410,10 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">Will your pension earnings increase with the cost of inflation?</label><br></br>
                     <select
-                    name="pensioninflation"
+                    name="pensionInflation"
                     className="form-select"
-                    value={pensioninflation}
-                    onChange={e=> {setPensioninflation(e.target.value)}}
+                    value={pensionInflation}
+                    onChange={e=> {setPensionInflation(e.target.value)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -425,10 +424,10 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">Which of these best reflects your attitude toward inflation and risk?</label><br></br>
                     <select
-                    name="riskattitude"
+                    name="riskAttitude"
                     className="form-select"
-                    value={riskattitude}
-                    onChange={e=> {setRiskattitude(e.target.value)}}
+                    value={riskAttitude}
+                    onChange={e=> {setRiskAttitude(e.target.value)}}
                     >
                     <option>My main goal is to avoid loss, even though I may only keep pace with inflation.</option>
                     <option>My main goal is to earn slightly more than inflation, while taking on a low level of risk.</option>
@@ -452,10 +451,10 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">Historically, markets have experience downturns, both short-term and prolonged, followed by market recoveries. Suppose you owned a well-diversified portfolio that fell by 20% over a short period, consistent with the overall market. Example: $100,000 initial investment is now worth $80,000. Assuming you still have 10 years until you begin withdrawals, how would you react?</label><br></br>
                     <select
-                    name="changeportfolio"
+                    name="changePortfolio"
                     className="form-select"
-                    value={changeportfolio}
-                    onChange={e=> {setChangeportfolio(e.target.value)}}
+                    value={changePortfolio}
+                    onChange={e=> {setChangePortfolio(e.target.value)}}
                     >
                     <option>I would change to options that are more aggressive</option>
                     <option>I would not change my portfolio</option>
@@ -467,10 +466,10 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                     <label className="input-label">The table below presents a potential best-case result, probable result and potential worst-case result of five sample portfolios over a 1-year period with an initial $10,000 investment. Understanding the potential upsides and downsides of each portfolio, which portfolio would you prefer to hold?</label><br></br><br></br>
                     <Image src="/images/chart.jpg" width={360} height={200}/><br></br>
                     <select
-                    name="portfoliotradeoff"
+                    name="portfolioTradeoff"
                     className="form-select"
-                    value={portfoliotradeoff}
-                    onChange={e=> {setPortfoliotradeoff(e.target.value)}}
+                    value={portfolioTradeoff}
+                    onChange={e=> {setPortfolioTradeoff(e.target.value)}}
                     >
                     <option>Portfolio A</option>
                     <option>Portfolio B</option>
@@ -484,10 +483,10 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">Are you eligible for social security? (If unsure, choose yes)</label><br></br>
                     <select
-                    name="socialsecurity"
+                    name="socialSecurity"
                     className="form-select"
-                    value={socialsecurity}
-                    onChange={e=> setSocialsecurity(e.target.value)}
+                    value={socialSecurity}
+                    onChange={e=> setSocialSecurity(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -510,21 +509,21 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much of your mortgage do you still have to pay off?</label><br></br>
                     <input
-                    name="mortgageamount"
+                    name="mortgageAmount"
                     className="form-input"
                     placeholder={'$100,000'}
-                    value={mortgageamount}
-                    onChange={e=> setMortgageamount(e.target.value)}
+                    value={mortgageAmount}
+                    onChange={e=> setMortgageAmount(e.target.value)}
                     />
                 </div>
                 )}
                 <div className="input-div">
                     <label className="input-label">Do you have credit card debt?</label><br></br>
                     <select
-                    name="creditcarddebt"
+                    name="creditCardDebt"
                     className="form-select"
-                    value={creditcarddebt}
-                    onChange={e=> {setCreditcarddebt(e.target.value); setShowForm9(!showForm9)}}
+                    value={creditCardDebt}
+                    onChange={e=> {setCreditCardDebt(e.target.value); setShowForm9(!showForm9)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -535,21 +534,21 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much credit card debt do you have?</label><br></br>
                     <input
-                    name="creditcarddebtamount"
+                    name="creditCardDebtAmount"
                     className="form-input"
                     placeholder={'$100,000'}
-                    value={creditcarddebtamount}
-                    onChange={e=> setCreditcarddebtamount(e.target.value)}
+                    value={creditCardDebtAmount}
+                    onChange={e=> setCreditCardDebtAmount(e.target.value)}
                     />
                 </div>
                 )}
                 <div className="input-div">
                     <label className="input-label">Do you have medical debt?</label><br></br>
                     <select
-                    name="medicaldebt"
+                    name="medicalDebt"
                     className="form-select"
-                    value={medicaldebt}
-                    onChange={e=> {setMedicaldebt(e.target.value); setShowForm10(!showForm10)}}
+                    value={medicalDebt}
+                    onChange={e=> {setMedicalDebt(e.target.value); setShowForm10(!showForm10)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -560,21 +559,21 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much medical debt do you have?</label><br></br>
                     <input
-                    name="medicaldebtamount"
+                    name="medicalDebtAmount"
                     className="form-input"
                     placeholder={'$10,000'}
-                    value={medicaldebtamount}
-                    onChange={e=> setMedicaldebtamount(e.target.value)}
+                    value={medicalDebtAmount}
+                    onChange={e=> setMedicalDebtAmount(e.target.value)}
                     />
                 </div>
                 )}
                 <div className="input-div">
                     <label className="input-label">Do you have car financing?</label><br></br>
                     <select
-                    name="carfinancing"
+                    name="carFinancing"
                     className="form-select"
-                    value={carfinancing}
-                    onChange={e=> {setCarfinancing(e.target.value); setShowForm11(!showForm11)}}
+                    value={carFinancing}
+                    onChange={e=> {setCarFinancing(e.target.value); setShowForm11(!showForm11)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -585,21 +584,21 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much in car financing do you still have to pay off?</label><br></br>
                     <input
-                    name="carfinancingamount"
+                    name="carFinancingAmount"
                     className="form-input"
                     placeholder={'$10,000'}
-                    value={carfinancingamount}
-                    onChange={e=> setCarfinancingamount(e.target.value)}
+                    value={carFinancingAmount}
+                    onChange={e=> setCarFinancingAmount(e.target.value)}
                     />
                 </div>
                 )}
                 <div className="input-div">
                     <label className="input-label">Do you have student loans?</label><br></br>
                     <select
-                    name="studentloans"
+                    name="studentLoans"
                     className="form-select"
-                    value={studentloans}
-                    onChange={e=> {setStudentloans(e.target.value); setShowForm12(!showForm12)}}
+                    value={studentLoans}
+                    onChange={e=> {setStudentLoans(e.target.value); setShowForm12(!showForm12)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -610,21 +609,21 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much in student loans do you still have to pay off?</label><br></br>
                     <input
-                    name="studentloanamount"
+                    name="studentLoanAmount"
                     className="form-input"
                     placeholder={'$10,000'}
-                    value={studentloanamount}
-                    onChange={e=> setStudentloanamount(e.target.value)}
+                    value={studentLoanAmount}
+                    onChange={e=> setStudentLoanAmount(e.target.value)}
                     />
                 </div>
                 )}
                 <div className="input-div">
                     <label className="input-label">Do you have any additional loans or debt?</label><br></br>
                     <select
-                    name="additionaldebt"
+                    name="additionalDebt"
                     className="form-select"
-                    value={additionaldebt}
-                    onChange={e=> {setAdditionaldebt(e.target.value); setShowForm13(!showForm13)}}
+                    value={additionalDebt}
+                    onChange={e=> {setAdditionalDebt(e.target.value); setShowForm13(!showForm13)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -635,11 +634,11 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much in additional loans or debt do you still have to pay off?</label><br></br>
                     <input
-                    name="additionaldebtamount"
+                    name="additionalDebtAmount"
                     className="form-input"
                     placeholder={'$10,000'}
-                    value={additionaldebtamount}
-                    onChange={e=> setAdditionaldebtamount(e.target.value)}
+                    value={additionalDebtAmount}
+                    onChange={e=> setAdditionalDebtAmount(e.target.value)}
                     />
                 </div>
                 )}

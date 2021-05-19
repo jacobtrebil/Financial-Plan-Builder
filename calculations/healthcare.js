@@ -1,140 +1,121 @@
-// Healthcare is one of the largest expenses towards the end of people's lives. Factor that in here. 
 
-// Use 5-6% inflation on healthcare expenses over time
 
-// Could add a question of if they're at high risk of health care expense being high 
-// and include 3 seperate starting amounts based on their answer to that question
+function healthcare(lengthOfRetirement) { 
 
-// $300k is $4,500 a month, $265k is $4,000 a month, $400k is $6,000 a year,$535k is $8,000 a year
+const healthcareInflation = 1.05;
+const healthcareInitialCost = 4500;
+let totalHealthcareCosts = 0;
 
-// Starting amount 1 could be $4k, 2 could be $4.5k, and 3 could be $8k, depending on if they're healthy, average, or smokers.
+const yearOneCost = healthcareInitialCost;
+const yearTwoCost = healthcareInitialCost * healthcareInflation;
+const yearThreeCost = healthcareInitialCost * (healthcareInflation ** 2);
+const yearFourCost = healthcareInitialCost * (healthcareInflation ** 3);
+const yearFiveCost = healthcareInitialCost * (healthcareInflation ** 4);
+const yearSixCost = healthcareInitialCost * (healthcareInflation ** 5);
+const yearSevenCost = healthcareInitialCost * (healthcareInflation ** 6);
+const yearEightCost = healthcareInitialCost * (healthcareInflation ** 7);
+const yearNineCost = healthcareInitialCost * (healthcareInflation ** 8);
+const yearTenCost = healthcareInitialCost * (healthcareInflation ** 9);
+const yearElevenCost = healthcareInitialCost * (healthcareInflation ** 10);
+const yearTwelveCost = healthcareInitialCost * (healthcareInflation ** 11);
+const yearThirteenCost = healthcareInitialCost * (healthcareInflation ** 12);
+const yearFourteenCost = healthcareInitialCost * (healthcareInflation ** 13);
+const yearFifteenCost = healthcareInitialCost * (healthcareInflation ** 14);
+const yearSixteenCost = healthcareInitialCost * (healthcareInflation ** 15);
+const yearSeventeenCost = healthcareInitialCost * (healthcareInflation ** 16);
+const yearEighteenCost = healthcareInitialCost * (healthcareInflation ** 17);
+const yearNineteenCost = healthcareInitialCost * (healthcareInflation ** 18);
+const yearTwentyCost = healthcareInitialCost * (healthcareInflation ** 19);
+const yearTwentyOneCost = healthcareInitialCost * (healthcareInflation ** 20);
+const yearTwentyTwoCost = healthcareInitialCost * (healthcareInflation ** 21);
+const yearTwentyThreeCost = healthcareInitialCost * (healthcareInflation ** 22);
+const yearTwentyFourCost = healthcareInitialCost * (healthcareInflation ** 23);
+const yearTwentyFiveCost = healthcareInitialCost * (healthcareInflation ** 24);
+const yearTwentySixCost = healthcareInitialCost * (healthcareInflation ** 25);
+const yearTwentySevenCost = healthcareInitialCost * (healthcareInflation ** 26);
+const yearTwentyEightCost = healthcareInitialCost * (healthcareInflation ** 27);
+const yearTwentyNineCost = healthcareInitialCost * (healthcareInflation ** 28);
+const yearThirtyCost = healthcareInitialCost * (healthcareInflation ** 29);
+const yearThirtyOneCost = healthcareInitialCost * (healthcareInflation ** 30);
+const yearThirtyTwoCost = healthcareInitialCost * (healthcareInflation ** 31);
+const yearThirtyThreeCost = healthcareInitialCost * (healthcareInflation ** 32);
+const yearThirtyFourCost = healthcareInitialCost * (healthcareInflation ** 33);
+const yearThirtyFiveCost = healthcareInitialCost * (healthcareInflation ** 34);
 
-// It'd probably be better to just assume like $4,500 a month
-
-function healthcare() { 
-
-const lengthofretirement = 30;
-const healthcareinflation = 1.05;
-const healthcareinitialcost = 4500;
-let totalhealthcarecosts = 0;
-
-const yearonecost = healthcareinitialcost;
-const yeartwocost = healthcareinitialcost * (healthcareinflation);
-const yearthreecost = healthcareinitialcost * (healthcareinflation) ** 2;
-const yearfourcost = healthcareinitialcost * (healthcareinflation) ** 3;
-const yearfivecost = healthcareinitialcost * (healthcareinflation) ** 4;
-const yearsixcost = healthcareinitialcost * (healthcareinflation) ** 5;
-const yearsevencost = healthcareinitialcost * (healthcareinflation) ** 6;
-const yeareightcost = healthcareinitialcost * (healthcareinflation) ** 7;
-const yearninecost = healthcareinitialcost * (healthcareinflation) ** 8;
-const yeartencost = healthcareinitialcost * (healthcareinflation) ** 9;
-const yearelevencost = healthcareinitialcost * (healthcareinflation) ** 10;
-const yeartwelvecost = healthcareinitialcost * (healthcareinflation) ** 11;
-const yearthirteencost = healthcareinitialcost * (healthcareinflation) ** 12;
-const yearfourteencost = healthcareinitialcost * (healthcareinflation) ** 13;
-const yearfifteencost = healthcareinitialcost * (healthcareinflation) ** 14;
-const yearsixteencost = healthcareinitialcost * (healthcareinflation) ** 15;
-const yearseventeencost = healthcareinitialcost * (healthcareinflation) ** 16;
-const yeareighteencost = healthcareinitialcost * (healthcareinflation) ** 17;
-const yearnineteencost = healthcareinitialcost * (healthcareinflation) ** 18;
-const yeartwentycost = healthcareinitialcost * (healthcareinflation) ** 19;
-const yeartwentyonecost = healthcareinitialcost * (healthcareinflation) ** 20;
-const yeartwentytwocost = healthcareinitialcost * (healthcareinflation) ** 21;
-const yeartwentythreecost = healthcareinitialcost * (healthcareinflation) ** 22;
-const yeartwentyfourcost = healthcareinitialcost * (healthcareinflation) ** 23;
-const yeartwentyfivecost = healthcareinitialcost * (healthcareinflation) ** 24;
-const yeartwentysixcost = healthcareinitialcost * (healthcareinflation) ** 25;
-const yeartwentysevencost = healthcareinitialcost * (healthcareinflation) ** 26;
-const yeartwentyeightcost = healthcareinitialcost * (healthcareinflation) ** 27;
-const yeartwentyninecost = healthcareinitialcost * (healthcareinflation) ** 28;
-const yearthirtycost = healthcareinitialcost * (healthcareinflation) ** 29;
-const yearthirtyonecost = healthcareinitialcost * (healthcareinflation) ** 30;
-const yearthirtytwocost = healthcareinitialcost * (healthcareinflation) ** 31;
-const yearthirtythreecost = healthcareinitialcost * (healthcareinflation) ** 32;
-const yearthirtyfourcost = healthcareinitialcost * (healthcareinflation) ** 33;
-const yearthirtyfivecost = healthcareinitialcost * (healthcareinflation) ** 34;
-
-if (lengthofretirement === 1) {
-    totalhealthcarecosts = yearonecost;
-} else if (lengthofretirement === 2) {
-    totalhealthcarecosts = yearonecost + yeartwocost;
-} else if (lengthofretirement === 3) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost;
-} else if (lengthofretirement === 4) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost;
-} else if (lengthofretirement === 5) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost;
-} else if (lengthofretirement === 6) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost;
-} else if (lengthofretirement === 7) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost;
-} else if (lengthofretirement === 8) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost;
-} else if (lengthofretirement === 9) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost;
-} else if (lengthofretirement === 10) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost;
-} else if (lengthofretirement === 11) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost;
-} else if (lengthofretirement === 12) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost;
-} else if (lengthofretirement === 13) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost;
-} else if (lengthofretirement === 14) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost + yearfourteencost;
-} else if (lengthofretirement === 15) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost + yearfourteencost + yearfifteencost;
-} else if (lengthofretirement === 16) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost + yearfourteencost + yearfifteencost + yearsixteencost; 
-} else if (lengthofretirement === 17) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost + yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost;
-} else if (lengthofretirement === 18) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost + yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost;
-} else if (lengthofretirement === 19) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost + yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost;
-} else if (lengthofretirement === 20) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost;
-} else if (lengthofretirement === 21) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost;
-} else if (lengthofretirement === 22) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost;
-} else if (lengthofretirement === 23) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost;
-} else if (lengthofretirement === 24) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost;
-} else if (lengthofretirement === 25) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost;
-} else if (lengthofretirement === 26) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost + yeartwentysixcost;
-} else if (lengthofretirement === 27) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost + yeartwentysixcost + yeartwentysevencost;
-} else if (lengthofretirement === 28) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost + yeartwentysixcost + yeartwentysevencost + yeartwentyeightcost;
-} else if (lengthofretirement === 29) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost + yeartwentysixcost + yeartwentysevencost + yeartwentyeightcost + yeartwentyninecost;
-} else if (lengthofretirement === 30) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost + yeartwentysixcost + yeartwentysevencost + yeartwentyeightcost + yeartwentyninecost + yearthirtycost;
-} else if (lengthofretirement === 31) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost + yeartwentysixcost + yeartwentysevencost + yeartwentyeightcost + yeartwentyninecost + yearthirtycost + yearthirtyonecost;
-} else if (lengthofretirement === 32) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost + yeartwentysixcost + yeartwentysevencost + yeartwentyeightcost + yeartwentyninecost + yearthirtycost + yearthirtyonecost + yearthirtytwocost;
-} else if (lengthofretirement === 33) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost + yeartwentysixcost + yeartwentysevencost + yeartwentyeightcost + yeartwentyninecost + yearthirtycost + yearthirtyonecost + yearthirtytwocost + yearthirtythreecost;
-} else if (lengthofretirement === 34) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost + yeartwentysixcost + yeartwentysevencost + yeartwentyeightcost + yeartwentyninecost + yearthirtycost + yearthirtyonecost + yearthirtytwocost + yearthirtythreecost + yearthirtyfourcost;
-} else if (lengthofretirement === 35) {
-    totalhealthcarecosts = yearonecost + yeartwocost + yearthreecost + yearfourcost + yearfivecost + yearsixcost + yearsevencost + yeareightcost + yearninecost + yeartencost + yearelevencost + yeartwelvecost + yearthirteencost+ yearfourteencost + yearfifteencost + yearsixteencost + yearseventeencost + yeareighteencost + yearnineteencost + yeartwentycost + yeartwentyonecost + yeartwentytwocost + yeartwentythreecost + yeartwentyfourcost + yeartwentyfivecost + yeartwentysixcost + yeartwentysevencost + yeartwentyeightcost + yeartwentyninecost + yearthirtycost + yearthirtyonecost + yearthirtytwocost + yearthirtythreecost + yearthirtyfourcost + yearthirtyfivecost;
+if (lengthOfRetirement === 1) {
+    totalHealthcareCosts = yearOneCost;
+} else if (lengthOfRetirement === 2) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost;
+} else if (lengthOfRetirement === 3) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost;
+} else if (lengthOfRetirement === 4) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost;
+} else if (lengthOfRetirement === 5) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost;
+} else if (lengthOfRetirement === 6) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost;
+} else if (lengthOfRetirement === 7) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost;
+} else if (lengthOfRetirement === 8) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost;
+} else if (lengthOfRetirement === 9) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost;
+} else if (lengthOfRetirement === 10) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost;
+} else if (lengthOfRetirement === 11) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost;
+} else if (lengthOfRetirement === 12) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost;
+} else if (lengthOfRetirement === 13) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost;
+} else if (lengthOfRetirement === 14) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost;
+} else if (lengthOfRetirement === 15) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost;
+} else if (lengthOfRetirement === 16) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost; 
+} else if (lengthOfRetirement === 17) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost;
+} else if (lengthOfRetirement === 18) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost;
+} else if (lengthOfRetirement === 19) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost;
+} else if (lengthOfRetirement === 20) {
+    ttotalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost;
+} else if (lengthOfRetirement === 21) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost;
+} else if (lengthOfRetirement === 22) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost;
+} else if (lengthOfRetirement === 23) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost;
+} else if (lengthOfRetirement === 24) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost;
+} else if (lengthOfRetirement === 25) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost;
+} else if (lengthOfRetirement === 26) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost;
+} else if (lengthOfRetirement === 27) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost + yearTwentySevenCost;
+} else if (lengthOfRetirement === 28) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost + yearTwentySevenCost + yearTwentyEightCost;
+} else if (lengthOfRetirement === 29) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost + yearTwentySevenCost + yearTwentyEightCost + yearTwentyNineCost;
+} else if (lengthOfRetirement === 30) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost + yearTwentySevenCost + yearTwentyEightCost + yearTwentyNineCost + yearThirtyCost;
+} else if (lengthOfRetirement === 31) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost + yearTwentySevenCost + yearTwentyEightCost + yearTwentyNineCost + yearThirtyCost + yearThirtyOneCost;
+} else if (lengthOfRetirement === 32) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost + yearTwentySevenCost + yearTwentyEightCost + yearTwentyNineCost + yearThirtyCost + yearThirtyOneCost + yearThirtyTwoCost;
+} else if (lengthOfRetirement === 33) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost + yearTwentySevenCost + yearTwentyEightCost + yearTwentyNineCost + yearThirtyCost + yearThirtyOneCost + yearThirtyTwoCost + yearThirtyThreeCost;
+} else if (lengthOfRetirement === 34) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost + yearTwentySevenCost + yearTwentyEightCost + yearTwentyNineCost + yearThirtyCost + yearThirtyOneCost + yearThirtyTwoCost + yearThirtyThreeCost + yearThirtyFourCost;
+} else if (lengthOfRetirement === 35) {
+    totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost + yearTwentySevenCost + yearTwentyEightCost + yearTwentyNineCost + yearThirtyCost + yearThirtyOneCost + yearThirtyTwoCost + yearThirtyThreeCost + yearThirtyFourCost + yearThirtyFiveCost;
 }
 
-return totalhealthcarecosts;
-
-/* console.log(totalhealthcarecosts); */
+return totalHealthcareCosts;
 
 } 
 
 module.exports = healthcare;
-
-/* console.log(yearonecost);
-console.log(yeartwocost);
-console.log(yearthreecost);
-console.log(totalhealthcarecosts); */

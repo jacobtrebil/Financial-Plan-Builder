@@ -4,68 +4,68 @@
 // The total of their future spending including desired retirement income, major purchases, kids college, health care, and business spending 
 
 
-const currentearnings = 100000;
-const currentsavings = 4000;
-const assetvalue = 10000;
-const retirementage = 60;
-const retirementincome = 80000;
+const currentEarnings = 100000;
+const currentSavings = 4000;
+const assetValue = 10000;
+const retirementAge = 60;
+const retirementIncome = 80000;
 const age = 35;
-const ageofdeath = 90;
-let retirementreadiness = '';
-const monthlysocialsecurityincome = 1000;
-const monthlypensionincome = 1500;
-const monthlyretirementworkincome = 1000; 
+const ageOfDeath = 90;
+let retirementReadiness = '';
+const monthlySocialSecuritySncome = 1000;
+const monthlyPensionIncome = 1500;
+const monthlyRetirementWorkIncome = 1000; 
 
-function retirementreadinessfunction(currentearnings, currentsavings, assetvalue, retirementage, retirementincome, age, ageofdeath, monthlysocialsecurityincome, monthlypensionincome, monthlyretirementworkincome) {
+function retirementReadinessFunction(currentEarnings, currentSavings, assetValue, retirementAge, retirementIncome, age, ageOfDeath, monthlySocialSecurityIncome, monthlyPensionIncome, monthlyRetirementWorkIncome) {
 
-const monthlyretirementincome = retirementincome / 12;
+const monthlyRetirementIncome = retirementIncome / 12;
 
 // Age of death that Advisors use is typically 90 for men and 93 for women
 
-const lengthofretirement = ageofdeath - retirementage;
+const lengthOfRetirement = ageOfDeath - retirementAge;
 
 // Estimated Retirement Income based on current income & savings... this should include social security and pension income as well
 
-const monthlysavings = currentsavings / 12;
-const monthstosave = (retirementage - age) * 12;
-const totalsavings = assetvalue + (monthstosave * monthlysavings);
-const estimatedmonthlyretirementincome = ((totalsavings / lengthofretirement) / 12) + monthlysocialsecurityincome + monthlypensionincome + monthlyretirementworkincome;
+const monthlySavings = currentSavings / 12;
+const monthsToSave = (retirementAge - age) * 12;
+const totalSavings = assetValue + (monthsToSave * monthlySavings);
+const estimatedMonthlyRetirementIncome = ((totalSavings / lengthOfRetirement) / 12) + monthlySocialSecurityIncome + monthlyPensionIncome + monthlyRetirementWorkIncome;
 
 // Calculate the ratio of their estimated retirement income with their desired retirment income and future spendings
 
-const readinessratio = estimatedmonthlyretirementincome / monthlyretirementincome;
+const readinessRatio = estimatedMonthlyRetirementIncome / monthlyRetirementIncome;
 
 // Determine their Retirement Readiness score based on their ratio
 
-if (readinessratio < 0.5) {
-    retirementreadiness = 'F';
-} else if (readinessratio < 0.6) {
-    retirementreadiness = 'D';
-} else if (readinessratio < 0.7) {
-    retirementreadiness = 'C-';
-} else if (readinessratio < 0.8) {
-    retirementreadiness = 'C';
-} else if (readinessratio < 0.9) {
-    retirementreadiness = 'B-';
-} else if (readinessratio < 1) {
-    retirementreadiness = 'B';
-} else if (readinessratio < 1.1) {
-    retirementreadiness = 'A-';
-} else if (readinessratio > 1.1) {
-    retirementreadiness = 'A';
+if (readinessRatio < 0.5) {
+    retirementReadiness = 'F';
+} else if (readinessRatio < 0.6) {
+    retirementReadiness = 'D';
+} else if (readinessRatio < 0.7) {
+    retirementReadiness = 'C-';
+} else if (readinessRatio < 0.8) {
+    retirementReadiness = 'C';
+} else if (readinessRatio < 0.9) {
+    retirementReadiness = 'B-';
+} else if (readinessRatio < 1) {
+    retirementReadiness = 'B';
+} else if (readinessRatio < 1.1) {
+    retirementReadiness = 'A-';
+} else if (readinessRatio > 1.1) {
+    retirementReadiness = 'A';
 }
 
-return retirementreadiness;
+return retirementReadiness;
 
 }
 
-module.exports = retirementreadinessfunction;
+module.exports = retirementReadinessFunction;
 
 // Console Logs
 
-/* console.log(totalsavings);
-console.log(estimatedmonthlyretirementincome);
-console.log(monthlyretirementincome);
-console.log(readinessratio);
-console.log(retirementreadiness); */
+/* console.log(totalSavings);
+console.log(estimatedMonthlyRetirementIncome);
+console.log(monthlyRetirementIncome);
+console.log(readinessRatio);
+console.log(retirementReadiness); */
 
