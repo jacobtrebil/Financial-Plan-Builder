@@ -75,6 +75,9 @@ var PlanModel = new mongoose.Schema({
     currentAge: Number,
     yearsUntilRetirement: Number,
     savingsByRetirement: Number,
+    projectedRetirementIncome: Number,
+    financialHealthScore: String,
+    lengthOfPension: Number,
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);

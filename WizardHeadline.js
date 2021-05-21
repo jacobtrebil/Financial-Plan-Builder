@@ -4,7 +4,7 @@ export default function WizardHeadline({}) {
     return (
     <div>
         <h2 className="wizard-headline">Personal Information</h2>
-        <p className="wizard-subheadline">Please provide your information so we can use it to create your plan</p>
+        <p className="wizard-subheadline">Please enter your information and proceed to the next step so we can build your account</p>
     </div>
 )
 }

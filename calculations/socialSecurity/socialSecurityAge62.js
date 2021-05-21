@@ -1,13 +1,13 @@
 
 
 function calculateSocialSecurityAge62(socialSecurityEarnings) {
-    let ageSixtyTwoEarnings = socialSecurityEarnings * 0.75;
-    if (ageSixtyTwoEarnings > 2324) {
-        ageSixtyTwoEarnings = 2324;
+    let socialSecurityAge62Earnings = socialSecurityEarnings * 0.75;
+    if (socialSecurityAge62Earnings > 2324) {
+        socialSecurityAge62Earnings = 2324;
     } else {
-        ageSixtyTwoEarnings;
+        socialSecurityAge62Earnings;
     }
-    return ageSixtyTwoEarnings;
+    return socialSecurityAge62Earnings;
 }
 
 module.exports = calculateSocialSecurityAge62;

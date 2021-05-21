@@ -1,29 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { planCalculations } from '../../apiclient/wizardfetch';
-import { getCalculatedPlan } from '../../apiclient/wizardfetch'; 
-
-/* export async function getServerSideProps(context) {
-
-    const getCalculatedPlanFunction = await getCalculatedPlan(plan._id);
-    setPlanCalculations2(getCalculatedPlanFunction);
-
-    return {
-        props: { plan }
-    }
-} */
 
 export default function Summary({plan}) {
 
     const doWizardCalculations = async () => {
         const wizardCalculationsFunction = await planCalculations(plan._id);
         setCalculations(wizardCalculationsFunction);
-        getCalculatedPlanInfo();
-    }
-
-    const getCalculatedPlanInfo = async () => {
-        const getCalculatedPlanFunction = await getCalculatedPlan(plan._id);
-        setPlanCalculations2(getCalculatedPlanFunction);
     }  
+
+    // I shouldn't need the above function
 
     const getGrade = () => {
         if (plan.currentEarnings < 100) {
@@ -36,7 +21,6 @@ export default function Summary({plan}) {
     }
 
     const [calculations, setCalculations] = useState();
-    const [planCalculations2, setPlanCalculations2] = useState();
     const [grade, setGrade] = useState();
     const [showForm, setShowForm] = useState(true);
     const [showForm2, setShowForm2] = useState(false);
@@ -60,11 +44,11 @@ export default function Summary({plan}) {
             <div>
             <h2 className="recommendations-h2">Your Financial Scorecard</h2>
             <p className="ssamount">Financial Health Score</p>
-            <h1 className="financialhealthscore">{ grade }</h1>
+            <h1 className="financialhealthscore">{ calculations.financialHealthScore }</h1>
             <div className="summaryoptionssection">
                 <div className="summaryoption">
                     <p className="ssamount">Retirement Income</p>
-                    <p className="">Desired: { plan.retirementIncome } <br></br>Actual: { plan.totalHealthcareCosts }</p>
+                    <p className="">Desired: { plan.retirementIncome } <br></br>Actual: { calculations.projectedRetirementIncome }</p>
                 </div>
                 <div className="summaryoption">
                     <p className="ssamount">Retirement Age</p>
@@ -103,15 +87,15 @@ export default function Summary({plan}) {
                         </tr>
                     <tr>
                         <td>Age 62</td>
-                        <td>{ plan.volatility }</td>
+                        <td>{ calculations.socialSecurityAge62Earnings }</td>
                     </tr>
                     <tr>
                         <td>Age 67</td>
-                        <td>{ plan.socialSecurityEarnings }</td>
+                        <td>{ calculations.socialSecurityEarnings }</td>
                     </tr>
                     <tr>
                         <td>Age 70</td>
-                        <td>{ plan.currentSavings }</td>
+                        <td>{ calculations.socialSecurityAge70Earnings }</td>
                     </tr>
                     </div>
                     <p className="ssquestion">When would you prefer to take Social Security?</p>

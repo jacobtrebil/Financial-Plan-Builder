@@ -89,7 +89,7 @@ export default function Step3 ({ plan, onComplete, pageProps }) {
     const [medicare, setMedicare] = useState('No')
     const [pension, setPension] = useState('No')
     const [pensionInflation, setPensionInflation] = useState('No')
-    const [pensionTimeframe, setPensionTimeframe] = useState('No')
+    const [pensionTimeframe, setPensionTimeframe] = useState('50')
     const [pensionEarnings, setPensionEarnings] = useState('')
     const [socialSecurity, setSocialSecurity] = useState('No')
     const [mortgage, setMortgage] = useState('No')
