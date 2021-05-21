@@ -13,16 +13,16 @@ function calculateSocialSecurity(currentEarnings) {
 
     if (averageMonthlyIncome > 5006) {
         const socialSecurityEarningsChunkThreeCalculated = (averageMonthlyIncome - 5006) * 0.15;
-        socialSecurityEarnings = socialSecurityEarningsChunkThreeCalculated + allSocialSecurityEarningsChunkTwo;
+        socialSecurityEarnings = Math.floor(socialSecurityEarningsChunkThreeCalculated + allSocialSecurityEarningsChunkTwo);
     } else if (averageMonthlyIncome < 5006) {
         const socialSecurityEarningsChunkTwoCalculated = (averageMonthlyIncome - 996) * 0.32;
-        socialSecurityEarnings = socialSecurityEarningsChunkTwoCalculated + allSocialSecurityEarningsChunkOne;
+        socialSecurityEarnings = Math.floor(socialSecurityEarningsChunkTwoCalculated + allSocialSecurityEarningsChunkOne);
     }
 
     if (socialSecurityEarnings > 3148) {
         socialSecurityEarnings = 3148;
     } else {
-        socialSecurityEarnings;
+        socialSecurityEarnings = Math.floor(socialSecurityEarnings);
     }
 
     return socialSecurityEarnings;

@@ -1352,6 +1352,7 @@ p {
   font-size: 16px;
   text-align: center;
   margin: 10px 0px 0px 0px;
+  line-height: 25px;
 }
 
 #dateofbirth:hover {
@@ -1366,7 +1367,15 @@ p {
 
 .summaryoption {
   display: inline-block;
-  margin: 40px 50px 50px 50px;
+  margin: 40px 50px 20px 50px;
+  background-color: white;
+  border: solid 1px rgb(221, 221, 221);
+  border-radius: 4px;
+  padding: 20px 20px 15px 20px;
+}
+
+.desired {
+  line-height: 25px;
 }
 
 .loading {
@@ -1375,13 +1384,13 @@ p {
 }
 
 .recommendations-h2 {
-  margin: 50px 0px 40px 0px;
+  margin: 30px 0px 20px 0px;
 }
 
 .financialhealthscore {
-  margin: 0px auto 0px auto;
+  margin: -20px auto -20px auto;
   text-align: center;
-  font-size: 78px;
+  font-size: 120px;
   color: red;
 }
 

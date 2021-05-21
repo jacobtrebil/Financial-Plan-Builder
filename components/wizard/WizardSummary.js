@@ -20,6 +20,12 @@ export default function Summary({plan}) {
         }
     }
 
+    const convertToUsd = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0,
+      });
+
     const [calculations, setCalculations] = useState();
     const [grade, setGrade] = useState();
     const [showForm, setShowForm] = useState(true);
@@ -42,24 +48,16 @@ export default function Summary({plan}) {
                 showForm && (
             <div  className="summary">
             <div>
-            <h2 className="recommendations-h2">Your Financial Scorecard</h2>
+            <h2 className="recommendations-h2">Your Current Financial Scorecard</h2>
             <p className="ssamount">Financial Health Score</p>
             <h1 className="financialhealthscore">{ calculations.financialHealthScore }</h1>
             <div className="summaryoptionssection">
                 <div className="summaryoption">
-                    <p className="ssamount">Retirement Income</p>
-                    <p className="">Desired: { plan.retirementIncome } <br></br>Actual: { calculations.projectedRetirementIncome }</p>
+                    <p className="ssamount"><b>Retirement Income</b></p>
+                    <p className="desired">Desired: { convertToUsd.format(plan.retirementIncome) } <br></br>Projected: { convertToUsd.format(calculations.projectedRetirementIncome) }</p>
                 </div>
-                <div className="summaryoption">
-                    <p className="ssamount">Retirement Age</p>
-                    <p>Desired: { plan.currentSavings } <br></br> Actual: { plan.currentSavings }</p>
-                </div>
-                <div className="summaryoption">
-                    <p className="ssamount">Retirement Readiness</p>
-                    <p>Desired: { plan.volatility } <br></br> Actual: { plan.currentSavings }</p>
-                </div>
-                <p className="ssamount">You can improve your financial situation a few different ways. <br></br>Click the button below to make a few final decisions and we'll craft a custom Financial Plan to reach your goals.</p>
-                </div>
+                <p className="ssamount">There are 4 key ways you can improve your Financial Health Score. <br></br>In the the next few pages, we'll explore those changes.</p>
+            </div>
             </div>
             <button className="scorecard-button" onClick={function goToPlanBuilder() {
                 setShowForm(!showForm);
@@ -83,19 +81,19 @@ export default function Summary({plan}) {
                     <div className="table-border">
                         <tr>
                             <td className="table-headers">Starting Age</td>
-                            <td className="table-headers">Annual Earnings</td>
+                            <td className="table-headers">Monthly Earnings</td>
                         </tr>
                     <tr>
                         <td>Age 62</td>
-                        <td>{ calculations.socialSecurityAge62Earnings }</td>
+                        <td>{ convertToUsd.format(calculations.socialSecurityAge62Earnings) }</td>
                     </tr>
                     <tr>
                         <td>Age 67</td>
-                        <td>{ calculations.socialSecurityEarnings }</td>
+                        <td>{ convertToUsd.format(calculations.socialSecurityEarnings) }</td>
                     </tr>
                     <tr>
                         <td>Age 70</td>
-                        <td>{ calculations.socialSecurityAge70Earnings }</td>
+                        <td>{ convertToUsd.format(calculations.socialSecurityAge70Earnings) }</td>
                     </tr>
                     </div>
                     <p className="ssquestion">When would you prefer to take Social Security?</p>

@@ -5,7 +5,7 @@ function calculateSocialSecurityAge62(socialSecurityEarnings) {
     if (socialSecurityAge62Earnings > 2324) {
         socialSecurityAge62Earnings = 2324;
     } else {
-        socialSecurityAge62Earnings;
+        socialSecurityAge62Earnings = Math.floor(socialSecurityAge62Earnings);
     }
     return socialSecurityAge62Earnings;
 }

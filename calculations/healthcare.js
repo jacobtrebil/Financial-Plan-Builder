@@ -114,6 +114,8 @@ if (lengthOfRetirement === 1) {
     totalHealthcareCosts = yearOneCost + yearTwoCost + yearThreeCost + yearFourCost + yearFiveCost + yearSixCost + yearSevenCost + yearEightCost + yearNineCost + yearTenCost + yearElevenCost + yearTwelveCost + yearThirteenCost + yearFourteenCost + yearFifteenCost + yearSixteenCost + yearSeventeenCost + yearEighteenCost + yearNineteenCost + yearTwentyCost + yearTwentyOneCost + yearTwentyTwoCost + yearTwentyThreeCost + yearTwentyFourCost + yearTwentyFiveCost + yearTwentySixCost + yearTwentySevenCost + yearTwentyEightCost + yearTwentyNineCost + yearThirtyCost + yearThirtyOneCost + yearThirtyTwoCost + yearThirtyThreeCost + yearThirtyFourCost + yearThirtyFiveCost;
 }
 
+totalHealthcareCosts = Math.floor(totalHealthcareCosts);
+
 return totalHealthcareCosts;
 
 } 
