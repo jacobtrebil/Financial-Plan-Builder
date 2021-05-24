@@ -47,7 +47,7 @@ export default async function handler(req,res) {
                 await Plan.updateOne({ _id: id}, plan);
 
                 plan = await Plan.findById(id);
-                plan.projectedRetirementIncome = calculateProjectedRetirementIncome(plan.savingsByRetirement, plan.lengthOfRetirement);
+                plan.projectedRetirementIncome = calculateProjectedRetirementIncome(plan.socialSecurityEarnings, plan.savingsByRetirement, plan.lengthOfRetirement);
                 await Plan.updateOne({ _id: id}, plan);
 
                 plan = await Plan.findById(id);
@@ -81,5 +81,3 @@ export default async function handler(req,res) {
             break
     }
 }
-
-// Have one update at the end for all of them

@@ -25,6 +25,8 @@ function calculateSocialSecurity(currentEarnings) {
         socialSecurityEarnings = Math.floor(socialSecurityEarnings);
     }
 
+    socialSecurityEarnings = socialSecurityEarnings * 12;
+
     return socialSecurityEarnings;
 
  } 

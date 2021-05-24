@@ -1,5 +1,5 @@
 
-export default function calculateProjectedRetirementIncome(savingsByRetirement, lengthOfRetirement) {
-    const projectedRetirementIncome = Math.floor(savingsByRetirement/lengthOfRetirement);
+export default function calculateProjectedRetirementIncome(socialSecurityEarnings, savingsByRetirement, lengthOfRetirement) {
+    const projectedRetirementIncome = Math.floor(socialSecurityEarnings + (savingsByRetirement/lengthOfRetirement));
     return projectedRetirementIncome;
 }

@@ -7,7 +7,11 @@ function calculateSocialSecurityAge70(socialSecurityEarnings) {
     } else {
         ageSeventyEarnings = Math.floor(ageSeventyEarnings);
 }
+
+ageSeventyEarnings = ageSeventyEarnings * 12;
+
 return ageSeventyEarnings;
+
 }
 
 module.exports = calculateSocialSecurityAge70;

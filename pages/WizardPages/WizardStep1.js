@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import WizardHeader from './WizardHeader';
-import WizardHeadline from './WizardHeadline';
-import WizardStepTemplate from './WizardStepTemplate';
+import React, {useState} from 'react';
 import _dynamic from 'next/dynamic';
+import WizardHeadline from '../../components/wizard/WizardHeadline';
+import WizardHeader from '../../components/wizard/WizardHeader';
+import WizardStepTemplate from '../../components/wizard/WizardStepTemplate';
+import { createPlan } from '../../apiclient/wizardfetch';
 
-export default function Step1({plan, onComplete}) {
+function Step1Page() {
 
-    let [_plan, _setPlan] = useState(plan);
-
-
-    function updatePlan( changes ){
-        _setPlan({ ..._plan, ...changes})
+    const onCreatePlan = async (_plan) => {
+        const createdPlan = await createPlan(_plan);
+        setPlan(createdPlan)
+        setStep(step + 1);
     }
 
     function complete(){
@@ -22,10 +22,20 @@ export default function Step1({plan, onComplete}) {
         }
     };
 
+    function updatePlan( changes ){
+        _setPlan({ ..._plan, ...changes})
+    }
+
+    function onComplete() {
+        onCreatePlan();
+    }
+
     function scrollOnError() {
         window.scrollTo(0, 0);
     }
 
+    const [step, setStep] = useState(1);
+    const [plan, setPlan] = useState({});
     const [errors, setErrors] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [spouse, setSpouse] = useState('No')
@@ -36,15 +46,14 @@ export default function Step1({plan, onComplete}) {
     const [maritalStatus, setMaritalStatus] = useState('Married')
     const [spousesFullName, setSpousesFullName] = useState('')
 
-    _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, maritalStatus, firstName, spousesFullName };
+    const _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, maritalStatus, firstName, spousesFullName };
 
-    
     return (
-        <div>
-        <WizardHeader></WizardHeader>
-        <WizardStepTemplate onNext={complete} >
-        <WizardHeadline></WizardHeadline>
-            <div className="inputs-div-1">
+       <div>
+           <WizardHeader></WizardHeader>
+           <WizardStepTemplate onNext={complete} onComplete={onCreatePlan}>
+           <WizardHeadline></WizardHeadline>
+           <div className="inputs-div-1">
                 <div className="input-div">
                     <label className="input-label">First Name</label><br></br>
                     <input
@@ -132,7 +141,9 @@ export default function Step1({plan, onComplete}) {
                 </div>
                 )}
             </div>
-        </WizardStepTemplate>
-        </div>
-    )
-}
+            </WizardStepTemplate>
+       </div>
+    );
+  } 
+  
+  export default Step1Page;

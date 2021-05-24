@@ -1,14 +1,8 @@
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import _dynamic from 'next/dynamic';
 
 const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
-)
-
-const PlanPopupComponent = _dynamic(() => 
-  import ('../components/plan-form-popup').then((mod) => mod.PlanFormPopup)
 )
 
 const FooterComponent = _dynamic(() =>
