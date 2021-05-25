@@ -4,22 +4,19 @@ import WizardHeader2 from '../../components/wizard/WizardHeader2';
 import WizardHeadline2 from '../../components/wizard/WizardHeadline2';
 import _dynamic from 'next/dynamic';
 import { updatePlan } from '../../apiclient/wizardfetch';
-import Step1 from './WizardStep1';
 
 export default function Step2({ plan, pageProps }) {
-
-    /* const { _id } = plan; */
 
     useEffect(() => {
         window.scrollTo(0, 0);
       }, []);
 
     const router = useRouter();
+    const {planId} = router.query
 
     const onUpdatePlan = async (newPlan) => {
-        const updatedPlan = await updatePlan(_id, newPlan);
-        setPlan(updatedPlan)
-        await router.push('../WizardPages/WizardStep3');
+        const updatedPlan = await updatePlan(planId, newPlan);
+        await router.push(`../WizardPages/WizardStep3?planId=${updatedPlan._id}`);
     }
 
     function completePlan(){

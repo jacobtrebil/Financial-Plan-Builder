@@ -1,17 +1,8 @@
 
 
 function calculateSocialSecurityAge70(socialSecurityEarnings) {
-    let ageSeventyEarnings = socialSecurityEarnings * 1.24;
-    if (ageSeventyEarnings > 3895) {
-        ageSeventyEarnings = 3895;
-    } else {
-        ageSeventyEarnings = Math.floor(ageSeventyEarnings);
-}
-
-ageSeventyEarnings = ageSeventyEarnings * 12;
-
-return ageSeventyEarnings;
-
+    let socialSecurityAge70Earnings = Math.min(3895, (socialSecurityEarnings * 1.24) * 12)
+    return Math.floor(socialSecurityAge70Earnings);
 }
 
 module.exports = calculateSocialSecurityAge70;

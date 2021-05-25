@@ -1,6 +1,18 @@
+const socialSecurityBands = [
+    { min: 0, max: 996, ratio: 0.9},
+    { min: 996, max: 5006, ratio: 0.32},
+    { min: 5006, max: 100000, ratio: 0.15},
+]
 
+const socialSecurityEarnings = socialSecurityBands.reduce((total, band) => {
+    const maxEligibleAmountInBand = Math.min(band.max, averageMonthlyIncome)
+    const socialSecurityFromBand = Math.max(0, maxEligibleAmountInBand - band.min) * band.ratio;
+    return total + socialSecurityFromBand;
+  }, 0);
+  
+  return Math.min(socialSecurityEarnings, 3148)
 
-function calculateSocialSecurity(currentEarnings) { 
+/* function calculateSocialSecurity(currentEarnings) { 
 
     const allSocialSecurityEarningsChunkOne = 896.40;
     const allSocialSecurityEarningsChunkTwo = 2498.32;
@@ -31,7 +43,7 @@ function calculateSocialSecurity(currentEarnings) {
 
  } 
 
-module.exports = calculateSocialSecurity;
+module.exports = calculateSocialSecurity; */
 
 
 

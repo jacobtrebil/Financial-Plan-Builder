@@ -12,7 +12,7 @@ export default function Step1({}) {
     const onCreatePlan = async (newPlan) => {
         const createdPlan = await createPlan(newPlan);
         setPlan(createdPlan);
-        router.push('../WizardPages/WizardStep2');
+        router.push(`../WizardPages/WizardStep2?planId=${createdPlan._id}`);
     }
 
     function complete(){
