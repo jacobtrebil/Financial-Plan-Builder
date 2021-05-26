@@ -1,7 +1,7 @@
 
 
 function calculateSocialSecurityAge62(socialSecurityEarnings) {
-    let socialSecurityAge62Earnings = Math.min(2324, (socialSecurityEarnings * 0.75) * 12)
+    let socialSecurityAge62Earnings = Math.min(27888, (socialSecurityEarnings * 0.75) * 12)
     return Math.floor(socialSecurityAge62Earnings);
 }
 

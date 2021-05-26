@@ -16,7 +16,7 @@ export default function Step3({ plan, pageProps }) {
 
     const onUpdatePlan = async (newPlan) => {
         const updatedPlan = await updatePlan2(planId, newPlan);
-        router.push('../WizardPages/WizardStep3');
+        router.push(`../wizard/scorecard?planId=${updatedPlan._id}`);
     }
 
     function completePlan(){
@@ -122,7 +122,7 @@ export default function Step3({ plan, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">What are your average earnings over the past 5 years?</label><br></br>
                     <input
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder={'$50,000'}
                     value={currentEarnings} 
                     name="currentEarnings"
@@ -133,7 +133,7 @@ export default function Step3({ plan, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much do you currently save per year?</label><br></br>
                     <input
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder={'$50,000'}
                     value={currentSavings}
                     type="number"
@@ -145,7 +145,7 @@ export default function Step3({ plan, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">What is the total value of your savings and assets that you own?</label><br></br>
                     <input
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder={'$100,000'}
                     value={assetValue}
                     type="number"

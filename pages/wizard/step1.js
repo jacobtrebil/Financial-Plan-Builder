@@ -12,7 +12,7 @@ export default function Step1({}) {
     const onCreatePlan = async (newPlan) => {
         const createdPlan = await createPlan(newPlan);
         setPlan(createdPlan);
-        router.push(`../WizardPages/WizardStep2?planId=${createdPlan._id}`);
+        router.push(`../wizard/step2?planId=${createdPlan._id}`);
     }
 
     function complete(){
@@ -58,7 +58,7 @@ export default function Step1({}) {
                     <label className="input-label">First Name</label><br></br>
                     <input
                     name="firstName"
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder="First Name"
                     value={firstName}
                     onChange={e=> setFirstName(e.target.value)}
@@ -88,7 +88,7 @@ export default function Step1({}) {
                     <input
                     name="dateOfBirthDay"
                     id="dateofbirth"
-                    className="form-input-dob"
+                    className="form-input-pages-dob"
                     value={dateOfBirthDay}
                     placeholder="Day"
                     onChange={e=> setDateOfBirthDay(e.target.value)}
@@ -97,7 +97,7 @@ export default function Step1({}) {
                     <input
                     name="dateOfBirthYear"
                     id="dateofbirth"
-                    className="form-input-dob"
+                    className="form-input-pages-dob"
                     value={dateOfBirthYear}
                     placeholder="Year"
                     onChange={e=> setDateOfBirthYear(e.target.value)}

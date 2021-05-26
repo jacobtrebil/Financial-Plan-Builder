@@ -16,7 +16,7 @@ export default function Step2({ plan, pageProps }) {
 
     const onUpdatePlan = async (newPlan) => {
         const updatedPlan = await updatePlan(planId, newPlan);
-        await router.push(`../WizardPages/WizardStep3?planId=${updatedPlan._id}`);
+        await router.push(`../wizard/step3?planId=${updatedPlan._id}`);
     }
 
     function completePlan(){
@@ -83,7 +83,7 @@ export default function Step2({ plan, pageProps }) {
             <div className="input-div">
                     <label className="input-label">At what age would you like to retire?</label><br></br>
                     <input 
-                    className="form-input"
+                    className="form-input-pages"
                     name="retirementAge"
                     type="number" 
                     placeholder ="60" 
@@ -96,7 +96,7 @@ export default function Step2({ plan, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">What is your desired retirement income?</label><br></br>
                     <input 
-                    className="form-input"
+                    className="form-input-pages"
                     name="retirementIncome"
                     placeholder ="$100,000" 
                     value={retirementIncome}
