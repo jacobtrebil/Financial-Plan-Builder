@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { planCalculations, planDecisions } from '../../apiclient/wizardfetch';
+import { planCalculations } from '../../apiclient/wizardfetch';
 
 export default function Summary({plan}) {
 
@@ -7,11 +7,6 @@ export default function Summary({plan}) {
         const wizardCalculationsFunction = await planCalculations(plan._id);
         setCalculations(wizardCalculationsFunction);
     }  
-
-    const storePlanDecisions = async () => {
-        const decisionsFunction = await planDecisions(plan._id);
-        setDecisions(decisionsFunction);
-    }
 
     const getGrade = () => {
         if (plan.currentEarnings < 100) {
@@ -30,7 +25,6 @@ export default function Summary({plan}) {
       });
 
     const [calculations, setCalculations] = useState();
-    const [decisions, setDecisions] = useState();
     const [socialSecurityDecision, setSocialSecurityDecision] = useState('Age 70');
     const [savingsDecision, setSavingsDecision] = useState('$500');
     const [investmentProfileDecision, setInvestmentProfileDecision] = useState('Moderate');

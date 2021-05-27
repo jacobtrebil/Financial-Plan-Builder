@@ -33,7 +33,6 @@ export default function socialSecurityOptions({plan}) {
       });
 
     return ( 
-        <div className="summary">
             <div className="decisionssocialsecuritysection">
                 <h1>Retirement Income</h1>
                 <table>
@@ -79,9 +78,5 @@ export default function socialSecurityOptions({plan}) {
                             <option>$75,000</option>
                         </select>
                     </table>
-                <button className="scorecard-button" onClick={function clickHandler() {
-                router.push(`../?planId=${calculations._id}`);
-            }}>Next</button>
             </div>
-        </div>
     )}

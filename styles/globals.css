@@ -1535,3 +1535,10 @@ th {
 .projections-h2 {
   margin: 40px 0px 40px 0px;
 }
+
+.solid-hr-customizer {
+  width: 80%;
+  border: 1px solid #DDDDDD;
+  margin: 20px auto 40px auto;
+  height: 0.5px;
+}

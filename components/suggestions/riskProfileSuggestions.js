@@ -12,7 +12,7 @@ export default function socialSecurityOptions({plan}) {
     }, []); 
 
     const [calculations, setCalculations] = useState();
-    const [retirementIncomeDecision, setRetirementIncomeDecision] = useState('$54,000');
+    const [investmentProfileDecision, setInvestmentProfileDecision] = useState('Moderate');
     let [_plan, _setPlan] = useState({plan});
 
     if (!calculations) return (
@@ -33,55 +33,53 @@ export default function socialSecurityOptions({plan}) {
       });
 
     return ( 
-        <div className="summary">
             <div className="decisionssocialsecuritysection">
-                <h1>Retirement Income</h1>
+                <h1>Investment Profile</h1>
                 <table>
                         <tr>
-                            <p className="sstabledescription">The table below shows your desired retirement income. By choosing a lower desired retirement income, you can create a more achievable plan.</p>
+                            <p className="sstabledescription">The table below shows how much you'll earn from your investments based on the risk profile of your investments. We recommend that you increase the risk of your profile to generate a higher rate of return. </p>
                         </tr>
                         <div className="table-border">
                             <tr>
-                                <td className="table-headers">Retirement Income</td>
-                                <td className="table-headers">Odds of Success</td>
+                                <td className="table-headers">Investment Risk</td>
+                                <td className="table-headers">Rate of Return</td>
                             </tr>
                             <tr>
-                                <td>$50,000</td>
-                                <td>90%</td>
+                                <td>Conservative</td>
+                                <td>4%</td>
                             </tr>
                             <tr>
-                                <td>$54,000</td>
-                                <td>70%</td>
+                                <td>Conservative +</td>
+                                <td>5%</td>
                             </tr>
                             <tr>
-                                <td>$58,000</td>
-                                <td>50%</td>
+                                <td>Moderate</td>
+                                <td>6%</td>
                             </tr>
                             <tr>
-                                <td>$64,000</td>
-                                <td>30%</td>
+                                <td>Moderate +</td>
+                                <td>7%</td>
                             </tr>
                             <tr>
-                                <td>$75,000</td>
-                                <td>10%</td>
+                                <td>Aggressive</td>
+                                <td>8%</td>
                             </tr>
                         </div>
-                        <p className="ssquestion">How much would you like to earn throughout retirement?</p>
+                        <p className="ssquestion">How much risk would you like to take with your investments?</p>
                         <select 
                         className="form-select"
-                        name="retirementIncomeDecision"
-                        value={retirementIncomeDecision}
-                        onChange={e=> { setRetirementIncomeDecision(e.target.value)}}>
-                            <option>$50,000</option>
-                            <option>$54,000</option>
-                            <option>$58,000</option>
-                            <option>$64,000</option>
-                            <option>$75,000</option>
+                        name="investmentProfileDecision"
+                        value={investmentProfileDecision}
+                        onChange={e=> { setInvestmentProfileDecision(e.target.value)}}>
+                            <option>Conservative</option>
+                            <option>Conservative +</option>
+                            <option>Moderate</option>
+                            <option>Moderate +</option>
+                            <option>Aggressive</option>
                         </select>
                     </table>
                 <button className="scorecard-button" onClick={function clickHandler() {
-                router.push(`../?planId=${calculations._id}`);
+                router.push(`../wizard/monthlySavingsOptions?planId=${calculations._id}`);
             }}>Next</button>
             </div>
-        </div>
     )}

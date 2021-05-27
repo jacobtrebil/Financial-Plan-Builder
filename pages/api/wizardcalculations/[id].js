@@ -9,7 +9,7 @@ import calculateSocialSecurityAge70 from '../../../calculations/socialSecurity/s
 import calculateCurrentAge from '../../../calculations/currentAge';
 import calculateYearsUntilRetirement from '../../../calculations/yearsUntilRetirement';
 import calculateSavingsByRetirement from '../../../calculations/savingsByRetirement';
-import calculateProjectedRetirementIncome from '../../../calculations/calculateProjectedRetirementIncome';
+import calculateProjectedRetirementIncome from '../../../calculations/projectedRetirementIncome/calculateProjectedRetirementIncome';
 import calculateFinancialHealthScore from '../../../calculations/financialHealthScore';
 import calculateLengthOfPension from '../../../calculations/lengthOfPension';
 

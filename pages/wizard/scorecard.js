@@ -1,8 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { planCalculations } from '../../apiclient/wizardfetch';
 import { useRouter } from 'next/router';
+import _dynamic from 'next/dynamic';
 
-export default function Summary({plan}) {
+const SsSuggestionsComponent = _dynamic(() =>
+import('../../components/suggestions/ssSuggestions')
+)
+
+const RetirementIncomeSuggestionsComponent = _dynamic(() =>
+import('../../components/suggestions/retirementIncomeSuggestions')
+)
+
+const MonthlySavingsSuggestionsComponent = _dynamic(() =>
+import('../../components/suggestions/monthlySavingsSuggestions')
+)
+
+const RiskProfileSuggestionsComponent = _dynamic(() =>
+import('../../components/suggestions/ssSuggestions')
+)
+
+function Summary({plan}) {
 
     const router = useRouter();
     const {planId} = router.query;
@@ -43,8 +60,13 @@ export default function Summary({plan}) {
                     <p className="ssamount"><b>Retirement Income</b></p>
                     <p className="desired">Desired: { convertToUsd.format(calculations.retirementIncome) } <br></br>Projected: { convertToUsd.format(calculations.projectedRetirementIncome) }</p>
                 </div>
+                <hr className="solid-hr-customizer"></hr>
                 <p className="ssamount">There are 4 key ways you can improve your Financial Health Score. <br></br>In the the next few pages, we'll explore those changes.</p>
             </div>
+            <SsSuggestionsComponent />
+            <RetirementIncomeSuggestionsComponent />
+            <MonthlySavingsSuggestionsComponent />
+            <RiskProfileSuggestionsComponent />
             </div>
             <button className="scorecard-button" onClick={function clickHandler() {
                 router.push(`../wizard/socialSecurityOptions?planId=${calculations._id}`);
@@ -52,3 +74,5 @@ export default function Summary({plan}) {
             </div>
         </div>
     )};
+
+    export default Summary;
