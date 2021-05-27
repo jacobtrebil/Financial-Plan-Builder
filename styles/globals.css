@@ -1388,16 +1388,21 @@ p {
   background-color: white;
   border: solid 1px rgb(221, 221, 221);
   border-radius: 4px;
-  padding: 20px 20px 15px 20px;
+  padding: 10px 20px 15px 20px;
 }
 
-.desired {
-  line-height: 25px;
+.center {
+  margin: 0px 0px 20px 0px;
+  text-align: center;
 }
 
 .loading {
   margin: 25% auto 20% auto;
   text-align: center;
+}
+
+.lifetimeearnings {
+  line-height: 5px;
 }
 
 .recommendations-h2 {
@@ -1539,6 +1544,14 @@ th {
 .solid-hr-customizer {
   width: 80%;
   border: 1px solid #DDDDDD;
-  margin: 20px auto 40px auto;
+  margin: 20px auto 20px auto;
   height: 0.5px;
+}
+
+.barchart {
+  margin: 40px auto 0px auto;
+}
+
+.barchart-container {
+  margin: 0px 40px 0px 0px;
 }
