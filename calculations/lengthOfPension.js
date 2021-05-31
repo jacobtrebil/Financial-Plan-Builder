@@ -18,9 +18,6 @@ export default function calculateLengthOfPension(pensionTimeframe) {
             let lengthOfPension = 0;
         }
 
-        console.log(pensionTimeframe);
-        console.log(lengthOfPension);
-
     return lengthOfPension;
 }
 
