@@ -47,7 +47,6 @@ function Summary({plan}) {
     const [pensionDecision, setPensionDecision] = useState('Age 67');
     const [savingsDecision, setSavingsDecision] = useState('Age 67');
     const [pensionDecision2, setPensionDecision2] = useState('Age 67');
-    const [investmentProfileDecision, setInvestmentProfileDecision] = useState('Age 67');
     let [_plan, _setPlan] = useState({plan});
 
     if (!calculations) return (

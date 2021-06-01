@@ -43,33 +43,16 @@ export default function Step2({ plan, pageProps }) {
         window.scrollTo(0, 0);
     }
 
-    const [errors, setErrors] = useState('')
     const [errors2, setErrors2] = useState('')
     const [errors3, setErrors3] = useState('')
     const [showForm, setShowForm] = useState(false)  
-    const [showForm2, setShowForm2] = useState(false) 
-    const [showForm3, setShowForm3] = useState(false) 
-    const [showForm4, setShowForm4] = useState(false)
-    const [showForm5, setShowForm5] = useState(false)
-    const [workAmount, setWorkAmount] = useState('No work')
     const [retirementAge, setRetirementAge] = useState('')
     const [retirementIncome, setRetirementIncome] = useState('')
-    const [businessMoneyNeeded, setBusinessMoneyNeeded] = useState('')
     const [care, setCare] = useState('No')
     const [health, setHealth] = useState('Average')
-    const [charity, setCharity] = useState('No')
-    const [majorPurchases, setMajorPurchases] = useState('No')
     const [increaseIncome, setIncreaseIncome] = useState('No')
     const [increaseIncomeAmount, setIncreaseIncomeAmount] = useState('')
     const [outOfWork, setOutOfWork] = useState('No')
-    const [purchasesCost, setPurchasesCost] = useState('')
-    const [support, setSupport] = useState('No')
-    const [supportCost, setSupportCost] = useState('')
-    const [collegeSpendingAmount, setCollegeSpendingAmount] = useState('')
-    const [kids, setKids] = useState('No')
-    const [college, setCollege] = useState('No')
-    const [numberOfKids, setNumberOfKids] = useState('')
-    const [business, setBusiness] = useState('No')
 
     let [_plan, _setPlan] = useState({plan});
 
@@ -77,7 +60,7 @@ export default function Step2({ plan, pageProps }) {
         _setPlan({ ..._plan, ...changes})
     }
 
-    _plan = { workAmount, outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, businessMoneyNeeded, care, health, charity, majorPurchases, purchasesCost, support, supportCost, collegeSpendingAmount, kids, college, numberOfKids, business };
+    _plan = { outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, care, health };
     
     return (
         <div>

@@ -11,8 +11,8 @@ export default async function handler(req,res) {
         case 'PUT':
             try {
                 const plan = await Plan.findOne({ _id: id })
-                const { workAmount, outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, businessMoneyNeeded, care, health, charity, majorPurchases, purchasesCost, support, supportCost, collegeSpendingAmount, kids, college, numberOfKids, business } = req.body
-                await Plan.updateOne({ _id: id}, { workAmount, outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, businessMoneyNeeded, care, health, charity, majorPurchases, purchasesCost, support, supportCost, collegeSpendingAmount, kids, college, numberOfKids, business })
+                const { outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, care, health } = req.body
+                await Plan.updateOne({ _id: id}, { outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, care, health })
                 const plan2 = await Plan.findById(id)
                 res.status(200).json( plan2 )
                 return;

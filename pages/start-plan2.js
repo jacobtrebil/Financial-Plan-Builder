@@ -28,8 +28,8 @@ function StartPlan() {
     return (
       <div id="section-1-start-box">
         <h1 id="create-a-plan">Create a Plan</h1>
-        <h2 id="create-a-plan-h2">Time to complete: 15 minutes</h2>
-        <h2 id="create-a-plan-2-h2">What to expect: Just answer a few basic questions about your goals & finances and we will provide you with a personalized financial plan. </h2>
+        <h2 id="create-a-plan-2-h2">Answer a few questions and we'll generate you a custom financial plan. </h2>
+        <h2 id="create-a-plan-h2">Time to complete: 5 minutes</h2>
         <Link href="/wizard/step1"><button type="submit" id="start-plan-button">Next &#8594;</button></Link>
        </div>
     );

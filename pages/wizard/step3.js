@@ -68,10 +68,10 @@ export default function Step3({ plan, pageProps }) {
     const [currentEarnings, setCurrentEarnings] = useState('')
     const [lifeInsuranceDocument, setLifeInsuranceDocument] = useState()
     const [currentSavings, setCurrentSavings] = useState('')
-    const [riskAttitude, setRiskAttitude] = useState('My main goal is to avoid loss, even though I may only keep pace with inflation.')
+    const [riskAttitude, setRiskAttitude] = useState('Earn more than inflation, with low risk')
     const [assetValue, setAssetValue] = useState('')
-    const [changePortfolio, setChangePortfolio] = useState('I would immediately change to options that are more conservative')
-    const [volatility, setVolatility] = useState('Disagree')
+    const [changePortfolio, setChangePortfolio] = useState('Change to a more conservative portfolio')
+    const [volatility, setVolatility] = useState('False')
     const [portfolioTradeoff, setPortfolioTradeoff] = useState('Portfolio A')
     const [lifeInsurance, setLifeInsurance] = useState('No')
     const [taxPlan, setTaxPlan] = useState('No')
@@ -110,7 +110,7 @@ export default function Step3({ plan, pageProps }) {
         _setPlan({ ..._plan, ...changes})
     }
 
-    _plan = { currentEarnings, currentSavings, assetValue, increaseIncome, increaseIncomeAmount, outOfWork, lifeInsurance, taxPlan, investments, investmentsAmount, realEstate, realEstateAmount, alternativeAssets, alternativeAssetsAmount, otherAssets, otherAssetsAmount, powerOfAttorney, will, medicare, pension, pensionTimeframe, pensionEarnings, pensionInflation, socialSecurity, mortgage, mortgageAmount, creditCardDebt, creditCardDebtAmount, medicalDebt, medicalDebtAmount, carFinancing, carFinancingAmount, studentLoans, studentLoanAmount, riskAttitude, volatility, changePortfolio, portfolioTradeoff, additionalDebt, additionalDebtAmount, lifeInsuranceDocument };
+    _plan = { currentEarnings, currentSavings, assetValue, lifeInsurance, taxPlan, investments, investmentsAmount, realEstate, realEstateAmount, alternativeAssets, alternativeAssetsAmount, otherAssets, otherAssetsAmount, powerOfAttorney, will, medicare, pension, pensionTimeframe, pensionEarnings, pensionInflation, socialSecurity, mortgage, mortgageAmount, creditCardDebt, creditCardDebtAmount, medicalDebt, medicalDebtAmount, carFinancing, carFinancingAmount, studentLoans, studentLoanAmount, riskAttitude, volatility, changePortfolio, portfolioTradeoff, additionalDebt, additionalDebtAmount, lifeInsuranceDocument };
     
     return (
         <div>
@@ -220,63 +220,44 @@ export default function Step3({ plan, pageProps }) {
                 </div>
                 )}
                 <div className="input-div">
-                    <label className="input-label">Which of these best reflects your attitude toward inflation and risk?</label><br></br>
+                    <label className="input-label">My main goal with my investments is to</label><br></br>
                     <select
                     name="riskAttitude"
                     className="form-select"
                     value={riskAttitude}
                     onChange={e=> {setRiskAttitude(e.target.value)}}
                     >
-                    <option>My main goal is to avoid loss, even though I may only keep pace with inflation.</option>
-                    <option>My main goal is to earn slightly more than inflation, while taking on a low level of risk.</option>
-                    <option>My main goal is to increase my portfolio’s value. Therefore, I am willing to accept short-term losses, but I am not comfortable with extreme performance shifts that may be experienced in the most aggressive investment options.</option>
-                    <option>My main goal is to maximize my portfolio value, and I am willing to take on more extreme levels of risk and performance shifts in my portfolio to do so.</option>
+                    <option>Avoid loss & keep pace with inflation</option>
+                    <option>Earn more than inflation, with low risk</option>
+                    <option>Earn a lot more than inflation, with medium risk</option>
+                    <option>Maximize earnings, with high risk</option>
                     </select><br></br>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">I am comfortable with investments that may frequently experience large declines in value if there is a potential for higher returns. Does this describe you?</label><br></br>
+                    <label className="input-label">I'm willing to experience short-term declines to maximize long-term gains</label><br></br>
                     <select
                     name="volatility"
                     className="form-select"
                     value={volatility}
                     onChange={e=> {setVolatility(e.target.value)}}
                     >
-                    <option>Disagree</option>
-                    <option>Strongly disagree</option>
-                    <option>Agree</option>
+                    <option>True</option>
+                    <option>False</option>
                     </select><br></br>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">Historically, markets have experience downturns, both short-term and prolonged, followed by market recoveries. Suppose you owned a well-diversified portfolio that fell by 20% over a short period, consistent with the overall market. Example: $100,000 initial investment is now worth $80,000. Assuming you still have 10 years until you begin withdrawals, how would you react?</label><br></br>
+                    <label className="input-label">If my portfolio dropped 20% over a short period of time I would</label><br></br>
                     <select
                     name="changePortfolio"
                     className="form-select"
                     value={changePortfolio}
                     onChange={e=> {setChangePortfolio(e.target.value)}}
                     >
-                    <option>I would change to options that are more aggressive</option>
-                    <option>I would not change my portfolio</option>
-                    <option>I would wait at least 1 year before changing to options that are more conservative</option>
-                    <option>I would immediately change to options that are more conservative</option>
+                    <option>Change to a more aggressive portfolio</option>
+                    <option>Not change my portfolio</option>
+                    <option>Wait at least 1 year before changing to options that are more conservative</option>
+                    <option>Change to a more conservative portfolio</option>
                     </select><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">The table below presents a potential best-case result, probable result and potential worst-case result of five sample portfolios over a 1-year period with an initial $10,000 investment. Understanding the potential upsides and downsides of each portfolio, which portfolio would you prefer to hold?</label><br></br><br></br>
-                    <new Image src="/images/chart.jpg" width={360} height={200}/><br></br>
-                    <select
-                    name="portfolioTradeoff"
-                    className="form-select"
-                    value={portfolioTradeoff}
-                    onChange={e=> {setPortfolioTradeoff(e.target.value)}}
-                    >
-                    <option>Portfolio A</option>
-                    <option>Portfolio B</option>
-                    <option>Portfolio C</option>
-                    <option>Portfolio D</option>
-                    <option>Portfolio E</option>
-                    </select>
-                    
-                    <br></br>
                 </div>
                 <div className="input-div">
                     <label className="input-label">Do you have a will?</label><br></br>
@@ -337,7 +318,25 @@ export default function Step3({ plan, pageProps }) {
     )
 }
 
-/*                                                 <div className="input-div">
+/*                                             <div className="input-div">
+                    <label className="input-label">The table below presents a potential best-case result, probable result and potential worst-case result of five sample portfolios over a 1-year period with an initial $10,000 investment. Understanding the potential upsides and downsides of each portfolio, which portfolio would you prefer to hold?</label><br></br><br></br>
+                    <new Image src="/images/chart.jpg" width={360} height={200}/><br></br>
+                    <select
+                    name="portfolioTradeoff"
+                    className="form-select"
+                    value={portfolioTradeoff}
+                    onChange={e=> {setPortfolioTradeoff(e.target.value)}}
+                    >
+                    <option>Portfolio A</option>
+                    <option>Portfolio B</option>
+                    <option>Portfolio C</option>
+                    <option>Portfolio D</option>
+                    <option>Portfolio E</option>
+                    </select>
+                    <br></br>
+                </div> 
+
+<div className="input-div">
                     <label className="input-label">Do you have a power of attorney?</label><br></br>
                     <select
                     name="powerOfAttorney"
