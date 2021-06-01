@@ -9,7 +9,7 @@ export default function calculateAge77RetirementIncome(pension, pensionTimeframe
     } else if (socialSecurityDecision === 'Age 62') {
         age77Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityAge62Earnings);
     } else {
-        age77Income = Math.floor(retirementAnnualReturnsIncome);
+        age77Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityEarnings);
     }
     return age77Income;
 }

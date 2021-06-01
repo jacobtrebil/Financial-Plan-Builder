@@ -34,10 +34,26 @@ export default function socialSecurityOptions({plan}) {
 
     return ( 
             <div className="decisionssocialsecuritysection">
-                <h1>Investment Profile</h1>
-                <table>
+                        <p className="customization-question">Risk Tolerance</p>
+                        <select 
+                        className="form-select"
+                        name="investmentProfileDecision"
+                        value={investmentProfileDecision}
+                        onChange={e=> { setInvestmentProfileDecision(e.target.value)}}>
+                            <option>Conservative</option>
+                            <option>Conservative +</option>
+                            <option>Moderate</option>
+                            <option>Moderate +</option>
+                            <option>Aggressive</option>
+                        </select>
+            </div>
+    )}
+
+    /* <p className="sstabledescription">The table below shows how much you'll earn from your investments based on the risk profile of your investments. We recommend that you increase the risk of your profile to generate a higher rate of return. </p> */
+
+    /*                 <table>
+    <p className="customization-question">How much risk would you like to take with your investments?</p>
                         <tr>
-                            <p className="sstabledescription">The table below shows how much you'll earn from your investments based on the risk profile of your investments. We recommend that you increase the risk of your profile to generate a higher rate of return. </p>
                         </tr>
                         <div className="table-border">
                             <tr>
@@ -63,23 +79,8 @@ export default function socialSecurityOptions({plan}) {
                             <tr>
                                 <td>Aggressive</td>
                                 <td>8%</td>
-                            </tr>
-                        </div>
-                        <p className="ssquestion">How much risk would you like to take with your investments?</p>
-                        <select 
-                        className="form-select"
-                        name="investmentProfileDecision"
-                        value={investmentProfileDecision}
-                        onChange={e=> { setInvestmentProfileDecision(e.target.value)}}>
-                            <option>Conservative</option>
-                            <option>Conservative +</option>
-                            <option>Moderate</option>
-                            <option>Moderate +</option>
-                            <option>Aggressive</option>
-                        </select>
-                    </table>
-                <button className="scorecard-button" onClick={function clickHandler() {
+                            </tr> 
+                                            <button className="scorecard-button" onClick={function clickHandler() {
                 router.push(`../wizard/monthlySavingsOptions?planId=${calculations._id}`);
             }}>Next</button>
-            </div>
-    )}
+*/

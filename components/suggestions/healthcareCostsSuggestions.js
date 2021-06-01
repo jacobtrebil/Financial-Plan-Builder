@@ -12,7 +12,7 @@ export default function socialSecurityOptions({plan}) {
     }, []); 
 
     const [calculations, setCalculations] = useState();
-    const [retirementIncomeDecision, setRetirementIncomeDecision] = useState('$54,000');
+    const [retirementIncomeDecision, setRetirementIncomeDecision] = useState('Average');
     let [_plan, _setPlan] = useState({plan});
 
     if (!calculations) return (
@@ -34,8 +34,21 @@ export default function socialSecurityOptions({plan}) {
 
     return ( 
             <div className="decisionssocialsecuritysection">
-                <h1>Retirement Income</h1>
-                <table>
+                        <p className="customization-question">Expected Retirement Healthcare Costs</p>
+                        <select 
+                        className="form-select"
+                        name="retirementIncomeDecision"
+                        value={retirementIncomeDecision}
+                        onChange={e=> { setRetirementIncomeDecision(e.target.value)}}>
+                            <option>Low</option>
+                            <option>Average</option>
+                            <option>High</option>
+                        </select>
+            </div>
+    )}
+
+    /*          <table>
+                            <p className="customization-question">How much do you expect your healthcare to cost throughout retirement?</p>
                         <tr>
                             <p className="sstabledescription">The table below shows your desired retirement income. By choosing a lower desired retirement income, you can create a more achievable plan.</p>
                         </tr>
@@ -64,19 +77,4 @@ export default function socialSecurityOptions({plan}) {
                                 <td>$75,000</td>
                                 <td>10%</td>
                             </tr>
-                        </div>
-                        <p className="ssquestion">How much would you like to earn throughout retirement?</p>
-                        <select 
-                        className="form-select"
-                        name="retirementIncomeDecision"
-                        value={retirementIncomeDecision}
-                        onChange={e=> { setRetirementIncomeDecision(e.target.value)}}>
-                            <option>$50,000</option>
-                            <option>$54,000</option>
-                            <option>$58,000</option>
-                            <option>$64,000</option>
-                            <option>$75,000</option>
-                        </select>
-                    </table>
-            </div>
-    )}
+                            */

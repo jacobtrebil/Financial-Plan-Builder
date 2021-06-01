@@ -34,8 +34,21 @@ export default function socialSecurityOptions({plan}) {
 
     return ( 
             <div className="decisionssocialsecuritysection">
-                <h1>Monthly Savings</h1>
-                <table>
+                        <p className="customization-question">Monthly Savings Until Retirement</p>
+                        <select 
+                        className="form-select"
+                        name="savingsDecision"
+                        value={savingsDecision}
+                        onChange={e=> { setSavingsDecision(e.target.value)}}>
+                            <option>$300</option>
+                            <option>$500</option>
+                            <option>$700</option>
+                        </select>
+            </div>
+    )}
+
+    /*                 <table>
+                            <p className="customization-question">How much will you save per month until retirement?</p>
                         <tr>
                             <p className="sstabledescription">The table below shows how much you'll have during retirement and your retirement income based on how much you save per month. By saving more per month, the results will compound over time and you'll have more money during retirement.</p>
                         </tr>
@@ -60,17 +73,4 @@ export default function socialSecurityOptions({plan}) {
                                 <td className="threecolumnrow">$1,000,000</td>
                                 <td className="threecolumnrow">$4,000</td>
                             </tr>
-                        </div>
-                        <p className="ssquestion">How much will you save per month until retirement?</p>
-                        <select 
-                        className="form-select"
-                        name="savingsDecision"
-                        value={savingsDecision}
-                        onChange={e=> { setSavingsDecision(e.target.value)}}>
-                            <option>$300</option>
-                            <option>$500</option>
-                            <option>$700</option>
-                        </select>
-                    </table>
-            </div>
-    )}
+                            */

@@ -9,7 +9,7 @@ export default function calculateAge89RetirementIncome(pension, pensionTimeframe
     } else if (socialSecurityDecision === 'Age 62') {
         age89Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityAge62Earnings);
     } else {
-        age89Income = Math.floor(retirementAnnualReturnsIncome);
+        age89Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityEarnings);
     }
     return age89Income;
 }

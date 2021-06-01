@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { planCalculations } from '../../apiclient/wizardfetch';
 import { useRouter } from 'next/router';
 
-function SsSugestionsFunction({plan}) {
+function OtherRetirementCostsFunction({plan}) {
 
     const router = useRouter();
     const {planId} = router.query;
@@ -12,7 +13,7 @@ function SsSugestionsFunction({plan}) {
     }, []); 
 
     const [calculations, setCalculations] = useState();
-    const [socialSecurityDecision, setSocialSecurityDecision] = useState('Age 67');
+    const [pensionDecision, setPensionDecision] = useState('Age 67');
     let [_plan, _setPlan] = useState({plan});
 
     if (!calculations) return (
@@ -34,19 +35,20 @@ function SsSugestionsFunction({plan}) {
 
     return ( 
         <div className="decisionssocialsecuritysection">
-            <p className="customization-question">Take Social Security At</p>
+            <p className="customization-question">Annual Retirement Costs (Trips, Charity, etc.)</p>
             <select
             className="form-select"
-            name="socialSecurityDecision"
-            value={socialSecurityDecision}
-            onChange={e=> { setSocialSecurityDecision(e.target.value)}}>
-                <option>Age 62</option>
-                <option>Age 67</option>
-                <option>Age 70</option>
+            name="pensionDecision"
+            value={pensionDecision}
+            onChange={e=> { setPensionDecision(e.target.value)}}>
+                <option>None</option>
+                <option>$10,000/Year</option>
+                <option>$30,000/Year</option>
+                <option>$50,000/Year</option>
             </select>
         </div>
     )}
 
     /*             <p className="customization-question">When would you like to start earning Social Security income?</p> <p className="sstabledescription">Your Financial Health Score is based on taking Social Security at age 67. We recommend taking your Social Security later, and working part-time until age 70. </p> */
 
-    export default SsSugestionsFunction;
+    export default OtherRetirementCostsFunction;

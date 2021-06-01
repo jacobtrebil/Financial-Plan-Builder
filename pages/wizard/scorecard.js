@@ -1,8 +1,8 @@
-import React, { useState, useEffect, PureComponent } from 'react';
+import React, { useState, useEffect } from 'react';
 import { planCalculations } from '../../apiclient/wizardfetch';
 import { useRouter } from 'next/router';
 import _dynamic from 'next/dynamic';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 
 
 const SsSuggestionsComponent = _dynamic(() =>
@@ -10,7 +10,7 @@ import('../../components/suggestions/ssSuggestions')
 )
 
 const RetirementIncomeSuggestionsComponent = _dynamic(() =>
-import('../../components/suggestions/retirementIncomeSuggestions')
+import('../../components/suggestions/healthcareCostsSuggestions')
 )
 
 const MonthlySavingsSuggestionsComponent = _dynamic(() =>
@@ -18,7 +18,18 @@ import('../../components/suggestions/monthlySavingsSuggestions')
 )
 
 const RiskProfileSuggestionsComponent = _dynamic(() =>
-import('../../components/suggestions/ssSuggestions')
+import('../../components/suggestions/riskProfileSuggestions')
+)
+const PensionSuggestionsComponent = _dynamic(() =>
+import('../../components/suggestions/pensionSuggestions')
+)
+
+const WorkSuggestionsComponent = _dynamic(() =>
+import('../../components/suggestions/workSuggestions')
+)
+
+const RecreationalExpensesComponent = _dynamic(() =>
+import('../../components/suggestions/otherRetirementCosts')
 )
 
 function Summary({plan}) {
@@ -31,6 +42,12 @@ function Summary({plan}) {
     }, []); 
 
     const [calculations, setCalculations] = useState();
+    const [socialSecurityDecision, setSocialSecurityDecision] = useState('Age 67');
+    const [retirementIncomeDecision, setRetirementIncomeDecision] = useState('Age 67');
+    const [pensionDecision, setPensionDecision] = useState('Age 67');
+    const [savingsDecision, setSavingsDecision] = useState('Age 67');
+    const [pensionDecision2, setPensionDecision2] = useState('Age 67');
+    const [investmentProfileDecision, setInvestmentProfileDecision] = useState('Age 67');
     let [_plan, _setPlan] = useState({plan});
 
     if (!calculations) return (
@@ -199,41 +216,112 @@ function Summary({plan}) {
       
 
     return ( 
-        <div>
-            <div  className="summary">
-            <div>
-            <h2 className="recommendations-h2">Your Financial Projections</h2>
-            <p className="ssamount">Year-By-Year Earnings</p>
-            <div className="barchart-container">
-            <BarChart className="barchart" width={700} height={300} data={data}>
-                <XAxis dataKey="Age" />
-                <YAxis />
-                <Tooltip content={convertToUsd.format(data.Earnings)}/>
-                <Legend />
-                <Bar dataKey="Earnings" fill="rgb(4, 187, 172)" stroke="rgb(4, 187, 172)" />
-            </BarChart>
+        <div className="projections-page">
+            <div className="projections-headline">
+                <h2 className="recommendations-h2">Customize Your Retirement</h2>
+                <p>View your retirement projections, and answer a few final questions.</p>
             </div>
-            <div className="summaryoptionssection">
-                <div className="summaryoption">
-                    <p><b>Total Retirement Earnings</b></p>
-                    <p className="lifetimeearnings"><br></br>{ convertToUsd.format(calculations.totalRetirementEarnings) }</p>
+            <div className="blocks-section">
+                <div className="block1">
+                        <p className="chart-headline">Annual Retirement Earnings</p>
+                        <BarChart className="barchart" width={550} height={250} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5,}}>
+                            <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px"/>
+                            <YAxis name="Age" stroke="grey" fontSize="12px" dataKey="Earnings"/>
+                            <Tooltip fontSize="12px"/>
+                            <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+                            <Bar dataKey="Earnings" fontSize="12px" fill="rgb(4, 187, 172)" stroke="rgb(4, 187, 172)" barSize={5}/>
+                        </BarChart>
+                        <p className="chart-description">Age</p>
+                    <div className="summaryoption">
+                        <p className="totalretirementearnings">Total Retirement Earnings</p>
+                        <p className="lifetimeearnings"><br></br>{ convertToUsd.format(calculations.totalRetirementEarnings) }</p>
+                    </div>
                 </div>
-                <hr className="solid-hr-customizer"></hr>
-                <h1 className="center">Customize Your Plan</h1>
-                <p className="ssamount">Try customizing your retirement and see how it impacts your retirement income. <br></br> Once you're finished, click the button below to finalize your plan. </p>
-            </div><br></br>
-            <SsSuggestionsComponent />
-            <RetirementIncomeSuggestionsComponent /><br></br>
-            <MonthlySavingsSuggestionsComponent />
-            <RiskProfileSuggestionsComponent />
+                <div className="block2">
+                    <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Monthly Savings Until Retirement</p>
+                        <select 
+                        className="form-select"
+                        name="savingsDecision"
+                        value={savingsDecision}
+                        onChange={e=> { setSavingsDecision(e.target.value)}}>
+                            <option>$300</option>
+                            <option>$500</option>
+                            <option>$700</option>
+                        </select>
+                    </div>
+                    <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Expected Retirement Healthcare Costs</p>
+                        <select 
+                        className="form-select"
+                        name="retirementIncomeDecision"
+                        value={retirementIncomeDecision}
+                        onChange={e=> { setRetirementIncomeDecision(e.target.value)}}>
+                            <option>Low</option>
+                            <option>Average</option>
+                            <option>High</option>
+                        </select>
+                    </div><br></br>
+                    <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Take Social Security At</p>
+                        <select
+                        className="form-select"
+                        name="socialSecurityDecision"
+                        value={socialSecurityDecision}
+                        onChange={e=> { setSocialSecurityDecision(e.target.value)}}>
+                            <option>Age 62</option>
+                            <option>Age 67</option>
+                            <option>Age 70</option>
+                        </select>
+                    </div>
+                    <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Annual Retirement Costs (Trips, Charity, etc.)</p>
+                        <select
+                        className="form-select"
+                        name="pensionDecision2"
+                        value={pensionDecision2}
+                        onChange={e=> { setPensionDecision2(e.target.value)}}>
+                            <option>None</option>
+                            <option>$10,000/Year</option>
+                            <option>$30,000/Year</option>
+                            <option>$50,000/Year</option>
+                        </select>
+                    </div><br></br>
+                    <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Part-Time Work During Retirement</p>
+                        <select
+                        className="form-select"
+                        name="pensionDecision"
+                        value={pensionDecision}
+                        onChange={e=> { setPensionDecision(e.target.value)}}>
+                            <option>None</option>
+                            <option>First 5 Years</option>
+                            <option>First 10 Years</option>
+                            <option>First 20 Years</option>
+                        </select>
+                    </div>
+                    <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Major Purchases (Kids College, Homes, etc.)</p>
+                        <select
+                        className="form-select"
+                        name="pensionDecision"
+                        value={pensionDecision}
+                        onChange={e=> { setPensionDecision(e.target.value)}}>
+                            <option>None</option>
+                            <option>$100k in Purchases</option>
+                            <option>$300k in Purchases</option>
+                            <option>$500k in Purchases</option>
+                            <option>$1M in Purchases</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <button className="scorecard-button" onClick={function clickHandler() {
-                router.push(`../wizard/socialSecurityOptions?planId=${calculations._id}`);
-            }}>Next</button>
+            <div className="projections-button-section">
+                <button className="scorecard-button" onClick={function clickHandler() {
+                router.push(`../?planId=${calculations._id}`);
+                }}>Get My Plan</button>
             </div>
-        </div>
+        </div>  
     )};
 
     export default Summary;
-
-    /* calculations.projectedRetirementIncome */

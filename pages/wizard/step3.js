@@ -64,6 +64,7 @@ export default function Step3({ plan, pageProps }) {
     const [showForm12, setShowForm12] = useState(false)
     const [showForm13, setShowForm13] = useState(false)
     const [showForm14, setShowForm14] = useState(false)
+    const [showForm15, setShowForm15] = useState(false)
     const [currentEarnings, setCurrentEarnings] = useState('')
     const [lifeInsuranceDocument, setLifeInsuranceDocument] = useState()
     const [currentSavings, setCurrentSavings] = useState('')
@@ -72,9 +73,6 @@ export default function Step3({ plan, pageProps }) {
     const [changePortfolio, setChangePortfolio] = useState('I would immediately change to options that are more conservative')
     const [volatility, setVolatility] = useState('Disagree')
     const [portfolioTradeoff, setPortfolioTradeoff] = useState('Portfolio A')
-    const [increaseIncome, setIncreaseIncome] = useState('No')
-    const [increaseIncomeAmount, setIncreaseIncomeAmount] = useState('')
-    const [outOfWork, setOutOfWork] = useState('No')
     const [lifeInsurance, setLifeInsurance] = useState('No')
     const [taxPlan, setTaxPlan] = useState('No')
     const [investments, setInvestments] = useState('No')
@@ -92,7 +90,7 @@ export default function Step3({ plan, pageProps }) {
     const [pensionInflation, setPensionInflation] = useState('No')
     const [pensionTimeframe, setPensionTimeframe] = useState('50')
     const [pensionEarnings, setPensionEarnings] = useState('')
-    const [socialSecurity, setSocialSecurity] = useState('No')
+    const [socialSecurity, setSocialSecurity] = useState('Yes')
     const [mortgage, setMortgage] = useState('No')
     const [mortgageAmount, setMortgageAmount] = useState('')
     const [creditCardDebt, setCreditCardDebt] = useState('No')
@@ -117,6 +115,7 @@ export default function Step3({ plan, pageProps }) {
     return (
         <div>
         <WizardHeader3></WizardHeader3>
+        <div className="form-border">
         <WizardHeadline3></WizardHeadline3>
         <div className="inputs-div-1" {...pageProps}>
                 <div className="input-div">
@@ -143,7 +142,7 @@ export default function Step3({ plan, pageProps }) {
                     <p className="errors">{errors2}</p>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">What is the total value of your savings and assets that you own?</label><br></br>
+                    <label className="input-label">What is the total value of your savings and assets that you own? <br></br>(Include Real Estate, Investments, Crypto, etc.)</label><br></br>
                     <input
                     className="form-input-pages"
                     placeholder={'$100,000'}
@@ -155,208 +154,12 @@ export default function Step3({ plan, pageProps }) {
                     <p className="errors">{errors3}</p>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">Do you expect your income to increase within the next 10 years?</label><br></br>
+                    <label className="input-label">Are you eligible for social security? <br></br>(If unsure, choose yes)</label><br></br>
                     <select
+                    name="socialSecurity"
                     className="form-select"
-                    name="increaseIncome"
-                    value={increaseIncome}
-                    onChange={e=> {setIncreaseIncome(e.target.value); setShowForm(!showForm)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                showForm && (
-                <div className="input-div">
-                    <label className="input-label">How much do you expect your income to increase by? (per year)</label><br></br>
-                    <input
-                    name="increaseIncomeAmount"
-                    className="form-input"
-                    placeholder={'$10,000'}
-                    value={increaseIncomeAmount}
-                    onChange={e=> setIncreaseIncomeAmount(e.target.value)}
-                    />
-                </div>
-                )}
-                <div className="input-div">
-                    <label className="input-label">Do you expect being out of work for 1+ year anytime before retirement?</label><br></br>
-                    <select
-                    className="form-select"
-                    name="outOfWork"
-                    value={outOfWork}
-                    onChange={e=> setOutOfWork(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">Do you have life insurance?</label><br></br>
-                    <select
-                    className="form-select"
-                    name="lifeInsurance"
-                    value={lifeInsurance}
-                    onChange={e=> setLifeInsurance(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">Upload your life insurance documents below</label><br></br>
-                    <input
-                    className="form-input"
-                    name="lifeInsuranceDocument"
-                    type="file"
-                    value={lifeInsuranceDocument}
-                    onChange={e=> setLifeInsuranceDocument(e.target.value)}
-                    >
-                    </input><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">Do you have a tax plan?</label><br></br>
-                    <select
-                    name="taxPlan"
-                    className="form-select"
-                    value={taxPlan}
-                    onChange={e=> setTaxPlan(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">Do you have any investments?</label><br></br>
-                    <select
-                    name="investments"
-                    className="form-select"
-                    value={investments}
-                    onChange={e=> {setInvestments(e.target.value); setShowForm2(!showForm2)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                    showForm2 && (
-                <div className="input-div">
-                    <label className="input-label">How much do you have in investments?</label><br></br>
-                    <input
-                    name="investmentsAmount"
-                    className="form-input"
-                    placeholder={'$50,000'}
-                    value={investmentsAmount}
-                    onChange={e=> setInvestmentsAmount(e.target.value)}
-                    />
-                </div>
-                    )}
-                <div className="input-div">
-                    <label className="input-label">Do you have any real estate?</label><br></br>
-                    <select
-                    name="realestate"
-                    className="form-select"
-                    value={realEstate}
-                    onChange={e=> {setRealEstate(e.target.value); setShowForm3(!showForm3)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                    showForm3 && (
-                <div className="input-div">
-                    <label className="input-label">How much do you have in real estate?</label><br></br>
-                    <input
-                    name="realEstateAmount"
-                    className="form-input"
-                    placeholder={'$50,000'}
-                    value={realEstateAmount}
-                    onChange={e=> setRealEstateAmount(e.target.value)}
-                    />
-                </div>
-                    )}
-                <div className="input-div">
-                    <label className="input-label">Do you have any Commodoties, Collectibiles, Cryptocurrencies, or other digital properties?</label><br></br>
-                    <select
-                    className="form-select"
-                    name="alternativeAssets"
-                    value={alternativeAssets}
-                    onChange={e=> {setAlternativeAssets(e.target.value); setShowForm4(!showForm4)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                showForm4 && (
-                <div className="input-div">
-                    <label className="input-label">How much do you have in these alternative assets?</label><br></br>
-                    <input
-                    name="alternativeAssetsAmount"
-                    className="form-input"
-                    placeholder={'$50,000'}
-                    value={alternativeAssetsAmount}
-                    onChange={e=> setAlternativeAssetsAmount(e.target.value)}
-                    />
-                </div>
-                )}
-                <div className="input-div">
-                    <label className="input-label">Do you have any other assets?</label><br></br>
-                    <select
-                    name="otherAssets"
-                    className="form-select"
-                    value={otherAssets}
-                    onChange={e=> {setOtherAssets(e.target.value); setShowForm5(!showForm5)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                    showForm5 && (
-                <div className="input-div">
-                    <label className="input-label">How much do you have in other assets?</label><br></br>
-                    <input
-                    name="otherAssetsAmount"
-                    className="form-input"
-                    placeholder={'$50,000'}
-                    value={otherAssetsAmount}
-                    onChange={e=> setOtherAssetsAmount(e.target.value)}
-                    />
-                </div>
-                    )}
-                <div className="input-div">
-                    <label className="input-label">Do you have a power of attorney?</label><br></br>
-                    <select
-                    name="powerOfAttorney"
-                    className="form-select"
-                    value={powerOfAttorney}
-                    onChange={e=> setPowerOfAttorney(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">Do you have a will?</label><br></br>
-                    <select
-                    name="will"
-                    className="form-select"
-                    value={will}
-                    onChange={e=> setWill(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">Do you expect to use medicare?</label><br></br>
-                    <select
-                    name="medicare"
-                    className="form-select"
-                    value={medicare}
-                    onChange={e=> setMedicare(e.target.value)}
+                    value={socialSecurity}
+                    onChange={e=> setSocialSecurity(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -395,7 +198,7 @@ export default function Step3({ plan, pageProps }) {
                 <div className="input-div">
                     <label className="input-label">How much will you earn per year from your pension?</label><br></br>
                     <input
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder={'$40,000'}
                     value={pensionEarnings} 
                     name="pensionEarnings"
@@ -476,18 +279,193 @@ export default function Step3({ plan, pageProps }) {
                     <br></br>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">Are you eligible for social security? (If unsure, choose yes)</label><br></br>
+                    <label className="input-label">Do you have a will?</label><br></br>
                     <select
-                    name="socialSecurity"
+                    name="will"
                     className="form-select"
-                    value={socialSecurity}
-                    onChange={e=> setSocialSecurity(e.target.value)}
+                    value={will}
+                    onChange={e=> setWill(e.target.value)}
                     >
                     <option>No</option>
                     <option>Yes</option>
                     </select><br></br>
                 </div>
                 <div className="input-div">
+                    <label className="input-label">Do you have a tax plan?</label><br></br>
+                    <select
+                    name="taxPlan"
+                    className="form-select"
+                    value={taxPlan}
+                    onChange={e=> setTaxPlan(e.target.value)}
+                    >
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">Do you have life insurance?</label><br></br>
+                    <select
+                    className="form-select"
+                    name="lifeInsurance"
+                    value={lifeInsurance}
+                    onChange={e=> {setLifeInsurance(e.target.value); setShowForm15(!showForm15)}}
+                    >
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
+                </div>
+                {
+                    showForm15 && (
+                <div className="input-div">
+                    <label className="input-label">Upload your life insurance documents below</label><br></br>
+                    <input
+                    className="form-input-pages"
+                    name="lifeInsuranceDocument"
+                    type="file"
+                    value={lifeInsuranceDocument}
+                    onChange={e=> setLifeInsuranceDocument(e.target.value)}
+                    >
+                    </input><br></br>
+                </div>
+                    )}
+            </div>
+            </div>
+            <div className='wizard-footer'>
+                <button onClick={completePlan} className="wizard-footer-button">Next</button>
+            </div>
+            </div>
+    )
+}
+
+/*                                                 <div className="input-div">
+                    <label className="input-label">Do you have a power of attorney?</label><br></br>
+                    <select
+                    name="powerOfAttorney"
+                    className="form-select"
+                    value={powerOfAttorney}
+                    onChange={e=> setPowerOfAttorney(e.target.value)}
+                    >
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
+                </div>
+                <div className="input-div">
+                    <label className="input-label">Do you expect to use medicare?</label><br></br>
+                    <select
+                    name="medicare"
+                    className="form-select"
+                    value={medicare}
+                    onChange={e=> setMedicare(e.target.value)}
+                    >
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
+                </div>                 
+
+<div className="input-div">
+                    <label className="input-label">Do you have any investments?</label><br></br>
+                    <select
+                    name="investments"
+                    className="form-select"
+                    value={investments}
+                    onChange={e=> {setInvestments(e.target.value); setShowForm2(!showForm2)}}
+                    >
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
+                </div>
+                {
+                    showForm2 && (
+                <div className="input-div">
+                    <label className="input-label">How much do you have in investments?</label><br></br>
+                    <input
+                    name="investmentsAmount"
+                    className="form-input-pages"
+                    placeholder={'$50,000'}
+                    value={investmentsAmount}
+                    onChange={e=> setInvestmentsAmount(e.target.value)}
+                    />
+                </div>
+                    )}
+
+<div className="input-div">
+                    <label className="input-label">Do you have any real estate?</label><br></br>
+                    <select
+                    name="realestate"
+                    className="form-select"
+                    value={realEstate}
+                    onChange={e=> {setRealEstate(e.target.value); setShowForm3(!showForm3)}}
+                    >
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
+                </div>
+                {
+                    showForm3 && (
+                <div className="input-div">
+                    <label className="input-label">How much do you have in real estate?</label><br></br>
+                    <input
+                    name="realEstateAmount"
+                    className="form-input-pages"
+                    placeholder={'$50,000'}
+                    value={realEstateAmount}
+                    onChange={e=> setRealEstateAmount(e.target.value)}
+                    />
+                </div>
+                    )}
+                <div className="input-div">
+                    <label className="input-label">Do you have any Commodoties, Collectibiles, Cryptocurrencies, or other digital properties?</label><br></br>
+                    <select
+                    className="form-select"
+                    name="alternativeAssets"
+                    value={alternativeAssets}
+                    onChange={e=> {setAlternativeAssets(e.target.value); setShowForm4(!showForm4)}}
+                    >
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
+                </div>
+                {
+                showForm4 && (
+                <div className="input-div">
+                    <label className="input-label">How much do you have in these alternative assets?</label><br></br>
+                    <input
+                    name="alternativeAssetsAmount"
+                    className="form-input-pages"
+                    placeholder={'$50,000'}
+                    value={alternativeAssetsAmount}
+                    onChange={e=> setAlternativeAssetsAmount(e.target.value)}
+                    />
+                </div>
+                )} 
+
+<div className="input-div">
+                    <label className="input-label">Do you have any other assets?</label><br></br>
+                    <select
+                    name="otherAssets"
+                    className="form-select"
+                    value={otherAssets}
+                    onChange={e=> {setOtherAssets(e.target.value); setShowForm5(!showForm5)}}
+                    >
+                    <option>No</option>
+                    <option>Yes</option>
+                    </select><br></br>
+                </div>
+                {
+                    showForm5 && (
+                <div className="input-div">
+                    <label className="input-label">How much do you have in other assets?</label><br></br>
+                    <input
+                    name="otherAssetsAmount"
+                    className="form-input-pages"
+                    placeholder={'$50,000'}
+                    value={otherAssetsAmount}
+                    onChange={e=> setOtherAssetsAmount(e.target.value)}
+                    />
+                </div>
+                    )}
+
+<div className="input-div">
                     <label className="input-label">Do you have a mortgage?</label><br></br>
                     <select
                     name="mortgage"
@@ -505,14 +483,15 @@ export default function Step3({ plan, pageProps }) {
                     <label className="input-label">How much of your mortgage do you still have to pay off?</label><br></br>
                     <input
                     name="mortgageAmount"
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder={'$100,000'}
                     value={mortgageAmount}
                     onChange={e=> setMortgageAmount(e.target.value)}
                     />
                 </div>
-                )}
-                <div className="input-div">
+                )}    
+
+<div className="input-div">
                     <label className="input-label">Do you have credit card debt?</label><br></br>
                     <select
                     name="creditCardDebt"
@@ -530,14 +509,15 @@ export default function Step3({ plan, pageProps }) {
                     <label className="input-label">How much credit card debt do you have?</label><br></br>
                     <input
                     name="creditCardDebtAmount"
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder={'$100,000'}
                     value={creditCardDebtAmount}
                     onChange={e=> setCreditCardDebtAmount(e.target.value)}
                     />
                 </div>
                 )}
-                <div className="input-div">
+
+<div className="input-div">
                     <label className="input-label">Do you have medical debt?</label><br></br>
                     <select
                     name="medicalDebt"
@@ -555,14 +535,15 @@ export default function Step3({ plan, pageProps }) {
                     <label className="input-label">How much medical debt do you have?</label><br></br>
                     <input
                     name="medicalDebtAmount"
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder={'$10,000'}
                     value={medicalDebtAmount}
                     onChange={e=> setMedicalDebtAmount(e.target.value)}
                     />
                 </div>
                 )}
-                <div className="input-div">
+
+<div className="input-div">
                     <label className="input-label">Do you have car financing?</label><br></br>
                     <select
                     name="carFinancing"
@@ -580,14 +561,15 @@ export default function Step3({ plan, pageProps }) {
                     <label className="input-label">How much in car financing do you still have to pay off?</label><br></br>
                     <input
                     name="carFinancingAmount"
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder={'$10,000'}
                     value={carFinancingAmount}
                     onChange={e=> setCarFinancingAmount(e.target.value)}
                     />
                 </div>
                 )}
-                <div className="input-div">
+
+<div className="input-div">
                     <label className="input-label">Do you have student loans?</label><br></br>
                     <select
                     name="studentLoans"
@@ -605,14 +587,14 @@ export default function Step3({ plan, pageProps }) {
                     <label className="input-label">How much in student loans do you still have to pay off?</label><br></br>
                     <input
                     name="studentLoanAmount"
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder={'$10,000'}
                     value={studentLoanAmount}
                     onChange={e=> setStudentLoanAmount(e.target.value)}
                     />
                 </div>
                 )}
-                <div className="input-div">
+<div className="input-div">
                     <label className="input-label">Do you have any additional loans or debt?</label><br></br>
                     <select
                     name="additionalDebt"
@@ -630,17 +612,12 @@ export default function Step3({ plan, pageProps }) {
                     <label className="input-label">How much in additional loans or debt do you still have to pay off?</label><br></br>
                     <input
                     name="additionalDebtAmount"
-                    className="form-input"
+                    className="form-input-pages"
                     placeholder={'$10,000'}
                     value={additionalDebtAmount}
                     onChange={e=> setAdditionalDebtAmount(e.target.value)}
                     />
                 </div>
                 )}
-            </div>
-            <div className='wizard-footer'>
-                <button onClick={completePlan} className="wizard-footer-button">Next</button>
-            </div>
-            </div>
-    )
-}
+
+                */

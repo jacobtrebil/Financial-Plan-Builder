@@ -52,6 +52,7 @@ export default function Step1({}) {
     return (
         <div>
         <WizardHeader></WizardHeader>
+        <div className="form-border">
         <WizardHeadline></WizardHeadline>
             <div className="inputs-div-1">
                 <div className="input-div">
@@ -118,7 +119,7 @@ export default function Step1({}) {
                     </select><br></br>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">Would you like to include a spouse? </label><br></br>
+                    <label className="input-label">Include Spouse </label><br></br>
                     <select
                     name="spouse"
                     className="form-select"
@@ -134,12 +135,14 @@ export default function Step1({}) {
                     <label className="input-label">Spouses First Name</label><br></br>
                     <input
                     name="spousesFullName"
-                    className="form-input"
+                    className="form-input-pages"
+                    placeholder="Spouses First Name"
                     value={spousesFullName}
                     onChange={e=> setSpousesFullName(e.target.value)}
                     />
                 </div>
                 )}
+            </div>
             </div>
             <div className='wizard-footer'>
             <button onClick={complete} className="wizard-footer-button">Next</button>
