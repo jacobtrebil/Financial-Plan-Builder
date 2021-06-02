@@ -1,36 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { planCalculations } from '../../apiclient/wizardfetch';
+import { planCalculations, updateCurrentSavings } from '../../apiclient/wizardfetch';
 import { useRouter } from 'next/router';
 import _dynamic from 'next/dynamic';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
-
-
-const SsSuggestionsComponent = _dynamic(() =>
-import('../../components/suggestions/ssSuggestions')
-)
-
-const RetirementIncomeSuggestionsComponent = _dynamic(() =>
-import('../../components/suggestions/healthcareCostsSuggestions')
-)
-
-const MonthlySavingsSuggestionsComponent = _dynamic(() =>
-import('../../components/suggestions/monthlySavingsSuggestions')
-)
-
-const RiskProfileSuggestionsComponent = _dynamic(() =>
-import('../../components/suggestions/riskProfileSuggestions')
-)
-const PensionSuggestionsComponent = _dynamic(() =>
-import('../../components/suggestions/pensionSuggestions')
-)
-
-const WorkSuggestionsComponent = _dynamic(() =>
-import('../../components/suggestions/workSuggestions')
-)
-
-const RecreationalExpensesComponent = _dynamic(() =>
-import('../../components/suggestions/otherRetirementCosts')
-)
 
 function Summary({plan}) {
 
@@ -41,12 +13,13 @@ function Summary({plan}) {
         doWizardCalculations();
     }, []); 
 
-    const [calculations, setCalculations] = useState();
+    const [calculations, setCalculations] = useState({});
+    const [currentSavings, setCurrentSavings] = useState(calculations.currentSavings);
     const [socialSecurityDecision, setSocialSecurityDecision] = useState('Age 67');
-    const [retirementIncomeDecision, setRetirementIncomeDecision] = useState('Age 67');
-    const [pensionDecision, setPensionDecision] = useState('Age 67');
-    const [savingsDecision, setSavingsDecision] = useState('Age 67');
-    const [pensionDecision2, setPensionDecision2] = useState('Age 67');
+    const [healthcareDecision, setHealthcareDecision] = useState('Average');
+    const [annualRetirementCostsDecision, setAnnualRetirementCostsDecision] = useState('None');
+    const [partTimeWorkDecision, setPartTimeWorkDecision] = useState('None');
+    const [majorPurchasesDecision, setMajorPurchasesDecision] = useState('None');
     let [_plan, _setPlan] = useState({plan});
 
     if (!calculations) return (
@@ -60,10 +33,15 @@ function Summary({plan}) {
         setCalculations(wizardCalculationsFunction);
     }  
 
+    async function updateCurrentSavingsApiCall() {
+        const updateCurrentSavingsFunction = await updateCurrentSavings(planId, plan);
+        setCurrentSavings(updateCurrentSavingsFunction);
+    }
+
     const convertToUsd = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
-        maximumFractionDigits: 0,
+        // maximumFractionDigits: 0,
       });
 
       const data = [
@@ -238,24 +216,26 @@ function Summary({plan}) {
                 </div>
                 <div className="block2">
                     <div className="decisionssocialsecuritysection">
-                        <p className="customization-question">Monthly Savings Until Retirement</p>
+                        <p className="customization-question">Annual Savings Until Retirement</p>
                         <select 
                         className="form-select"
-                        name="savingsDecision"
-                        value={savingsDecision}
-                        onChange={e=> { setSavingsDecision(e.target.value)}}>
-                            <option>$300</option>
-                            <option>$500</option>
-                            <option>$700</option>
+                        name="currentSavings"
+                        value={currentSavings}
+                        onChange={e=> { setCurrentSavings(e.target.value); updateCurrentSavingsApiCall(); doWizardCalculations();}}>
+                            <option>{convertToUsd.format(calculations.currentSavings)}</option>
+                            <option>{convertToUsd.format(calculations.slightlyLessSavings)}</option>
+                            <option>{convertToUsd.format(calculations.muchLessSavings)}</option>
+                            <option>{convertToUsd.format(calculations.slightlyMoreSavings)}</option>
+                            <option>{convertToUsd.format(calculations.muchMoreSavings)}</option>
                         </select>
                     </div>
                     <div className="decisionssocialsecuritysection">
                         <p className="customization-question">Expected Retirement Healthcare Costs</p>
                         <select 
                         className="form-select"
-                        name="retirementIncomeDecision"
-                        value={retirementIncomeDecision}
-                        onChange={e=> { setRetirementIncomeDecision(e.target.value)}}>
+                        name="healthcareDecision"
+                        value={healthcareDecision}
+                        onChange={e=> { setHealthcareDecision(e.target.value); doWizardCalculations();}}>
                             <option>Low</option>
                             <option>Average</option>
                             <option>High</option>
@@ -267,7 +247,7 @@ function Summary({plan}) {
                         className="form-select"
                         name="socialSecurityDecision"
                         value={socialSecurityDecision}
-                        onChange={e=> { setSocialSecurityDecision(e.target.value)}}>
+                        onChange={e=> { setSocialSecurityDecision(e.target.value); doWizardCalculations();}}>
                             <option>Age 62</option>
                             <option>Age 67</option>
                             <option>Age 70</option>
@@ -277,9 +257,9 @@ function Summary({plan}) {
                         <p className="customization-question">Annual Retirement Costs (Trips, Charity, etc.)</p>
                         <select
                         className="form-select"
-                        name="pensionDecision2"
-                        value={pensionDecision2}
-                        onChange={e=> { setPensionDecision2(e.target.value)}}>
+                        name="annualRetirementCostsDecision"
+                        value={annualRetirementCostsDecision}
+                        onChange={e=> { setAnnualRetirementCostsDecision(e.target.value); doWizardCalculations();}}>
                             <option>None</option>
                             <option>$10,000/Year</option>
                             <option>$30,000/Year</option>
@@ -290,9 +270,9 @@ function Summary({plan}) {
                         <p className="customization-question">Part-Time Work During Retirement</p>
                         <select
                         className="form-select"
-                        name="pensionDecision"
-                        value={pensionDecision}
-                        onChange={e=> { setPensionDecision(e.target.value)}}>
+                        name="partTimeWorkDecision"
+                        value={partTimeWorkDecision}
+                        onChange={e=> { setPartTimeWorkDecision(e.target.value); doWizardCalculations();}}>
                             <option>None</option>
                             <option>First 5 Years</option>
                             <option>First 10 Years</option>
@@ -303,9 +283,9 @@ function Summary({plan}) {
                         <p className="customization-question">Major Purchases (Kids College, Homes, etc.)</p>
                         <select
                         className="form-select"
-                        name="pensionDecision"
-                        value={pensionDecision}
-                        onChange={e=> { setPensionDecision(e.target.value)}}>
+                        name="majorPurchasesDecision"
+                        value={majorPurchasesDecision}
+                        onChange={e=> { setMajorPurchasesDecision(e.target.value); doWizardCalculations();}}>
                             <option>None</option>
                             <option>$100k in Purchases</option>
                             <option>$300k in Purchases</option>

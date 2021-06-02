@@ -2,6 +2,8 @@
 
 function riskScore(portfolioTradeoff, changePortfolio, riskAttitude, volatility) {
 
+let portfolioTradeoffScore = 10;
+
 if (portfolioTradeoff === 'Portfolio A') {
     portfolioTradeoffScore = 16;
 } else if (portfolioTradeoff === 'Portfolio B') {
@@ -14,6 +16,8 @@ if (portfolioTradeoff === 'Portfolio A') {
     portfolioTradeoffScore = 0;
 }
 
+let changePortfolioScore = 10;
+
 if (changePortfolio === 'I would change to options that are more aggressive') {
     changePortfolioScore = 16;
 } else if (changePortfolio === 'I would not change my portfolio') {
@@ -24,6 +28,8 @@ if (changePortfolio === 'I would change to options that are more aggressive') {
     changePortfolioScore = 0;
 }
 
+let riskAttitudeScore = 10;
+
 if (riskAttitude === 'My main goal is to avoid loss, even though I may only keep pace with inflation.') {
     riskAttitudeScore = 0;
 } else if (riskAttitude === 'My main goal is to earn slightly more than inflation, while taking on a low level of risk.') {
@@ -33,6 +39,8 @@ if (riskAttitude === 'My main goal is to avoid loss, even though I may only keep
 } else if (riskAttitude === 'My main goal is to maximize my portfolio value, and I am willing to take on more extreme levels of risk and performance shifts in my portfolio to do so.'){
     riskAttitudeScore = 17;
 }
+
+let volatilityScore = 10;
 
 if (volatility === 'Disagree') {
     volatilityScore = 9;
@@ -76,3 +84,5 @@ module.exports = riskScore;
 /* console.log(totalscore);
 console.log(riskscore);
 console.log(rateofreturn) */
+
+// Update this function 

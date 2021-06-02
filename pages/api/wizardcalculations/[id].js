@@ -50,6 +50,10 @@ import calculateAge93RetirementIncome from '../../../calculations/yearByYearReti
 import calculateAge94RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age94Income';
 import calculateAge95RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age95Income';
 import calculateTotalRetirementEarnings from '../../../calculations/totalRetirementEarnings';
+import slightlyLessSavingsFunction from '../../../calculations/annualSavingsOptions/slightlyLessSavings';
+import slightlyMoreSavingsFunction from '../../../calculations/annualSavingsOptions/slightlyMoreSavings';
+import muchLessSavingsFunction from '../../../calculations/annualSavingsOptions/muchLessSavings';
+import muchMoreSavingsFunction from '../../../calculations/annualSavingsOptions/muchMoreSavings';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -63,6 +67,11 @@ export default async function handler(req,res) {
                 let plan = await Plan.findById(id);
                 plan.socialSecurityEarnings = calculateSocialSecurity(plan.currentEarnings);
                 await Plan.updateOne({ _id: id}, plan);
+
+                if (plan.currentSavings !== plan.currentSavings) {
+                    const { currentSavings } = req.body
+                    await Plan.updateOne({ _id: id }, { currentSavings });
+                }
 
                 plan = await Plan.findById(id);
                 plan.socialSecurityAge62Earnings = calculateSocialSecurityAge62(plan.socialSecurityEarnings);
@@ -88,6 +97,8 @@ export default async function handler(req,res) {
                 plan.projectedRetirementIncome = calculateProjectedRetirementIncome(plan.socialSecurityEarnings, plan.savingsByRetirement, plan.lengthOfRetirement);
                 plan.retirementAnnualReturnsIncome = calculateRetirementAnnualReturnIncome(plan.savingsByRetirement, plan.rateOfReturn);
                 await Plan.updateOne({ _id: id}, plan);
+
+                //Just do one UpdateOne, or save, they will save to plan
 
                 plan = await Plan.findById(id);
                 plan.financialHealthScore = calculateFinancialHealthScore(plan.projectedRetirementIncome, plan.retirementIncome);
@@ -128,11 +139,18 @@ export default async function handler(req,res) {
                 plan.age93Income = calculateAge93RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
                 plan.age94Income = calculateAge94RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
                 plan.age95Income = calculateAge95RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
+                plan.muchLessSavings = 10
                 await Plan.updateOne({ _id: id}, plan);
 
                 plan = await Plan.findById(id);
                 plan.totalRetirementEarnings = calculateTotalRetirementEarnings(plan.age60Income, plan.age61Income, plan.age62Income, plan.age63Income, plan.age64Income, plan.age65Income, plan.age66Income, plan.age67Income, plan.age68Income, plan.age69Income, plan.age70Income, plan.age71Income, plan.age72Income, plan.age73Income, plan.age74Income, plan.age75Income, plan.age76Income, plan.age77Income, plan.age78Income, plan.age79Income, plan.age80Income, plan.age81Income, plan.age82Income, plan.age83Income, plan.age84Income, plan.age85Income, plan.age86Income, plan.age87Income, plan.age88Income, plan.age89Income, plan.age90Income, plan.age91Income, plan.age92Income, plan.age93Income, plan.age94Income, plan.age95Income);
-                await Plan.updateOne({ _id: id}, plan);
+                plan.muchLessSavings = muchLessSavingsFunction(plan.currentSavings);
+                plan.muchMoreSavings = muchMoreSavingsFunction(plan.currentSavings);
+                plan.slightlyLessSavings = slightlyLessSavingsFunction(plan.currentSavings);
+                plan.slightlyMoreSavings = slightlyMoreSavingsFunction(plan.currentSavings);
+                //await Plan.updateOne({ _id: id}, plan);
+                await plan.save()
+
 
                 plan = await Plan.findById(id);
                 res.status(200).json( plan );

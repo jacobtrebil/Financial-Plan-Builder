@@ -46,13 +46,13 @@ export const createPlan = async (plan) => {
     return await response.json();
   }
 
-  export const afterSSDecision = async (id, plan) => {
-    const response = await fetch(`/api/wizardafterssdecision/${id}`, {
+  export const updateCurrentSavings = async (id, plan) => {
+    const response = await fetch(`/api/updatecurrentsavings/${id}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      }, 
+      },
       body: JSON.stringify(plan)
     })
     return await response.json();

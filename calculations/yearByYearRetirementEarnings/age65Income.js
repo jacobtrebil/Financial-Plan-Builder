@@ -13,3 +13,4 @@ export default function calculateAge65RetirementIncome(pension, pensionTimeframe
     }
     return age65Income;
 }
+
