@@ -68,11 +68,6 @@ export default async function handler(req,res) {
                 plan.socialSecurityEarnings = calculateSocialSecurity(plan.currentEarnings);
                 await Plan.updateOne({ _id: id}, plan);
 
-                if (plan.currentSavings !== plan.currentSavings) {
-                    const { currentSavings } = req.body
-                    await Plan.updateOne({ _id: id }, { currentSavings });
-                }
-
                 plan = await Plan.findById(id);
                 plan.socialSecurityAge62Earnings = calculateSocialSecurityAge62(plan.socialSecurityEarnings);
                 plan.socialSecurityAge70Earnings = calculateSocialSecurityAge70(plan.socialSecurityEarnings);

@@ -129,6 +129,7 @@ var PlanModel = new mongoose.Schema({
     investmentProfileDecision: String, Number,
     retirementIncomeDecision: String, Number,
     projectedRetirementIncomeAfterSsDecision: String, Number,
+    newCurrentSavings: Number,
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);

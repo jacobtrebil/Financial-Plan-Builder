@@ -48,7 +48,7 @@ export const createPlan = async (plan) => {
 
   export const updateCurrentSavings = async (id, plan) => {
     const response = await fetch(`/api/updatecurrentsavings/${id}`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

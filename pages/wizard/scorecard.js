@@ -14,7 +14,7 @@ function Summary({plan}) {
     }, []); 
 
     const [calculations, setCalculations] = useState({});
-    const [currentSavings, setCurrentSavings] = useState(calculations.currentSavings);
+    const [newCurrentSavings, setNewCurrentSavings] = useState();
     const [socialSecurityDecision, setSocialSecurityDecision] = useState('Age 67');
     const [healthcareDecision, setHealthcareDecision] = useState('Average');
     const [annualRetirementCostsDecision, setAnnualRetirementCostsDecision] = useState('None');
@@ -35,7 +35,7 @@ function Summary({plan}) {
 
     async function updateCurrentSavingsApiCall() {
         const updateCurrentSavingsFunction = await updateCurrentSavings(planId, plan);
-        setCurrentSavings(updateCurrentSavingsFunction);
+        setNewCurrentSavings(updateCurrentSavingsFunction);
     }
 
     const convertToUsd = new Intl.NumberFormat('en-US', {
@@ -191,6 +191,7 @@ function Summary({plan}) {
         },
       ];
       
+      _plan = { newCurrentSavings };
 
     return ( 
         <div className="projections-page">
@@ -219,9 +220,8 @@ function Summary({plan}) {
                         <p className="customization-question">Annual Savings Until Retirement</p>
                         <select 
                         className="form-select"
-                        name="currentSavings"
-                        value={currentSavings}
-                        onChange={e=> { setCurrentSavings(e.target.value); updateCurrentSavingsApiCall(); doWizardCalculations();}}>
+                        name="newCurrentSavings"
+                        onChange={e=> { setNewCurrentSavings(parseInt(e.target.value, 10)); updateCurrentSavingsApiCall(); doWizardCalculations();}}>
                             <option>{convertToUsd.format(calculations.currentSavings)}</option>
                             <option>{convertToUsd.format(calculations.slightlyLessSavings)}</option>
                             <option>{convertToUsd.format(calculations.muchLessSavings)}</option>
