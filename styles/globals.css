@@ -64,7 +64,7 @@ p {
   width: 80%;
   margin: 170px auto 220px auto;
   padding: 0px 0px 5% 0px;
-  border: 2px solid #D8D6D6;
+  border: 1px solid #a1a0a0;
 }
 
 .plans-subtitle {
@@ -88,7 +88,7 @@ p {
   background-color: white;
   position: fixed;
   z-index: 1;
-  border-right: 1px solid #D8D6D6;
+  border-right: 1px solid #a1a0a0;
 }
 
 #plans {
@@ -114,8 +114,7 @@ p {
 
 .plans-solid-hr {
   width: 90%;
-  color: #D8D6D6;
-  border: 1px solid #D8D6D6;
+  color: #a1a0a0;
   margin: 0px auto 0px auto;
 }
 
@@ -655,7 +654,7 @@ p {
 /* Footer Section */
 
 #footer-section {
-  border-top: 1px solid rgb(216, 214, 214);
+  border-top: 1px solid #a1a0a0;
   margin: 0px 0px 0px 0px;
   padding: 30px 0px 30px 0px;
   bottom: 0;
@@ -677,7 +676,7 @@ p {
   float: right;
   margin: 4px 40px 0px 0px;
   font-size: 16px;
-  color:rgb(156, 156, 156);
+  color: black;
 }
 
 #footer-nav-box {
@@ -693,7 +692,7 @@ p {
 }
 
 .footer-nav-item {
-  color: rgb(156, 156, 156);
+  color: black;
   font-size: 16px;
   margin: 0px 20px 0px 40px;
 }
@@ -907,7 +906,7 @@ p {
   border-radius: 4px;
   width: 90%;
   padding: 3% 0px 6% 0px;
-  border: #E2E1E1 2px solid;
+  border: 1px solid #a1a0a0;
 }
 
 .plan-title {
@@ -1626,4 +1625,20 @@ th {
 .customization-question {
   font-weight: normal;
   font-size: 14px;
+}
+
+
+
+
+
+
+/* Final Plan Section */
+
+.plan-section {
+  border: solid 1px black;
+  border-radius: 4px;
+  width: 60%;
+  height: 80%;
+  margin: 40px auto 40px auto;
+  padding: 20px;
 }

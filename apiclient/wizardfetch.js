@@ -58,6 +58,18 @@ export const createPlan = async (plan) => {
     return await response.json();
   }
 
+  export const updateRiskScore = async (id, plan) => {
+    const response = await fetch(`/api/updateRiskScore/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(plan)
+    })
+    console.log(plan);
+    return await response.json();
+  }
 
 
 

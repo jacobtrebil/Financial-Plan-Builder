@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { planCalculations, updateCurrentSavings } from '../../apiclient/wizardfetch';
+import { planCalculations, updateCurrentSavings, updateRiskScore } from '../../apiclient/wizardfetch';
 import { useRouter } from 'next/router';
 import _dynamic from 'next/dynamic';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
@@ -16,10 +16,10 @@ function Summary({plan}) {
     const [calculations, setCalculations] = useState({});
     const [newCurrentSavings, setNewCurrentSavings] = useState();
     const [socialSecurityDecision, setSocialSecurityDecision] = useState('Age 67');
-    const [healthcareDecision, setHealthcareDecision] = useState('Average');
     const [annualRetirementCostsDecision, setAnnualRetirementCostsDecision] = useState('None');
     const [partTimeWorkDecision, setPartTimeWorkDecision] = useState('None');
     const [majorPurchasesDecision, setMajorPurchasesDecision] = useState('None');
+    const [riskScore, setRiskScore] = useState('Moderate')
     let [_plan, _setPlan] = useState({plan});
 
     if (!calculations) return (
@@ -38,6 +38,11 @@ function Summary({plan}) {
         setNewCurrentSavings(updateCurrentSavingsFunction);
     }
 
+    async function updateRiskScoreApiCall() {
+        const updateRiskScoreFunction = await updateRiskScore(planId, plan);
+        setCalculations(updateRiskScoreFunction);
+    }
+ 
     const convertToUsd = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
@@ -191,7 +196,7 @@ function Summary({plan}) {
         },
       ];
       
-      _plan = { newCurrentSavings };
+      _plan = { newCurrentSavings, riskScore };
 
     return ( 
         <div className="projections-page">
@@ -230,17 +235,19 @@ function Summary({plan}) {
                         </select>
                     </div>
                     <div className="decisionssocialsecuritysection">
-                        <p className="customization-question">Expected Retirement Healthcare Costs</p>
-                        <select 
+                        <p className="customization-question">My Portfolio Risk Tolerance</p>
+                        <select
                         className="form-select"
-                        name="healthcareDecision"
-                        value={healthcareDecision}
-                        onChange={e=> { setHealthcareDecision(e.target.value); doWizardCalculations();}}>
-                            <option>Low</option>
-                            <option>Average</option>
-                            <option>High</option>
+                        name="riskScore"
+                        value={riskScore}
+                        onChange={e=> { setRiskScore(e.target.value); updateRiskScoreApiCall(); doWizardCalculations();}}>
+                            <option>Conservative</option>
+                            <option>Conservative +</option>
+                            <option>Moderate</option>
+                            <option>Moderate +</option>
+                            <option>Aggresive</option>
                         </select>
-                    </div><br></br>
+                    </div>
                     <div className="decisionssocialsecuritysection">
                         <p className="customization-question">Take Social Security At</p>
                         <select

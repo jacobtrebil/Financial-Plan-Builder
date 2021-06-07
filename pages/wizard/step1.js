@@ -40,11 +40,7 @@ export default function Step1({}) {
     const [spousesFullName, setSpousesFullName] = useState('')
 
     let [_plan, _setPlan] = useState({plan});
-
-    function updatePlan( changes ){
-        _setPlan({ ..._plan, ...changes})
-    }
-
+    
     const { _id } = plan;
 
     _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, maritalStatus, firstName, spousesFullName };

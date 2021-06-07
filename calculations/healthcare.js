@@ -1,9 +1,20 @@
 
 
-function healthcare(lengthOfRetirement) { 
+function healthcare(lengthOfRetirement, health) { 
+
+
 
 const healthcareInflation = 1.05;
-const healthcareInitialCost = 4500;
+let healthcareInitialCost = 4750;
+
+if (health === 'Low') {
+    healthcareInitialCost = 3000;
+} else if (health === 'Average') {
+    healthcareInitialCost = 4000;
+} else if (health === 'High') {
+    healthcareInitialCost = 5000;
+};
+
 let totalHealthcareCosts = 0;
 
 const yearOneCost = healthcareInitialCost;
