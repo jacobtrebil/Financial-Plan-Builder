@@ -14,12 +14,10 @@ function Summary({plan}) {
     }, []); 
 
     const [calculations, setCalculations] = useState({});
-    const [newCurrentSavings, setNewCurrentSavings] = useState();
     const [socialSecurityDecision, setSocialSecurityDecision] = useState('Age 67');
-    const [annualRetirementCostsDecision, setAnnualRetirementCostsDecision] = useState('None');
+    const [retirementAge, setRetirementAge] = useState('62');
     const [partTimeWorkDecision, setPartTimeWorkDecision] = useState('None');
-    const [majorPurchasesDecision, setMajorPurchasesDecision] = useState('None');
-    const [riskScore, setRiskScore] = useState('Moderate')
+    const [riskScore, setRiskScore] = useState('moderate');
     let [_plan, _setPlan] = useState({plan});
 
     if (!calculations) return (
@@ -33,14 +31,13 @@ function Summary({plan}) {
         setCalculations(wizardCalculationsFunction);
     }  
 
+    async function updateRiskScoreApiCall() {
+        await updateRiskScore(planId, riskScore);
+    }
+
     async function updateCurrentSavingsApiCall() {
         const updateCurrentSavingsFunction = await updateCurrentSavings(planId, plan);
         setNewCurrentSavings(updateCurrentSavingsFunction);
-    }
-
-    async function updateRiskScoreApiCall() {
-        const updateRiskScoreFunction = await updateRiskScore(planId, plan);
-        setCalculations(updateRiskScoreFunction);
     }
  
     const convertToUsd = new Intl.NumberFormat('en-US', {
@@ -49,7 +46,34 @@ function Summary({plan}) {
         // maximumFractionDigits: 0,
       });
 
+      // How can I make this start at retirement age and end at age of death?
+      // Could I create a document that is an if/else statement that runs certain calculations based on retirement age?
+      // Maybe within wizardcalculations?
+      // Or I could put an if/else here: if (retirementAge > 60) {
+      // do x calculation, and do that for each retirement age
+      // Only do each if/else statement around the ages that depend on when they retire, for age 71+, have them always display
+      // Solve the age of death thing after solving the retirement age part
       const data = [
+        {
+            Age: 55,
+            Earnings: 1000,
+        },
+        {
+            Age: 56,
+            Earnings: 1000,
+        },
+        {
+            Age: 57,
+            Earnings: 1000,
+        },
+        {
+            Age: 58,
+            Earnings: 1000,
+        },
+        {
+            Age: 59,
+            Earnings: 1000, 
+        },
         {
             Age: 60,
             Earnings: calculations.age60Income,
@@ -186,17 +210,9 @@ function Summary({plan}) {
             Age: 93,
             Earnings: calculations.age93Income,
         },
-        {
-            Age: 94,
-            Earnings: calculations.age94Income,
-        },
-        {
-            Age: 95,
-            Earnings: calculations.age95Income,
-        },
       ];
-      
-      _plan = { newCurrentSavings, riskScore };
+
+      _plan = { riskScore };
 
     return ( 
         <div className="projections-page">
@@ -222,11 +238,59 @@ function Summary({plan}) {
                 </div>
                 <div className="block2">
                     <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Retire at Age</p>
+                        <select
+                        className="form-select"
+                        name="retirementAge"
+                        value={retirementAge}
+                        onChange={e=> { 
+                            setRetirementAge(e.target.value); 
+                            doWizardCalculations();
+                            router.push(`../wizard/scorecard?planId=${planId}?retirementAge=${retirementAge}`)
+                            }}>
+                            <option>55</option>
+                            <option>56</option>
+                            <option>57</option>
+                            <option>58</option>
+                            <option>59</option>
+                            <option>60</option>
+                            <option>61</option>
+                            <option>62</option>
+                            <option>63</option>
+                            <option>64</option>
+                            <option>65</option>
+                            <option>66</option>
+                            <option>67</option>
+                            <option>68</option>
+                            <option>69</option>
+                            <option>70</option>
+                        </select>
+                    </div>
+                    <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Take Social Security At</p>
+                        <select
+                        className="form-select"
+                        name="socialSecurityDecision"
+                        value={socialSecurityDecision}
+                        onChange={e=> { 
+                            setSocialSecurityDecision(e.target.value); 
+                            doWizardCalculations();
+                            }}>
+                            <option>Age 62</option>
+                            <option>Age 67</option>
+                            <option>Age 70</option>
+                        </select>
+                    </div><br></br>
+                    <div className="decisionssocialsecuritysection">
                         <p className="customization-question">Annual Savings Until Retirement</p>
                         <select 
                         className="form-select"
                         name="newCurrentSavings"
-                        onChange={e=> { setNewCurrentSavings(parseInt(e.target.value, 10)); updateCurrentSavingsApiCall(); doWizardCalculations();}}>
+                        onChange={e=> { 
+                            setNewCurrentSavings(parseInt(e.target.value, 10)); 
+                            updateCurrentSavingsApiCall(); 
+                            doWizardCalculations();
+                            }}>
                             <option>{convertToUsd.format(calculations.currentSavings)}</option>
                             <option>{convertToUsd.format(calculations.slightlyLessSavings)}</option>
                             <option>{convertToUsd.format(calculations.muchLessSavings)}</option>
@@ -240,37 +304,16 @@ function Summary({plan}) {
                         className="form-select"
                         name="riskScore"
                         value={riskScore}
-                        onChange={e=> { setRiskScore(e.target.value); updateRiskScoreApiCall(); doWizardCalculations();}}>
-                            <option>Conservative</option>
-                            <option>Conservative +</option>
-                            <option>Moderate</option>
-                            <option>Moderate +</option>
-                            <option>Aggresive</option>
-                        </select>
-                    </div>
-                    <div className="decisionssocialsecuritysection">
-                        <p className="customization-question">Take Social Security At</p>
-                        <select
-                        className="form-select"
-                        name="socialSecurityDecision"
-                        value={socialSecurityDecision}
-                        onChange={e=> { setSocialSecurityDecision(e.target.value); doWizardCalculations();}}>
-                            <option>Age 62</option>
-                            <option>Age 67</option>
-                            <option>Age 70</option>
-                        </select>
-                    </div>
-                    <div className="decisionssocialsecuritysection">
-                        <p className="customization-question">Annual Retirement Costs (Trips, Charity, etc.)</p>
-                        <select
-                        className="form-select"
-                        name="annualRetirementCostsDecision"
-                        value={annualRetirementCostsDecision}
-                        onChange={e=> { setAnnualRetirementCostsDecision(e.target.value); doWizardCalculations();}}>
-                            <option>None</option>
-                            <option>$10,000/Year</option>
-                            <option>$30,000/Year</option>
-                            <option>$50,000/Year</option>
+                        onChange={e=> { 
+                            setRiskScore(e.target.value); 
+                            updateRiskScoreApiCall(); 
+                            doWizardCalculations();
+                            }}>
+                            <option>conservative</option>
+                            <option>conservative +</option>
+                            <option>moderate</option>
+                            <option>moderate +</option>
+                            <option>aggressive</option>
                         </select>
                     </div><br></br>
                     <div className="decisionssocialsecuritysection">
@@ -279,27 +322,17 @@ function Summary({plan}) {
                         className="form-select"
                         name="partTimeWorkDecision"
                         value={partTimeWorkDecision}
-                        onChange={e=> { setPartTimeWorkDecision(e.target.value); doWizardCalculations();}}>
+                        onChange={e=> { 
+                            setPartTimeWorkDecision(e.target.value); 
+                            doWizardCalculations();
+                            }}>
                             <option>None</option>
                             <option>First 5 Years</option>
                             <option>First 10 Years</option>
                             <option>First 20 Years</option>
                         </select>
-                    </div>
-                    <div className="decisionssocialsecuritysection">
-                        <p className="customization-question">Major Purchases (Kids College, Homes, etc.)</p>
-                        <select
-                        className="form-select"
-                        name="majorPurchasesDecision"
-                        value={majorPurchasesDecision}
-                        onChange={e=> { setMajorPurchasesDecision(e.target.value); doWizardCalculations();}}>
-                            <option>None</option>
-                            <option>$100k in Purchases</option>
-                            <option>$300k in Purchases</option>
-                            <option>$500k in Purchases</option>
-                            <option>$1M in Purchases</option>
-                        </select>
-                    </div>
+                    </div><br></br>
+                    <button className="save-scenario-button">Save Scenario</button>
                 </div>
             </div>
             <div className="projections-button-section">
@@ -311,3 +344,17 @@ function Summary({plan}) {
     )};
 
     export default Summary;
+
+    /*  <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Annual Retirement Costs (Trips, Charity, etc.)</p>
+                        <select
+                        className="form-select"
+                        name="annualRetirementCostsDecision"
+                        value={annualRetirementCostsDecision}
+                        onChange={e=> { setAnnualRetirementCostsDecision(e.target.value); doWizardCalculations();}}>
+                            <option>None</option>
+                            <option>$10,000/Year</option>
+                            <option>$30,000/Year</option>
+                            <option>$50,000/Year</option>
+                        </select>
+                    </div> */

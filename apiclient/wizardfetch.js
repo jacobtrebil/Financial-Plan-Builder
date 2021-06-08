@@ -67,7 +67,6 @@ export const createPlan = async (plan) => {
       },
       body: JSON.stringify(plan)
     })
-    console.log(plan);
     return await response.json();
   }
 

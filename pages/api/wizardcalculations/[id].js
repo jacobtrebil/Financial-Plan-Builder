@@ -48,8 +48,6 @@ import calculateAge90RetirementIncome from '../../../calculations/yearByYearReti
 import calculateAge91RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age91Income';
 import calculateAge92RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age92Income';
 import calculateAge93RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age93Income';
-import calculateAge94RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age94Income';
-import calculateAge95RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age95Income';
 import calculateTotalRetirementEarnings from '../../../calculations/totalRetirementEarnings';
 import slightlyLessSavingsFunction from '../../../calculations/annualSavingsOptions/slightlyLessSavings';
 import slightlyMoreSavingsFunction from '../../../calculations/annualSavingsOptions/slightlyMoreSavings';
@@ -114,8 +112,6 @@ export default async function handler(req,res) {
                 plan.age91Income = calculateAge91RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
                 plan.age92Income = calculateAge92RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
                 plan.age93Income = calculateAge93RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
-                plan.age94Income = calculateAge94RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
-                plan.age95Income = calculateAge95RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
                 plan.totalRetirementEarnings = calculateTotalRetirementEarnings(plan.age60Income, plan.age61Income, plan.age62Income, plan.age63Income, plan.age64Income, plan.age65Income, plan.age66Income, plan.age67Income, plan.age68Income, plan.age69Income, plan.age70Income, plan.age71Income, plan.age72Income, plan.age73Income, plan.age74Income, plan.age75Income, plan.age76Income, plan.age77Income, plan.age78Income, plan.age79Income, plan.age80Income, plan.age81Income, plan.age82Income, plan.age83Income, plan.age84Income, plan.age85Income, plan.age86Income, plan.age87Income, plan.age88Income, plan.age89Income, plan.age90Income, plan.age91Income, plan.age92Income, plan.age93Income, plan.age94Income, plan.age95Income);
                 plan.muchLessSavings = muchLessSavingsFunction(plan.currentSavings);
                 plan.muchMoreSavings = muchMoreSavingsFunction(plan.currentSavings);

@@ -12,6 +12,7 @@ export default async function handler(req,res) {
             try {
                 const plan = await Plan.findOne({ _id: id})
                 const { riskScore } = req.body
+                console.log(riskScore);
                 await Plan.updateOne({ _id: id}, { riskScore})
                 res.status(200).json( plan )
                 return;

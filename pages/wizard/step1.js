@@ -58,7 +58,9 @@ export default function Step1({}) {
                     className="form-input-pages"
                     placeholder="First Name"
                     value={firstName}
-                    onChange={e=> setFirstName(e.target.value)}
+                    onChange={e=> 
+                        setFirstName(e.target.value)
+                        }
                     /><br></br>
                     <p className="errors">{errors}</p>
                 </div>
@@ -68,7 +70,9 @@ export default function Step1({}) {
                     name="dateOfBirthMonth"
                     className="form-select"
                     value={dateOfBirthMonth}
-                    onChange={e=> { setDateOfBirthMonth(e.target.value)}}>
+                    onChange={e=> { 
+                        setDateOfBirthMonth(e.target.value)
+                        }}>
                     <option>January</option>
                     <option>February</option>
                     <option>March</option>
@@ -88,7 +92,9 @@ export default function Step1({}) {
                     className="form-input-pages-dob"
                     value={dateOfBirthDay}
                     placeholder="Day"
-                    onChange={e=> setDateOfBirthDay(e.target.value)}
+                    onChange={e=> 
+                        setDateOfBirthDay(e.target.value)
+                        }
                     type="input"
                     />
                     <input
@@ -97,8 +103,10 @@ export default function Step1({}) {
                     className="form-input-pages-dob"
                     value={dateOfBirthYear}
                     placeholder="Year"
-                    onChange={e=> setDateOfBirthYear(e.target.value)}
-                    type="input"
+                    onChange={e=> 
+                        setDateOfBirthYear(e.target.value)
+                        }
+                        type="input"
                     /><br></br>
                 </div>
                 <div className="input-div">
@@ -107,7 +115,9 @@ export default function Step1({}) {
                     name="maritalStatus"
                     className="form-select"
                     value={maritalStatus}
-                    onChange={e=> { setMaritalStatus(e.target.value)}}>
+                    onChange={e=> { 
+                        setMaritalStatus(e.target.value)
+                        }}>
                     <option>Married</option>
                     <option>Divorced</option>
                     <option>Widowed</option>
@@ -120,7 +130,10 @@ export default function Step1({}) {
                     name="spouse"
                     className="form-select"
                     value={spouse}
-                    onChange={e=> { setSpouse(e.target.value); setShowForm(!showForm)}}>
+                    onChange={e=> { 
+                        setSpouse(e.target.value); 
+                        setShowForm(!showForm)
+                        }}>
                     <option>Yes</option>
                     <option>No</option>
                     </select><br></br>
@@ -134,8 +147,9 @@ export default function Step1({}) {
                     className="form-input-pages"
                     placeholder="Spouses First Name"
                     value={spousesFullName}
-                    onChange={e=> setSpousesFullName(e.target.value)}
-                    />
+                    onChange={e=> 
+                        setSpousesFullName(e.target.value)
+                        }/>
                 </div>
                 )}
             </div>
