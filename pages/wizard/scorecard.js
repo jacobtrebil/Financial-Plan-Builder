@@ -56,23 +56,23 @@ function Summary({plan}) {
       const data = [
         {
             Age: 55,
-            Earnings: 1000,
+            Earnings: calculations.age55Income,
         },
         {
             Age: 56,
-            Earnings: 1000,
+            Earnings: calculations.age56Income,
         },
         {
             Age: 57,
-            Earnings: 1000,
+            Earnings: calculations.age57Income,
         },
         {
             Age: 58,
-            Earnings: 1000,
+            Earnings: calculations.age58Income,
         },
         {
             Age: 59,
-            Earnings: 1000, 
+            Earnings: calculations.age59Income, 
         },
         {
             Age: 60,
