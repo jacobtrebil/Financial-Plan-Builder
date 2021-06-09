@@ -70,6 +70,54 @@ export const createPlan = async (plan) => {
     return await response.json();
   }
 
+  export const updateRetirementAge = async (id, plan) => {
+    const response = await fetch(`/api/updateRetirementAge/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(plan)
+    })
+    return await response.json();
+  }
+
+  export const updatePartTimeWork = async (id, plan) => {
+    const response = await fetch(`/api/updatePartTimeWork/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(plan)
+    })
+    return await response.json();
+  }
+
+  export const updateSocialSecurity = async (id, plan) => {
+    const response = await fetch(`/api/updateSocialSecurity/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(plan)
+    })
+    return await response.json();
+  }
+
+  export const updatePension = async (id, plan) => {
+    const response = await fetch(`/api/updateSocialSecurity/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(plan)
+    })
+    return await response.json();
+  }
+
 
 
   /* Consolidate the code using something like this: 

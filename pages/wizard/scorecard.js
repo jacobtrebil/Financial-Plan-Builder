@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { planCalculations, updateCurrentSavings, updateRiskScore } from '../../apiclient/wizardfetch';
+import { planCalculations, updateCurrentSavings, updateRiskScore, updatePartTimeWork, updateSocialSecurity, updateRetirementAge, updatePension } from '../../apiclient/wizardfetch';
 import { useRouter } from 'next/router';
 import _dynamic from 'next/dynamic';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 
-function Summary({plan}) {
+function Summary(plan) {
 
     const router = useRouter();
     const {planId} = router.query;
@@ -13,12 +13,15 @@ function Summary({plan}) {
         doWizardCalculations();
     }, []); 
 
+    const [showForm, setShowForm] = useState(false);
     const [calculations, setCalculations] = useState({});
-    const [socialSecurityDecision, setSocialSecurityDecision] = useState('Age 67');
-    const [retirementAge, setRetirementAge] = useState('62');
+    const [retirementAge, setRetirementAge] = useState(62);
     const [partTimeWorkDecision, setPartTimeWorkDecision] = useState('None');
-    const [riskScore, setRiskScore] = useState('moderate');
-    let [_plan, _setPlan] = useState({plan});
+    const [pensionDate, setPensionDate] = useState(60);
+    const [currentSavings, setCurrentSavings] = useState(calculations.currentSavings);
+    let [_plan, _setPlan] = useState(plan);
+    const {riskScore} = _plan;
+    const {socialSecurity} = _plan;
 
     if (!calculations) return (
         <div>
@@ -26,20 +29,82 @@ function Summary({plan}) {
         </div>
     ); 
 
+    function updateRiskScoreHandler(e) {
+            const updatedPlan = {..._plan, riskScore: e.target.value};
+            _setPlan(updatedPlan);
+            updateRiskScoreApiCall(updatedPlan); 
+            doWizardCalculations();
+    }
+
+    function updateRetirementAgeHandler(e) {
+        const updatedPlan = {..._plan, retirementAge: e.target.value};
+        _setPlan(updatedPlan);
+        updateRetirementAgeApiCall(updatedPlan);
+        doWizardCalculations();
+        router.push(`../wizard/scorecard?planId=${planId}?retirementAge=${retirementAge}`);
+    }
+
+    function updatePartTimeWorkHandler(e) {
+        const updatedPlan = {..._plan, partTimeWorkDecision: e.target.value};
+        _setPlan(updatedPlan);
+        updatePartTimeWorkApiCall(updatedPlan);
+        doWizardCalculations();
+    }
+
+    function updateSocialSecurityHandler(e) {
+        const updatedPlan = {..._plan, socialSecurity: e.target.value};
+        _setPlan(updatedPlan);
+        updateSocialSecurityApiCall(updatedPlan);
+        doWizardCalculations();
+    }
+
+    function updateCurrentSavingsHandler(e) {
+        const updatedPlan = {..._plan, currentSavings: e.target.value};
+        _setPlan(updatedPlan);
+        updateCurrentSavingsApiCall(updatedPlan);
+        doWizardCalculations();
+    }
+
+    function updatePensionHandler(e) {
+        const updatedPlan = {..._plan, pension: e.target.value};
+        _setPlan(updatedPlan);
+        updatePensionApiCall(updatedPlan);
+        doWizardCalculations();
+    }
+
+    /* if (pension === 'yes') {
+        setShowForm(true);
+    }; */
+
     async function doWizardCalculations() {
         const wizardCalculationsFunction = await planCalculations(planId, plan);
         setCalculations(wizardCalculationsFunction);
     }  
 
-    async function updateRiskScoreApiCall() {
-        await updateRiskScore(planId, riskScore);
+    async function updateRiskScoreApiCall(updatedPlan) {
+        await updateRiskScore(planId, updatedPlan);
     }
 
-    async function updateCurrentSavingsApiCall() {
-        const updateCurrentSavingsFunction = await updateCurrentSavings(planId, plan);
-        setNewCurrentSavings(updateCurrentSavingsFunction);
+    async function updateRetirementAgeApiCall(updatedPlan) {
+        await updateRetirementAge(planId, updatedPlan);
     }
- 
+
+    async function updatePartTimeWorkApiCall(updatedPlan) {
+        await updatePartTimeWork(planId, updatedPlan);
+    }
+
+    async function updateSocialSecurityApiCall(updatedPlan) {
+        await updateSocialSecurity(planId, updatedPlan);
+    }
+
+    async function updateCurrentSavingsApiCall(updatedPlan) {
+        await updateCurrentSavings(planId, updatedPlan);
+    }
+
+    async function updatePensionApiCall(updatedPlan) {
+        await updatePension(planId, updatedPlan);
+    }
+
     const convertToUsd = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
@@ -53,6 +118,7 @@ function Summary({plan}) {
       // do x calculation, and do that for each retirement age
       // Only do each if/else statement around the ages that depend on when they retire, for age 71+, have them always display
       // Solve the age of death thing after solving the retirement age part
+      // It won't let me wrap these in if/else statements.
       const data = [
         {
             Age: 55,
@@ -213,7 +279,7 @@ function Summary({plan}) {
       ];
 
       _plan = { riskScore };
-
+ 
     return ( 
         <div className="projections-page">
             <div className="projections-headline">
@@ -243,11 +309,8 @@ function Summary({plan}) {
                         className="form-select"
                         name="retirementAge"
                         value={retirementAge}
-                        onChange={e=> { 
-                            setRetirementAge(e.target.value); 
-                            doWizardCalculations();
-                            router.push(`../wizard/scorecard?planId=${planId}?retirementAge=${retirementAge}`)
-                            }}>
+                        onChange={updateRetirementAgeHandler}
+                        >
                             <option>55</option>
                             <option>56</option>
                             <option>57</option>
@@ -270,12 +333,9 @@ function Summary({plan}) {
                         <p className="customization-question">Take Social Security At</p>
                         <select
                         className="form-select"
-                        name="socialSecurityDecision"
-                        value={socialSecurityDecision}
-                        onChange={e=> { 
-                            setSocialSecurityDecision(e.target.value); 
-                            doWizardCalculations();
-                            }}>
+                        name="socialSecurity"
+                        value={socialSecurity}
+                        onChange={updateSocialSecurityHandler}>
                             <option>Age 62</option>
                             <option>Age 67</option>
                             <option>Age 70</option>
@@ -286,14 +346,11 @@ function Summary({plan}) {
                         <select 
                         className="form-select"
                         name="newCurrentSavings"
-                        onChange={e=> { 
-                            setNewCurrentSavings(parseInt(e.target.value, 10)); 
-                            updateCurrentSavingsApiCall(); 
-                            doWizardCalculations();
-                            }}>
-                            <option>{convertToUsd.format(calculations.currentSavings)}</option>
-                            <option>{convertToUsd.format(calculations.slightlyLessSavings)}</option>
+                        onChange={updateCurrentSavingsHandler}
+                        >
                             <option>{convertToUsd.format(calculations.muchLessSavings)}</option>
+                            <option>{convertToUsd.format(calculations.slightlyLessSavings)}</option>
+                            <option>{convertToUsd.format(calculations.currentSavings)}</option>
                             <option>{convertToUsd.format(calculations.slightlyMoreSavings)}</option>
                             <option>{convertToUsd.format(calculations.muchMoreSavings)}</option>
                         </select>
@@ -304,11 +361,7 @@ function Summary({plan}) {
                         className="form-select"
                         name="riskScore"
                         value={riskScore}
-                        onChange={e=> { 
-                            setRiskScore(e.target.value); 
-                            updateRiskScoreApiCall(); 
-                            doWizardCalculations();
-                            }}>
+                        onChange={updateRiskScoreHandler}>
                             <option>conservative</option>
                             <option>conservative +</option>
                             <option>moderate</option>
@@ -322,16 +375,41 @@ function Summary({plan}) {
                         className="form-select"
                         name="partTimeWorkDecision"
                         value={partTimeWorkDecision}
-                        onChange={e=> { 
-                            setPartTimeWorkDecision(e.target.value); 
-                            doWizardCalculations();
-                            }}>
+                        onChange={updatePartTimeWorkHandler}>
                             <option>None</option>
                             <option>First 5 Years</option>
                             <option>First 10 Years</option>
                             <option>First 20 Years</option>
                         </select>
-                    </div><br></br>
+                    </div>
+                    {
+                    showForm && (
+                    <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Take Pension at</p>
+                        <select
+                        className="form-select"
+                        name="pensionDate"
+                        value={pensionDate}
+                        onChange={updatePensionHandler}>
+                            <option>55</option>
+                            <option>56</option>
+                            <option>57</option>
+                            <option>58</option>
+                            <option>59</option>
+                            <option>60</option>
+                            <option>61</option>
+                            <option>62</option>
+                            <option>63</option>
+                            <option>64</option>
+                            <option>65</option>
+                            <option>66</option>
+                            <option>67</option>
+                            <option>68</option>
+                            <option>69</option>
+                            <option>70</option>
+                        </select>
+                    </div>
+                    )}<br></br>
                     <button className="save-scenario-button">Save Scenario</button>
                 </div>
             </div>

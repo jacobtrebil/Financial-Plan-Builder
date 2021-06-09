@@ -52,17 +52,6 @@ export default function Step3({ plan, pageProps }) {
     const [errors, setErrors] = useState('')
     const [errors2, setErrors2] = useState('')
     const [errors3, setErrors3] = useState('')
-    const [showForm, setShowForm] = useState(false)  
-    const [showForm2, setShowForm2] = useState(false) 
-    const [showForm3, setShowForm3] = useState(false) 
-    const [showForm4, setShowForm4] = useState(false)
-    const [showForm5, setShowForm5] = useState(false)
-    const [showForm8, setShowForm8] = useState(false)
-    const [showForm9, setShowForm9] = useState(false)
-    const [showForm10, setShowForm10] = useState(false)
-    const [showForm11, setShowForm11] = useState(false)
-    const [showForm12, setShowForm12] = useState(false)
-    const [showForm13, setShowForm13] = useState(false)
     const [showForm14, setShowForm14] = useState(false)
     const [showForm15, setShowForm15] = useState(false)
     const [currentEarnings, setCurrentEarnings] = useState('')
@@ -72,37 +61,14 @@ export default function Step3({ plan, pageProps }) {
     const [assetValue, setAssetValue] = useState('')
     const [changePortfolio, setChangePortfolio] = useState('Change to a more conservative portfolio')
     const [volatility, setVolatility] = useState('False')
-    const [portfolioTradeoff, setPortfolioTradeoff] = useState('Portfolio A')
     const [lifeInsurance, setLifeInsurance] = useState('No')
     const [taxPlan, setTaxPlan] = useState('No')
-    const [investments, setInvestments] = useState('No')
-    const [investmentsAmount, setInvestmentsAmount] = useState('')
-    const [realEstate, setRealEstate] = useState('No')
-    const [realEstateAmount, setRealEstateAmount] = useState('')
-    const [alternativeAssets, setAlternativeAssets] = useState('No')
-    const [alternativeAssetsAmount, setAlternativeAssetsAmount] = useState('')
-    const [otherAssets, setOtherAssets] = useState('No')
-    const [otherAssetsAmount, setOtherAssetsAmount] = useState('')
-    const [powerOfAttorney, setPowerOfAttorney] = useState('No')
     const [will, setWill] = useState('No')
-    const [medicare, setMedicare] = useState('No')
     const [pension, setPension] = useState('No')
     const [pensionInflation, setPensionInflation] = useState('No')
     const [pensionTimeframe, setPensionTimeframe] = useState('50')
     const [pensionEarnings, setPensionEarnings] = useState('')
     const [socialSecurity, setSocialSecurity] = useState('Yes')
-    const [mortgage, setMortgage] = useState('No')
-    const [mortgageAmount, setMortgageAmount] = useState('')
-    const [creditCardDebt, setCreditCardDebt] = useState('No')
-    const [creditCardDebtAmount, setCreditCardDebtAmount] = useState('')
-    const [medicalDebt, setMedicalDebt] = useState('No')
-    const [medicalDebtAmount, setMedicalDebtAmount] = useState('')
-    const [carFinancing, setCarFinancing] = useState('No')
-    const [carFinancingAmount, setCarFinancingAmount] = useState('')
-    const [studentLoans, setStudentLoans] = useState('No')
-    const [studentLoanAmount, setStudentLoanAmount] = useState('')
-    const [additionalDebt, setAdditionalDebt] = useState('No')
-    const [additionalDebtAmount, setAdditionalDebtAmount] = useState('')
 
     let [_plan, _setPlan] = useState({plan});
 
@@ -110,7 +76,7 @@ export default function Step3({ plan, pageProps }) {
         _setPlan({ ..._plan, ...changes})
     }
 
-    _plan = { currentEarnings, currentSavings, assetValue, lifeInsurance, taxPlan, investments, investmentsAmount, realEstate, realEstateAmount, alternativeAssets, alternativeAssetsAmount, otherAssets, otherAssetsAmount, powerOfAttorney, will, medicare, pension, pensionTimeframe, pensionEarnings, pensionInflation, socialSecurity, mortgage, mortgageAmount, creditCardDebt, creditCardDebtAmount, medicalDebt, medicalDebtAmount, carFinancing, carFinancingAmount, studentLoans, studentLoanAmount, riskAttitude, volatility, changePortfolio, portfolioTradeoff, additionalDebt, additionalDebtAmount, lifeInsuranceDocument };
+    _plan = { currentEarnings, currentSavings, assetValue, lifeInsurance, taxPlan, will, pension, pensionTimeframe, pensionEarnings, pensionInflation, socialSecurity, riskAttitude, volatility, changePortfolio, lifeInsuranceDocument };
     
     return (
         <div>

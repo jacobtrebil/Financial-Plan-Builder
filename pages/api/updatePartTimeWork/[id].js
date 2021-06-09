@@ -7,14 +7,12 @@ export default async function handler(req,res) {
 
     await dbConnect();
 
-    console.log('hello')
-
     switch (method) {
         case 'PUT':
             try {
-                const plan = await Plan.findOne({ _id: id })
-                const { healthcareDecision } = req.body
-                await Plan.updateOne({ _id: id}, { healthcareDecision })
+                const { partTimeWork } = req.body
+                await Plan.updateOne({ _id: id}, { partTimeWork })
+                const plan = await Plan.findOne({ _id: id})
                 res.status(200).json( plan )
                 return;
             } catch (error) {
@@ -22,7 +20,7 @@ export default async function handler(req,res) {
                 res.status(400).json()
                 return;
             }
-            default:
+            default: 
             res.status(400).json()
             break
     }

@@ -122,7 +122,7 @@ p {
   float: right;
   display: inline-block;
   margin: 35px 70px 0px 0px;
-  background-color: rgb(4, 187, 172);
+  background-color: #0BC0C0;
   color: white;
   border: 0px solid rgb(192, 192, 192);
   border-radius: 2px;
@@ -400,7 +400,7 @@ p {
   float: right;
   display: inline-block;
   margin: 40px 70px 0px 0px;
-  background-color: rgb(4, 187, 172);
+  background-color: #0BC0C0;
   color: white;
   border: 0px solid rgb(192, 192, 192);
   border-radius: 2px;
@@ -454,7 +454,7 @@ p {
 }
 
 #profile-save-button {
-  background-color: rgb(4, 187, 172);
+  background-color: #0BC0C0;
   color: white;
   border: none;
   border-radius: 2px;
@@ -485,7 +485,7 @@ p {
   float: right;
   display: inline-block;
   margin: 0px 70px 15px 0px;
-  background-color: rgb(4, 187, 172);
+  background-color: #0BC0C0;
   color: white;
   border: 0px solid rgb(192, 192, 192);
   border-radius: 2px;
@@ -780,7 +780,7 @@ p {
 }
 
 #plan-button {
-  background-color: rgb(4, 187, 172);
+  background-color: #0BC0C0;
   color: white;
   border: none;
   border-radius: 2px;
@@ -796,7 +796,7 @@ p {
 }
 
 #plan-button2 {
-  background-color: rgb(4, 187, 172);
+  background-color: #0BC0C0;
   color: white;
   border: none;
   border-radius: 2px;
@@ -838,7 +838,7 @@ p {
 }
 
 #section-start-button {
-    background-color: rgb(4, 187, 172);
+    background-color: #0BC0C0;
     color: white;
     border: none;
     border-radius: 2px;
@@ -949,7 +949,7 @@ p {
 }
 
 .plan-button-3 {
-  background-color: rgb(4, 187, 172);
+  background-color: #0BC0C0;
   color: white;
   border: none;
   border-radius: 2px;
@@ -1095,7 +1095,7 @@ p {
 }
 
 .savings-bar {
-  border: 2px solid rgb(4, 187, 172);
+  border: 2px solid #0BC0C0;
   border-radius: 2px;
   width: 3%;
   text-align: left;
@@ -1116,7 +1116,7 @@ p {
 }
 
 .investments-actual-bar {
-  border: 2px solid rgb(4, 187, 172);
+  border: 2px solid #0BC0C0;
   border-radius: 2px;
   width: 80%;
   text-align: left;
@@ -1205,7 +1205,7 @@ p {
 .wizard-footer-button {
   margin: 0px 5% 0px 0px;
   position: static;
-  background-color:rgb(4, 187, 172);
+  background-color:#0BC0C0;
   color: white;
   border: none;
   border-radius: 4px;
@@ -1240,7 +1240,7 @@ p {
 }
 
 .circle-state {
-  background-color:rgb(4, 187, 172);
+  background-color:#0BC0C0;
   color: white;
 }
 
@@ -1318,7 +1318,7 @@ p {
 }
 
 #start-plan-button {
-  background-color: rgb(4, 187, 172);
+  background-color: #0BC0C0;
   color: white;
   border: none;
   border-radius: 2px;
@@ -1432,7 +1432,7 @@ p {
 .scorecard-button {
   margin: 40px auto 40px auto;
   text-align: center;
-  background-color:rgb(4, 187, 172);
+  background-color:#0BC0C0;
   color: white;
   border: none;
   border-radius: 4px;
@@ -1630,7 +1630,7 @@ th {
 .save-scenario-button {
   margin: 30px auto 0px auto;
   text-align: center;
-  background-color:rgb(4, 187, 172);
+  background-color:#0BC0C0;
   color: white;
   border: none;
   border-radius: 4px;
