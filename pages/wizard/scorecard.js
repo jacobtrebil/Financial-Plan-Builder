@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { planCalculations, updateCurrentSavings, updateRiskScore, updatePartTimeWork, updateSocialSecurity, updateRetirementAge, updatePension } from '../../apiclient/wizardfetch';
+import { planCalculations, updateCurrentSavings, updateRiskScore, updatePartTimeWork, updateSocialSecurity, updateRetirementAge, updatePension, addScenario } from '../../apiclient/wizardfetch';
 import { useRouter } from 'next/router';
 import _dynamic from 'next/dynamic';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
@@ -15,13 +15,13 @@ function Summary(plan) {
 
     const [showForm, setShowForm] = useState(false);
     const [calculations, setCalculations] = useState({});
-    const [retirementAge, setRetirementAge] = useState(62);
     const [partTimeWorkDecision, setPartTimeWorkDecision] = useState('None');
     const [pensionDate, setPensionDate] = useState(60);
     const [currentSavings, setCurrentSavings] = useState(calculations.currentSavings);
     let [_plan, _setPlan] = useState(plan);
     const {riskScore} = _plan;
-    const {socialSecurity} = _plan;
+    const {socialSecurityAge} = _plan;
+    const {retirementAge} = _plan;
 
     if (!calculations) return (
         <div>
@@ -52,7 +52,7 @@ function Summary(plan) {
     }
 
     function updateSocialSecurityHandler(e) {
-        const updatedPlan = {..._plan, socialSecurity: e.target.value};
+        const updatedPlan = {..._plan, socialSecurityAge: e.target.value};
         _setPlan(updatedPlan);
         updateSocialSecurityApiCall(updatedPlan);
         doWizardCalculations();
@@ -72,9 +72,19 @@ function Summary(plan) {
         doWizardCalculations();
     }
 
+    function saveScenario() {
+        const updatedPlan = {..._plan};
+        _setPlan(updatedPlan);
+        saveScenarioApiCall(updatedPlan);
+    }
+
     /* if (pension === 'yes') {
         setShowForm(true);
     }; */
+
+    async function saveScenarioApiCall(updatedPlan) {
+        await addScenario(planId, updatedPlan);
+    }
 
     async function doWizardCalculations() {
         const wizardCalculationsFunction = await planCalculations(planId, plan);
@@ -330,15 +340,15 @@ function Summary(plan) {
                         </select>
                     </div>
                     <div className="decisionssocialsecuritysection">
-                        <p className="customization-question">Take Social Security At</p>
+                        <p className="customization-question">Take Social Security At Age</p>
                         <select
                         className="form-select"
-                        name="socialSecurity"
-                        value={socialSecurity}
+                        name="socialSecurityAge"
+                        value={socialSecurityAge}
                         onChange={updateSocialSecurityHandler}>
-                            <option>Age 62</option>
-                            <option>Age 67</option>
-                            <option>Age 70</option>
+                            <option>62</option>
+                            <option>67</option>
+                            <option>70</option>
                         </select>
                     </div><br></br>
                     <div className="decisionssocialsecuritysection">
@@ -410,7 +420,10 @@ function Summary(plan) {
                         </select>
                     </div>
                     )}<br></br>
-                    <button className="save-scenario-button">Save Scenario</button>
+                    <button 
+                    className="save-scenario-button"
+                    onClick={saveScenario}
+                    >Save Scenario</button>
                 </div>
             </div>
             <div className="projections-button-section">

@@ -58,6 +58,7 @@ import slightlyLessSavingsFunction from '../../../calculations/annualSavingsOpti
 import slightlyMoreSavingsFunction from '../../../calculations/annualSavingsOptions/slightlyMoreSavings';
 import muchLessSavingsFunction from '../../../calculations/annualSavingsOptions/muchLessSavings';
 import muchMoreSavingsFunction from '../../../calculations/annualSavingsOptions/muchMoreSavings';
+import calculateSocialSecurityAge from '../../../calculations/socialSecurityAge';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -73,6 +74,7 @@ export default async function handler(req,res) {
                 plan.socialSecurityAge62Earnings = calculateSocialSecurityAge62(plan.socialSecurityEarnings);
                 plan.socialSecurityAge70Earnings = calculateSocialSecurityAge70(plan.socialSecurityEarnings);
                 plan.riskScore = calculateRiskScore(plan.changePortfolio, plan.riskAttitude, plan.volatility);
+                plan.socialSecurityAge = calculateSocialSecurityAge();
                 plan.rateOfReturn = calculateRateOfReturn(plan.riskScore);
                 plan.lengthOfRetirement = lengthOfRetirementFunction(plan.retirementAge);
                 plan.totalHealthcareCosts = healthcare(plan.lengthOfRetirement, plan.health);

@@ -10,8 +10,8 @@ export default async function handler(req,res) {
     switch (method) {
         case 'PUT':
             try {
-                const { socialSecurityAge } = req.body
-                await Plan.updateOne({ _id: id}, { socialSecurityAge })
+                const { currentSavings } = req.body
+                await Plan.updateOne({ _id: id}, { currentSavings })
                 const plan = await Plan.findOne({ _id: id})
                 res.status(200).json( plan )
                 return;

@@ -55,6 +55,7 @@ var PlanModel = new mongoose.Schema({
     pensionTimeframe: String, Number,
     pensionInflation: String, Number, Boolean, 
     socialSecurity: String,
+    socialSecurityAge: Number,
     mortgage: String,
     mortgageAmount: String,
     creditCardDebt: String,
@@ -133,6 +134,13 @@ var PlanModel = new mongoose.Schema({
     retirementIncomeDecision: String, Number,
     projectedRetirementIncomeAfterSsDecision: String, Number,
     newCurrentSavings: Number,
+    scenario: {
+        socialSecurityAge: Number,
+        currentSavings: Number, 
+        retirementAge: Number,
+        riskScore: Number, 
+        partTimeWorkDecision: String,
+    },
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);

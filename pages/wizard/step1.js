@@ -35,7 +35,7 @@ export default function Step1({}) {
     const [firstName, setFirstName] = useState('')
     const [dateOfBirthDay, setDateOfBirthDay] = useState('')
     const [dateOfBirthYear, setDateOfBirthYear] = useState('')
-    const [dateOfBirthMonth, setDateOfBirthMonth] = useState('')
+    const [dateOfBirthMonth, setDateOfBirthMonth] = useState('January')
     const [maritalStatus, setMaritalStatus] = useState('Married')
     const [spousesFullName, setSpousesFullName] = useState('')
 
