@@ -83,7 +83,7 @@ var PlanModel = new mongoose.Schema({
         age56Income: Number,
         age57Income: Number,
         age58Income: Number,
-        agd59Income: Number,
+        age59Income: Number,
         age60Income: Number,
         age61Income: Number,
         age62Income: Number,
