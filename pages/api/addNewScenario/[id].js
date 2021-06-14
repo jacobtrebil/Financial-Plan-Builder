@@ -10,9 +10,10 @@ export default async function handler(req,res) {
     switch (method) {
         case 'PUT':
             try {
-                const { currentSavings } = req.body
-                await Plan.updateOne({ _id: id}, { currentSavings })
-                const plan = await Plan.findOne({ _id: id})
+                const { socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision } = req.body
+                console.log(socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision)
+                await Plan.updateOne({ _id: id}, { scenario: { socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision }})
+                const plan = await Plan.findById(id)
                 res.status(200).json( plan )
                 return;
             } catch (error) {

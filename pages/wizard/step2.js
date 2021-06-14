@@ -73,7 +73,6 @@ export default function Step2({ plan, pageProps }) {
                     <input 
                     className="form-input-pages"
                     name="retirementAge"
-                    type="number" 
                     placeholder ="60" 
                     value={retirementAge}
                     onChange={e=> setRetirementAge(e.target.value)}

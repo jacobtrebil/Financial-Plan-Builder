@@ -25,36 +25,14 @@ const FooterComponent = _dynamic(() =>
 
 function Settings() {
 
-  const [showAccount, setShowAccount] = useState(true)
-  const [showAccount2, setShowAccount2] = useState()
-
     return (
       <div id="settings-container">
        <div className="settings-section">
            <NavComponent />
            <div id="settings-content">
-             <nav id="settings-nav">
-               <p id="settings-nav-profile" className="settings-nav-p" onClick= {function setProfile() {
-                  setShowAccount(true) 
-                  setShowAccount2(false) 
-                  }}>Profile</p>
-               <p className="settings-nav-p" onClick={function setAccount() {
-                 setShowAccount(false)
-                 setShowAccount2(true)
-               }}>Account</p>
-             </nav>
-             {
-            showAccount && (
-              <div>
-              <ProfileComponent />
-              </div>
-            )}
-            {
-            showAccount2 && (
               <div>
               <AccountComponent />
               </div>
-            )}
            </div>
        </div>
        <FooterComponent />

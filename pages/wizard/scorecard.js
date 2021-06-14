@@ -11,6 +11,7 @@ function Summary(plan) {
 
     useEffect(() => {
         doWizardCalculations();
+        showPension();
     }, []); 
 
     const [showForm, setShowForm] = useState(false);
@@ -29,6 +30,14 @@ function Summary(plan) {
         </div>
     ); 
 
+    function showPension() {
+        if (calculations.pension === 'Yes') {
+            setShowForm(true);
+        } else {
+            setShowForm(false);
+        }
+    }
+
     function updateRiskScoreHandler(e) {
             const updatedPlan = {..._plan, riskScore: e.target.value};
             _setPlan(updatedPlan);
@@ -46,6 +55,7 @@ function Summary(plan) {
 
     function updatePartTimeWorkHandler(e) {
         const updatedPlan = {..._plan, partTimeWorkDecision: e.target.value};
+        setPartTimeWorkDecision(e.target.value);
         _setPlan(updatedPlan);
         updatePartTimeWorkApiCall(updatedPlan);
         doWizardCalculations();
@@ -60,36 +70,36 @@ function Summary(plan) {
 
     function updateCurrentSavingsHandler(e) {
         const updatedPlan = {..._plan, currentSavings: e.target.value};
+        setCurrentSavings(e.target.value);
         _setPlan(updatedPlan);
         updateCurrentSavingsApiCall(updatedPlan);
         doWizardCalculations();
     }
 
     function updatePensionHandler(e) {
-        const updatedPlan = {..._plan, pension: e.target.value};
+        const updatedPlan = {..._plan, pensionDate: e.target.value};
+        setPensionDate(e.target.value);
         _setPlan(updatedPlan);
         updatePensionApiCall(updatedPlan);
         doWizardCalculations();
     }
 
     function saveScenario() {
-        const updatedPlan = {..._plan};
-        _setPlan(updatedPlan);
-        saveScenarioApiCall(updatedPlan);
+        const scenarioVariables = {socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision};
+        _setPlan(scenarioVariables)
+        saveScenarioApiCall(scenarioVariables);
     }
 
-    /* if (pension === 'yes') {
-        setShowForm(true);
-    }; */
-
-    async function saveScenarioApiCall(updatedPlan) {
-        await addScenario(planId, updatedPlan);
+    async function saveScenarioApiCall(scenarioVariables) {
+        await addScenario(planId, scenarioVariables);
     }
 
     async function doWizardCalculations() {
         const wizardCalculationsFunction = await planCalculations(planId, plan);
         setCalculations(wizardCalculationsFunction);
-    }  
+        if (calculations.pension === 'Yes') {
+        setShowForm(true);
+    }}  
 
     async function updateRiskScoreApiCall(updatedPlan) {
         await updateRiskScore(planId, updatedPlan);
@@ -129,10 +139,20 @@ function Summary(plan) {
       // Only do each if/else statement around the ages that depend on when they retire, for age 71+, have them always display
       // Solve the age of death thing after solving the retirement age part
       // It won't let me wrap these in if/else statements.
-      const data = [
+
+      /* const data = [
         {
-            Age: 55,
-            Earnings: calculations.age55Income,
+            Age: function findYearByYearRetirementAge(calculations) {
+                for (let i = calculations.retirementAge; i < 93; i++) {
+                Age = i;
+                return this.Age;
+            }},
+            Earnings: function findYearByYearRetirementEarnings(calculations) {
+                for (let i = calculations.yearByYearIncome[0]; i < calculations.yearByYearIncome.length; i++) {
+                    Earnings = i;
+                    return this.Earnings;
+                }},
+            // Could I turn age into a function that starts at retirementAge and iterates through until age 90 or 93?
         },
         {
             Age: 56,
@@ -286,7 +306,7 @@ function Summary(plan) {
             Age: 93,
             Earnings: calculations.age93Income,
         },
-      ];
+      ]; */
 
       _plan = { riskScore };
  
@@ -299,7 +319,7 @@ function Summary(plan) {
             <div className="blocks-section">
                 <div className="block1">
                         <p className="chart-headline">Annual Retirement Earnings</p>
-                        <BarChart className="barchart" width={550} height={250} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5,}}>
+                        <BarChart className="barchart" width={550} height={250} data={calculations.yearByYearIncome} margin={{ top: 5, right: 30, left: 20, bottom: 5,}}>
                             <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px"/>
                             <YAxis name="Age" stroke="grey" fontSize="12px" dataKey="Earnings"/>
                             <Tooltip fontSize="12px"/>

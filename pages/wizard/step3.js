@@ -101,7 +101,6 @@ export default function Step3({ plan, pageProps }) {
                     className="form-input-pages"
                     placeholder={'$50,000'}
                     value={currentSavings}
-                    type="number"
                     name="currentSavings"
                     onChange={e=> setCurrentSavings(e.target.value)}
                     /><br></br>
@@ -113,7 +112,6 @@ export default function Step3({ plan, pageProps }) {
                     className="form-input-pages"
                     placeholder={'$100,000'}
                     value={assetValue}
-                    type="number"
                     name="assetValue"
                     onChange={e=> setAssetValue(e.target.value)}
                     /><br></br>
