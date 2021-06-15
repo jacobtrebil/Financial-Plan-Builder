@@ -20,26 +20,17 @@ function Summary(plan) {
   useEffect(() => {
     doWizardCalculations();
   }, [planId]);
-  console.log("the planid is; ====", planId);
 
   const [showForm, setShowForm] = useState(false);
   const [calculations, setCalculations] = useState({});
-  //const [partTimeWorkDecision, setPartTimeWorkDecision] = useState("None");
-  const [pensionDate, setPensionDate] = useState(60);
-  /*const [currentSavings, setCurrentSavings] = useState(
-    calculations.currentSavings
-  );*/
   let [_plan, _setPlan] = useState({
     riskScore: "",
     socialSecurityAge: "",
     retirementAge: "",
     partTimeWorkDecision: "",
-    currentSavings: '',
-    pensionDate: ''
+    currentSavings: "",
+    pensionTimeframe: ""
   });
-  /*const { riskScore } = _plan;
-  const { socialSecurityAge } = _plan;
-  const { retirementAge } = _plan;*/
 
   if (!calculations)
     return (
@@ -49,69 +40,61 @@ function Summary(plan) {
     );
 
   function updateRiskScoreHandler(e) {
-    const updatedPlan = { ..._plan, riskScore: e.target.value };
-    _setPlan(updatedPlan);
-    updateRiskScoreApiCall(updatedPlan);
+    const updatedRiskScore = { /* ..._plan,*/ riskScore: e.target.value };
+    /* _setPlan(updatedPlan); */
+    updateRiskScoreApiCall(updatedRiskScore);
     doWizardCalculations();
   }
 
   function updateRetirementAgeHandler(e) {
-    const updatedPlan = { ..._plan, retirementAge: e.target.value };
-    _setPlan(updatedPlan);
-    updateRetirementAgeApiCall(updatedPlan);
+    const updatedRetirementAge = { retirementAge: e.target.value };
+    /* _setPlan(updatedPlan); */
+    updateRetirementAgeApiCall(updatedRetirementAge);
     doWizardCalculations();
-    router.push(
+    /* router.push(
       `../wizard/scorecard?planId=${planId}?retirementAge=${retirementAge}`
-    );
+    ); */
   }
 
   function updatePartTimeWorkHandler(e) {
-    const updatedPlan = { ..._plan, partTimeWorkDecision: e.target.value };
-    setPartTimeWorkDecision(e.target.value);
-    _setPlan(updatedPlan);
-    updatePartTimeWorkApiCall(updatedPlan);
+    const updatedPartTimeWorkDecision = { partTimeWorkDecision: e.target.value };
+    updatePartTimeWorkApiCall(updatedPartTimeWorkDecision);
     doWizardCalculations();
   }
 
   function updateSocialSecurityHandler(e) {
-    const updatedPlan = { ..._plan, socialSecurityAge: e.target.value };
-    _setPlan(updatedPlan);
-    updateSocialSecurityApiCall(updatedPlan);
+    const updatedSocialSecurityAge = { socialSecurityAge: e.target.value };
+    updateSocialSecurityApiCall(updatedSocialSecurityAge);
     doWizardCalculations();
   }
 
   function updateCurrentSavingsHandler(e) {
-    const updatedPlan = { ..._plan, currentSavings: e.target.value };
-    setCurrentSavings(e.target.value);
-    _setPlan(updatedPlan);
-    updateCurrentSavingsApiCall(updatedPlan);
+    const updatedCurrentSavings = { currentSavings: e.target.value };
+    updateCurrentSavingsApiCall(updatedCurrentSavings);
     doWizardCalculations();
   }
 
   function updatePensionHandler(e) {
-    const updatedPlan = { ..._plan, pensionDate: e.target.value };
-    setPensionDate(e.target.value);
-    _setPlan(updatedPlan);
-    updatePensionApiCall(updatedPlan);
+    const updatedPensionTimeframe = { pensionTimeframe: e.target.value };
+    updatePensionApiCall(updatedPensionTimeframe);
     doWizardCalculations();
   }
 
   function saveScenario() {
-    const scenarioVariables = {
+    /*const scenarioVariables = {
       socialSecurityAge,
       currentSavings,
       retirementAge,
-      riskScore,
+      _riskScore,
       partTimeWorkDecision,
+      pensionTimeframe
     };
-    console.log("the schenabirailadsf ======", scenarioVariables);
-    console.log("the plan is=========", _plan);
-    _setPlan(scenarioVariables);
-    saveScenarioApiCall(scenarioVariables);
+    _setPlan(scenarioVariables); */
+    saveScenarioApiCall(_plan);
   }
 
-  async function saveScenarioApiCall(scenarioVariables) {
-    await addScenario(planId, scenarioVariables);
+  async function saveScenarioApiCall(_plan) {
+    await addScenario(planId, _plan);
   }
 
   async function doWizardCalculations() {
@@ -125,28 +108,28 @@ function Summary(plan) {
     }
   }
 
-  async function updateRiskScoreApiCall(updatedPlan) {
-    await updateRiskScore(planId, updatedPlan);
+  async function updateRiskScoreApiCall(updatedRiskScore) {
+    await updateRiskScore(planId, updatedRiskScore);
   }
 
-  async function updateRetirementAgeApiCall(updatedPlan) {
-    await updateRetirementAge(planId, updatedPlan);
+  async function updateRetirementAgeApiCall(updatedRetirementAge) {
+    await updateRetirementAge(planId, updatedRetirementAge);
   }
 
-  async function updatePartTimeWorkApiCall(updatedPlan) {
-    await updatePartTimeWork(planId, updatedPlan);
+  async function updatePartTimeWorkApiCall(updatedPartTimeWorkDecision) {
+    await updatePartTimeWork(planId, updatedPartTimeWorkDecision);
   }
 
-  async function updateSocialSecurityApiCall(updatedPlan) {
-    await updateSocialSecurity(planId, updatedPlan);
+  async function updateSocialSecurityApiCall(updatedSocialSecurityAge) {
+    await updateSocialSecurity(planId, updatedSocialSecurityAge);
   }
 
-  async function updateCurrentSavingsApiCall(updatedPlan) {
-    await updateCurrentSavings(planId, updatedPlan);
+  async function updateCurrentSavingsApiCall(updatedCurrentSavings) {
+    await updateCurrentSavings(planId, updatedCurrentSavings);
   }
 
-  async function updatePensionApiCall(updatedPlan) {
-    await updatePension(planId, updatedPlan);
+  async function updatePensionApiCall(updatedPensionTimeframe) {
+    await updatePension(planId, updatedPensionTimeframe);
   }
 
   const convertToUsd = new Intl.NumberFormat("en-US", {
@@ -197,8 +180,8 @@ function Summary(plan) {
       Earnings: calculations.yearByYearIncome?.age58Income,
     },
     {
-        Age: 59,
-        Earnings: calculations.yearByYearIncome?.age59Income
+      Age: 59,
+      Earnings: calculations.yearByYearIncome?.age59Income
     },
     {
       Age: 60,
@@ -436,13 +419,13 @@ function Summary(plan) {
               onChange={updateCurrentSavingsHandler}
             >
               <option>
-                {convertToUsd.format(calculations.muchLessSavings)}
+                {convertToUsd.format(calculations.currentSavings)}
               </option>
               <option>
                 {convertToUsd.format(calculations.slightlyLessSavings)}
               </option>
               <option>
-                {convertToUsd.format(calculations.currentSavings)}
+                {convertToUsd.format(calculations.muchLessSavings)}
               </option>
               <option>
                 {convertToUsd.format(calculations.slightlyMoreSavings)}
@@ -491,8 +474,8 @@ function Summary(plan) {
               <p className="customization-question">Take Pension at</p>
               <select
                 className="form-select"
-                name="pensionDate"
-                value={_plan?.pensionDate}
+                name="pensionTimeframe"
+                value={_plan?.pensionTimeframe}
                 onChange={updatePensionHandler}
               >
                 <option>55</option>

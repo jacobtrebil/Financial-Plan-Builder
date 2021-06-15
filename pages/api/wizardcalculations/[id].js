@@ -59,6 +59,7 @@ import slightlyMoreSavingsFunction from '../../../calculations/annualSavingsOpti
 import muchLessSavingsFunction from '../../../calculations/annualSavingsOptions/muchLessSavings';
 import muchMoreSavingsFunction from '../../../calculations/annualSavingsOptions/muchMoreSavings';
 import calculateSocialSecurityAge from '../../../calculations/socialSecurityAge';
+import setPartTimeWorkDecision from '../../../calculations/partTimeWork';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -79,6 +80,7 @@ export default async function handler(req,res) {
                 plan.lengthOfRetirement = lengthOfRetirementFunction(plan.retirementAge);
                 plan.totalHealthcareCosts = healthcare(plan.lengthOfRetirement, plan.health);
                 plan.currentAge = calculateCurrentAge(plan.dateOfBirthYear);
+                plan.partTimeWorkDecision = setPartTimeWorkDecision();
                 plan.yearsUntilRetirement = calculateYearsUntilRetirement(plan.currentAge, plan.retirementAge);
                 plan.savingsByRetirement = calculateSavingsByRetirement(plan.yearsUntilRetirement, plan.currentSavings, plan.assetValue);
                 plan.projectedRetirementIncome = calculateProjectedRetirementIncome(plan.socialSecurityEarnings, plan.savingsByRetirement, plan.lengthOfRetirement);

@@ -142,6 +142,7 @@ var PlanModel = new mongoose.Schema({
         retirementAge: Number,
         riskScore: String, Number,
         partTimeWorkDecision: String,
+        pensionTimeframe: String, Number,
     },
 });
 
