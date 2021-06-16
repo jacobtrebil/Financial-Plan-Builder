@@ -81,13 +81,13 @@ export default function Step3({ plan, pageProps }) {
     return (
         <div>
         <WizardHeader3></WizardHeader3>
-        <div className="form-border">
+        <div className="formBorder">
         <WizardHeadline3></WizardHeadline3>
-        <div className="inputs-div-1" {...pageProps}>
-                <div className="input-div">
-                    <label className="input-label">What are your average earnings over the past 5 years?</label><br></br>
+        <div className="inputsDiv1" {...pageProps}>
+                <div className="inputDiv">
+                    <label className="inputLabel">What are your average earnings over the past 5 years?</label><br></br>
                     <input
-                    className="form-input-pages"
+                    className="formInputPages"
                     placeholder={'$50,000'}
                     value={currentEarnings} 
                     name="currentEarnings"
@@ -95,10 +95,10 @@ export default function Step3({ plan, pageProps }) {
                     /><br></br>
                     <p className="errors">{errors}</p>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">How much do you currently save per year?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">How much do you currently save per year?</label><br></br>
                     <input
-                    className="form-input-pages"
+                    className="formInputPages"
                     placeholder={'$50,000'}
                     value={currentSavings}
                     name="currentSavings"
@@ -106,10 +106,10 @@ export default function Step3({ plan, pageProps }) {
                     /><br></br>
                     <p className="errors">{errors2}</p>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">What is the total value of your savings and assets that you own? <br></br>(Include Real Estate, Investments, Crypto, etc.)</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">What is the total value of your savings and assets that you own? <br></br>(Include Real Estate, Investments, Crypto, etc.)</label><br></br>
                     <input
-                    className="form-input-pages"
+                    className="formInputPages"
                     placeholder={'$100,000'}
                     value={assetValue}
                     name="assetValue"
@@ -117,11 +117,11 @@ export default function Step3({ plan, pageProps }) {
                     /><br></br>
                     <p className="errors">{errors3}</p>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Are you eligible for social security? <br></br>(If unsure, choose yes)</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Are you eligible for social security? <br></br>(If unsure, choose yes)</label><br></br>
                     <select
                     name="socialSecurity"
-                    className="form-select"
+                    className="formSelect"
                     value={socialSecurity}
                     onChange={e=> setSocialSecurity(e.target.value)}
                     >
@@ -129,11 +129,11 @@ export default function Step3({ plan, pageProps }) {
                     <option>Yes</option>
                     </select><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Do you have a pension?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Do you have a pension?</label><br></br>
                     <select
                     name="pension"
-                    className="form-select"
+                    className="formSelect"
                     value={pension}
                     onChange={e=> {setPension(e.target.value); setShowForm14(!showForm14)}}
                     >
@@ -144,11 +144,11 @@ export default function Step3({ plan, pageProps }) {
                 {
                     showForm14 && (
                 <div>
-                <div className="input-div">
-                    <label className="input-label">At what age will your pension earnings begin?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">At what age will your pension earnings begin?</label><br></br>
                     <select
                     name="pensionTimeframe"
-                    className="form-select"
+                    className="formSelect"
                     value={pensionTimeframe}
                     onChange={e=> {setPensionTimeframe(e.target.value)}}
                     >
@@ -159,21 +159,21 @@ export default function Step3({ plan, pageProps }) {
                     <option>65</option>
                     </select><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">How much will you earn per year from your pension?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">How much will you earn per year from your pension?</label><br></br>
                     <input
-                    className="form-input-pages"
+                    className="formInputPages"
                     placeholder={'$40,000'}
                     value={pensionEarnings} 
                     name="pensionEarnings"
                     onChange={e=> setPensionEarnings(e.target.value)}
                     /><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Will your pension earnings increase with the cost of inflation?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Will your pension earnings increase with the cost of inflation?</label><br></br>
                     <select
                     name="pensionInflation"
-                    className="form-select"
+                    className="formSelect"
                     value={pensionInflation}
                     onChange={e=> {setPensionInflation(e.target.value)}}
                     >
@@ -183,11 +183,11 @@ export default function Step3({ plan, pageProps }) {
                 </div>
                 </div>
                 )}
-                <div className="input-div">
-                    <label className="input-label">My main goal with my investments is to</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">My main goal with my investments is to</label><br></br>
                     <select
                     name="riskAttitude"
-                    className="form-select"
+                    className="formSelect"
                     value={riskAttitude}
                     onChange={e=> {setRiskAttitude(e.target.value)}}
                     >
@@ -197,11 +197,11 @@ export default function Step3({ plan, pageProps }) {
                     <option>Maximize earnings, with high risk</option>
                     </select><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">I'm willing to experience short-term declines to maximize long-term gains</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">I'm willing to experience short-term declines to maximize long-term gains</label><br></br>
                     <select
                     name="volatility"
-                    className="form-select"
+                    className="formSelect"
                     value={volatility}
                     onChange={e=> {setVolatility(e.target.value)}}
                     >
@@ -209,11 +209,11 @@ export default function Step3({ plan, pageProps }) {
                     <option>False</option>
                     </select><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">If my portfolio dropped 20% over a short period of time I would</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">If my portfolio dropped 20% over a short period of time I would</label><br></br>
                     <select
                     name="changePortfolio"
-                    className="form-select"
+                    className="formSelect"
                     value={changePortfolio}
                     onChange={e=> {setChangePortfolio(e.target.value)}}
                     >
@@ -223,11 +223,11 @@ export default function Step3({ plan, pageProps }) {
                     <option>Change to a more conservative portfolio</option>
                     </select><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Do you have a will?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Do you have a will?</label><br></br>
                     <select
                     name="will"
-                    className="form-select"
+                    className="formSelect"
                     value={will}
                     onChange={e=> setWill(e.target.value)}
                     >
@@ -235,11 +235,11 @@ export default function Step3({ plan, pageProps }) {
                     <option>Yes</option>
                     </select><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Do you have a tax plan?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Do you have a tax plan?</label><br></br>
                     <select
                     name="taxPlan"
-                    className="form-select"
+                    className="formSelect"
                     value={taxPlan}
                     onChange={e=> setTaxPlan(e.target.value)}
                     >
@@ -247,10 +247,10 @@ export default function Step3({ plan, pageProps }) {
                     <option>Yes</option>
                     </select><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Do you have life insurance?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Do you have life insurance?</label><br></br>
                     <select
-                    className="form-select"
+                    className="formSelect"
                     name="lifeInsurance"
                     value={lifeInsurance}
                     onChange={e=> {setLifeInsurance(e.target.value); setShowForm15(!showForm15)}}
@@ -261,10 +261,10 @@ export default function Step3({ plan, pageProps }) {
                 </div>
                 {
                     showForm15 && (
-                <div className="input-div">
-                    <label className="input-label">Upload your life insurance documents below</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Upload your life insurance documents below</label><br></br>
                     <input
-                    className="form-input-pages"
+                    className="formInputPages"
                     name="lifeInsuranceDocument"
                     type="file"
                     value={lifeInsuranceDocument}
@@ -275,8 +275,8 @@ export default function Step3({ plan, pageProps }) {
                     )}
             </div>
             </div>
-            <div className='wizard-footer'>
-                <button onClick={completePlan} className="wizard-footer-button">Next</button>
+            <div className='wizardFooter'>
+                <button onClick={completePlan} className="wizardFooterButton">Next</button>
             </div>
             </div>
     )

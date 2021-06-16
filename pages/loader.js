@@ -7,9 +7,9 @@ import _dynamic from 'next/dynamic';
 function Loader() {
     return (
         <div className="loader">
-            <div className="loader-box">
+            <div className="loaderBox">
                 <Image src="/images/loader.gif" width={300} height={200}></Image>
-                <p className="loader-text">Creating your plan</p>
+                <p className="loaderText">Creating your plan</p>
             </div>
         </div>
     );

@@ -26,10 +26,10 @@ const FooterComponent = _dynamic(() =>
 function Settings() {
 
     return (
-      <div id="settings-container">
-       <div className="settings-section">
+      <div id="settingsContainer">
+       <div className="settingsSection">
            <NavComponent />
-           <div id="settings-content">
+           <div id="settingsContent">
               <div>
               <AccountComponent />
               </div>

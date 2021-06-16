@@ -324,18 +324,18 @@ function Summary(plan) {
   ];
 
   return (
-    <div className="projections-page">
-      <div className="projections-headline">
-        <h2 className="recommendations-h2">Customize Your Retirement</h2>
+    <div className="projectionsPage">
+      <div className="projectionsHeadline">
+        <h2 className="recommendationsH2">Customize Your Retirement</h2>
         <p>
           View your retirement projections, and create your most likely scenarios.
         </p>
       </div>
-      <div className="blocks-section">
+      <div className="blocksSection">
         <div className="block1">
-          <p className="chart-headline">Annual Retirement Earnings</p>
+          <p className="chartHeadline">Annual Retirement Earnings</p>
           <BarChart
-            className="barchart"
+            className="barChart"
             width={550}
             height={250}
             data={data}
@@ -358,20 +358,20 @@ function Summary(plan) {
               barSize={5}
             />
           </BarChart>
-          <p className="chart-description">Age</p>
-          <div className="summaryoption">
-            <p className="totalretirementearnings">Total Retirement Earnings</p>
-            <p className="lifetimeearnings">
+          <p className="chartDescription">Age</p>
+          <div className="summaryOption">
+            <p className="totalRetirementEarnings">Total Retirement Earnings</p>
+            <p className="lifetimeEarnings">
               <br></br>
               {convertToUsd.format(calculations.totalRetirementEarnings)}
             </p>
           </div>
         </div>
         <div className="block2">
-          <div className="decisionssocialsecuritysection">
-            <p className="customization-question">Retire at Age</p>
+          <div className="decisionsSocialSecuritySection">
+            <p className="customizationQuestion">Retire at Age</p>
             <select
-              className="form-select"
+              className="formSelect"
               name="retirementAge"
               value={_plan?.retirementAge}
               onChange={updateRetirementAgeHandler}
@@ -394,12 +394,12 @@ function Summary(plan) {
               <option>70</option>
             </select>
           </div>
-          <div className="decisionssocialsecuritysection">
-            <p className="customization-question">
+          <div className="decisionsSocialSecuritySection">
+            <p className="customizationQuestion">
               Take Social Security At Age
             </p>
             <select
-              className="form-select"
+              className="formSelect"
               name="socialSecurityAge"
               value={_plan?.socialSecurityAge}
               onChange={updateSocialSecurityHandler}
@@ -410,12 +410,12 @@ function Summary(plan) {
             </select>
           </div>
           <br></br>
-          <div className="decisionssocialsecuritysection">
-            <p className="customization-question">
+          <div className="decisionsSocialSecuritySection">
+            <p className="customizationQuestion">
               Annual Savings Until Retirement
             </p>
             <select
-              className="form-select"
+              className="formSelect"
               name="currentSavings"
               value={_plan?.currentSavings}
               onChange={updateCurrentSavingsHandler}
@@ -437,12 +437,12 @@ function Summary(plan) {
               </option>
             </select>
           </div>
-          <div className="decisionssocialsecuritysection">
-            <p className="customization-question">
+          <div className="decisionsSocialSecuritySection">
+            <p className="customizationQuestion">
               My Portfolio Risk Tolerance
             </p>
             <select
-              className="form-select"
+              className="formSelect"
               name="riskScore"
               value={_plan?.riskScore}
               onChange={updateRiskScoreHandler}
@@ -455,12 +455,12 @@ function Summary(plan) {
             </select>
           </div>
           <br></br>
-          <div className="decisionssocialsecuritysection">
-            <p className="customization-question">
+          <div className="decisionsSocialSecuritySection">
+            <p className="customizationQuestion">
               Part-Time Work During Retirement
             </p>
             <select
-              className="form-select"
+              className="formSelect"
               name="partTimeWorkDecision"
               value={_plan.partTimeWorkDecision}
               onChange={updatePartTimeWorkHandler}
@@ -472,10 +472,10 @@ function Summary(plan) {
             </select>
           </div>
           {showForm && (
-            <div className="decisionssocialsecuritysection">
-              <p className="customization-question">Take Pension at</p>
+            <div className="decisionsSocialSecuritySection">
+              <p className="customizationQuestion">Take Pension at</p>
               <select
-                className="form-select"
+                className="formSelect"
                 name="pensionTimeframe"
                 value={_plan?.pensionTimeframe}
                 onChange={updatePensionHandler}
@@ -500,11 +500,11 @@ function Summary(plan) {
             </div>
           )}
           <br></br><br></br>
-          <label className="scenario-label">
+          <label className="scenarioLabel">
               Name This Scenario
           </label><br></br>
           <input 
-          className="scenario-form-input"
+          className="scenarioFormInput"
           name="scenarioName"
           placeholder="Retire at Age 60 Scenario"
           >
@@ -514,7 +514,7 @@ function Summary(plan) {
           </button>
           </div>
       </div>
-      <div className="projections-button-section">
+      <div className="projectionsButtonSection">
         <button
           className="scorecard-button"
           onClick={function clickHandler() {

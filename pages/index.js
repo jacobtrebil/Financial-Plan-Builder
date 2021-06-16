@@ -22,12 +22,12 @@ export function App() {
     <div>
      <div className="app">
         <div className="plans">
-           <div id="plans-section">
-              <p className="plans-subtitle">Plans</p>
-              <Link href="/start-plan2"><button className="plans-button">+ Add Plan</button></Link>
-              <hr className="plans-solid-hr"></hr>
+           <div id="plansSection">
+              <p className="plansSubtitle">Plans</p>
+              <Link href="/start-plan2"><button className="plansButton">+ Add Plan</button></Link>
+              <hr className="plansSolidHr"></hr>
               <PlanComponent />
-              <p id="no-plans-message">You currently have 0 plans created. Click the button above to create a plan.</p>
+              <p id="noPlansMessage">You currently have 0 plans created. Click the button above to create a plan.</p>
         </div>
     </div>
         <NavComponent />

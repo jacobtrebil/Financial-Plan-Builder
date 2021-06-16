@@ -48,14 +48,14 @@ export default function Step1({}) {
     return (
         <div>
         <WizardHeader></WizardHeader>
-        <div className="form-border">
+        <div className="formBorder">
         <WizardHeadline></WizardHeadline>
-            <div className="inputs-div-1">
-                <div className="input-div">
-                    <label className="input-label">First Name</label><br></br>
+            <div className="inputsDiv1">
+                <div className="inputDiv">
+                    <label className="inputLabel">First Name</label><br></br>
                     <input
                     name="firstName"
-                    className="form-input-pages"
+                    className="formInputPages"
                     placeholder="First Name"
                     value={firstName}
                     onChange={e=> 
@@ -64,11 +64,11 @@ export default function Step1({}) {
                     /><br></br>
                     <p className="errors">{errors}</p>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Birthday</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Birthday</label><br></br>
                     <select
                     name="dateOfBirthMonth"
-                    className="form-select"
+                    className="formSelect"
                     value={dateOfBirthMonth}
                     onChange={e=> { 
                         setDateOfBirthMonth(e.target.value)
@@ -89,7 +89,7 @@ export default function Step1({}) {
                     <input
                     name="dateOfBirthDay"
                     id="dateofbirth"
-                    className="form-input-pages-dob"
+                    className="formInputPagesDob"
                     value={dateOfBirthDay}
                     placeholder="Day"
                     onChange={e=> 
@@ -99,8 +99,8 @@ export default function Step1({}) {
                     />
                     <input
                     name="dateOfBirthYear"
-                    id="dateofbirth"
-                    className="form-input-pages-dob"
+                    id="dateOfBirth"
+                    className="formInputPagesDob"
                     value={dateOfBirthYear}
                     placeholder="Year"
                     onChange={e=> 
@@ -109,11 +109,11 @@ export default function Step1({}) {
                         type="input"
                     /><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Marital Status</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Marital Status</label><br></br>
                     <select
                     name="maritalStatus"
-                    className="form-select"
+                    className="formSelect"
                     value={maritalStatus}
                     onChange={e=> { 
                         setMaritalStatus(e.target.value)
@@ -124,11 +124,11 @@ export default function Step1({}) {
                     <option>Single</option>
                     </select><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Include Spouse </label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Include Spouse </label><br></br>
                     <select
                     name="spouse"
-                    className="form-select"
+                    className="formSelect"
                     value={spouse}
                     onChange={e=> { 
                         setSpouse(e.target.value); 
@@ -140,11 +140,11 @@ export default function Step1({}) {
                 </div>
                 {
                 showForm && (
-                <div className="input-div">
-                    <label className="input-label">Spouses First Name</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Spouses First Name</label><br></br>
                     <input
                     name="spousesFullName"
-                    className="form-input-pages"
+                    className="formInputPages"
                     placeholder="Spouses First Name"
                     value={spousesFullName}
                     onChange={e=> 
@@ -154,8 +154,8 @@ export default function Step1({}) {
                 )}
             </div>
             </div>
-            <div className='wizard-footer'>
-            <button onClick={complete} className="wizard-footer-button">Next</button>
+            <div className='wizardFooter'>
+            <button onClick={complete} className="wizardFooterButton">Next</button>
         </div>
         </div>
     )

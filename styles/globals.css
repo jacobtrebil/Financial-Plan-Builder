@@ -58,7 +58,7 @@ p {
   margin: 0px 64px 0px 0px;
 }
 
-#plans-section {
+#plansSection {
   background-color: white;
   border-radius: 8px;
   width: 80%;
@@ -68,7 +68,7 @@ p {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 2px 10px 0 rgba(0,0,0,0.2);
 }
 
-.plans-subtitle {
+.plansSubtitle {
   margin: 50px 0px 20px 60px;
   display: inline-block;
   float: left;
@@ -100,11 +100,11 @@ p {
   margin: 20px 0px 0px 120px;
 }
 
-#plans-side-logo {
+#plansSideLogo {
   margin: 60px 0px 0px 0px;
 }
 
-#plans-section2 {
+#plansSection2 {
   background-color: white;
   border-radius: 8px;
   width: 80%;
@@ -113,13 +113,13 @@ p {
   padding: 0px 0px 40px 0px;
 }
 
-.plans-solid-hr {
+.plansSolidHr {
   width: 90%;
   color: #a1a0a0;
   margin: 0px auto 0px auto;
 }
 
-.plans-button {
+.plansButton {
   float: right;
   display: inline-block;
   margin: 35px 70px 0px 0px;
@@ -133,13 +133,13 @@ p {
   position: relative;
 }
 
-.plans-button:hover {
+.plansButton:hover {
   cursor: pointer;
   border: 0px solid black;
   opacity: 70%;
 }
 
-#no-plans-message {
+#noPlansMessage {
   font-weight: normal;
   text-align: center;
   margin: 40px 0px 0px 0px;
@@ -221,7 +221,7 @@ p {
   opacity: 70%;
 }
 
-#plans-side-logo:hover {
+#plansSideLogo:hover {
   cursor: pointer;
   opacity: 75%;
 }
@@ -317,15 +317,15 @@ p {
 
 /* Settings Page */
 
-.settings-h1 {
+.settingsH1 {
   margin: 20px 0px 0px 120px;
 }
 
-#settings-container {
+#settingsContainer {
   padding: 0px 0px 0px 0px;
 }
 
-#settings-content {
+#settingsContent {
   background-color: white;
   padding: 60px 0px 60px 0px;
   width: 80%;
@@ -359,7 +359,7 @@ p {
   margin: 0px 0px 0px 0px;
 }
 
-.account-container {
+.accountContainer {
   border: 1px solid #a1a0a0;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.2);
   border-radius: 4px;
@@ -482,14 +482,14 @@ p {
 
 /* Payment Methods Component */
 
-#payment-method-title {
+#paymentMethodTitle {
   margin: 15px 0px 10px 50px;
   display: inline-block;
   float: left;
   padding: 0px;
 }
 
-.payment-button {
+.paymentButton {
   float: right;
   display: inline-block;
   margin: 0px 70px 15px 0px;
@@ -503,18 +503,18 @@ p {
   position: relative;
 }
 
-.payment-button:hover {
+.paymentButton:hover {
   opacity: 70%;
   cursor: pointer;
 }
 
-.payment-solid-hr {
+.paymentSolidHr {
   width: 92%;
   border: 1px solid rgb(226, 225, 225);
   margin: 10px auto 0px auto;
 }
 
-#no-payment-message {
+#noPaymentMessage {
   font-weight: normal;
   text-align: center;
   margin: 40px 0px 60px 0px;
@@ -527,14 +527,14 @@ p {
 
 /* Close Account */
 
-#cancel-method-title {
+#cancelMethodTitle {
   margin: 15px 0px 10px 50px;
   display: inline-block;
   float: left;
   padding: 0px;
 }
 
-.cancel-button {
+.cancelButton {
   float: right;
   display: inline-block;
   margin: 0px 70px 15px 0px;
@@ -548,18 +548,18 @@ p {
   position: relative;
 }
 
-.cancel-button:hover {
+.cancelButton:hover {
   opacity: 70%;
   cursor: pointer;
 }
 
-.cancel-solid-hr {
+.cancelSolidHr {
   width: 92%;
   border: 1px solid rgb(226, 225, 225);
   margin: 10px auto 0px auto;
 }
 
-#cancel-account-message {
+#cancelAccountMessage {
   font-weight: normal;
   text-align: center;
   margin: 40px 0px 20px 0px;
@@ -574,24 +574,24 @@ p {
 
 /* Sidebar Section */
 
-#fpb-top-logo {
+#fpbTopLogo {
   margin: 60px auto 0px auto;
 }
 
-.sidebar-logo {
+.sidebarLogo {
   display: block;
   margin: 60px 0px 0px 0px;
 }
 
-#home-side-logo {
+#homeSideLogo {
   margin: 60px 0px 0px 0px;
 }
 
-#plans-side-logo {
+#plansSideLogo {
   margin: 60px 0px 0px 0px;
 }
 
-#settings-side-logo {
+#settingsSideLogo {
   margin: 60px 0px 0px 0px;
 }
 
@@ -605,7 +605,7 @@ p {
 
 /* Plans Popup Section */
 
-#full-width-box {
+#fullWidthBox {
   height: 100%;
   width: 100%;
   background-color: rgba(0,0,0,0.4);
@@ -616,7 +616,7 @@ p {
   overflow: auto;
 }
 
-#plan-form-popup-section {
+#planFormPopupSection {
   background-color: white;
   width: 80%;
   margin: 10% auto 0px auto;
@@ -625,31 +625,31 @@ p {
   border-radius: 8px;
 }
 
-#plan-form-page-1 {
+#planFormPage1 {
   margin: 20px auto 0px 0px;
 }
 
-#plan-title {
+#planTitle {
   text-align: center;
   margin: 0px auto 0px auto;
   
 }
 
-.plan-input-box {
+.planInputBox {
   margin: 40px 0px 0px 0px;
 }
 
-#plan-form-popup-section label {
+#planFormPopupSection label {
   font-size: 18px;
 }
 
-#plan-form-popup-section select {
+#planFormPopupSection select {
   font-size: 16px;
   padding: 5px;
   margin-left: 10px;
 }
 
-#plans-section2 {
+#plansSection2 {
   margin: 60px auto 450px auto;
 }
 
@@ -661,7 +661,7 @@ p {
 
 /* Footer Section */
 
-#footer-section {
+#footerSection {
   border-top: 1px solid #a1a0a0;
   margin: 0px 0px 0px 0px;
   padding: 30px 0px 30px 0px;
@@ -670,42 +670,38 @@ p {
   position: relative;
 }
 
-#footer-text-box {
-  margin: 0px 0px 0px 60px;
-}
-
-#footer-section p {
+#footerSection p {
   font-weight: normal;
   display: inline-block;
   text-align: left;
 }
 
-#footer-copyright {
+#footerCopyright {
   float: right;
   margin: 4px 40px 0px 0px;
   font-size: 16px;
   color: black;
 }
 
-#footer-nav-box {
+#footerNavBox {
   display: inline-block;
   float: left;
   margin: 0px 0px 0px 60px;
   padding: 0px 0px 30px 0px;
 }
 
-#footer-copyright-box {
+#footerCopyrightBox {
   display: inline-block;
   float: right;
 }
 
-.footer-nav-item {
+.footerNavItem {
   color: black;
   font-size: 16px;
   margin: 0px 20px 0px 40px;
 }
 
-.footer-nav-item:hover {
+.footerNavItem:hover {
   cursor: pointer;
   opacity: 70%;
 }
@@ -717,11 +713,11 @@ p {
 
 
 /* Legal Page */
-.legal-section {
+.legalSection {
   padding: 0px 0px 80px 0px;
 }
 
-#legal-h1 {
+#legalH1 {
   margin: 20px 0px 0px 120px;
 }
 
@@ -730,7 +726,7 @@ p {
   margin: 20px 60px 0px 120px;
 }
 
-.terms-h2 {
+.termsH2 {
   text-align: left;
   margin: 20px 0px 0px 120px;
   font-size: 20px;
@@ -744,19 +740,19 @@ p {
 
 /* Create a Plan */
 
-#create-a-plan {
+#createAPlan {
   margin: 15% auto 1% auto;
   text-align: center;
   font-size: 46px;
 }
 
-#create-a-plan-h2 {
+#createAPlanH2 {
   font-weight: normal;
   font-size: 16px;
   margin: 0px 0px 0px 0px;
 }
 
-#create-a-plan-2-h2 {
+#createAPlan2H2 {
   font-weight: normal;
   font-size: 16px;
   margin: 15px 20% 10px 20%;
@@ -860,12 +856,12 @@ p {
     opacity: 75%;
   }
 
-  #section-1-start-box {
+  #section1StartBox {
     margin: 0px;
     padding: 0px;
   }
 
-  .section-1-start-box {
+  .section1StartBox {
     margin: 0px;
     padding: 0px;
   }
@@ -908,7 +904,7 @@ p {
 
 /* Plan Styles */
 
-#plan-box {
+#planBox {
   margin: 30px auto 0px auto;
   background-color: white;
   border-radius: 4px;
@@ -917,7 +913,7 @@ p {
   border: 1px solid #a1a0a0;
 }
 
-.plan-title {
+.planTitle {
   text-align: center;
   float: left;
   padding: 0px 0px 0px 0px;
@@ -927,7 +923,7 @@ p {
   margin: 20px 0px 0px 8%;
 }
 
-#plan-key-metric {
+#planKeyMetric {
   display: inline-block;
   font-weight: 500;
   text-align: center;
@@ -935,12 +931,12 @@ p {
   font-weight: normal;
 }
 
-.display-on-down-click {
+.displayOnDownClick {
   display: block;
   margin: 80px 0px 40px 0px;
 }
 
-.plan-p-center{
+.planPCenter{
   font-weight: 500;
   text-align: center;
   margin: 0px 0px 10px 0px;
@@ -948,7 +944,7 @@ p {
   font-size: 16px;
 }
 
-.plan-p-left{
+.planPLeft{
   font-weight: 500;
   text-align: left;
   margin: 0px 0px 10px 0px;
@@ -986,7 +982,7 @@ p {
   vertical-align: top;
 }
 
-#to-do-section {
+#toDoSection {
   display: inline-block;
   margin: 20px 0px 0px 0px;
   padding: 30px;
@@ -1001,7 +997,7 @@ p {
   padding: 0px;
 }
 
-.to-do-checklist {
+.toDoChecklist {
   font-weight: 400;
   font-size: 14px;
   text-align: left;
@@ -1009,51 +1005,51 @@ p {
   padding: 0px;
 }
 
-.final-plan-h1 {
+.finalPlanH1 {
   font-size: 20px;
   margin: 0px 0px 20px 60px;
   padding: 0px;
 }
 
-.goal-plan-h1 {
+.goalPlanH1 {
   font-size: 20px;
-  margin: 0px 0px 20px -10px;
+  margin: 0px 0px 20px 10px;
   padding: 0px;
   text-align: left;
 }
 
-.final-plan-solid-hr {
+.finalPlanSolidHr {
   width: 92%;
   border: 1px solid rgb(226, 225, 225);
   margin: 40px auto 40px auto;
 }
 
-.plan-box-now {
+.planBoxNow {
   margin: 40px 40px 40px 40px;
   display: inline-block;
 }
 
-#up-arrow {
+#upArrow {
   float: right;
   margin: 20px 20px 40px 0px;
 }
 
-#up-arrow:hover {
+#upArrow:hover {
   cursor: pointer;
   opacity: 70%;
 }
 
-#down-arrow {
+#downArrow {
   float: right;
   margin: 20px 20px 40px 0px;
 }
 
-#down-arrow:hover {
+#downArrow:hover {
   cursor: pointer;
   opacity: 70%;
 }
 
-.goals-box {
+.goalsBox {
   background-color: white;
   border-radius: 8px;
   width: 40%;
@@ -1063,12 +1059,12 @@ p {
   border: 2px solid rgb(226, 225, 225);
 }
 
-.goals-box:hover {
+.goalsBox:hover {
   cursor: pointer;
   opacity: 70%;
 }
 
-.goals-title {
+.goalsTitle {
   font-weight: 500;
   text-align: left;
   margin: 40px 0px 0px 20px;
@@ -1081,7 +1077,7 @@ p {
   color:rgb(4, 187, 172);
 }
 
-.goals-box-2 {
+.goalsBox2 {
   margin: 0px 0px 0px 0px;
   height: 100px;
 }
@@ -1102,7 +1098,7 @@ p {
   font-weight: normal;
 }
 
-.savings-bar {
+.savingsBar {
   border: 2px solid rgb(4, 187, 172);
   border-radius: 2px;
   width: 3%;
@@ -1110,7 +1106,7 @@ p {
   margin: 0px 0px 10px 10%;
 }
 
-.goal-bar {
+.goalBar {
   border: 2px solid rgb(192, 192, 192);
   border-radius: 2px;
   width: 80%;
@@ -1118,12 +1114,12 @@ p {
   margin: 6% auto 10px auto;
 }
 
-#savings-goal {
+#savingsGoal {
   margin: 20px 0px 0px 0px;
   font-weight: normal;
 }
 
-.investments-actual-bar {
+.investmentsActualBar {
   border: 2px solid rgb(4, 187, 172);
   border-radius: 2px;
   width: 80%;
@@ -1131,7 +1127,7 @@ p {
   margin: 0px 0px 10px 0px;
 }
 
-.investments-goal-bar {
+.investmentsGoalBar {
   border: 2px solid rgb(192, 192, 192);
   border-radius: 2px;
   width: 100%;
@@ -1203,14 +1199,14 @@ p {
   font-size: 16px;
 }
 
-.wizard-footer {
+.wizardFooter {
   background-color: white;
   padding: 20px 0px 40px 0px;
   margin: 20px 0px 0px 0px;
   width: 100%;
 }
 
-.wizard-footer-button {
+.wizardFooterButton {
   margin: 0px 5% 0px 0px;
   position: static;
   background-color:rgb(4, 187, 172);
@@ -1222,7 +1218,7 @@ p {
   font-weight: normal;
 }
 
-.wizard-footer-button:hover {
+.wizardFooterButton:hover {
   opacity: 70%;
   cursor: pointer;
 }
@@ -1263,14 +1259,14 @@ p {
   font-weight: normal;
 }
 
-.inputs-div-1 {
+.inputsDiv1 {
   margin: 20px 0px 0px 0px;
   width: 100%;
   padding: 10px 0px 0px 8%;
   text-align: left;
 }
 
-.form-border {
+.formBorder {
   border: solid 1px #a5a5a5;
   width: 50%;
   border-radius: 4px;
@@ -1287,7 +1283,7 @@ p {
   border-radius: 4px;
 }
 
-.form-input-pages {
+.formInputPages {
   width: 40%;
   margin: 5px 40px 0px 0px;
   border: 1px rgb(221, 221, 221) solid;
@@ -1296,7 +1292,7 @@ p {
   border-radius: 4px;
 }
 
-.form-input-pages-dob {
+.formInputPagesDob {
   width: 10%;
   margin: 5px 0px 0px 10px;
   border: 1px rgb(221, 221, 221) solid;
@@ -1314,14 +1310,14 @@ p {
   border-radius: 4px;
 }
 
-.input-label {
+.inputLabel {
   font-size: 16px;
   margin: 0px 0px 5px 5px;
   color: rgb(0, 0, 0);
   padding: 20px 0px 20px 0px;
 }
 
-.input-div {
+.inputDiv {
   margin: 0px 0px 20px 0px;
 }
 
@@ -1341,7 +1337,7 @@ p {
   opacity: 75%;
 }
 
-.form-select {
+.formSelect {
   text-align: center;
   margin: 10px 0px 0px 0px;
   border: 1px rgb(221, 221, 221) solid;
@@ -1350,7 +1346,7 @@ p {
   border-radius: 4px;
 }
 
-#investment-goal {
+#investmentGoal {
   font-weight: normal;
 }
 
@@ -1364,12 +1360,12 @@ p {
   padding: 10px 0px;
 }
 
-.loader-box {
+.loaderBox {
   margin: 200px auto 200px auto;
   background-color: white;
 }
 
-.loader-text {
+.loaderText {
   margin: 0px auto 100px auto;
   padding: 0px 0px 100px 0px;
   font-weight: normal;
@@ -1384,11 +1380,11 @@ p {
   line-height: 25px;
 }
 
-#dateofbirth:hover {
+#dateOfBirth:hover {
   cursor: pointer;
 }
 
-.summaryoption {
+.summaryOption {
   display: inline-block;
   margin: 30px 50px 40px 50px;
   background-color: white;
@@ -1397,7 +1393,7 @@ p {
   padding: 10px 20px 15px 20px;
 }
 
-.totalretirementearnings{
+.totalRetirementEarnings{
   font-size: 14px;
   color: black;
 }
@@ -1412,12 +1408,12 @@ p {
   text-align: center;
 }
 
-.lifetimeearnings {
+.lifetimeEarnings {
   line-height: 5px;
   font-size: 14px;
 }
 
-.recommendations-h2 {
+.recommendationsH2 {
   padding: 60px 0px 0px 0px;
   margin: 0px 0px -5px 0px;
 }
@@ -1507,7 +1503,7 @@ th {
   margin: 10px 0px 5px 0px;
 }
 
-.decisionssocialsecuritysection {
+.decisionsSocialSecuritySection {
   display: inline-block;
   width: 30%;
   margin: 10px 10px 10px 10px;
@@ -1567,7 +1563,7 @@ th {
   height: 0.5px;
 }
 
-.barchart {
+.barChart {
   margin: 40px auto 0px auto;
   color: black;
 }
@@ -1591,12 +1587,12 @@ th {
   padding: 0px;
 }
 
-.projections-page {
+.projectionsPage {
   background-color: white;
   margin: -25px 0px 0px 0px;
 }
 
-.projections-button-section {
+.projectionsButtonSection {
   margin: -10px auto 0px auto;
   text-align: center;
   display: block;
@@ -1604,20 +1600,20 @@ th {
   background-color: white;
 }
 
-.chart-headline {
+.chartHeadline {
   margin: 100px 0px -20px 0px;
   font-size: 14px;
   color:black;
 }
 
-.chart-description {
+.chartDescription {
   margin: 0px 0px 20px 0px;
   font-size: 14px;
   color:#858585;
 }
 
 
-.blocks-section {
+.blocksSection {
   display: block;
   margin: -10px auto 20px auto;
   border: 1px solid #a5a5a5;
@@ -1626,11 +1622,11 @@ th {
   padding: 0px 0px 50px 0px;
 }
 
-.projections-headline {
+.projectionsHeadline {
   margin: 0px 0px 40px 0px;
 }
 
-.customization-question {
+.customizationQuestion {
   font-weight: normal;
   font-size: 14px;
 }
@@ -1672,7 +1668,7 @@ th {
 
 /* Scenario Form Section */
 
-.scenario-form-input {
+.scenarioFormInput {
   width: 40%;
   border: 1px rgb(221, 221, 221) solid;
   padding: 10px 0px 10px 20px; 
@@ -1681,11 +1677,11 @@ th {
   margin: 15px 0px 0px 0px;
 }
 
-.scenario-form-input::placeholder {
+.scenarioFormInput::placeholder {
   font-size: 14px;
 }
 
-.scenario-label {
+.scenarioLabel {
   font-size: 14px;
   text-align: left;
 }

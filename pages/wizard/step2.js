@@ -65,13 +65,13 @@ export default function Step2({ plan, pageProps }) {
     return (
         <div>
         <WizardHeader2></WizardHeader2>
-        <div className="form-border">
+        <div className="formBorder">
         <WizardHeadline2></WizardHeadline2>
-        <div className="inputs-div-1" {...pageProps}>
-            <div className="input-div">
-                    <label className="input-label">At what age would you like to retire?</label><br></br>
+        <div className="inputsDiv1" {...pageProps}>
+            <div className="inputDiv">
+                    <label className="inputLabel">At what age would you like to retire?</label><br></br>
                     <input 
-                    className="form-input-pages"
+                    className="formInputPages"
                     name="retirementAge"
                     placeholder ="60" 
                     value={retirementAge}
@@ -80,10 +80,10 @@ export default function Step2({ plan, pageProps }) {
                     </input><br></br>
                     <p className="errors">{errors2}</p>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">What is your desired retirement income?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">What is your desired retirement income?</label><br></br>
                     <input 
-                    className="form-input-pages"
+                    className="formInputPages"
                     name="retirementIncome"
                     placeholder ="$100,000" 
                     value={retirementIncome}
@@ -92,10 +92,10 @@ export default function Step2({ plan, pageProps }) {
                     </input><br></br>
                     <p className="errors">{errors3}</p>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Do you expect your income to increase within the next 10 years?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Do you expect your income to increase within the next 10 years?</label><br></br>
                     <select
-                    className="form-select"
+                    className="formSelect"
                     name="increaseIncome"
                     value={increaseIncome}
                     onChange={e=> {setIncreaseIncome(e.target.value); setShowForm(!showForm)}}
@@ -106,21 +106,21 @@ export default function Step2({ plan, pageProps }) {
                 </div>
                 {
                 showForm && (
-                <div className="input-div">
-                    <label className="input-label">How much do you expect your income to increase by?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">How much do you expect your income to increase by?</label><br></br>
                     <input
                     name="increaseIncomeAmount"
-                    className="form-input-pages"
+                    className="formInputPages"
                     placeholder={'$10,000'}
                     value={increaseIncomeAmount}
                     onChange={e=> setIncreaseIncomeAmount(e.target.value)}
                     />
                 </div>
                 )}
-                <div className="input-div">
-                    <label className="input-label">Do you expect being out of work for 1+ year anytime before retirement?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Do you expect being out of work for 1+ year anytime before retirement?</label><br></br>
                     <select
-                    className="form-select"
+                    className="formSelect"
                     name="outOfWork"
                     value={outOfWork}
                     onChange={e=> setOutOfWork(e.target.value)}
@@ -129,10 +129,10 @@ export default function Step2({ plan, pageProps }) {
                     <option>Yes</option>
                     </select><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">What are your expected healthcare costs throughout retirement?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">What are your expected healthcare costs throughout retirement?</label><br></br>
                     <select
-                    className="form-select"
+                    className="formSelect"
                     name="health"
                     value={health}
                     onChange={e=> setHealth(e.target.value)}
@@ -142,10 +142,10 @@ export default function Step2({ plan, pageProps }) {
                     <option>High</option>
                     </select><br></br>
                 </div>
-                <div className="input-div">
-                    <label className="input-label">Do you plan on living in long-term care throughout retirement?</label><br></br>
+                <div className="inputDiv">
+                    <label className="inputLabel">Do you plan on living in long-term care throughout retirement?</label><br></br>
                     <select
-                    className="form-select"
+                    className="formSelect"
                     name="care"
                     value={care}
                     onChange={e=> setCare(e.target.value)}
@@ -156,8 +156,8 @@ export default function Step2({ plan, pageProps }) {
                 </div>
             </div>
             </div>
-            <div className='wizard-footer'>
-                <button onClick={completePlan} className="wizard-footer-button">Next</button>
+            <div className='wizardFooter'>
+                <button onClick={completePlan} className="wizardFooterButton">Next</button>
             </div>
             </div>
     )
