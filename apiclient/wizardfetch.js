@@ -47,7 +47,7 @@ export const createPlan = async (plan) => {
   }
 
   export const updateCurrentSavings = async (id, plan) => {
-    const response = await fetch(`/api/updatecurrentsavings/${id}`, {
+    const response = await fetch(`/api/updateCurrentSavings/${id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -84,7 +84,7 @@ export const createPlan = async (plan) => {
 
   export const updatePartTimeWork = async (id, plan) => {
     const response = await fetch(`/api/updatePartTimeWork/${id}`, {
-      method: 'PUT',
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

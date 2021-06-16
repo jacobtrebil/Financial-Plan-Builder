@@ -28,7 +28,7 @@ var PlanModel = new mongoose.Schema({
     collegeSpendingAmount: Number,
     college: String, 
     currentEarnings: Number,
-    currentSavings: Number,
+    currentSavings: Number, String,
     assetValue: Number,
     increaseIncome: String,
     increaseIncomeAmount: Number,
@@ -135,7 +135,7 @@ var PlanModel = new mongoose.Schema({
     investmentProfileDecision: String, Number,
     retirementIncomeDecision: String, Number,
     projectedRetirementIncomeAfterSsDecision: String, Number,
-    newCurrentSavings: Number,
+    scenarioName: String, Number,
     scenario: {
         socialSecurityAge: Number,
         currentSavings: Number, String,
@@ -143,6 +143,7 @@ var PlanModel = new mongoose.Schema({
         riskScore: String, Number,
         partTimeWorkDecision: String,
         pensionTimeframe: String, Number,
+        scenarioName: String, Number,
     },
 });
 

@@ -29,7 +29,8 @@ function Summary(plan) {
     retirementAge: "",
     partTimeWorkDecision: "",
     currentSavings: "",
-    pensionTimeframe: ""
+    pensionTimeframe: "",
+    scenarioName: ""
   });
 
   if (!calculations)
@@ -69,7 +70,8 @@ function Summary(plan) {
   }
 
   function updateCurrentSavingsHandler(e) {
-    const updatedCurrentSavings = { currentSavings: e.target.value };
+    const updatedCurrentSavings = { currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g,"")) };
+    console.log(updateCurrentSavings);
     updateCurrentSavingsApiCall(updatedCurrentSavings);
     doWizardCalculations();
   }
@@ -326,7 +328,7 @@ function Summary(plan) {
       <div className="projections-headline">
         <h2 className="recommendations-h2">Customize Your Retirement</h2>
         <p>
-          View your retirement projections, and answer a few final questions.
+          View your retirement projections, and create your most likely scenarios.
         </p>
       </div>
       <div className="blocks-section">
@@ -414,7 +416,7 @@ function Summary(plan) {
             </p>
             <select
               className="form-select"
-              name="newCurrentSavings"
+              name="currentSavings"
               value={_plan?.currentSavings}
               onChange={updateCurrentSavingsHandler}
             >
@@ -460,7 +462,7 @@ function Summary(plan) {
             <select
               className="form-select"
               name="partTimeWorkDecision"
-              value={_plan?.partTimeWorkDecision}
+              value={_plan.partTimeWorkDecision}
               onChange={updatePartTimeWorkHandler}
             >
               <option>None</option>
@@ -497,11 +499,20 @@ function Summary(plan) {
               </select>
             </div>
           )}
-          <br></br>
+          <br></br><br></br>
+          <label className="scenario-label">
+              Name This Scenario
+          </label><br></br>
+          <input 
+          className="scenario-form-input"
+          name="scenarioName"
+          placeholder="Retire at Age 60 Scenario"
+          >
+          </input>
           <button className="save-scenario-button" onClick={saveScenario}>
             Save Scenario
           </button>
-        </div>
+          </div>
       </div>
       <div className="projections-button-section">
         <button

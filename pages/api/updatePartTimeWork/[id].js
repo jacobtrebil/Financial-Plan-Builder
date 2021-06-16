@@ -8,7 +8,7 @@ export default async function handler(req,res) {
     await dbConnect();
 
     switch (method) {
-        case 'PUT':
+        case 'POST':
             try {
                 const { partTimeWorkDecision } = req.body
                 await Plan.updateOne({ _id: id}, { partTimeWorkDecision })

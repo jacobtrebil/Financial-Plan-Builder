@@ -1636,7 +1636,7 @@ th {
 }
 
 .save-scenario-button {
-  margin: 30px auto 0px auto;
+  margin: 20px auto 0px auto;
   text-align: center;
   background-color:rgb(4, 187, 172);
   color: white;
@@ -1665,4 +1665,27 @@ th {
   height: 80%;
   margin: 40px auto 40px auto;
   padding: 20px;
+}
+
+
+
+
+/* Scenario Form Section */
+
+.scenario-form-input {
+  width: 40%;
+  border: 1px rgb(221, 221, 221) solid;
+  padding: 10px 0px 10px 20px; 
+  font-size: 14px;
+  border-radius: 4px;
+  margin: 15px 0px 0px 0px;
+}
+
+.scenario-form-input::placeholder {
+  font-size: 14px;
+}
+
+.scenario-label {
+  font-size: 14px;
+  text-align: left;
 }
