@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import WizardHeader3 from '../../components/wizard/WizardHeader3';
-import WizardHeadline3 from '../../components/wizard/WizardHeadline3';
+import WizardHeader3 from '../../components/wizardComponents/wizardHeader3';
+import WizardHeadline3 from '../../components/wizardComponents/wizardHeadline3';
 import _dynamic from 'next/dynamic';
 import { updatePlan2 } from '../../apiclient/wizardFetch';
 

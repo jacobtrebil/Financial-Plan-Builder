@@ -791,8 +791,7 @@ p {
 
 
 
-
-
+/* Wizard Form Styles */
 
 .inputsDiv1 {
   margin: 20px 0px 0px 0px;
@@ -827,20 +826,11 @@ p {
   border-radius: 4px;
 }
 
-.formInputPagesDob {
+.formInputDob {
   width: 10%;
   margin: 5px 0px 0px 10px;
   border: 1px rgb(221, 221, 221) solid;
   padding: 10px 0px 10px 10px;
-  font-size: 14px;
-  border-radius: 4px;
-}
-
-.formInputDob {
-  width: 10%;
-  margin: 0px 40px 0px 0px;
-  border: 1px rgb(221, 221, 221) solid;
-  padding: 0px 40px 0px 0px;
   font-size: 14px;
   border-radius: 4px;
 }
@@ -865,8 +855,8 @@ p {
   border-radius: 4px;
 }
 
-#investmentGoal {
-  font-weight: normal;
+#dateOfBirth:hover {
+  cursor: pointer;
 }
 
 
@@ -874,26 +864,10 @@ p {
 
 
 
-/* Loader Page */
 
-.loader {
-  background-color: white;
-  color: white;
-  height: 100%;
-  padding: 10px 0px;
-}
 
-.loaderBox {
-  margin: 200px auto 200px auto;
-  background-color: white;
-}
 
-.loaderText {
-  margin: 0px auto 100px auto;
-  padding: 0px 0px 100px 0px;
-  font-weight: normal;
-  text-align: center;
-}
+/* Customization Page Styles */
 
 .ssAmount {
   font-weight: normal;
@@ -901,10 +875,6 @@ p {
   text-align: center;
   margin: 10px 0px 0px 0px;
   line-height: 25px;
-}
-
-#dateOfBirth:hover {
-  cursor: pointer;
 }
 
 .summaryOption {
@@ -921,11 +891,6 @@ p {
   color: black;
 }
 
-.center {
-  margin: -20px 0px 20px 0px;
-  text-align: center;
-}
-
 .loading {
   margin: 25% auto 20% auto;
   text-align: center;
@@ -939,13 +904,6 @@ p {
 .recommendationsH2 {
   padding: 60px 0px 0px 0px;
   margin: 0px 0px -5px 0px;
-}
-
-.financialHealthScore {
-  margin: -20px auto -20px auto;
-  text-align: center;
-  font-size: 120px;
-  color: red;
 }
 
 .summary {
@@ -974,71 +932,66 @@ p {
   opacity: 70%;
 }
 
-/* Table Styles */
-
-table {
-  border-collapse: collapse;
+.barChart {
+  margin: 40px auto 0px auto;
+  color: black;
 }
 
-td {
+.barChartContainer {
+  margin: 0px 40px 0px 0px;
+}
+
+.block1 {
+  display: inline-block;
   width: 50%;
-  border: solid 1px #E2E1E1;
-  padding: 10px;
-  display: inline-block;
-  font-size: 14px;
-}
-
-.threeColumnRow {
-  width: 33.333%;
-  border: solid 1px #E2E1E1;
-  display: inline-block;
-  text-align: center;
-}
-
-tr {
-  display: block;  
-  width: 100%;
-}
-
-th {
-  text-align: left;
-  font-size: 18px;
-  width: 100%;
+  float: left;
+  margin: 0px;
   padding: 0px;
 }
 
-.tableBorder {
-  border: solid 1px #E2E1E1;
-  padding: 0px 0px 0px 0px;
-  border-collapse: collapse;
-  width: 95%;
+.block2 {
+  display: inline-block;
+  width: 50%; 
+  margin: 30px 0px 0px 0px;
+  padding: 0px;
 }
 
-.ssTableDescription {
-  text-align: left;
-  margin: 10px 0px 15px 0px;
+.blocksSection {
+  display: block;
+  margin: -10px auto 20px auto;
+  border: 1px solid #a5a5a5;
+  width: 90%;
+  border-radius: 4px;
+  padding: 0px 0px 50px 0px;
+}
+
+.projectionsHeadline {
+  margin: 0px 0px 40px 0px;
+}
+
+.customizationQuestion {
+  font-weight: normal;
   font-size: 14px;
 }
 
-.ssQuestion {
+.projectionsButtonSection {
+  margin: -10px auto 0px auto;
   text-align: center;
-  font-weight: bold;
-  margin: 10px 0px 5px 0px;
+  display: block;
+  padding: 0px 0px 10px 0px;
+  background-color: white;
 }
 
-.decisionsSocialSecuritySection {
-  display: inline-block;
-  width: 30%;
-  margin: 10px 10px 10px 10px;
-  vertical-align: top;
-  border: 1px solid #DDDDDD;
-  border-radius: 4px;
-  padding: 10px 10px 20px 10px;
+.chartHeadline {
+  margin: 100px 0px -20px 0px;
+  font-size: 14px;
+  color:black;
 }
 
-.decisionsSocialSecuritySection h1 {
-  text-align: center;
-  margin: -20px auto 20px auto;
+.chartDescription {
+  margin: 0px 0px 20px 0px;
+  font-size: 14px;
+  color:#858585;
 }
 
 .decisionsSavingsSection {
@@ -1065,10 +1018,25 @@ th {
   vertical-align: top;
 }
 
-.tableHeaders {
-  font-weight: bold;
-  font-size: 14px;
+.ssQuestion {
   text-align: center;
+  font-weight: bold;
+  margin: 10px 0px 5px 0px;
+}
+
+.decisionsSocialSecuritySection {
+  display: inline-block;
+  width: 30%;
+  margin: 10px 10px 10px 10px;
+  vertical-align: top;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  padding: 10px 10px 20px 10px;
+}
+
+.decisionsSocialSecuritySection h1 {
+  text-align: center;
+  margin: -20px auto 20px auto;
 }
 
 .projectionsP {
@@ -1079,98 +1047,11 @@ th {
   margin: 30px 0px 20px 0px;
 }
 
-.solidHrCustomizer {
-  width: 80%;
-  border: 1px solid #DDDDDD;
-  margin: 20px auto 20px auto;
-  height: 0.5px;
-}
-
-.barChart {
-  margin: 40px auto 0px auto;
-  color: black;
-}
-
-.barChartContainer {
-  margin: 0px 40px 0px 0px;
-}
-
-.block1 {
-  display: inline-block;
-  width: 50%;
-  float: left;
-  margin: 0px;
-  padding: 0px;
-}
-
-.block2 {
-  display: inline-block;
-  width: 50%; 
-  margin: 30px 0px 0px 0px;
-  padding: 0px;
-}
-
 .projectionsPage {
   background-color: white;
   margin: -25px 0px 0px 0px;
 }
 
-.projectionsButtonSection {
-  margin: -10px auto 0px auto;
-  text-align: center;
-  display: block;
-  padding: 0px 0px 10px 0px;
-  background-color: white;
-}
-
-.chartHeadline {
-  margin: 100px 0px -20px 0px;
-  font-size: 14px;
-  color:black;
-}
-
-.chartDescription {
-  margin: 0px 0px 20px 0px;
-  font-size: 14px;
-  color:#858585;
-}
-
-
-.blocksSection {
-  display: block;
-  margin: -10px auto 20px auto;
-  border: 1px solid #a5a5a5;
-  width: 90%;
-  border-radius: 4px;
-  padding: 0px 0px 50px 0px;
-}
-
-.projectionsHeadline {
-  margin: 0px 0px 40px 0px;
-}
-
-.customizationQuestion {
-  font-weight: normal;
-  font-size: 14px;
-}
-
-.saveScenarioButton {
-  margin: 20px auto 0px auto;
-  text-align: center;
-  background-color:rgb(4, 187, 172);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 20px 32px;
-  font-size: 16px;
-  font-weight: normal;
-  display: block;
-}
-
-.saveScenarioButton:hover {
-  cursor: pointer;
-  opacity: 70%;
-}
 
 
 
@@ -1207,4 +1088,22 @@ th {
 .scenarioLabel {
   font-size: 14px;
   text-align: left;
+}
+
+.saveScenarioButton {
+  margin: 20px auto 0px auto;
+  text-align: center;
+  background-color:rgb(4, 187, 172);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 20px 32px;
+  font-size: 16px;
+  font-weight: normal;
+  display: block;
+}
+
+.saveScenarioButton:hover {
+  cursor: pointer;
+  opacity: 70%;
 }

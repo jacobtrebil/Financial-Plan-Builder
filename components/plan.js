@@ -64,7 +64,7 @@ const FullPlan = () => {
     <div className="displayOnDownClick">
         <h1 className="finalPlanH1">Progress</h1>
         <div id="planSection2">
-            <p className="planPCenter" id="investmentGoal">$250/300 Invested In Past 30 Days</p>
+            <p className="planPCenter">$250/300 Invested In Past 30 Days</p>
             <hr className="investmentsGoalBar"></hr>
             <hr className="investmentsActualBar"></hr>
         </div>

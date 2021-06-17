@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import WizardHeader from '../../components/wizard/WizardHeader';
-import WizardHeadline from '../../components/wizard/WizardHeadline';
+import WizardHeader from '../../components/wizardComponents/wizardHeader';
+import WizardHeadline from '../../components/wizardComponents/wizardHeadline';
 import _dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { createPlan } from '../../apiclient/wizardFetch';
@@ -89,7 +89,7 @@ export default function Step1({}) {
                     <input
                     name="dateOfBirthDay"
                     id="dateofbirth"
-                    className="formInputPagesDob"
+                    className="formInputDob"
                     value={dateOfBirthDay}
                     placeholder="Day"
                     onChange={e=> 
@@ -100,7 +100,7 @@ export default function Step1({}) {
                     <input
                     name="dateOfBirthYear"
                     id="dateOfBirth"
-                    className="formInputPagesDob"
+                    className="formInputDob"
                     value={dateOfBirthYear}
                     placeholder="Year"
                     onChange={e=> 
