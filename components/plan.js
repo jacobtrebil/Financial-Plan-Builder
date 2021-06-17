@@ -37,7 +37,7 @@ const DownArrow = () => {
   return (
     <img
         id="downArrow" 
-        src="/images/simple-down-arrow.png" 
+        src="/images/simpleDownArrow.png" 
         width={20} 
         height={20}/>
   )
@@ -47,7 +47,7 @@ const UpArrow = () => {
   return (
     <img
         id="upArrow" 
-        src="/images/simple-up-arrow.png" 
+        src="/images/simpleUpArrow.png" 
         width={20} 
         height={20}/>
   )

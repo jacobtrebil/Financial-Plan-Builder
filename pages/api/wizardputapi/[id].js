@@ -1,5 +1,5 @@
-import Plan from '../../../models/wizardschema';
-import dbConnect from '../../../util/wizarddbconnect';
+import Plan from '../../../models/wizardSchema';
+import dbConnect from '../../../util/wizardDbConnect';
 
 export default async function handler(req,res) {
     const { method } = req

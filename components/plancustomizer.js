@@ -5,18 +5,18 @@ import Link from 'next/link';
 
 export function PlanCustomizer() {
       return (
-        <div className="summaryoptionssection">
-        <h2 className="recommendations-h2">Build Your Financial Action Plan 👇🏻</h2>
-        <div className="summaryoption">
-            <p className="ssamount">When to Take Social Security:</p>
+        <div className="summaryOptionsSection">
+        <h2 className="recommendationsH2">Build Your Financial Action Plan 👇🏻</h2>
+        <div className="summaryOption">
+            <p className="ssAmount">When to Take Social Security:</p>
             { plan.currentearnings }
         </div>
-        <div className="summaryoption">
-            <p className="ssamount">How Much to Save Per Month:</p>
+        <div className="summaryOption">
+            <p className="ssAmount">How Much to Save Per Month:</p>
             { plan.currentsavings }
         </div>
-        <div className="summaryoption">
-            <p className="ssamount">Reducing Retirement Costs:</p>
+        <div className="summaryOption">
+            <p className="ssAmount">Reducing Retirement Costs:</p>
             { plan.volatility }
         </div>
     </div>

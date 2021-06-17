@@ -7,14 +7,6 @@ const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
 )
 
-const ProfileComponent = _dynamic(() =>
-  import('../components/profile').then((mod) => mod.Profile)
-)
-
-const PaymentComponent = _dynamic(() =>
-  import('../components/payment-methods').then((mod) => mod.Payment)
-)
-
 const AccountComponent = _dynamic(() =>
   import('../components/account').then((mod) => mod.Account)
 )

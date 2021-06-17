@@ -14,7 +14,7 @@ export default function PlanCalculations({ PlanModel }) {
     const annualIncome = '$100,000';
 
     return (
-        <div id="plan-calculations">
+        <div id="planCalculations">
             <h1>Plan Calculations</h1>
             <p>{annualIncome}</p>
             <p>{retirementlength}</p>

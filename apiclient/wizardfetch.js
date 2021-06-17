@@ -1,5 +1,5 @@
 export const createPlan = async (plan) => {
-    const response = await fetch('/api/wizardpostapi', {
+    const response = await fetch('/api/wizardPostApi', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -11,7 +11,7 @@ export const createPlan = async (plan) => {
   }
   
   export const updatePlan = async (id, plan) => {
-    const response = await fetch(`/api/wizardputapi/${id}`, {
+    const response = await fetch(`/api/wizardPutApi/${id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -23,7 +23,7 @@ export const createPlan = async (plan) => {
   }
 
   export const updatePlan2 = async (id, plan) => {
-    const response = await fetch(`/api/wizardputapi2/${id}`, {
+    const response = await fetch(`/api/wizardPutApi2/${id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -35,7 +35,7 @@ export const createPlan = async (plan) => {
   }
 
   export const planCalculations = async (id, plan) => {
-    const response = await fetch(`/api/wizardcalculations/${id}`, {
+    const response = await fetch(`/api/wizardCalculations/${id}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

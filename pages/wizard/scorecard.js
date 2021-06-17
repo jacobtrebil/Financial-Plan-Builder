@@ -8,7 +8,7 @@ import {
   updateRetirementAge,
   updatePension,
   addScenario,
-} from "../../apiclient/wizardfetch";
+} from "../../apiclient/wizardFetch";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
@@ -509,14 +509,14 @@ function Summary(plan) {
           placeholder="Retire at Age 60 Scenario"
           >
           </input>
-          <button className="save-scenario-button" onClick={saveScenario}>
+          <button className="saveScenarioButton" onClick={saveScenario}>
             Save Scenario
           </button>
           </div>
       </div>
       <div className="projectionsButtonSection">
         <button
-          className="scorecard-button"
+          className="scorecardButton"
           onClick={function clickHandler() {
             router.push(`../?planId=${calculations._id}`);
           }}
