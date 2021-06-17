@@ -19,7 +19,7 @@ function Settings() {
 
     return (
       <div id="settingsContainer">
-       <div className="settingsSection">
+       <div>
            <NavComponent />
            <div id="settingsContent">
               <div>

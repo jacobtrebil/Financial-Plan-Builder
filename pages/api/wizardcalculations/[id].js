@@ -12,7 +12,7 @@ import calculateProjectedRetirementIncome from '../../../calculations/projectedR
 import calculateFinancialHealthScore from '../../../calculations/financialHealthScore';
 import calculateLengthOfPension from '../../../calculations/lengthOfPension';
 import calculateRateOfReturn from '../../../calculations/rateOfReturn';
-import calculateRiskScore from '../../../calculations/riskscore';
+import calculateRiskScore from '../../../calculations/riskScore';
 import calculateRetirementAnnualReturnIncome from '../../../calculations/projectedRetirementIncome/calculateRetirementAnnualReturnIncome';
 import calculateAge55RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age55Income';
 import calculateAge56RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age56Income';

@@ -191,46 +191,8 @@ p {
 
 /* Hover Elements */
 
-.percentBox {
-  width: 100%;
-  float: right;
-}
-
 .asset {
   float: left;
-}
-
-.assetNumber {
-  float: right;
-  margin-right: 30px;
-}
-
-.assetSection {
-  margin: 40px 0px 0px 0px;
-}
-
-.assetBox {
-  width: 100%;
-}
-
-.assetSection2 {
-  margin: 40px 0px 0px 0px;
-  padding: 40px 0px 0px 0px;
-}
-
-.assetNumber2 {
-  float: right;
-  margin: 20px 40px 0px 0px;
-}
-
-.asset2 {
-  float: left;
-  margin: 20px 0px 0px 40px;
-  padding: 0px 30px 0px 0px;
-}
-
-.red {
-  color: red;
 }
 
 .chart {
@@ -243,11 +205,7 @@ p {
 
 
 
-/* Settings Page */
-
-.settingsH1 {
-  margin: 20px 0px 0px 120px;
-}
+/* Settings Section */
 
 #settingsContainer {
   padding: 0px 0px 0px 0px;
@@ -261,32 +219,6 @@ p {
   border-radius: 8px;
 }
 
-.settingsNavP {
-  display: inline-block;
-  font-weight: 500;
-  padding: 20px 20px 0px 20px;
-  margin: 0px 0px 0px 0px;
-}
-
-.settingsNavP:hover {
-  cursor: pointer;
-  opacity: 70%;
-  color: black;
-}
-
-#settingsNavMiddleP {
-  padding: 0px 140px 0px 140px;
-}
-
-#settingsNavProfile {
-  color: black;
-}
-
-#settingsNav {
-  text-align: center;
-  margin: 0px 0px 0px 0px;
-}
-
 .accountContainer {
   border: 1px solid #a1a0a0;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.2);
@@ -294,120 +226,6 @@ p {
   margin: 20px 0px 20px 0px;
   padding: 20px 0px 20px 0px;
 }
-
-
-
-
-
-
-
-/* Integrations Page */
-
-#integrationsH1 {
-  margin: 20px 0px 0px 120px;
-}
-
-#integrationsSideLogo {
-  margin: 60px 0px 0px 0px;
-}
-
-#integrationsSection {
-  background-color: white;
-  border-radius: 8px;
-  width: 80%;
-  margin: 40px auto 120px auto;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
-  padding: 0px 0px 80px 0px;
-}
-
-.integrationsSubtitle {
-  margin: 50px 0px 20px 60px;
-  display: inline-block;
-  float: left;
-}
-
-.integrationsSolidHr {
-  width: 92%;
-  border: 1px solid rgb(226, 225, 225);
-  margin: 0px auto 0px auto;
-}
-
-.integrationsButton {
-  float: right;
-  display: inline-block;
-  margin: 40px 70px 0px 0px;
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: 0px solid rgb(192, 192, 192);
-  border-radius: 2px;
-  padding: 12px 24px;
-  font-size: 12px;
-  bottom: 0;
-  position: relative;
-}
-
-.integrationsButton:hover {
-  cursor: pointer;
-  border: 0px solid black;
-  opacity: 70%;
-}
-
-.noIntegrationsMessage {
-  font-weight: normal;
-  text-align: center;
-  margin: 40px 0px 0px 0px;
-}
-
-
-
-
-
-/* Payment Methods Component */
-
-#paymentMethodTitle {
-  margin: 15px 0px 10px 50px;
-  display: inline-block;
-  float: left;
-  padding: 0px;
-}
-
-.paymentButton {
-  float: right;
-  display: inline-block;
-  margin: 0px 70px 15px 0px;
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: 0px solid rgb(192, 192, 192);
-  border-radius: 2px;
-  padding: 12px 24px;
-  font-size: 12px;
-  bottom: 0;
-  position: relative;
-}
-
-.paymentButton:hover {
-  opacity: 70%;
-  cursor: pointer;
-}
-
-.paymentSolidHr {
-  width: 92%;
-  border: 1px solid rgb(226, 225, 225);
-  margin: 10px auto 0px auto;
-}
-
-#noPaymentMessage {
-  font-weight: normal;
-  text-align: center;
-  margin: 40px 0px 60px 0px;
-}
-
-
-
-
-
-
-/* Close Account */
 
 #cancelMethodTitle {
   margin: 15px 0px 10px 50px;
@@ -447,6 +265,38 @@ p {
   margin: 40px 0px 20px 0px;
 }
 
+#paymentMethodTitle {
+  margin: 15px 0px 10px 50px;
+  display: inline-block;
+  float: left;
+  padding: 0px;
+}
+
+.paymentButton {
+  float: right;
+  display: inline-block;
+  margin: 0px 70px 15px 0px;
+  background-color: rgb(4, 187, 172);
+  color: white;
+  border: 0px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  padding: 12px 24px;
+  font-size: 12px;
+  bottom: 0;
+  position: relative;
+}
+
+.paymentButton:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.paymentSolidHr {
+  width: 92%;
+  border: 1px solid rgb(226, 225, 225);
+  margin: 10px auto 0px auto;
+}
+
 
 
 
@@ -475,64 +325,6 @@ p {
 
 #settingsSideLogo {
   margin: 60px 0px 0px 0px;
-}
-
-
-
-
-
-
-
-
-
-/* Plans Popup Section */
-
-#fullWidthBox {
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0,0,0,0.4);
-  z-index: 0;
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow: auto;
-}
-
-#planFormPopupSection {
-  background-color: white;
-  width: 80%;
-  margin: 10% auto 0px auto;
-  padding: 20px 0px 40px 0px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
-  border-radius: 8px;
-}
-
-#planFormPage1 {
-  margin: 20px auto 0px 0px;
-}
-
-#planTitle {
-  text-align: center;
-  margin: 0px auto 0px auto;
-  
-}
-
-.planInputBox {
-  margin: 40px 0px 0px 0px;
-}
-
-#planFormPopupSection label {
-  font-size: 18px;
-}
-
-#planFormPopupSection select {
-  font-size: 16px;
-  padding: 5px;
-  margin-left: 10px;
-}
-
-#plansSection2 {
-  margin: 60px auto 450px auto;
 }
 
 
@@ -640,151 +432,34 @@ p {
   margin: 15px 20% 10px 20%;
 }
 
-.planInputBox {
-  text-align: center;
-  margin: 20px auto 0px auto;
-}
-
-.retirementFormLabel {
-  text-align: center;
-  margin: 40px 0px 0px 0px;
-  padding: 40px 0px 0px 0px;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.planInputBox select {
-  font-size: 16px;
-  padding: 5px;
-  margin: 0px 0px 0px 10px;
-}
-
-.planInputBox input {
-  font-size: 16px;
-  padding: 5px;
-  margin: 0px 0px 0px 10px;
-}
-
-#planButton {
+#startPlanButton {
   background-color: rgb(4, 187, 172);
   color: white;
   border: none;
   border-radius: 2px;
   padding: 16px 32px;
   font-size: 18px;
-  margin: 5% 0px 18% 0px;
+  margin: 30px 0px 200px 0px;
   font-weight: normal;
 }
 
-#planButton:hover {
+#startPlanButton:hover {
   cursor: pointer;
   opacity: 75%;
 }
 
-#planButton2 {
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: none;
-  border-radius: 2px;
-  padding: 16px 32px;
-  font-size: 18px;
-  margin: 5% 0px 5% 0px;
-}
-
-#planButton2:hover {
-  cursor: pointer;
-  opacity: 75%;
-}
-
-#note {
-  margin: 15px auto 0px auto;
-  font-weight: normal;
-  line-height: 28px;
-  text-align: center
-}
-
-#largeInput {
-  font-size: 28px;
-  font-weight: normal;
-  padding: 20px 20px;
-  width: 40%;
-  border: rgb(207, 207, 207) solid 2px;
-}
-
-#sectionStart-h1 {
-  margin: 18% auto 1% auto;
-  text-align: center;
-  font-size: 42px;
-}
-
-#sectionStart-h2 {
-  font-weight: normal;
-  font-size: 16px;
-  margin: 0px 0px 2% 0px;
-}
-
-#sectionStartButton {
-    background-color: rgb(4, 187, 172);
-    color: white;
-    border: none;
-    border-radius: 2px;
-    padding: 16px 32px;
-    font-size: 18px;
-    margin: 3% 0px 25% 0px;
-  }
-  
-  #sectionStartButton:hover {
-    cursor: pointer;
-    opacity: 75%;
-  }
-
-  #section1StartBox {
-    margin: 0px;
-    padding: 0px;
-  }
-
-  .section1StartBox {
-    margin: 0px;
-    padding: 0px;
-  }
-
-
-
-
-/* Plan Form */
-
-#planFormH1 {
-  margin: 13% auto 1% auto;
-  text-align: center;
-  font-size: 42px;
-}
-
-#planFormH2 {
-  font-weight: normal;
-  font-size: 16px;
-  margin: 0px 0px 5% 0px;
-}
-
-.customSelect {
-  padding: 20px;
-  font-size: 24px;
-  display: inline-block;
-}
-
-.errors {
-  color: red;
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
-  font-size: 14px;
-  font-weight: normal;
+#section1StartBox {
+  margin: 0px;
+  padding: 0px;
 }
 
 
 
+/* Dashboard Plan Styles */
 
-
-
-/* Plan Styles */
+#plansSection2 {
+  margin: 60px auto 450px auto;
+}
 
 #planBox {
   margin: 30px auto 0px auto;
@@ -834,22 +509,6 @@ p {
   font-size: 16px;
 }
 
-.planButton3 {
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: none;
-  border-radius: 2px;
-  padding: 6px 12px;
-  font-size: 12px;
-  margin: 10px 0px 10px 0px;
-  font-weight: normal;
-}
-
-.planButton3:hover {
-  cursor: pointer;
-  opacity: 70%;
-}
-
 #planSection1 {
   display: inline-block;
   margin: 60px 10px 0px 10px;
@@ -871,12 +530,6 @@ p {
   text-align: left;
   border-radius:4px;
   border:rgb(226, 225, 225) 2px solid;
-}
-
-#planSection3 p {
-  top: 0;
-  margin: 0px;
-  padding: 0px;
 }
 
 .toDoChecklist {
@@ -955,10 +608,6 @@ p {
   vertical-align: center;
 }
 
-.green {
-  color:rgb(4, 187, 172);
-}
-
 .goalsBox2 {
   margin: 0px 0px 0px 0px;
   height: 100px;
@@ -1017,15 +666,20 @@ p {
   margin: 0px 0px 10px 0px;
 }
 
-/* Wizard Section */
-
-.container {
-  display: flex;
-  width: 40%;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
+.errors {
+  color: red;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  font-size: 14px;
+  font-weight: normal;
 }
+
+
+
+
+
+
+/* Wizard Page Styles */
 
 .wizard {
   display: flex;
@@ -1035,29 +689,9 @@ p {
   margin: 0px 0px 0px 0px;
 }
 
-.wizardTitle {
-  padding: 8px;
-}
 
-.wizardStep {
-  display: flex;
-  flex-direction: column;
-}
 
-.wizardStepContent {
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
-}
-
-.wizardStepContent input {
-  margin: 5px 0px 0px 0px;
-  padding: 10px 10px;
-}
-
-.wizardControls {
-  padding: 12px;
-}
+/* Wizard Header Styles */
 
 .wizardHeader {
   background-color: white;
@@ -1079,30 +713,6 @@ p {
   display: inline-block;
   margin: 11px 10px 10px 16px;
   font-size: 16px;
-}
-
-.wizardFooter {
-  background-color: white;
-  padding: 20px 0px 40px 0px;
-  margin: 20px 0px 0px 0px;
-  width: 100%;
-}
-
-.wizardFooterButton {
-  margin: 0px 5% 0px 0px;
-  position: static;
-  background-color:rgb(4, 187, 172);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 32px;
-  font-size: 16px;
-  font-weight: normal;
-}
-
-.wizardFooterButton:hover {
-  opacity: 70%;
-  cursor: pointer;
 }
 
 .wizardHeaderHr {
@@ -1130,6 +740,44 @@ p {
   color: white;
 }
 
+
+
+
+
+
+/* Wizard Footer Styles */
+
+.wizardFooter {
+  background-color: white;
+  padding: 20px 0px 40px 0px;
+  margin: 20px 0px 0px 0px;
+  width: 100%;
+}
+
+.wizardFooterButton {
+  margin: 0px 5% 0px 0px;
+  position: static;
+  background-color:rgb(4, 187, 172);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.wizardFooterButton:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+
+
+
+
+
+/* Wizard Headline Styles */
+
 .wizardHeadline {
   text-align: left;
   margin: 5% 0px 0px 8%;
@@ -1140,6 +788,11 @@ p {
   margin: 1% 0px 0px 8%;
   font-weight: normal;
 }
+
+
+
+
+
 
 .inputsDiv1 {
   margin: 20px 0px 0px 0px;
@@ -1203,22 +856,6 @@ p {
   margin: 0px 0px 20px 0px;
 }
 
-#startPlanButton {
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: none;
-  border-radius: 2px;
-  padding: 16px 32px;
-  font-size: 18px;
-  margin: 30px 0px 200px 0px;
-  font-weight: normal;
-}
-
-#startPlanButton:hover {
-  cursor: pointer;
-  opacity: 75%;
-}
-
 .formSelect {
   text-align: center;
   margin: 10px 0px 0px 0px;
@@ -1231,6 +868,10 @@ p {
 #investmentGoal {
   font-weight: normal;
 }
+
+
+
+
 
 
 /* Loader Page */

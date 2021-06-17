@@ -3,7 +3,7 @@ import WizardHeader from '../../components/wizard/WizardHeader';
 import WizardHeadline from '../../components/wizard/WizardHeadline';
 import _dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { createPlan } from '../../apiclient/wizardfetch';
+import { createPlan } from '../../apiclient/wizardFetch';
 
 export default function Step1({}) {
 
@@ -172,7 +172,7 @@ import _dynamic from 'next/dynamic';
 import WizardHeadline from '../../components/wizard/WizardHeadline';
 import WizardHeader from '../../components/wizard/WizardHeader';
 import WizardStepTemplate from '../../components/wizard/WizardStepTemplate';
-import { createPlan } from '../../apiclient/wizardfetch';
+import { createPlan } from '../../apiclient/wizardFetch';
 
 function Step1Page() {
 

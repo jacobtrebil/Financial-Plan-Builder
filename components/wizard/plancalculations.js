@@ -3,7 +3,7 @@ import _Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
-import { getData } from '../../apiclient/wizardfetch';
+import { getData } from '../../apiclient/wizardFetch';
 
 
 export default function PlanCalculations({ PlanModel }) {

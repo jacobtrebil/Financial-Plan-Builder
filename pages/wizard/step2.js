@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import WizardHeader2 from '../../components/wizard/WizardHeader2';
 import WizardHeadline2 from '../../components/wizard/WizardHeadline2';
 import _dynamic from 'next/dynamic';
-import { updatePlan } from '../../apiclient/wizardfetch';
+import { updatePlan } from '../../apiclient/wizardFetch';
 
 export default function Step2({ plan, pageProps }) {
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { planCalculations } from '../../apiclient/wizardfetch';
+import { planCalculations } from '../../apiclient/wizardFetch';
 import { useRouter } from 'next/router';
 
 function WorkAmountThroughoutRetirementSuggestionsFunction({plan}) {

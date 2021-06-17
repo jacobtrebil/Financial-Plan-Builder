@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createPlan, updatePlan, updatePlan2 } from '../../apiclient/wizardfetch';
+import { createPlan, updatePlan, updatePlan2 } from '../../apiclient/wizardFetch';
 import WizardStep1 from './WizardStep1';
 import WizardStep2 from './WizardStep2';
 import WizardStep3 from './WizardStep3';
