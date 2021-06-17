@@ -1,2 +1,5 @@
-// Retirement Income, Kids College, Major Purchases, Health Care, and Business Spending
 
+export default function futureSpending(retirementAge, retirementIncome) {
+    const totalFutureSpending = retirementAge + retirementIncome;
+    return totalFutureSpending;
+} 

@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WizardHeadline2 from './WizardHeadline2';
 import WizardHeader2 from './WizardHeader2';
 import WizardStepTemplate from './WizardStepTemplate';
+import { useRouter } from "next/router";
 
-export default function Step2({ plan, onComplete }) {
+export default function Step2({ plan, onComplete, pageProps }) {
+      
+        useEffect(() => {
+          window.scrollTo(0, 0);
+        }, [pathname]);
+    
 
     let [_plan, _setPlan] = useState(plan);
 
@@ -12,15 +18,17 @@ export default function Step2({ plan, onComplete }) {
     }
 
     function complete(){
-        if (retirementage.length === 0 || retirementincome.length === 0) {
-            if (retirementage.length === 0) {
+        if (retirementAge.length === 0 || retirementIncome.length === 0) {
+            if (retirementAge.length === 0) {
                 setErrors2('*Please enter a valid number')
-            } else if (retirementage.length > 0) {
+                scrollOnError();
+            } else if (retirementAge.length > 0) {
                 setErrors2('')
             } 
-            if (retirementincome.length === 0) {
+            if (retirementIncome.length === 0) {
                 setErrors3('*Please enter a valid number')
-            } else if (retirementincome > 0) {
+                scrollOnError();
+            } else if (retirementIncome > 0) {
                 setErrors3('')
             }
         } 
@@ -29,47 +37,50 @@ export default function Step2({ plan, onComplete }) {
         }
     }
 
-    const [errors, setErrors] = useState('')
+    function scrollOnError() {
+        window.scrollTo(0, 0);
+}
+
+    const { pathname } = useRouter();
     const [errors2, setErrors2] = useState('')
     const [errors3, setErrors3] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [showForm2, setShowForm2] = useState(false) 
     const [showForm3, setShowForm3] = useState(false) 
     const [showForm4, setShowForm4] = useState(false)
-    const [workamount, setWorkamount] = useState('No work')
-    const [volunteer, setVolunteer] = useState('Yes')
-    const [retirementage, setRetirementage] = useState('')
-    const [retirementincome, setRetirementincome] = useState('')
-    const [businessmoneyneeded, setBusinessmoneyneeded] = useState('')
+    const [workAmount, setWorkAmount] = useState('No work')
+    const [retirementAge, setRetirementAge] = useState('')
+    const [retirementIncome, setRetirementIncome] = useState('')
+    const [businessMoneyNeeded, setBusinessMoneyNeeded] = useState('')
     const [care, setCare] = useState('No')
     const [health, setHealth] = useState('No')
     const [charity, setCharity] = useState('No')
-    const [majorpurchases, setMajorpurchases] = useState('No')
-    const [purchasescost, setPurchasescost] = useState('')
+    const [majorPurchases, setMajorPurchases] = useState('No')
+    const [purchasesCost, setPurchasesCost] = useState('')
     const [support, setSupport] = useState('No')
-    const [supportcost, setSupportcost] = useState('')
-    const [collegespendingamount, setCollegespendingamount] = useState('')
+    const [supportCost, setSupportCost] = useState('')
+    const [collegeSpendingAmount, setCollegeSpendingAmount] = useState('')
     const [kids, setKids] = useState('No')
     const [college, setCollege] = useState('No')
-    const [numberofkids, setNumberofkids] = useState('')
+    const [numberOfKids, setNumberOfKids] = useState('')
     const [business, setBusiness] = useState('No')
     
-    _plan = { workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business};
+    _plan = { workAmount, retirementAge, retirementIncome, businessMoneyNeeded, care, health, charity, majorPurchases, purchasesCost, support, supportCost, collegeSpendingAmount, kids, college, numberOfKids, business};
 
     return (
         <WizardStepTemplate onNext={complete}>
         <WizardHeader2></WizardHeader2>
         <WizardHeadline2></WizardHeadline2>
-            <div className="inputs-div-1">
+            <div className="inputs-div-1" {...pageProps}>
             <div className="input-div">
                     <label className="input-label">At what age would you like to retire?</label><br></br>
                     <input 
                     className="form-input"
-                    name="retirementage"
+                    name="retirementAge"
                     type="number" 
                     placeholder ="60" 
-                    value={retirementage}
-                    onChange={e=> setRetirementage(e.target.value)}
+                    value={retirementAge}
+                    onChange={e=> setRetirementAge(e.target.value)}
                     >
                     </input><br></br>
                     <p className="errors">{errors2}</p>
@@ -78,10 +89,10 @@ export default function Step2({ plan, onComplete }) {
                     <label className="input-label">What is your desired retirement income?</label><br></br>
                     <input 
                     className="form-input"
-                    name="retirementincome"
+                    name="retirementIncome"
                     placeholder ="$100,000" 
-                    value={retirementincome}
-                    onChange={e=> setRetirementincome(e.target.value)}
+                    value={retirementIncome}
+                    onChange={e=> setRetirementIncome(e.target.value)}
                     >
                     </input><br></br>
                     <p className="errors">{errors3}</p>
@@ -89,26 +100,14 @@ export default function Step2({ plan, onComplete }) {
                 <div className="input-div">
                     <label className="input-label">How much do you expect to work throughout retirement?</label><br></br>
                     <select
-                    name="workamount"
+                    name="workAmount"
                     className="form-select"
-                    value={workamount}
-                    onChange={e=> setWorkamount(e.target.value)}
+                    value={workAmount}
+                    onChange={e=> setWorkAmount(e.target.value)}
                     >
                     <option>No work</option>
                     <option>Part-time</option>
                     <option>Full-time</option>
-                    </select><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">Would you like to do volunteer work throughout retirement?</label><br></br>
-                    <select
-                    name="volunteer"
-                    className="form-select"
-                    value={volunteer}
-                    onChange={e=> setVolunteer(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
                     </select><br></br>
                 </div>
                 <div className="input-div">
@@ -141,10 +140,10 @@ export default function Step2({ plan, onComplete }) {
                     <label className="input-label">How much will you need to start the business?</label><br></br>
                     <input 
                     className="form-input"
-                    name="businessmoneyneeded"
+                    name="businessMoneyNeeded"
                     placeholder ="$200,000" 
-                    value={businessmoneyneeded}
-                    onChange={e=> setBusinessmoneyneeded(e.target.value)}
+                    value={businessMoneyNeeded}
+                    onChange={e=> setBusinessMoneyNeeded(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -177,9 +176,9 @@ export default function Step2({ plan, onComplete }) {
                     <label className="input-label">Would you like to make any major purchases in the future?</label><br></br>
                     <select 
                     className="form-select"
-                    name="majorpurchases"
-                    value={majorpurchases}
-                    onChange={e=> {setMajorpurchases(e.target.value); setShowForm2(!showForm2)}}
+                    name="majorPurchases"
+                    value={majorPurchases}
+                    onChange={e=> {setMajorPurchases(e.target.value); setShowForm2(!showForm2)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -193,8 +192,8 @@ export default function Step2({ plan, onComplete }) {
                     className="form-input"
                     name="purchasescost"
                     placeholder ="$100,000" 
-                    value={purchasescost}
-                    onChange={e=> setPurchasescost(e.target.value)}
+                    value={purchasesCost}
+                    onChange={e=> setPurchasesCost(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -217,10 +216,10 @@ export default function Step2({ plan, onComplete }) {
                     <label className="input-label">How much do you expect spending to support others?</label><br></br>
                     <input 
                     className="form-input"
-                    name="supportcost"
+                    name="supportCost"
                     placeholder ="$50,000" 
-                    value={supportcost}
-                    onChange={e=> setSupportcost(e.target.value)}
+                    value={supportCost}
+                    onChange={e=> setSupportCost(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -244,10 +243,10 @@ export default function Step2({ plan, onComplete }) {
                     <label className="input-label">How many kids do you have/expect?</label><br></br>
                     <input 
                     className="form-input"
-                    name="numberofkids"
+                    name="numberOfKids"
                     placeholder ="2" 
-                    value={numberofkids}
-                    onChange={e=> setNumberofkids(e.target.value)}
+                    value={numberOfKids}
+                    onChange={e=> setNumberOfKids(e.target.value)}
                     >
                     </input><br></br>
                 </div>
@@ -267,10 +266,10 @@ export default function Step2({ plan, onComplete }) {
                     <label className="input-label">How much would you like to spend on your kids college? (total)</label><br></br>
                     <input 
                     className="form-input"
-                    name="collegespendingamount"
+                    name="collegeSpendingAmount"
                     placeholder ="$50,000" 
-                    value={collegespendingamount}
-                    onChange={e=> setCollegespendingamount(e.target.value)}
+                    value={collegeSpendingAmount}
+                    onChange={e=> setCollegeSpendingAmount(e.target.value)}
                     >
                     </input><br></br>
                 </div>

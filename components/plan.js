@@ -13,10 +13,10 @@ export function Plan() {
 
     return (
     <div>
-    <div id="plan-box">
+    <div id="planBox">
         <div>
-            <h2 className="plan-title">Jacob's Financial Plan</h2>
-            <p id="plan-key-metric"><b>Key Metric:</b> Invest $300 a Month Into 401(k)</p>
+            <h2 className="planTitle">Jacob's Financial Plan</h2>
+            <p id="planKeyMetric"><b>Key Metric:</b> Invest $300 a Month Into 401(k)</p>
         </div>
         { showResults ? <FullPlan /> : null }
         <div onClick={function onClick2() {
@@ -36,8 +36,8 @@ export function Plan() {
 const DownArrow = () => {
   return (
     <img
-        id="down-arrow" 
-        src="/images/simple-down-arrow.png" 
+        id="downArrow" 
+        src="/images/simpleDownArrow.png" 
         width={20} 
         height={20}/>
   )
@@ -46,8 +46,8 @@ const DownArrow = () => {
 const UpArrow = () => {
   return (
     <img
-        id="up-arrow" 
-        src="/images/simple-up-arrow.png" 
+        id="upArrow" 
+        src="/images/simpleUpArrow.png" 
         width={20} 
         height={20}/>
   )
@@ -61,103 +61,103 @@ const FullPlan = () => {
   const [showResults5, setShowResults5] = useState(false)
 
       return (
-    <div className="display-on-down-click">
-        <h1 className="final-plan-h1">Progress</h1>
-        <div id="plan-section-2">
-            <p className="plan-p-center" id="investment-goal">$250/300 Invested In Past 30 Days</p>
-            <hr className="investments-goal-bar"></hr>
-            <hr className="investments-actual-bar"></hr>
+    <div className="displayOnDownClick">
+        <h1 className="finalPlanH1">Progress</h1>
+        <div id="planSection2">
+            <p className="planPCenter" id="investmentGoal">$250/300 Invested In Past 30 Days</p>
+            <hr className="investmentsGoalBar"></hr>
+            <hr className="investmentsActualBar"></hr>
         </div>
-        <div id="to-do-section">
-            <p className="plan-p-left">To Do:</p>
-            <label className="to-do-checklist">Set up 401(k)</label>
+        <div id="toDoSection">
+            <p className="planPLeft">To Do:</p>
+            <label className="toDoChecklist">Set up 401(k)</label>
             <input type="checkbox"></input><br></br>
-            <label className="to-do-checklist" >Automate $300 a month into 401(k)</label>
+            <label className="toDoChecklist" >Automate $300 a month into 401(k)</label>
             <input type="checkbox"></input><br></br>
-            <label className="to-do-checklist" >Set up investment LLC</label>
+            <label className="toDoChecklist" >Set up investment LLC</label>
             <input type="checkbox"></input>
         </div>
-        <div id="plan-section-1">
-            <h1 className="goal-plan-h1">Goal: Save $1,000,000 by age 60</h1>
-            <hr className="goal-bar"></hr>
-            <hr className="savings-bar"></hr>
-            <p className="plan-p-center" id="savings-goal">Current Savings: $27,000</p>
+        <div id="planSection1">
+            <h1 className="goalPlanH1">Goal: Save $1,000,000 by age 60</h1>
+            <hr className="goalBar"></hr>
+            <hr className="savingsBar"></hr>
+            <p className="planPCenter" id="savingsGoal">Current Savings: $27,000</p>
         </div>
-        <hr className="final-plan-solid-hr"></hr>
-        <h1 className="final-plan-h1">Overview</h1>
+        <hr className="finalPlanSolidHr"></hr>
+        <h1 className="finalPlanH1">Overview</h1>
         <div>
-          <p className="plan-p-center">Retirement Income (After Savings - Based On Our Plan)</p>
-          <p className="plan-p-center">Pension: $34,000/Year</p>
-          <p className="plan-p-center">Social Security: $6,000/Year</p>
-          <p className="plan-p-center">Investments: $54,000/Year</p>
-          <p className="plan-p-center">Total: $94,000/Year</p>
+          <p className="planPCenter">Retirement Income (After Savings - Based On Our Plan)</p>
+          <p className="planPCenter">Pension: $34,000/Year</p>
+          <p className="planPCenter">Social Security: $6,000/Year</p>
+          <p className="planPCenter">Investments: $54,000/Year</p>
+          <p className="planPCenter">Total: $94,000/Year</p>
         </div>
-        <hr className="final-plan-solid-hr"></hr>
-        <h1 className="final-plan-h1">Goals</h1>
+        <hr className="finalPlanSolidHr"></hr>
+        <h1 className="finalPlanH1">Goals</h1>
         <div>
-        <div className="goals-box" onClick={function onClick() {
+        <div className="goalsBox" onClick={function onClick() {
           if(!showResults2){
             setShowResults2(true)
           } else if (showResults2){
             setShowResults2(false)
           }
         }}>
-          <p className="goals-title">Retirement</p>
+          <p className="goalsTitle">Retirement</p>
         { showResults2 ? <GoalsBox /> : null }
         </div>
-        <div className="goals-box" onClick={function onClick() {
+        <div className="goalsBox" onClick={function onClick() {
           if(!showResults3){
             setShowResults3(true)
           } else if (showResults3){
             setShowResults3(false)
           }
         }}>
-          <p className="goals-title">Kids College</p>
+          <p className="goalsTitle">Kids College</p>
           { showResults3 ? <GoalsBox /> : null }
         </div>
-        <div className="goals-box" onClick={function onClick() {
+        <div className="goalsBox" onClick={function onClick() {
           if(!showResults4){
             setShowResults4(true)
           } else if (showResults4){
             setShowResults4(false)
           }
         }}>
-          <p className="goals-title">Home</p>
+          <p className="goalsTitle">Home</p>
           { showResults4 ? <GoalsBox /> : null }
         </div>
-        <div className="goals-box" onClick={function onClick() {
+        <div className="goalsBox" onClick={function onClick() {
           if(!showResults5){
             setShowResults5(true)
           } else if (showResults5){
             setShowResults5(false)
           }
         }}>
-          <p className="goals-title">Car</p>
+          <p className="goalsTitle">Car</p>
           { showResults5 ? <GoalsBox /> : null }
         </div>
         </div>
-        <hr className="final-plan-solid-hr"></hr>
-        <h1 className="final-plan-h1">Projections</h1>
+        <hr className="finalPlanSolidHr"></hr>
+        <h1 className="finalPlanH1">Projections</h1>
         <div>
-          <p className="plan-p-center">Retirement Income (After Savings - Based On Our Plan)</p>
-          <p className="plan-p-center">Pension: $34,000/Year</p>
-          <p className="plan-p-center">Social Security: $6,000/Year</p>
-          <p className="plan-p-center">Investments: $54,000/Year</p>
-          <p className="plan-p-center">Total: $94,000/Year</p>
+          <p className="planPCenter">Retirement Income (After Savings - Based On Our Plan)</p>
+          <p className="planPCenter">Pension: $34,000/Year</p>
+          <p className="planPCenter">Social Security: $6,000/Year</p>
+          <p className="planPCenter">Investments: $54,000/Year</p>
+          <p className="planPCenter">Total: $94,000/Year</p>
         </div>
-          <p className="plan-p-center">Risk Profile</p>
-        <hr className="final-plan-solid-hr"></hr>
-        <h1 className="final-plan-h1">Now</h1>
-        <div className="plan-box-now">
-          <p className="plan-p-left">Current Age: 20</p>
-          <p className="plan-p-left">Current Income: $4,000 a Month</p>
-          <p className="plan-p-left">Current Spending: $1,500 a Month</p>
+          <p className="planPCenter">Risk Profile</p>
+        <hr className="finalPlanSolidHr"></hr>
+        <h1 className="finalPlanH1">Now</h1>
+        <div className="planBoxNow">
+          <p className="planPLeft">Current Age: 20</p>
+          <p className="planPLeft">Current Income: $4,000 a Month</p>
+          <p className="planPLeft">Current Spending: $1,500 a Month</p>
           </div>
-          <div className="plan-box-now">
-          <p className="plan-p-left">Name: Jacob Trebil</p>
-          <p className="plan-p-left">Spouses Name: Jacob Trebil</p>
-          <p className="plan-p-left">Retirement Readiness Score: B+</p>
-          <p className="plan-p-left">Retirement Age: 60</p>
+          <div className="planBoxNow">
+          <p className="planPLeft">Name: Jacob Trebil</p>
+          <p className="planPLeft">Spouses Name: Jacob Trebil</p>
+          <p className="planPLeft">Retirement Readiness Score: B+</p>
+          <p className="planPLeft">Retirement Age: 60</p>
         </div>
         <div>
         </div>
@@ -167,23 +167,23 @@ const FullPlan = () => {
 
       const GoalsBox = () => {
         return (
-          <div className="goals-box-2">
-            <div className="goals-text-box">
-            <p className="goals-text">Amount Needed: $50,000</p>
-            <p className="goals-text">Date Needed: 10/23/2029</p>
-            <p className="goals-text">Savings Needed Per Month: $200</p>
+          <div className="goalsBox2">
+            <div className="goalsTextBox">
+            <p className="goalsText">Amount Needed: $50,000</p>
+            <p className="goalsText">Date Needed: 10/23/2029</p>
+            <p className="goalsText">Savings Needed Per Month: $200</p>
             </div>
           </div>
         )}
 
       const GoalsBox1 = () => {
           return (
-            <div className="goals-box-2">
+            <div className="goalsBox2">
             </div>
           )}
 
       const GoalsBox2 = () => {
             return (
-              <div className="goals-box-2">
+              <div className="goalsBox2">
               </div>
             )}

@@ -1,7 +1,8 @@
 
-function lengthofretirementfunction(ageofdeath, retirementage) {
-    const lengthofretirement = ageofdeath - retirementage; 
-    return lengthofretirement;
+function lengthOfRetirementFunction(retirementAge) {
+    const ageOfDeath = 92;
+    const lengthOfRetirement = ageOfDeath - retirementAge; 
+    return lengthOfRetirement;
 }
 
-module.exports = lengthofretirementfunction;
+module.exports = lengthOfRetirementFunction;

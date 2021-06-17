@@ -3,7 +3,7 @@ import _Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
-import { getData } from '../../apiclient/wizardfetch';
+import { getData } from '../../apiclient/wizardFetch';
 
 
 export default function PlanCalculations({ PlanModel }) {
@@ -14,7 +14,7 @@ export default function PlanCalculations({ PlanModel }) {
     const annualIncome = '$100,000';
 
     return (
-        <div id="plan-calculations">
+        <div id="planCalculations">
             <h1>Plan Calculations</h1>
             <p>{annualIncome}</p>
             <p>{retirementlength}</p>

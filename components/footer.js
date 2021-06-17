@@ -5,13 +5,13 @@ import Link from 'next/link';
 
 export function Footer() {
     return (
-    <div id="footer-section">
-        <div id="footer-nav-box">
-        <Link href="/"><p className="footer-nav-item">Home</p></Link>
-            <Link href="/legal"><p className="footer-nav-item">Legal & Privacy</p></Link>
+    <div id="footerSection">
+        <div id="footerNavBox">
+        <Link href="/"><p className="footerNavItem">Home</p></Link>
+            <Link href="/legal"><p className="footerNavItem">Legal & Privacy</p></Link>
         </div>
-        <div id="footer-copyright-box">
-            <p id="footer-copyright">©2021 FinancialPlanBuilder</p>
+        <div id="footerCopyrightBox">
+            <p id="footerCopyright">©2021 FinancialPlanBuilder</p>
         </div>
     </div>
     );

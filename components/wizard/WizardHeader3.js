@@ -2,21 +2,21 @@ import React from 'react';
 
 export default function WizardHeader3({}) { 
     return (
-    <div className='wizard-header'>
+    <div className='wizardHeader'>
         <div className="circle">
-            <h2 className="wizard-header-h2">1</h2>
+            <h2 className="wizardHeaderH2">1</h2>
         </div>
-        <h2 className="wizard-header-h2">Personal Info</h2>
-        <hr className="wizard-header-hr"></hr>
+        <h2 className="wizardHeaderH2">Personal Info</h2>
+        <hr className="wizardHeaderHr"></hr>
         <div className="circle">
-            <h2 className="wizard-header-h2">2</h2>
+            <h2 className="wizardHeaderH2">2</h2>
         </div>
-        <h2 className="wizard-header-h2">Your Vision & Goals</h2>
-        <hr className="wizard-header-hr"></hr>
-        <div className="circle circle-state">
-            <h2 className="wizard-header-h2">3</h2>
+        <h2 className="wizardHeaderH2">Your Vision & Goals</h2>
+        <hr className="wizardHeaderHr"></hr>
+        <div className="circle circleState">
+            <h2 className="wizardHeaderH2">3</h2>
         </div>
-        <h2 className="wizard-header-h2-selected">Your Financial Statements</h2>
+        <h2 className="wizardHeaderH2Selected">Your Financial Statements</h2>
     </div>
 )
 }

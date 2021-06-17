@@ -1,7 +1,5 @@
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
-import Plan from '../../../models/wizardschema';
-import dbConnect from '../../../util/wizarddbconnect';
-import { calculatesocialsecurity } from '../../../calculations/socialsecurity';
+import Plan from '../../../models/wizardSchema';
+import dbConnect from '../../../util/wizardDbConnect';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -12,10 +10,9 @@ export default async function handler(req,res) {
     switch (method) {
         case 'PUT':
             try {
-                /* calculatesocialsecurity(); */
                 const plan = await Plan.findOne({ _id: id })
-                const { currentearnings, currentsavings, riskattitude, volatility, changeportfolio, portfoliotradeoff, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaledebtamount, carfinancing, carfinancingamount, studentloans, studentloansamount, additionaldebt, additionaldebtamount, currentmonthlyearnings } = req.body
-                await Plan.updateOne({ _id: id}, { currentearnings, currentsavings, riskattitude, volatility, changeportfolio, portfoliotradeoff, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaledebtamount, carfinancing, carfinancingamount, studentloans, studentloansamount, additionaldebt, additionaldebtamount, currentmonthlyearnings }) 
+                const { currentEarnings, currentSavings, riskAttitude, volatility, changePortfolio, portfolioTradeoff, assetValue, increaseIncome, increaseIncomeAmount, outOfWork, lifeInsurance, taxPlan, investments, investmentsAmount, realEstate, realEstateAmount, alternativeAssets, alternativeAssetsAmount, otherAssets, otherAssetsAmount, powerOfAttorney, will, medicare, pension, pensionEarnings, pensionTimeframe, pensionInflation, socialSecurity, mortgage, mortgageAmount, creditCardDebt, creditCardDebtAmount, medicalDebt, medicalDebtAmount, carFinancing, carFinancingAmount, studentLoans, studentLoansAmount, additionalDebt, additionalDebtAmount, currentmonthlyearnings, lifeInsuranceDocument } = req.body
+                await Plan.updateOne({ _id: id}, { currentEarnings, currentSavings, riskAttitude, volatility, changePortfolio, portfolioTradeoff, assetValue, increaseIncome, increaseIncomeAmount, outOfWork, lifeInsurance, taxPlan, investments, investmentsAmount, realEstate, realEstateAmount, alternativeAssets, alternativeAssetsAmount, otherAssets, otherAssetsAmount, powerOfAttorney, will, medicare, pension, pensionEarnings, pensionTimeframe, pensionInflation, socialSecurity, mortgage, mortgageAmount, creditCardDebt, creditCardDebtAmount, medicalDebt, medicalDebtAmount, carFinancing, carFinancingAmount, studentLoans, studentLoansAmount, additionalDebt, additionalDebtAmount, currentmonthlyearnings, lifeInsuranceDocument }) 
                 const plan2 = await Plan.findById(id)
                 res.status(200).json( plan2 )
                 return;
@@ -28,23 +25,4 @@ export default async function handler(req,res) {
             res.status(400).json()
             break
     }
-
-    /* switch (method) {
-        case 'PUT':
-            try {
-                const plan = await Plan.findOne({ _id: id })
-                const { lifeexpectancy, workamount, volunteer, retirementage, retirementincome, charity, business, businessmoneyneeded, care, health, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, additionaldebt, additionaldebtamount} = req.body
-                await Plan.updateOne({ _id: id }, { lifeexpectancy, workamount, volunteer, retirementage, retirementincome, charity, business, businessmoneyneeded, majorpurchases, care, health, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, currentearnings, currentsavings, assetvalue, increaseincome, increaseincomeamount, outofwork, lifeinsurance, taxplan, investments, investmentsamount, realestate, realestateamount, alternativeassets, alternativeassetsamount, otherassets, otherassetsamount, powerofattorney, will, medicare, pension, pensionamount, socialsecurity, socialsecurityamount, mortgage, mortgageamount, creditcarddebt, creditcarddebtamount, medicaldebt, medicaldebtamount, carfinancing, carfinancingamount, studentloans, studentloanamount, additionaldebt, additionaldebtamount})
-                const plan2 = await Plan.findById(id)
-                res.status(200).json( plan2 )
-                return;
-            } catch (error) {
-                console.log(error)
-                res.status(400).json()
-                return;
-            }
-            default: 
-            res.status(400).json()
-            break 
-    } */
 }

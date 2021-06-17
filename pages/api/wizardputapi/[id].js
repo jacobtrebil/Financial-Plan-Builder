@@ -1,6 +1,5 @@
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
-import Plan from '../../../models/wizardschema';
-import dbConnect from '../../../util/wizarddbconnect';
+import Plan from '../../../models/wizardSchema';
+import dbConnect from '../../../util/wizardDbConnect';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -12,8 +11,8 @@ export default async function handler(req,res) {
         case 'PUT':
             try {
                 const plan = await Plan.findOne({ _id: id })
-                const { workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business } = req.body
-                await Plan.updateOne({ _id: id}, { workamount, volunteer, retirementage, retirementincome, businessmoneyneeded, care, health, charity, majorpurchases, purchasescost, support, supportcost, collegespendingamount, kids, college, numberofkids, business })
+                const { outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, care, health } = req.body
+                await Plan.updateOne({ _id: id}, { outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, care, health })
                 const plan2 = await Plan.findById(id)
                 res.status(200).json( plan2 )
                 return;

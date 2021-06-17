@@ -7,7 +7,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     text-align: center;
-  background-color: rgb(241, 241, 241);
+  background-color: white;
   width: 100%;
   overflow-x: none;
 }
@@ -21,14 +21,6 @@ a {
   box-sizing: border-box;
 }
 
-p {
-  text-align: left;
-  margin: 0px 0px 0px 40px;
-  font-size: 16px;
-  color:black;
-  font-weight: bold;
-}
-
 h1 {
   text-align: left;
   font-size: 28px;
@@ -38,9 +30,13 @@ h1 {
 
 .app {
   text-align: center;
-  background-color: rgb(241, 241, 241);
+  background-color: white;
   padding: 0px 0px 0px 100px;
   height: 100%;
+}
+
+p {
+  font-size: 16px;
 }
 
 
@@ -62,16 +58,17 @@ h1 {
   margin: 0px 64px 0px 0px;
 }
 
-#plans-section {
+#plansSection {
   background-color: white;
   border-radius: 8px;
   width: 80%;
-  margin: 50px auto 200px auto;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
+  margin: 170px auto 220px auto;
   padding: 0px 0px 5% 0px;
+  border: 1px solid #a1a0a0;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 2px 10px 0 rgba(0,0,0,0.2);
 }
 
-.plans-subtitle {
+.plansSubtitle {
   margin: 50px 0px 20px 60px;
   display: inline-block;
   float: left;
@@ -92,8 +89,7 @@ h1 {
   background-color: white;
   position: fixed;
   z-index: 1;
-  border-right: 0px solid black;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
+  border-right: 1px solid #a1a0a0;
 }
 
 #plans {
@@ -104,11 +100,11 @@ h1 {
   margin: 20px 0px 0px 120px;
 }
 
-#plans-side-logo {
+#plansSideLogo {
   margin: 60px 0px 0px 0px;
 }
 
-#plans-section2 {
+#plansSection2 {
   background-color: white;
   border-radius: 8px;
   width: 80%;
@@ -117,13 +113,13 @@ h1 {
   padding: 0px 0px 40px 0px;
 }
 
-.plans-solid-hr {
-  width: 92%;
-  border: 1px solid rgb(226, 225, 225);
+.plansSolidHr {
+  width: 90%;
+  color: #a1a0a0;
   margin: 0px auto 0px auto;
 }
 
-.plans-button {
+.plansButton {
   float: right;
   display: inline-block;
   margin: 35px 70px 0px 0px;
@@ -137,13 +133,13 @@ h1 {
   position: relative;
 }
 
-.plans-button:hover {
+.plansButton:hover {
   cursor: pointer;
   border: 0px solid black;
   opacity: 70%;
 }
 
-#no-plans-message {
+#noPlansMessage {
   font-weight: normal;
   text-align: center;
   margin: 40px 0px 0px 0px;
@@ -161,11 +157,6 @@ h1 {
 
 /* Images */
 
-.education:hover {
-  opacity: 70%;
-  cursor: pointer;
-}
-
 .home:hover {
   opacity: 70%;
   cursor: pointer;
@@ -176,56 +167,12 @@ h1 {
   cursor: pointer;
 }
 
-.analytics:hover {
-  opacity: 70%;
-  cursor: pointer;
-}
-
-.integrations:hover {
-  opacity: 70%;
-  cursor: pointer;
-}
-
 .settings:hover {
   opacity: 70%;
   cursor: pointer;
 }
 
-#plus {
-  width: 40px;
-  text-align: right;
-  margin: -10px 0px 0px 600px;
-}
-
-.plus {
-  float: right;
-  margin: 0px 10% 0px 20px;
-  padding: 0px;
-}
-
-.plus:hover {
-  cursor: pointer;
-  opacity: 70%;
-}
-
-.home2 {
-  width: 30px;
-  display: block;
-  margin: 0px auto;
-  position: relative;
-}
-
-.home2:hover {
-  cursor: pointer;
-  opacity: 70%;
-}
-
-.home-img {
-  cursor: pointer;
-  opacity: 70%;
-}
-
-#plans-side-logo:hover {
+#plansSideLogo:hover {
   cursor: pointer;
   opacity: 75%;
 }
@@ -244,69 +191,8 @@ h1 {
 
 /* Hover Elements */
 
-#home-img {
-  width: 30px;
-  height: 30px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 20px auto 0px auto;
-  padding: 0px 0px 0px 0px;
-}
-
-#home-img:hover {
-  cursor: pointer;
-  border-radius: 20px;
-}
-
-.percent-change {
-  font-size: 12px;
-  color: green;
-  float: right;
-  margin: 5px 0px 0px 40px;
-  padding: 0px 10% 0px 0px;
-}
-
-.percent-box {
-  width: 100%;
-  float: right;
-}
-
 .asset {
   float: left;
-}
-
-.asset-number {
-  float: right;
-  margin-right: 30px;
-}
-
-.asset-section {
-  margin: 40px 0px 0px 0px;
-}
-
-.asset-box {
-  width: 100%;
-}
-
-.asset-section2 {
-  margin: 40px 0px 0px 0px;
-  padding: 40px 0px 0px 0px;
-}
-
-.asset-number2 {
-  float: right;
-  margin: 20px 40px 0px 0px;
-}
-
-.asset2 {
-  float: left;
-  margin: 20px 0px 0px 40px;
-  padding: 0px 30px 0px 0px;
-}
-
-.red {
-  color: red;
 }
 
 .chart {
@@ -319,219 +205,36 @@ h1 {
 
 
 
-/* Settings Page */
+/* Settings Section */
 
-.settings-h1 {
-  margin: 20px 0px 0px 120px;
-}
-
-#settings-container {
+#settingsContainer {
   padding: 0px 0px 0px 0px;
 }
 
-#settings-content {
+#settingsContent {
   background-color: white;
-  padding: 20px 0px 20px 0px;
+  padding: 60px 0px 60px 0px;
   width: 80%;
   margin: 40px auto 80px auto;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
   border-radius: 8px;
 }
 
-.settings-nav-p {
-  display: inline-block;
-  font-weight: 500;
-  padding: 20px 20px 0px 20px;
-  margin: 0px 0px 0px 0px;
-}
-
-.settings-nav-p:hover {
-  cursor: pointer;
-  opacity: 70%;
-  color: black;
-}
-
-#settings-nav-middle-p {
-  padding: 0px 140px 0px 140px;
-}
-
-#settings-nav-profile {
-  color: black;
-}
-
-#settings-nav {
-  text-align: center;
-  margin: 0px 0px 0px 0px;
-}
-
-
-
-
-
-
-
-/* Integrations Page */
-
-#integrations-h1 {
-  margin: 20px 0px 0px 120px;
-}
-
-#integrations-side-logo {
-  margin: 60px 0px 0px 0px;
-}
-
-#integrations-section {
-  background-color: white;
-  border-radius: 8px;
-  width: 80%;
-  margin: 40px auto 120px auto;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
-  padding: 0px 0px 80px 0px;
-}
-
-.integrations-subtitle {
-  margin: 50px 0px 20px 60px;
-  display: inline-block;
-  float: left;
-}
-
-.integrations-solid-hr {
-  width: 92%;
-  border: 1px solid rgb(226, 225, 225);
-  margin: 0px auto 0px auto;
-}
-
-.integrations-button {
-  float: right;
-  display: inline-block;
-  margin: 40px 70px 0px 0px;
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: 0px solid rgb(192, 192, 192);
-  border-radius: 2px;
-  padding: 12px 24px;
-  font-size: 12px;
-  bottom: 0;
-  position: relative;
-}
-
-.integrations-button:hover {
-  cursor: pointer;
-  border: 0px solid black;
-  opacity: 70%;
-}
-
-.no-integrations-message {
-  font-weight: normal;
-  text-align: center;
-  margin: 40px 0px 0px 0px;
-}
-
-
-
-
-
-
-/* Profile Component */
-
-#profile-section {
-  margin: 20px 0px 20px 0px;
-}
-
-#profile-update-form {
-  margin: 40px 0px 20px 0px;
-  text-align: left;
-}
-
-.profile-form-input {
-  margin: 10px 0px 20px 40px;
-  text-align: left;
-  padding: 10px 80px 10px 10px;
-  border: 1px solid rgb(194, 194, 194);
+.accountContainer {
+  border: 1px solid #a1a0a0;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.2);
   border-radius: 4px;
-  font-size: 18px;
+  margin: 20px 0px 20px 0px;
+  padding: 20px 0px 20px 0px;
 }
 
-.profile-form-label {
-  text-align: left;
-  margin: 0px 0px 0px 40px;
-  padding: 0px;
-}
-
-#profile-save-button {
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: none;
-  border-radius: 2px;
-  padding: 14px 28px;
-  font-size: 14px;
-  margin: 20px 40px;
-}
-
-#profile-save-button:hover {
-  cursor: pointer;
-  opacity: 80%;
-}
-
-
-
-
-
-/* Payment Methods Component */
-
-#payment-method-title {
+#cancelMethodTitle {
   margin: 15px 0px 10px 50px;
   display: inline-block;
   float: left;
   padding: 0px;
 }
 
-.payment-button {
-  float: right;
-  display: inline-block;
-  margin: 0px 70px 15px 0px;
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: 0px solid rgb(192, 192, 192);
-  border-radius: 2px;
-  padding: 12px 24px;
-  font-size: 12px;
-  bottom: 0;
-  position: relative;
-}
-
-.payment-button:hover {
-  opacity: 70%;
-  cursor: pointer;
-}
-
-.payment-solid-hr {
-  width: 92%;
-  border: 1px solid rgb(226, 225, 225);
-  margin: 10px auto 0px auto;
-}
-
-#no-payment-message {
-  font-weight: normal;
-  text-align: center;
-  margin: 40px 0px 60px 0px;
-}
-
-
-
-
-
-
-/* Close Account */
-
-#cancel-method-title {
-  margin: 15px 0px 10px 50px;
-  display: inline-block;
-  float: left;
-  padding: 0px;
-}
-
-.cancel-button {
+.cancelButton {
   float: right;
   display: inline-block;
   margin: 0px 70px 15px 0px;
@@ -545,21 +248,53 @@ h1 {
   position: relative;
 }
 
-.cancel-button:hover {
+.cancelButton:hover {
   opacity: 70%;
   cursor: pointer;
 }
 
-.cancel-solid-hr {
+.cancelSolidHr {
   width: 92%;
   border: 1px solid rgb(226, 225, 225);
   margin: 10px auto 0px auto;
 }
 
-#cancel-account-message {
+#cancelAccountMessage {
   font-weight: normal;
   text-align: center;
-  margin: 40px 0px 60px 0px;
+  margin: 40px 0px 20px 0px;
+}
+
+#paymentMethodTitle {
+  margin: 15px 0px 10px 50px;
+  display: inline-block;
+  float: left;
+  padding: 0px;
+}
+
+.paymentButton {
+  float: right;
+  display: inline-block;
+  margin: 0px 70px 15px 0px;
+  background-color: rgb(4, 187, 172);
+  color: white;
+  border: 0px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  padding: 12px 24px;
+  font-size: 12px;
+  bottom: 0;
+  position: relative;
+}
+
+.paymentButton:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.paymentSolidHr {
+  width: 92%;
+  border: 1px solid rgb(226, 225, 225);
+  margin: 10px auto 0px auto;
 }
 
 
@@ -571,83 +306,25 @@ h1 {
 
 /* Sidebar Section */
 
-#fpb-top-logo {
+#fpbTopLogo {
   margin: 60px auto 0px auto;
 }
 
-.sidebar-logo {
+.sidebarLogo {
   display: block;
   margin: 60px 0px 0px 0px;
 }
 
-#home-side-logo {
+#homeSideLogo {
   margin: 60px 0px 0px 0px;
 }
 
-#plans-side-logo {
+#plansSideLogo {
   margin: 60px 0px 0px 0px;
 }
 
-#settings-side-logo {
+#settingsSideLogo {
   margin: 60px 0px 0px 0px;
-}
-
-
-
-
-
-
-
-
-
-/* Plans Popup Section */
-
-#full-width-box {
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0,0,0,0.4);
-  z-index: 0;
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow: auto;
-}
-
-#plan-form-popup-section {
-  background-color: white;
-  width: 80%;
-  margin: 10% auto 0px auto;
-  padding: 20px 0px 40px 0px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
-  border-radius: 8px;
-}
-
-#plan-form-page-1 {
-  margin: 20px auto 0px 0px;
-}
-
-#plan-title {
-  text-align: center;
-  margin: 0px auto 0px auto;
-  
-}
-
-.plan-input-box {
-  margin: 40px 0px 0px 0px;
-}
-
-#plan-form-popup-section label {
-  font-size: 18px;
-}
-
-#plan-form-popup-section select {
-  font-size: 16px;
-  padding: 5px;
-  margin-left: 10px;
-}
-
-#plans-section2 {
-  margin: 60px auto 450px auto;
 }
 
 
@@ -658,8 +335,8 @@ h1 {
 
 /* Footer Section */
 
-#footer-section {
-  border-top: 1px solid rgb(216, 214, 214);
+#footerSection {
+  border-top: 1px solid #a1a0a0;
   margin: 0px 0px 0px 0px;
   padding: 30px 0px 30px 0px;
   bottom: 0;
@@ -667,40 +344,38 @@ h1 {
   position: relative;
 }
 
-#footer-text-box {
-  margin: 0px 0px 0px 60px;
-}
-
-#footer-section p {
+#footerSection p {
   font-weight: normal;
   display: inline-block;
   text-align: left;
 }
 
-#footer-copyright {
+#footerCopyright {
   float: right;
   margin: 4px 40px 0px 0px;
   font-size: 16px;
-  color:rgb(156, 156, 156);
+  color: black;
 }
 
-#footer-nav-box {
+#footerNavBox {
   display: inline-block;
   float: left;
   margin: 0px 0px 0px 60px;
   padding: 0px 0px 30px 0px;
 }
 
-#footer-copyright-box {
+#footerCopyrightBox {
   display: inline-block;
   float: right;
 }
 
-.footer-nav-item {
-  color: rgb(156, 156, 156);
+.footerNavItem {
+  color: black;
+  font-size: 16px;
+  margin: 0px 20px 0px 40px;
 }
 
-.footer-nav-item:hover {
+.footerNavItem:hover {
   cursor: pointer;
   opacity: 70%;
 }
@@ -712,11 +387,11 @@ h1 {
 
 
 /* Legal Page */
-.legal-section {
+.legalSection {
   padding: 0px 0px 80px 0px;
 }
 
-#legal-h1 {
+#legalH1 {
   margin: 20px 0px 0px 120px;
 }
 
@@ -725,7 +400,7 @@ h1 {
   margin: 20px 60px 0px 120px;
 }
 
-.terms-h2 {
+.termsH2 {
   text-align: left;
   margin: 20px 0px 0px 120px;
   font-size: 20px;
@@ -739,153 +414,256 @@ h1 {
 
 /* Create a Plan */
 
-#create-a-plan {
+#createAPlan {
   margin: 15% auto 1% auto;
   text-align: center;
-  font-size: 42px;
+  font-size: 46px;
 }
 
-#create-a-plan-h2 {
+#createAPlanH2 {
   font-weight: normal;
   font-size: 16px;
   margin: 0px 0px 0px 0px;
 }
 
-#create-a-plan-2-h2 {
+#createAPlan2H2 {
   font-weight: normal;
   font-size: 16px;
-  margin: 10px 20% 2% 20%;
+  margin: 15px 20% 10px 20%;
 }
 
-.plan-input-box {
-  text-align: center;
-  margin: 20px auto 0px auto;
-}
-
-.retirement-form-label {
-  text-align: center;
-  margin: 40px 0px 0px 0px;
-  padding: 40px 0px 0px 0px;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.plan-input-box select {
-  font-size: 16px;
-  padding: 5px;
-  margin: 0px 0px 0px 10px;
-}
-
-.plan-input-box input {
-  font-size: 16px;
-  padding: 5px;
-  margin: 0px 0px 0px 10px;
-}
-
-#plan-button {
+#startPlanButton {
   background-color: rgb(4, 187, 172);
   color: white;
   border: none;
   border-radius: 2px;
   padding: 16px 32px;
   font-size: 18px;
-  margin: 5% 0px 18% 0px;
+  margin: 30px 0px 200px 0px;
   font-weight: normal;
 }
 
-#plan-button:hover {
+#startPlanButton:hover {
   cursor: pointer;
   opacity: 75%;
 }
 
-#plan-button2 {
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: none;
-  border-radius: 2px;
-  padding: 16px 32px;
-  font-size: 18px;
-  margin: 5% 0px 5% 0px;
+#section1StartBox {
+  margin: 0px;
+  padding: 0px;
 }
 
-#plan-button2:hover {
-  cursor: pointer;
-  opacity: 75%;
+
+
+/* Dashboard Plan Styles */
+
+#plansSection2 {
+  margin: 60px auto 450px auto;
 }
 
-#note {
-  margin: 15px auto 0px auto;
-  font-weight: normal;
-  line-height: 28px;
-  text-align: center
+#planBox {
+  margin: 30px auto 0px auto;
+  background-color: white;
+  border-radius: 4px;
+  width: 90%;
+  padding: 3% 0px 6% 0px;
+  border: 1px solid #a1a0a0;
 }
 
-#large-input {
-  font-size: 28px;
-  font-weight: normal;
-  padding: 20px 20px;
-  width: 40%;
-  border: rgb(207, 207, 207) solid 2px;
-}
-
-#section-start-h1 {
-  margin: 18% auto 1% auto;
+.planTitle {
   text-align: center;
-  font-size: 42px;
-}
-
-#section-start-h2 {
-  font-weight: normal;
-  font-size: 16px;
-  margin: 0px 0px 2% 0px;
-}
-
-#section-start-button {
-    background-color: rgb(4, 187, 172);
-    color: white;
-    border: none;
-    border-radius: 2px;
-    padding: 16px 32px;
-    font-size: 18px;
-    margin: 3% 0px 25% 0px;
-  }
-  
-  #section-start-button:hover {
-    cursor: pointer;
-    opacity: 75%;
-  }
-
-  #section-1-start-box {
-    margin: 0px;
-    padding: 0px;
-  }
-
-  .section-1-start-box {
-    margin: 0px;
-    padding: 0px;
-  }
-
-
-
-
-/* Plan Form */
-
-#plan-form-h1 {
-  margin: 13% auto 1% auto;
-  text-align: center;
-  font-size: 42px;
-}
-
-#plan-form-h2 {
-  font-weight: normal;
-  font-size: 16px;
-  margin: 0px 0px 5% 0px;
-}
-
-.custom-select {
-  padding: 20px;
-  font-size: 24px;
+  float: left;
+  padding: 0px 0px 0px 0px;
+  font-size: 20px;
   display: inline-block;
+  position: relative;
+  margin: 20px 0px 0px 8%;
+}
+
+#planKeyMetric {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  margin: 23px 0px 0px 3%;
+  font-weight: normal;
+}
+
+.displayOnDownClick {
+  display: block;
+  margin: 80px 0px 40px 0px;
+}
+
+.planPCenter{
+  font-weight: 500;
+  text-align: center;
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
+  font-size: 16px;
+}
+
+.planPLeft{
+  font-weight: 500;
+  text-align: left;
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
+  font-size: 16px;
+}
+
+#planSection1 {
+  display: inline-block;
+  margin: 60px 10px 0px 10px;
+  text-align: center;
+  width: 80%;
+}
+
+#planSection2 {
+  display: inline-block;
+  margin: 10% 40px 0px 20px;
+  text-align: left;
+  vertical-align: top;
+}
+
+#toDoSection {
+  display: inline-block;
+  margin: 20px 0px 0px 0px;
+  padding: 30px;
+  text-align: left;
+  border-radius:4px;
+  border:rgb(226, 225, 225) 2px solid;
+}
+
+.toDoChecklist {
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left;
+  margin: 20px 0px 0px 0px;
+  padding: 0px;
+}
+
+.finalPlanH1 {
+  font-size: 20px;
+  margin: 0px 0px 20px 60px;
+  padding: 0px;
+}
+
+.goalPlanH1 {
+  font-size: 20px;
+  margin: 0px 0px 20px 10px;
+  padding: 0px;
+  text-align: left;
+}
+
+.finalPlanSolidHr {
+  width: 92%;
+  border: 1px solid rgb(226, 225, 225);
+  margin: 40px auto 40px auto;
+}
+
+.planBoxNow {
+  margin: 40px 40px 40px 40px;
+  display: inline-block;
+}
+
+#upArrow {
+  float: right;
+  margin: 20px 20px 40px 0px;
+}
+
+#upArrow:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+#downArrow {
+  float: right;
+  margin: 20px 20px 40px 0px;
+}
+
+#downArrow:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+.goalsBox {
+  background-color: white;
+  border-radius: 8px;
+  width: 40%;
+  display: inline-block;
+  margin: 10px 10px 10px 10px;
+  padding: 0px 0px 5% 0px;
+  border: 2px solid rgb(226, 225, 225);
+}
+
+.goalsBox:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+.goalsTitle {
+  font-weight: 500;
+  text-align: left;
+  margin: 40px 0px 0px 20px;
+  padding: 0px;
+  font-size: 16px;
+  vertical-align: center;
+}
+
+.goalsBox2 {
+  margin: 0px 0px 0px 0px;
+  height: 100px;
+}
+
+.goalsText {
+  color:black;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 10px 0px 0px 20px;
+  padding: 0px;
+}
+
+.goalsTextBox {
+  margin: 30px 0px 0px 0px;
+}
+
+.keyMetric {
+  font-weight: normal;
+}
+
+.savingsBar {
+  border: 2px solid rgb(4, 187, 172);
+  border-radius: 2px;
+  width: 3%;
+  text-align: left;
+  margin: 0px 0px 10px 10%;
+}
+
+.goalBar {
+  border: 2px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  width: 80%;
+  text-align: left;
+  margin: 6% auto 10px auto;
+}
+
+#savingsGoal {
+  margin: 20px 0px 0px 0px;
+  font-weight: normal;
+}
+
+.investmentsActualBar {
+  border: 2px solid rgb(4, 187, 172);
+  border-radius: 2px;
+  width: 80%;
+  text-align: left;
+  margin: 0px 0px 10px 0px;
+}
+
+.investmentsGoalBar {
+  border: 2px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  width: 100%;
+  text-align: left;
+  margin: 0px 0px 10px 0px;
 }
 
 .errors {
@@ -901,248 +679,7 @@ h1 {
 
 
 
-/* Plan Styles */
-
-#plan-box {
-  margin: 30px auto 0px auto;
-  background-color: white;
-  border-radius: 4px;
-  width: 90%;
-  padding: 3% 0px 6% 0px;
-  border: #E2E1E1 2px solid;
-}
-
-.plan-title {
-  text-align: center;
-  float: left;
-  padding: 0px 0px 0px 0px;
-  font-size: 20px;
-  display: inline-block;
-  position: relative;
-  margin: 20px 0px 0px 8%;
-}
-
-#plan-key-metric {
-  display: inline-block;
-  font-weight: 500;
-  text-align: center;
-  margin: 23px 0px 0px 3%;
-  font-weight: normal;
-}
-
-.display-on-down-click {
-  display: block;
-  margin: 80px 0px 40px 0px;
-}
-
-.plan-p-center{
-  font-weight: 500;
-  text-align: center;
-  margin: 0px 0px 10px 0px;
-  padding: 0px;
-  font-size: 16px;
-}
-
-.plan-p-left{
-  font-weight: 500;
-  text-align: left;
-  margin: 0px 0px 10px 0px;
-  padding: 0px;
-  font-size: 16px;
-}
-
-.plan-button-3 {
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: none;
-  border-radius: 2px;
-  padding: 6px 12px;
-  font-size: 12px;
-  margin: 10px 0px 10px 0px;
-  font-weight: normal;
-}
-
-.plan-button-3:hover {
-  cursor: pointer;
-  opacity: 70%;
-}
-
-#plan-section-1 {
-  display: inline-block;
-  margin: 60px 10px 0px 10px;
-  text-align: center;
-  width: 80%;
-}
-
-#plan-section-2 {
-  display: inline-block;
-  margin: 10% 40px 0px 20px;
-  text-align: left;
-  vertical-align: top;
-}
-
-#to-do-section {
-  display: inline-block;
-  margin: 20px 0px 0px 0px;
-  padding: 30px;
-  text-align: left;
-  border-radius:4px;
-  border:rgb(226, 225, 225) 2px solid;
-}
-
-#plan-section-3 p {
-  top: 0;
-  margin: 0px;
-  padding: 0px;
-}
-
-.to-do-checklist {
-  font-weight: 400;
-  font-size: 14px;
-  text-align: left;
-  margin: 20px 0px 0px 0px;
-  padding: 0px;
-}
-
-.final-plan-h1 {
-  font-size: 20px;
-  margin: 0px 0px 20px 60px;
-  padding: 0px;
-}
-
-.goal-plan-h1 {
-  font-size: 20px;
-  margin: 0px 0px 20px -10px;
-  padding: 0px;
-  text-align: left;
-}
-
-.final-plan-solid-hr {
-  width: 92%;
-  border: 1px solid rgb(226, 225, 225);
-  margin: 40px auto 40px auto;
-}
-
-.plan-box-now {
-  margin: 40px 40px 40px 40px;
-  display: inline-block;
-}
-
-#up-arrow {
-  float: right;
-  margin: 20px 20px 40px 0px;
-}
-
-#up-arrow:hover {
-  cursor: pointer;
-  opacity: 70%;
-}
-
-#down-arrow {
-  float: right;
-  margin: 20px 20px 40px 0px;
-}
-
-#down-arrow:hover {
-  cursor: pointer;
-  opacity: 70%;
-}
-
-.goals-box {
-  background-color: white;
-  border-radius: 8px;
-  width: 40%;
-  display: inline-block;
-  margin: 10px 10px 10px 10px;
-  padding: 0px 0px 5% 0px;
-  border: 2px solid rgb(226, 225, 225);
-}
-
-.goals-box:hover {
-  cursor: pointer;
-  opacity: 70%;
-}
-
-.goals-title {
-  font-weight: 500;
-  text-align: left;
-  margin: 40px 0px 0px 20px;
-  padding: 0px;
-  font-size: 16px;
-  vertical-align: center;
-}
-
-.green {
-  color:rgb(4, 187, 172);
-}
-
-.goals-box-2 {
-  margin: 0px 0px 0px 0px;
-  height: 100px;
-}
-
-.goals-text {
-  color:black;
-  font-weight: 400;
-  font-size: 14px;
-  margin: 10px 0px 0px 20px;
-  padding: 0px;
-}
-
-.goals-text-box {
-  margin: 30px 0px 0px 0px;
-}
-
-.key-metric {
-  font-weight: normal;
-}
-
-.savings-bar {
-  border: 2px solid rgb(4, 187, 172);
-  border-radius: 2px;
-  width: 3%;
-  text-align: left;
-  margin: 0px 0px 10px 10%;
-}
-
-.goal-bar {
-  border: 2px solid rgb(192, 192, 192);
-  border-radius: 2px;
-  width: 80%;
-  text-align: left;
-  margin: 6% auto 10px auto;
-}
-
-#savings-goal {
-  margin: 20px 0px 0px 0px;
-  font-weight: normal;
-}
-
-.investments-actual-bar {
-  border: 2px solid rgb(4, 187, 172);
-  border-radius: 2px;
-  width: 80%;
-  text-align: left;
-  margin: 0px 0px 10px 0px;
-}
-
-.investments-goal-bar {
-  border: 2px solid rgb(192, 192, 192);
-  border-radius: 2px;
-  width: 100%;
-  text-align: left;
-  margin: 0px 0px 10px 0px;
-}
-
-/* Wizard Section */
-
-.container {
-  display: flex;
-  width: 40%;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-}
+/* Wizard Page Styles */
 
 .wizard {
   display: flex;
@@ -1152,80 +689,33 @@ h1 {
   margin: 0px 0px 0px 0px;
 }
 
-.wizard-title {
-  padding: 8px;
-}
 
-.wizard-step {
-  display: flex;
-  flex-direction: column;
-}
 
-.wizard-step-content {
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
-}
+/* Wizard Header Styles */
 
-.wizard-step-content input {
-  margin: 5px 0px 0px 0px;
-  padding: 10px 10px;
-}
-
-.wizard-controls {
-  padding: 12px;
-}
-
-.wizard-header {
+.wizardHeader {
   background-color: white;
   color: black;
   margin: 0px 0px 0px 0px;
-  padding: 20px 0px 20px 5%;
+  padding: 40px 0px 10px 0px;
   top: 0;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
-  text-align: left;
+  text-align: center;
 }
 
-.wizard-header-h2 {
+.wizardHeaderH2 {
+  display: inline-block;
+  margin: 11px 16px 10px 16px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.wizardHeaderH2Selected {
   display: inline-block;
   margin: 11px 10px 10px 16px;
   font-size: 16px;
-  font-weight: 500;
 }
 
-.wizard-header-h2-selected {
-  display: inline-block;
-  margin: 11px 10px 10px 16px;
-  font-size: 16px;
-}
-
-.wizard-footer {
-  background-color: white;
-  padding: 40px 0px 40px 0px;
-  margin: 18% 0px 0px 0px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
-  width: 100%;
-}
-
-.wizard-footer-button {
-  float: right;
-  margin: 0px 5% 0px 0px;
-  position: static;
-  background-color:rgb(4, 187, 172);
-  color: white;
-  border: none;
-  border-radius: 2px;
-  padding: 12px 26px;
-  font-size: 16px;
-  font-weight: normal;
-}
-
-.wizard-footer-button:hover {
-  opacity: 70%;
-  cursor: pointer;
-}
-
-.wizard-header-hr {
+.wizardHeaderHr {
   color: rgb(211, 211, 211);
   background-color: rgb(211, 211, 211);
   border: 1px solid rgb(211, 211, 211);
@@ -1245,66 +735,128 @@ h1 {
   margin: 0px 0px 0px 20px
 }
 
-.circle-state {
+.circleState {
   background-color:rgb(4, 187, 172);
   color: white;
 }
 
-.wizard-headline {
+
+
+
+
+
+/* Wizard Footer Styles */
+
+.wizardFooter {
+  background-color: white;
+  padding: 20px 0px 40px 0px;
+  margin: 20px 0px 0px 0px;
+  width: 100%;
+}
+
+.wizardFooterButton {
+  margin: 0px 5% 0px 0px;
+  position: static;
+  background-color:rgb(4, 187, 172);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.wizardFooterButton:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+
+
+
+
+
+/* Wizard Headline Styles */
+
+.wizardHeadline {
   text-align: left;
   margin: 5% 0px 0px 8%;
 }
 
-.wizard-subheadline {
+.wizardSubheadline {
   text-align: left;
   margin: 1% 0px 0px 8%;
   font-weight: normal;
 }
 
-.inputs-div-1 {
+
+
+
+
+
+.inputsDiv1 {
   margin: 20px 0px 0px 0px;
   width: 100%;
   padding: 10px 0px 0px 8%;
   text-align: left;
 }
 
-.form-input {
+.formBorder {
+  border: solid 1px #a5a5a5;
+  width: 50%;
+  border-radius: 4px;
+  margin: 40px auto 0px auto;
+  padding: 10px 10px 35px 10px;
+}
+
+.formInput {
   width: 40%;
-  margin: 0px 0px 0px 0px;
+  margin: 0px 40px 0px 0px;
   border: 1px rgb(221, 221, 221) solid;
   padding: 20px 0px 20px 0px;
   font-size: 14px;
   border-radius: 4px;
 }
 
-.input-label {
+.formInputPages {
+  width: 40%;
+  margin: 5px 40px 0px 0px;
+  border: 1px rgb(221, 221, 221) solid;
+  padding: 10px 0px 10px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.formInputPagesDob {
+  width: 10%;
+  margin: 5px 0px 0px 10px;
+  border: 1px rgb(221, 221, 221) solid;
+  padding: 10px 0px 10px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.formInputDob {
+  width: 10%;
+  margin: 0px 40px 0px 0px;
+  border: 1px rgb(221, 221, 221) solid;
+  padding: 0px 40px 0px 0px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.inputLabel {
   font-size: 16px;
   margin: 0px 0px 5px 5px;
   color: rgb(0, 0, 0);
   padding: 20px 0px 20px 0px;
 }
 
-.input-div {
+.inputDiv {
   margin: 0px 0px 20px 0px;
 }
 
-#start-plan-button {
-  background-color: rgb(4, 187, 172);
-  color: white;
-  border: none;
-  border-radius: 2px;
-  padding: 16px 32px;
-  font-size: 18px;
-  margin: 20px 0px 200px 0px;
-  font-weight: normal;
-}
-
-#start-plan-button:hover {
-  cursor: pointer;
-  opacity: 75%;
-}
-
-.form-select {
+.formSelect {
   text-align: center;
   margin: 10px 0px 0px 0px;
   border: 1px rgb(221, 221, 221) solid;
@@ -1313,9 +865,12 @@ h1 {
   border-radius: 4px;
 }
 
-#investment-goal {
+#investmentGoal {
   font-weight: normal;
 }
+
+
+
 
 
 
@@ -1328,25 +883,328 @@ h1 {
   padding: 10px 0px;
 }
 
-.loader-box {
+.loaderBox {
   margin: 200px auto 200px auto;
   background-color: white;
 }
 
-.loader-text {
+.loaderText {
   margin: 0px auto 100px auto;
   padding: 0px 0px 100px 0px;
   font-weight: normal;
   text-align: center;
 }
 
-.ssamount {
+.ssAmount {
   font-weight: normal;
   font-size: 16px;
   text-align: center;
-  margin: 100px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
+  line-height: 25px;
 }
 
-#dateofbirth:hover {
+#dateOfBirth:hover {
   cursor: pointer;
+}
+
+.summaryOption {
+  display: inline-block;
+  margin: 30px 50px 40px 50px;
+  background-color: white;
+  border: solid 1px #a5a5a5;
+  border-radius: 4px;
+  padding: 10px 20px 15px 20px;
+}
+
+.totalRetirementEarnings{
+  font-size: 14px;
+  color: black;
+}
+
+.center {
+  margin: -20px 0px 20px 0px;
+  text-align: center;
+}
+
+.loading {
+  margin: 25% auto 20% auto;
+  text-align: center;
+}
+
+.lifetimeEarnings {
+  line-height: 5px;
+  font-size: 14px;
+}
+
+.recommendationsH2 {
+  padding: 60px 0px 0px 0px;
+  margin: 0px 0px -5px 0px;
+}
+
+.financialHealthScore {
+  margin: -20px auto -20px auto;
+  text-align: center;
+  font-size: 120px;
+  color: red;
+}
+
+.summary {
+  background-color: white;
+  margin: 2% 5% 2% 5%;
+  padding: 2%;
+  border-radius: 32px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.scorecardButton {
+  margin: 40px auto 40px auto;
+  text-align: center;
+  background-color:rgb(4, 187, 172);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 20px 32px;
+  font-size: 16px;
+  font-weight: normal;
+  display: block;
+}
+
+.scorecardButton:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+/* Table Styles */
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  width: 50%;
+  border: solid 1px #E2E1E1;
+  padding: 10px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.threeColumnRow {
+  width: 33.333%;
+  border: solid 1px #E2E1E1;
+  display: inline-block;
+  text-align: center;
+}
+
+tr {
+  display: block;  
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-size: 18px;
+  width: 100%;
+  padding: 0px;
+}
+
+.tableBorder {
+  border: solid 1px #E2E1E1;
+  padding: 0px 0px 0px 0px;
+  border-collapse: collapse;
+  width: 95%;
+}
+
+.ssTableDescription {
+  text-align: left;
+  margin: 10px 0px 15px 0px;
+  font-size: 14px;
+}
+
+.ssQuestion {
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0px 5px 0px;
+}
+
+.decisionsSocialSecuritySection {
+  display: inline-block;
+  width: 30%;
+  margin: 10px 10px 10px 10px;
+  vertical-align: top;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  padding: 10px 10px 20px 10px;
+}
+
+.decisionsSocialSecuritySection h1 {
+  text-align: center;
+  margin: -20px auto 20px auto;
+}
+
+.decisionsSavingsSection {
+  display: inline-block; 
+  width: 26%;
+  margin: 0px 20px 0px 20px;
+  vertical-align: top;
+  border: 1px solid rgb(156, 156, 156);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.rateOfReturnSection {
+  display: inline-block;
+  width: 22%;
+  margin: 0px 20px 0px 20px;
+  vertical-align: top;
+}
+
+.reduceExpensesSection {
+  display: inline-block;
+  width: 18%;
+  margin: 0px 20px 0px 20px;
+  vertical-align: top;
+}
+
+.tableHeaders {
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
+
+.projectionsP {
+  margin: 0px 0px 20px 0px;
+}
+
+.projectionsH2 {
+  margin: 30px 0px 20px 0px;
+}
+
+.solidHrCustomizer {
+  width: 80%;
+  border: 1px solid #DDDDDD;
+  margin: 20px auto 20px auto;
+  height: 0.5px;
+}
+
+.barChart {
+  margin: 40px auto 0px auto;
+  color: black;
+}
+
+.barChartContainer {
+  margin: 0px 40px 0px 0px;
+}
+
+.block1 {
+  display: inline-block;
+  width: 50%;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+}
+
+.block2 {
+  display: inline-block;
+  width: 50%; 
+  margin: 30px 0px 0px 0px;
+  padding: 0px;
+}
+
+.projectionsPage {
+  background-color: white;
+  margin: -25px 0px 0px 0px;
+}
+
+.projectionsButtonSection {
+  margin: -10px auto 0px auto;
+  text-align: center;
+  display: block;
+  padding: 0px 0px 10px 0px;
+  background-color: white;
+}
+
+.chartHeadline {
+  margin: 100px 0px -20px 0px;
+  font-size: 14px;
+  color:black;
+}
+
+.chartDescription {
+  margin: 0px 0px 20px 0px;
+  font-size: 14px;
+  color:#858585;
+}
+
+
+.blocksSection {
+  display: block;
+  margin: -10px auto 20px auto;
+  border: 1px solid #a5a5a5;
+  width: 90%;
+  border-radius: 4px;
+  padding: 0px 0px 50px 0px;
+}
+
+.projectionsHeadline {
+  margin: 0px 0px 40px 0px;
+}
+
+.customizationQuestion {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.saveScenarioButton {
+  margin: 20px auto 0px auto;
+  text-align: center;
+  background-color:rgb(4, 187, 172);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 20px 32px;
+  font-size: 16px;
+  font-weight: normal;
+  display: block;
+}
+
+.saveScenarioButton:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
+
+
+
+/* Final Plan Section */
+
+.planSection {
+  border: solid 1px black;
+  border-radius: 4px;
+  width: 60%;
+  height: 80%;
+  margin: 40px auto 40px auto;
+  padding: 20px;
+}
+
+
+
+
+/* Scenario Form Section */
+
+.scenarioFormInput {
+  width: 40%;
+  border: 1px rgb(221, 221, 221) solid;
+  padding: 10px 0px 10px 20px; 
+  font-size: 14px;
+  border-radius: 4px;
+  margin: 15px 0px 0px 0px;
+}
+
+.scenarioFormInput::placeholder {
+  font-size: 14px;
+}
+
+.scenarioLabel {
+  font-size: 14px;
+  text-align: left;
 }

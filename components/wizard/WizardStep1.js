@@ -3,10 +3,6 @@ import WizardHeader from './WizardHeader';
 import WizardHeadline from './WizardHeadline';
 import WizardStepTemplate from './WizardStepTemplate';
 import _dynamic from 'next/dynamic';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useForm } from "react-hook-form";
-import { Alert } from 'react-bootstrap';
 
 export default function Step1({plan, onComplete}) {
 
@@ -18,23 +14,29 @@ export default function Step1({plan, onComplete}) {
     }
 
     function complete(){
-        if (fullname.length === 0) {
+        if (firstName.length === 0) {
             setErrors('*This field is required')
+            scrollOnError();
         } else {
             onComplete(_plan)          
         }
     };
 
-    const { register, handleSubmit, watch } = useForm()
+    function scrollOnError() {
+        window.scrollTo(0, 0);
+    }
+
     const [errors, setErrors] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [spouse, setSpouse] = useState('No')
-    const [fullname, setFullname] = useState('')
-    const [dateofbirth, setDateofbirth] = useState('')
-    const [maritalstatus, setMaritalstatus] = useState('Married')
-    const [spousesfullname, setSpousesfullname] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [dateOfBirthDay, setDateOfBirthDay] = useState('')
+    const [dateOfBirthYear, setDateOfBirthYear] = useState('')
+    const [dateOfBirthMonth, setDateOfBirthMonth] = useState('')
+    const [maritalStatus, setMaritalStatus] = useState('Married')
+    const [spousesFullName, setSpousesFullName] = useState('')
 
-    _plan = { spouse, dateofbirth, maritalstatus, fullname, spousesfullname };
+    _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, maritalStatus, firstName, spousesFullName };
 
     
     return (
@@ -44,33 +46,62 @@ export default function Step1({plan, onComplete}) {
         <WizardHeadline></WizardHeadline>
             <div className="inputs-div-1">
                 <div className="input-div">
-                    <label className="input-label">Name</label><br></br>
+                    <label className="input-label">First Name</label><br></br>
                     <input
-                    name="fullname"
+                    name="firstName"
                     className="form-input"
-                    value={fullname}
-                    onChange={e=> setFullname(e.target.value)}
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={e=> setFirstName(e.target.value)}
                     /><br></br>
                     <p className="errors">{errors}</p>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">What's your date of birth?</label><br></br>
+                    <label className="input-label">Birthday</label><br></br>
+                    <select
+                    name="dateOfBirthMonth"
+                    className="form-select"
+                    value={dateOfBirthMonth}
+                    onChange={e=> { setDateOfBirthMonth(e.target.value)}}>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                    </select>
                     <input
-                    name="dateofbirth"
+                    name="dateOfBirthDay"
                     id="dateofbirth"
-                    className="form-input"
-                    value={dateofbirth}
-                    onChange={e=> setDateofbirth(e.target.value)}
-                    type="date"
+                    className="form-input-dob"
+                    value={dateOfBirthDay}
+                    placeholder="Day"
+                    onChange={e=> setDateOfBirthDay(e.target.value)}
+                    type="input"
+                    />
+                    <input
+                    name="dateOfBirthYear"
+                    id="dateofbirth"
+                    className="form-input-dob"
+                    value={dateOfBirthYear}
+                    placeholder="Year"
+                    onChange={e=> setDateOfBirthYear(e.target.value)}
+                    type="input"
                     /><br></br>
                 </div>
                 <div className="input-div">
-                    <label className="input-label">What's your marital status? </label><br></br>
+                    <label className="input-label">Marital Status</label><br></br>
                     <select
-                    name="maritalstatus"
+                    name="maritalStatus"
                     className="form-select"
-                    value={maritalstatus}
-                    onChange={e=> { setMaritalstatus(e.target.value)}}>
+                    value={maritalStatus}
+                    onChange={e=> { setMaritalStatus(e.target.value)}}>
                     <option>Married</option>
                     <option>Divorced</option>
                     <option>Widowed</option>
@@ -91,12 +122,12 @@ export default function Step1({plan, onComplete}) {
                 {
                 showForm && (
                 <div className="input-div">
-                    <label className="input-label">Spouses Name</label><br></br>
+                    <label className="input-label">Spouses First Name</label><br></br>
                     <input
-                    name="spousesfullname"
+                    name="spousesFullName"
                     className="form-input"
-                    value={spousesfullname}
-                    onChange={e=> setSpousesfullname(e.target.value)}
+                    value={spousesFullName}
+                    onChange={e=> setSpousesFullName(e.target.value)}
                     />
                 </div>
                 )}
