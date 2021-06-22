@@ -43,7 +43,7 @@ export function App() {
     </div>
         <NavComponent />
     </div> 
-    <FooterComponent />
+        <FooterComponent />
     </div>
   );
 } 

@@ -11,6 +11,7 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "express": "^4.17.1",
+    "html-pdf-node": "^1.0.7",
     "mongoose": "^5.12.5",
     "next": "10.0.9",
     "next-auth": "^3.14.0",

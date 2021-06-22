@@ -100,7 +100,7 @@ export default async function handler(req,res) {
                 plan.yearByYearIncome.age63Income = calculateAge63RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision);
                 plan.yearByYearIncome.age64Income = calculateAge64RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision);
                 plan.yearByYearIncome.age65Income = calculateAge65RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision);
-                plan.yearByYearIncome.age66Income = calculateAge66RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision);
+                plan.yearByYearIncome.age66Income = calculateAge66RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityAge);
                 plan.yearByYearIncome.age67Income = calculateAge67RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
                 plan.yearByYearIncome.age68Income = calculateAge68RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
                 plan.yearByYearIncome.age69Income = calculateAge69RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome, plan.socialSecurityAge62Earnings, plan.socialSecurityDecision, plan.socialSecurityEarnings);
@@ -134,6 +134,8 @@ export default async function handler(req,res) {
                 plan.slightlyLessSavings = slightlyLessSavingsFunction(plan.currentSavings);
                 plan.slightlyMoreSavings = slightlyMoreSavingsFunction(plan.currentSavings);
                 await plan.save()
+
+                // turn this into a service pattern - research how to do this
 
                 plan = await Plan.findById(id);
                 res.status(200).json( plan );
