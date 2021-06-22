@@ -61,6 +61,7 @@ import muchMoreSavingsFunction from '../../../calculations/annualSavingsOptions/
 import calculateSocialSecurityAge from '../../../calculations/socialSecurity/socialSecurityAge';
 import setPartTimeWorkDecision from '../../../calculations/partTimeWork';
 import calculateRiskScoreFromFormValues from '../../../calculations/riskScore/riskScoreFromFormValues';
+import calcIncome from '../../../calculations/yearByYearRetirementEarnings/rules';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -89,6 +90,7 @@ export default async function handler(req,res) {
                 plan.retirementAnnualReturnsIncome = calculateRetirementAnnualReturnIncome(plan.savingsByRetirement, plan.rateOfReturn);
                 plan.financialHealthScore = calculateFinancialHealthScore(plan.projectedRetirementIncome, plan.retirementIncome);
                 plan.lengthOfPension = calculateLengthOfPension(plan.pensionTimeframe);
+                plan.age = calcIncome(plan.age); 
                 plan.yearByYearIncome.age55Income = calculateAge55RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome);
                 plan.yearByYearIncome.age56Income = calculateAge56RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome);
                 plan.yearByYearIncome.age57Income = calculateAge57RetirementIncome(plan.pension, plan.pensionTimeframe, plan.pensionEarnings, plan.retirementAnnualReturnsIncome);
@@ -136,6 +138,7 @@ export default async function handler(req,res) {
                 await plan.save()
 
                 // turn this into a service pattern - research how to do this
+                // minimize saves in db calls, db calls are expensive
 
                 plan = await Plan.findById(id);
                 res.status(200).json( plan );

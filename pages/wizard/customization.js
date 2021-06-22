@@ -30,7 +30,7 @@ function Summary(plan) {
     retirementAge: calculations.retirementAge,
     partTimeWorkDecision: calculations.partTimeWorkDecision,
     currentSavings: calculations.currentSavings,
-    pensionTimeframe: "",
+    pensionStartAge: "",
     scenarioName: ""
   };
 
@@ -80,8 +80,8 @@ function Summary(plan) {
   }
 
   function updatePensionHandler(e) {
-    const updatedPensionTimeframe = { ..._plan, pensionTimeframe: e.target.value };
-    _plan.pensionTimeframe = updatedPensionTimeframe.pensionTimeframe;
+    const updatedPensionStartAge = { ..._plan, pensionStartAge: e.target.value };
+    _plan.pensionStartAge = updatedPensionStartAge.pensionStartAge;
     updatePensionApiCall(_plan);
     doWizardCalculations();
   }
@@ -470,8 +470,8 @@ function Summary(plan) {
               <p className="customizationQuestion">Take Pension at</p>
               <select
                 className="formSelect"
-                name="pensionTimeframe"
-                value={_plan.pensionTimeframe}
+                name="pensionStartAge"
+                value={_plan.pensionStartAge}
                 onChange={updatePensionHandler}
               >
                 <option>55</option>

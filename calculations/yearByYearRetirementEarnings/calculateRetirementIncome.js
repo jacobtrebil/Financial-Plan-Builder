@@ -40,7 +40,7 @@ rules = {
  * then use switch case on age and then have the rules
  */
 
-// pensionStartDate
+// pensionStartAge
 
 // rules.js
 
@@ -64,11 +64,9 @@ export const calcIncome = (
               } else {
                 return Math.floor(retirementAnnualReturnsIncome);
               }
-        
-              break;
-            case 58: 
-            
             }
+            break;
+            case 58: 
           }
     }
 

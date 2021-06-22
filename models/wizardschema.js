@@ -52,7 +52,7 @@ var PlanModel = new mongoose.Schema({
     medicare: String,
     pension: String,
     pensionEarnings: String, Number,
-    pensionTimeframe: String, Number,
+    pensionStartAge: String, Number,
     pensionInflation: String, Number, Boolean, 
     socialSecurity: String,
     socialSecurityAge: Number,
@@ -135,6 +135,10 @@ var PlanModel = new mongoose.Schema({
     retirementIncomeDecision: String, Number,
     projectedRetirementIncomeAfterSsDecision: String, Number,
     riskScoreFromFormValues: String, 
+    age: {
+        55: Number, 
+        56: Number,
+    },
     scenarioName: String, Number,
     scenario: {
         socialSecurityAge: Number,

@@ -66,7 +66,7 @@ export default function Step3({ plan, pageProps }) {
     const [will, setWill] = useState('No')
     const [pension, setPension] = useState('No')
     const [pensionInflation, setPensionInflation] = useState('No')
-    const [pensionTimeframe, setPensionTimeframe] = useState('50')
+    const [pensionStartAge, setPensionStartAge] = useState('50')
     const [pensionEarnings, setPensionEarnings] = useState('')
     const [socialSecurity, setSocialSecurity] = useState('Yes')
 
@@ -76,7 +76,7 @@ export default function Step3({ plan, pageProps }) {
         _setPlan({ ..._plan, ...changes})
     }
 
-    _plan = { currentEarnings, currentSavings, assetValue, lifeInsurance, taxPlan, will, pension, pensionTimeframe, pensionEarnings, pensionInflation, socialSecurity, riskAttitude, volatility, changePortfolio, lifeInsuranceDocument };
+    _plan = { currentEarnings, currentSavings, assetValue, lifeInsurance, taxPlan, will, pension, pensionStartAge, pensionEarnings, pensionInflation, socialSecurity, riskAttitude, volatility, changePortfolio, lifeInsuranceDocument };
     
     return (
         <div>
@@ -147,10 +147,10 @@ export default function Step3({ plan, pageProps }) {
                 <div className="inputDiv">
                     <label className="inputLabel">At what age will your pension earnings begin?</label><br></br>
                     <select
-                    name="pensionTimeframe"
+                    name="pensionStartAge"
                     className="formSelect"
-                    value={pensionTimeframe}
-                    onChange={e=> {setPensionTimeframe(e.target.value)}}
+                    value={pensionStartAge}
+                    onChange={e=> {setPensionStartAge(e.target.value)}}
                     >
                     <option>50</option>
                     <option>55</option>
