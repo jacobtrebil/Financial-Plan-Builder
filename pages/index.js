@@ -3,7 +3,7 @@ import _Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import _dynamic from 'next/dynamic';
-
+import { useRouter } from "next/router";
 
 const NavComponent = _dynamic(() =>
   import('../components/nav').then((mod) => mod.SideBar)
@@ -18,6 +18,9 @@ const PlanComponent = _dynamic(() =>
 )
 
 export function App() {
+
+  const router = useRouter();
+
   return (
     <div>
      <div className="app">
@@ -26,7 +29,15 @@ export function App() {
               <p className="plansSubtitle">Plans</p>
               <Link href="/createPlan"><button className="plansButton">+ Add Plan</button></Link>
               <hr className="plansSolidHr"></hr>
-              <PlanComponent />
+              <div className="dashboardPlanBox">
+                <p className="dashboardLeftTitle">Jacob's Retirement Plan</p>
+                <button 
+                className="dashboardButton"
+                onClick={function clickHandler() {
+                  router.push(`/wizard/planResults`);
+                }}
+                > View Plan</button>
+              </div>
               <p id="noPlansMessage">You currently have 0 plans created. Click the button above to create a plan.</p>
         </div>
     </div>
@@ -37,6 +48,6 @@ export function App() {
   );
 } 
 
-
+// add <PlanComponent /> for original dropdown style plan. Add it between the two divs next to each other towards the bottom. 
 
 export default App;

@@ -2,17 +2,17 @@ import dbConnect from '../../../util/wizardDbConnect';
 import Plan from '../../../models/wizardSchema';
 import calculateSocialSecurity from '../../../calculations/socialSecurity/socialSecurity';
 import lengthOfRetirementFunction from '../../../calculations/lengthOfRetirement';
-import healthcare from '../../../calculations/healthcare';
+import healthcare from '../../../calculations/healthcare/healthcare';
 import calculateSocialSecurityAge62 from '../../../calculations/socialSecurity/socialSecurityAge62';
 import calculateSocialSecurityAge70 from '../../../calculations/socialSecurity/socialSecurityAge70';
-import calculateCurrentAge from '../../../calculations/currentAge';
-import calculateYearsUntilRetirement from '../../../calculations/yearsUntilRetirement';
+import calculateCurrentAge from '../../../calculations/currentAge/currentAge';
+import calculateYearsUntilRetirement from '../../../calculations/yearsUntilRetirement/yearsUntilRetirement';
 import calculateSavingsByRetirement from '../../../calculations/savingsByRetirement';
 import calculateProjectedRetirementIncome from '../../../calculations/projectedRetirementIncome/calculateProjectedRetirementIncome';
 import calculateFinancialHealthScore from '../../../calculations/financialHealthScore';
-import calculateLengthOfPension from '../../../calculations/lengthOfPension';
+import calculateLengthOfPension from '../../../calculations/pension/lengthOfPension';
 import calculateRateOfReturn from '../../../calculations/rateOfReturn';
-import calculateRiskScore from '../../../calculations/riskScore';
+import calculateRiskScore from '../../../calculations/riskScore/riskScore';
 import calculateRetirementAnnualReturnIncome from '../../../calculations/projectedRetirementIncome/calculateRetirementAnnualReturnIncome';
 import calculateAge55RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age55Income';
 import calculateAge56RetirementIncome from '../../../calculations/yearByYearRetirementEarnings/age56Income';
@@ -58,8 +58,9 @@ import slightlyLessSavingsFunction from '../../../calculations/annualSavingsOpti
 import slightlyMoreSavingsFunction from '../../../calculations/annualSavingsOptions/slightlyMoreSavings';
 import muchLessSavingsFunction from '../../../calculations/annualSavingsOptions/muchLessSavings';
 import muchMoreSavingsFunction from '../../../calculations/annualSavingsOptions/muchMoreSavings';
-import calculateSocialSecurityAge from '../../../calculations/socialSecurityAge';
+import calculateSocialSecurityAge from '../../../calculations/socialSecurity/socialSecurityAge';
 import setPartTimeWorkDecision from '../../../calculations/partTimeWork';
+import calculateRiskScoreFromFormValues from '../../../calculations/riskScore/riskScoreFromFormValues';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -74,13 +75,14 @@ export default async function handler(req,res) {
                 plan.socialSecurityEarnings = calculateSocialSecurity(plan.currentEarnings);
                 plan.socialSecurityAge62Earnings = calculateSocialSecurityAge62(plan.socialSecurityEarnings);
                 plan.socialSecurityAge70Earnings = calculateSocialSecurityAge70(plan.socialSecurityEarnings);
-                plan.riskScore = calculateRiskScore(plan.changePortfolio, plan.riskAttitude, plan.volatility);
-                plan.socialSecurityAge = calculateSocialSecurityAge();
+                plan.riskScoreFromFormValues = calculateRiskScoreFromFormValues(plan.changePortfolio, plan.riskAttitude, plan.volatility)
+                plan.riskScore = calculateRiskScore(plan.riskScore, plan.riskScoreFromFormValues);
+                plan.socialSecurityAge = calculateSocialSecurityAge(plan.socialSecurityAge);
                 plan.rateOfReturn = calculateRateOfReturn(plan.riskScore);
                 plan.lengthOfRetirement = lengthOfRetirementFunction(plan.retirementAge);
                 plan.totalHealthcareCosts = healthcare(plan.lengthOfRetirement, plan.health);
                 plan.currentAge = calculateCurrentAge(plan.dateOfBirthYear);
-                plan.partTimeWorkDecision = setPartTimeWorkDecision();
+                plan.partTimeWorkDecision = setPartTimeWorkDecision(plan.partTimeWorkDecision);
                 plan.yearsUntilRetirement = calculateYearsUntilRetirement(plan.currentAge, plan.retirementAge);
                 plan.savingsByRetirement = calculateSavingsByRetirement(plan.yearsUntilRetirement, plan.currentSavings, plan.assetValue);
                 plan.projectedRetirementIncome = calculateProjectedRetirementIncome(plan.socialSecurityEarnings, plan.savingsByRetirement, plan.lengthOfRetirement);

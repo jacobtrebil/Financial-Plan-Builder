@@ -1,6 +1,10 @@
 
 
-export default function setPartTimeWorkDecision() {
-    const partTimeWorkDecision = 'None';
+export default function setPartTimeWorkDecision(partTimeWorkDecision) {
+    if (partTimeWorkDecision) {
+        partTimeWorkDecision = partTimeWorkDecision;
+    } else {
+        partTimeWorkDecision = 'None';
+    }
     return partTimeWorkDecision;
 };

@@ -8,6 +8,7 @@ import {
   updateRetirementAge,
   updatePension,
   addScenario,
+  addScenarioName,
 } from "../../apiclient/wizardFetch";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
@@ -23,15 +24,15 @@ function Summary(plan) {
 
   const [showForm, setShowForm] = useState(false);
   const [calculations, setCalculations] = useState({});
-  let [_plan, _setPlan] = useState({
-    riskScore: "",
-    socialSecurityAge: "",
-    retirementAge: "",
-    partTimeWorkDecision: "",
-    currentSavings: "",
+  let _plan = {
+    riskScore: calculations.riskScore,
+    socialSecurityAge: calculations.socialSecurityAge,
+    retirementAge: calculations.retirementAge,
+    partTimeWorkDecision: calculations.partTimeWorkDecision,
+    currentSavings: calculations.currentSavings,
     pensionTimeframe: "",
     scenarioName: ""
-  });
+  };
 
   if (!calculations)
     return (
@@ -41,57 +42,57 @@ function Summary(plan) {
     );
 
   function updateRiskScoreHandler(e) {
-    const updatedRiskScore = { /* ..._plan,*/ riskScore: e.target.value };
-    /* _setPlan(updatedPlan); */
-    updateRiskScoreApiCall(updatedRiskScore);
+    const updatedRiskScore = { ..._plan, riskScore: e.target.value };
+    _plan.riskScore = updatedRiskScore.riskScore;
+    updateRiskScoreApiCall(_plan);
     doWizardCalculations();
   }
 
   function updateRetirementAgeHandler(e) {
-    const updatedRetirementAge = { retirementAge: e.target.value };
-    /* _setPlan(updatedPlan); */
-    updateRetirementAgeApiCall(updatedRetirementAge);
+    const updatedRetirementAge = { ..._plan, retirementAge: e.target.value };
+    _plan.retirementAge = updatedRetirementAge.retirementAge;
+    updateRetirementAgeApiCall(_plan);
     doWizardCalculations();
     /* router.push(
-      `../wizard/scorecard?planId=${planId}?retirementAge=${retirementAge}`
+      `../wizard/customization?planId=${planId}?retirementAge=${calculations.retirementAge}?socialSecurityAge=${calculations.socialsSecurityAge}?currentSavings=${calculations.currentSavings}?riskScore=${calculations.riskScore}?partTimeWorkDecision=${calculations.partTimeWorkDecision}`
     ); */
   }
 
   function updatePartTimeWorkHandler(e) {
-    const updatedPartTimeWorkDecision = { partTimeWorkDecision: e.target.value };
-    updatePartTimeWorkApiCall(updatedPartTimeWorkDecision);
+    const updatedPartTimeWorkDecision = { ..._plan, partTimeWorkDecision: e.target.value };
+    _plan.partTimeWorkDecision = updatedPartTimeWorkDecision.partTimeWorkDecision;
+    updatePartTimeWorkApiCall(_plan);
     doWizardCalculations();
   }
 
   function updateSocialSecurityHandler(e) {
-    const updatedSocialSecurityAge = { socialSecurityAge: e.target.value };
-    updateSocialSecurityApiCall(updatedSocialSecurityAge);
+    const updatedSocialSecurityAge = { ..._plan, socialSecurityAge: e.target.value };
+    _plan.socialSecurityAge = updatedSocialSecurityAge.socialSecurityAge;
+    updateSocialSecurityApiCall(_plan);
     doWizardCalculations();
   }
 
   function updateCurrentSavingsHandler(e) {
-    const updatedCurrentSavings = { currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g,"")) };
-    console.log(updateCurrentSavings);
-    updateCurrentSavingsApiCall(updatedCurrentSavings);
+    const updatedCurrentSavings = { ..._plan, currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g,"")) };
+    _plan.currentSavings = updatedCurrentSavings.currentSavings;
+    updateCurrentSavingsApiCall(_plan);
     doWizardCalculations();
   }
 
   function updatePensionHandler(e) {
-    const updatedPensionTimeframe = { pensionTimeframe: e.target.value };
-    updatePensionApiCall(updatedPensionTimeframe);
+    const updatedPensionTimeframe = { ..._plan, pensionTimeframe: e.target.value };
+    _plan.pensionTimeframe = updatedPensionTimeframe.pensionTimeframe;
+    updatePensionApiCall(_plan);
     doWizardCalculations();
   }
 
+  function updateScenarioNameHandler(e) {
+    const updatedScenarioName = { ..._plan, scenarioName: e.target.value };
+    _plan.scenarioName = updatedScenarioName.scenarioName;
+    saveScenarioApiCall(_plan); 
+  }
+
   function saveScenario() {
-    /*const scenarioVariables = {
-      socialSecurityAge,
-      currentSavings,
-      retirementAge,
-      _riskScore,
-      partTimeWorkDecision,
-      pensionTimeframe
-    };
-    _setPlan(scenarioVariables); */
     saveScenarioApiCall(_plan);
   }
 
@@ -102,7 +103,13 @@ function Summary(plan) {
   async function doWizardCalculations() {
     const wizardCalculationsFunction = await planCalculations(planId, plan);
     setCalculations(wizardCalculationsFunction);
-    _setPlan(wizardCalculationsFunction);
+    let calculatedPlan = wizardCalculationsFunction;
+    console.log(calculatedPlan);
+    /* _setPlan(wizardCalculationsFunction); */
+    showPension();
+  }
+
+  function showPension(_plan) {
     if (calculations.pension === "Yes") {
       setShowForm(true);
     } else if (calculations.pension === "No") {
@@ -110,28 +117,28 @@ function Summary(plan) {
     }
   }
 
-  async function updateRiskScoreApiCall(updatedRiskScore) {
-    await updateRiskScore(planId, updatedRiskScore);
+  async function updateRiskScoreApiCall(_plan) {
+    await updateRiskScore(planId, _plan);
   }
 
-  async function updateRetirementAgeApiCall(updatedRetirementAge) {
-    await updateRetirementAge(planId, updatedRetirementAge);
+  async function updateRetirementAgeApiCall(_plan) {
+    await updateRetirementAge(planId, _plan);
   }
 
-  async function updatePartTimeWorkApiCall(updatedPartTimeWorkDecision) {
-    await updatePartTimeWork(planId, updatedPartTimeWorkDecision);
+  async function updatePartTimeWorkApiCall(_plan) {
+    await updatePartTimeWork(planId, _plan);
   }
 
-  async function updateSocialSecurityApiCall(updatedSocialSecurityAge) {
-    await updateSocialSecurity(planId, updatedSocialSecurityAge);
+  async function updateSocialSecurityApiCall(_plan) {
+    await updateSocialSecurity(planId, _plan);
   }
 
-  async function updateCurrentSavingsApiCall(updatedCurrentSavings) {
-    await updateCurrentSavings(planId, updatedCurrentSavings);
+  async function updateCurrentSavingsApiCall(_plan) {
+    await updateCurrentSavings(planId, _plan);
   }
 
-  async function updatePensionApiCall(updatedPensionTimeframe) {
-    await updatePension(planId, updatedPensionTimeframe);
+  async function updatePensionApiCall(_plan) {
+    await updatePension(planId, _plan);
   }
 
   const convertToUsd = new Intl.NumberFormat("en-US", {
@@ -139,15 +146,6 @@ function Summary(plan) {
     currency: "USD",
     // maximumFractionDigits: 0,
   });
-
-  // How can I make this start at retirement age and end at age of death?
-  // Could I create a document that is an if/else statement that runs certain calculations based on retirement age?
-  // Maybe within wizardcalculations?
-  // Or I could put an if/else here: if (retirementAge > 60) {
-  // do x calculation, and do that for each retirement age
-  // Only do each if/else statement around the ages that depend on when they retire, for age 71+, have them always display
-  // Solve the age of death thing after solving the retirement age part
-  // It won't let me wrap these in if/else statements.
 
   /* Age: function findYearByYearRetirementAge(calculations) {
         for (let i = calculations.retirementAge; i < 93; i++) {
@@ -161,12 +159,8 @@ function Summary(plan) {
         }},
     // Could I turn age into a function that starts at retirementAge and iterates through until age 90 or 93? */
 
-  /* const data2 = Object.keys(calculations.yearByYearIncome).map(key => {
-        return {
-            Age: key,
-            Earnings: calculations.yearByYearIncome[key]
-        }
-    }) */
+
+    // I could create a seperate function that determines objects that can be added to the data object and then have another function with if/else statements that decides which get added. Would be best to just ask Vivek about this. 
 
   const data = [
     {
@@ -373,7 +367,7 @@ function Summary(plan) {
             <select
               className="formSelect"
               name="retirementAge"
-              value={_plan?.retirementAge}
+              value={_plan.retirementAge}
               onChange={updateRetirementAgeHandler}
             >
               <option>55</option>
@@ -401,7 +395,7 @@ function Summary(plan) {
             <select
               className="formSelect"
               name="socialSecurityAge"
-              value={_plan?.socialSecurityAge}
+              value={_plan.socialSecurityAge}
               onChange={updateSocialSecurityHandler}
             >
               <option>62</option>
@@ -417,7 +411,7 @@ function Summary(plan) {
             <select
               className="formSelect"
               name="currentSavings"
-              value={_plan?.currentSavings}
+              value={_plan.currentSavings}
               onChange={updateCurrentSavingsHandler}
             >
               <option>
@@ -444,7 +438,7 @@ function Summary(plan) {
             <select
               className="formSelect"
               name="riskScore"
-              value={_plan?.riskScore}
+              value={_plan.riskScore}
               onChange={updateRiskScoreHandler}
             >
               <option>conservative</option>
@@ -477,7 +471,7 @@ function Summary(plan) {
               <select
                 className="formSelect"
                 name="pensionTimeframe"
-                value={_plan?.pensionTimeframe}
+                value={_plan.pensionTimeframe}
                 onChange={updatePensionHandler}
               >
                 <option>55</option>
@@ -507,6 +501,7 @@ function Summary(plan) {
           className="scenarioFormInput"
           name="scenarioName"
           placeholder="Retire at Age 60 Scenario"
+          onchange={updateScenarioNameHandler}
           >
           </input>
           <button className="saveScenarioButton" onClick={saveScenario}>
@@ -518,7 +513,7 @@ function Summary(plan) {
         <button
           className="scorecardButton"
           onClick={function clickHandler() {
-            router.push(`../?planId=${calculations._id}`);
+            router.push(`/wizard/planResults/?planId=${calculations._id}`);
           }}
         >
           Get My Plan

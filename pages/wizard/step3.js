@@ -16,7 +16,7 @@ export default function Step3({ plan, pageProps }) {
 
     const onUpdatePlan = async (newPlan) => {
         const updatedPlan = await updatePlan2(planId, newPlan);
-        router.push(`../wizard/scorecard?planId=${updatedPlan._id}?retirementAge=${updatedPlan.retirementAge}`);
+        router.push(`../wizard/customization?planId=${updatedPlan._id}`);
     }
 
     function completePlan(){

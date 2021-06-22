@@ -1,5 +1,5 @@
-import Plan from '../../../models/wizardschema';
-import dbConnect from '../../../util/wizarddbconnect';
+import Plan from '../../../models/wizardSchema';
+import dbConnect from '../../../util/wizardDbConnect';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -10,8 +10,8 @@ export default async function handler(req,res) {
     switch (method) {
         case 'PUT':
             try {
-                const { socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionTimeframe } = req.body
-                await Plan.updateOne({ _id: id}, { scenario: { socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionTimeframe }})
+                const { socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionTimeframe, scenarioName } = req.body
+                await Plan.updateOne({ _id: id}, { scenario: { socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionTimeframe, scenarioName }})
                 const plan = await Plan.findById(id)
                 res.status(200).json( plan )
                 return;

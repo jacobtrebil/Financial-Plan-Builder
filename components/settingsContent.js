@@ -11,7 +11,7 @@ export function Account() {
             <p id="paymentMethodTitle">Payment Methods</p>   
             <button className="paymentButton">+ Add Payment Method</button>           
             <hr className="paymentSolidHr"></hr>
-            <p id="cancelAccountMessage">You currently have 0 payment methods added. Click the button above to add a payment method.</p>
+            <p id="settingsMessage">You currently have 0 payment methods added. Click the button above to add a payment method.</p>
         </div>
     </div>
     <div>
@@ -19,7 +19,7 @@ export function Account() {
             <p id="cancelMethodTitle">Close Account & Cancel Subscription</p>   
             <button className="cancelButton">Close Account</button>           
             <hr className="cancelSolidHr"></hr>
-            <p id="cancelAccountMessage">Click the button above to close your account and cancel your subscription. This can not be undone.</p>
+            <p id="settingsMessage">Click the button above to close your account and cancel your subscription. This can not be undone.</p>
         </div>
     </div>
     </div>
