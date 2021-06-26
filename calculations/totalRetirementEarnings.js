@@ -1,5 +1,5 @@
 
-export default function calculateTotalRetirementEarnings(age60Income, age61Income, age62Income, age63Income, age64Income, age65Income, age66Income, age67Income, age68Income, age69Income, age70Income, age71Income, age72Income, age73Income, age74Income, age75Income, age76Income, age77Income, age78Income, age79Income, age80Income, age81Income, age82Income, age83Income, age84Income, age85Income, age86Income, age87Income, age88Income, age89Income, age90Income, age91Income, age92Income, age93Income) {
-    const totalRetirementEarnings = Math.floor(age60Income + age61Income + age62Income + age63Income + age64Income + age65Income + age66Income + age67Income + age68Income + age69Income + age70Income + age71Income + age72Income + age73Income + age74Income + age75Income + age76Income + age77Income + age78Income + age79Income + age80Income + age81Income + age82Income + age83Income + age84Income + age85Income + age86Income + age87Income + age88Income + age89Income + age90Income + age91Income + age92Income + age93Income);
+export default function calculateTotalRetirementEarnings(age) {
+    const totalRetirementEarnings = Math.floor(age[55] + age[56] + age[57] + age[58] + age[59] + age[60] + age[61] + age[62] + age[63] + age[64] + age[65] + age[66] + age[67] + age[68] + age[69] + age[70] + age[71] + age[72] + age[73] + age[74] + age[75] + age[76] + age[77] + age[78] + age[79] + age[80] + age[81] + age[82] + age[83] + age[84] + age[85] + age[86] + age[87] + age[88] + age[89] + age[90] + age[91] + age[92] + age[93]);
     return totalRetirementEarnings;
 }

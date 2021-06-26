@@ -148,12 +148,12 @@ function Summary(plan) {
   });
 
   /* Age: function findYearByYearRetirementAge(calculations) {
-        for (let i = calculations.retirementAge; i < 93; i++) {
+        for (let i = 56; i < 93; i++) {
         Age = i;
         return this.Age;
     }},
     Earnings: function findYearByYearRetirementEarnings(calculations) {
-        for (let i = calculations.yearByYearIncome[0]; i < calculations.yearByYearIncome.length; i++) {
+        for (let i = calculations.age?.[56]; i < calculations.age?.[93]; i++) {
             Earnings = i;
             return this.Earnings;
         }},
@@ -162,160 +162,175 @@ function Summary(plan) {
 
     // I could create a seperate function that determines objects that can be added to the data object and then have another function with if/else statements that decides which get added. Would be best to just ask Vivek about this. 
 
-  const data = [
+    const data = [
+      {
+        Age: function findYearByYearRetirementAge() {
+          for (let i = 56; i < 93; i++) {
+          Age = i;
+          return Age;
+          }},
+        Earnings: 500, /* function findYearByYearRetirementEarnings(calculations) {
+          for (let i = calculations.age?.[key]; i < calculations.age?.[93]; i++) {
+          Earnings = i;
+          return this.Earnings;
+        }}, */
+      }
+    ]
+
+  /* const data = [
     {
       Age: 56,
-      Earnings: calculations.yearByYearIncome?.age56Income,
+      Earnings: calculations.age?.[56],
     },
     {
       Age: 57,
-      Earnings: calculations.yearByYearIncome?.age57Income,
+      Earnings: calculations.age?.[57],
     },
     {
       Age: 58,
-      Earnings: calculations.yearByYearIncome?.age58Income,
+      Earnings: calculations.age?.[58],
     },
     {
       Age: 59,
-      Earnings: calculations.yearByYearIncome?.age59Income
+      Earnings: calculations.age?.[59],
     },
     {
       Age: 60,
-      Earnings: calculations.yearByYearIncome?.age60Income,
+      Earnings: calculations.age?.[60],
     },
     {
       Age: 61,
-      Earnings: calculations.yearByYearIncome?.age61Income,
+      Earnings: calculations.age?.[61],
     },
     {
       Age: 62,
-      Earnings: calculations.yearByYearIncome?.age62Income,
+      Earnings: calculations.age?.[62],
     },
     {
       Age: 63,
-      Earnings: calculations.yearByYearIncome?.age63Income,
+      Earnings: calculations.age?.[63],
     },
     {
       Age: 64,
-      Earnings: calculations.yearByYearIncome?.age64Income,
+      Earnings: calculations.age?.[64],
     },
     {
       Age: 65,
-      Earnings: calculations.yearByYearIncome?.age65Income,
+      Earnings: calculations.age?.[65],
     },
     {
       Age: 66,
-      Earnings: calculations.yearByYearIncome?.age66Income,
+      Earnings: calculations.age?.[66],
     },
     {
       Age: 67,
-      Earnings: calculations.yearByYearIncome?.age67Income,
+      Earnings: calculations.age?.[67],
     },
     {
       Age: 68,
-      Earnings: calculations.yearByYearIncome?.age68Income,
+      Earnings: calculations.age?.[68],
     },
     {
       Age: 69,
-      Earnings: calculations.yearByYearIncome?.age69Income,
+      Earnings: calculations.age?.[69],
     },
     {
       Age: 70,
-      Earnings: calculations.yearByYearIncome?.age70Income,
+      Earnings: calculations.age?.[70],
     },
     {
       Age: 71,
-      Earnings: calculations.yearByYearIncome?.age71Income,
+      Earnings: calculations.age?.[71],
     },
     {
       Age: 72,
-      Earnings: calculations.yearByYearIncome?.age72Income,
+      Earnings: calculations.age?.[72],
     },
     {
       Age: 73,
-      Earnings: calculations.yearByYearIncome?.age73Income,
+      Earnings: calculations.age?.[73],
     },
     {
       Age: 74,
-      Earnings: calculations.yearByYearIncome?.age74Income,
+      Earnings: calculations.age?.[74],
     },
     {
       Age: 75,
-      Earnings: calculations.yearByYearIncome?.age75Income,
+      Earnings: calculations.age?.[75],
     },
     {
       Age: 76,
-      Earnings: calculations.yearByYearIncome?.age76Income,
+      Earnings: calculations.age?.[76],
     },
     {
       Age: 77,
-      Earnings: calculations.yearByYearIncome?.age77Income,
+      Earnings: calculations.age?.[77],
     },
     {
       Age: 78,
-      Earnings: calculations.yearByYearIncome?.age78Income,
+      Earnings: calculations.age?.[78],
     },
     {
       Age: 79,
-      Earnings: calculations.yearByYearIncome?.age79Income,
+      Earnings: calculations.age?.[79],
     },
     {
       Age: 80,
-      Earnings: calculations.yearByYearIncome?.age80Income,
+      Earnings: calculations.age?.[80],
     },
     {
       Age: 81,
-      Earnings: calculations.yearByYearIncome?.age81Income,
+      Earnings: calculations.age?.[81],
     },
     {
       Age: 82,
-      Earnings: calculations.yearByYearIncome?.age82Income,
+      Earnings: calculations.age?.[82],
     },
     {
       Age: 83,
-      Earnings: calculations.yearByYearIncome?.age83Income,
+      Earnings: calculations.age?.[83],
     },
     {
       Age: 84,
-      Earnings: calculations.yearByYearIncome?.age84Income,
+      Earnings: calculations.age?.[84],
     },
     {
       Age: 85,
-      Earnings: calculations.yearByYearIncome?.age85Income,
+      Earnings: calculations.age?.[85],
     },
     {
       Age: 86,
-      Earnings: calculations.yearByYearIncome?.age86Income,
+      Earnings: calculations.age?.[86],
     },
     {
       Age: 87,
-      Earnings: calculations.yearByYearIncome?.age87Income,
+      Earnings: calculations.age?.[87],
     },
     {
       Age: 88,
-      Earnings: calculations.yearByYearIncome?.age88Income,
+      Earnings: calculations.age?.[88],
     },
     {
       Age: 89,
-      Earnings: calculations.yearByYearIncome?.age89Income,
+      Earnings: calculations.age?.[89],
     },
     {
       Age: 90,
-      Earnings: calculations.yearByYearIncome?.age90Income,
+      Earnings: calculations.age?.[90],
     },
     {
       Age: 91,
-      Earnings: calculations.yearByYearIncome?.age91Income,
+      Earnings: calculations.age?.[91],
     },
     {
       Age: 92,
-      Earnings: calculations.yearByYearIncome?.age92Income,
+      Earnings: calculations.age?.[92],
     },
     {
       Age: 93,
-      Earnings: calculations.yearByYearIncome?.age93Income,
+      Earnings: calculations.age?.[93],
     },
-  ];
+  ]; */
 
   return (
     <div className="projectionsPage">
