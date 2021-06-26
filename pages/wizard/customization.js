@@ -31,7 +31,7 @@ function Summary(plan) {
     partTimeWorkDecision: calculations.partTimeWorkDecision,
     currentSavings: calculations.currentSavings,
     pensionStartAge: "",
-    scenarioName: ""
+    scenarioName: "",
   };
 
   if (!calculations)
@@ -59,28 +59,41 @@ function Summary(plan) {
   }
 
   function updatePartTimeWorkHandler(e) {
-    const updatedPartTimeWorkDecision = { ..._plan, partTimeWorkDecision: e.target.value };
-    _plan.partTimeWorkDecision = updatedPartTimeWorkDecision.partTimeWorkDecision;
+    const updatedPartTimeWorkDecision = {
+      ..._plan,
+      partTimeWorkDecision: e.target.value,
+    };
+    _plan.partTimeWorkDecision =
+      updatedPartTimeWorkDecision.partTimeWorkDecision;
     updatePartTimeWorkApiCall(_plan);
     doWizardCalculations();
   }
 
   function updateSocialSecurityHandler(e) {
-    const updatedSocialSecurityAge = { ..._plan, socialSecurityAge: e.target.value };
+    const updatedSocialSecurityAge = {
+      ..._plan,
+      socialSecurityAge: e.target.value,
+    };
     _plan.socialSecurityAge = updatedSocialSecurityAge.socialSecurityAge;
     updateSocialSecurityApiCall(_plan);
     doWizardCalculations();
   }
 
   function updateCurrentSavingsHandler(e) {
-    const updatedCurrentSavings = { ..._plan, currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g,"")) };
+    const updatedCurrentSavings = {
+      ..._plan,
+      currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g, "")),
+    };
     _plan.currentSavings = updatedCurrentSavings.currentSavings;
     updateCurrentSavingsApiCall(_plan);
     doWizardCalculations();
   }
 
   function updatePensionHandler(e) {
-    const updatedPensionStartAge = { ..._plan, pensionStartAge: e.target.value };
+    const updatedPensionStartAge = {
+      ..._plan,
+      pensionStartAge: e.target.value,
+    };
     _plan.pensionStartAge = updatedPensionStartAge.pensionStartAge;
     updatePensionApiCall(_plan);
     doWizardCalculations();
@@ -89,7 +102,7 @@ function Summary(plan) {
   function updateScenarioNameHandler(e) {
     const updatedScenarioName = { ..._plan, scenarioName: e.target.value };
     _plan.scenarioName = updatedScenarioName.scenarioName;
-    saveScenarioApiCall(_plan); 
+    saveScenarioApiCall(_plan);
   }
 
   function saveScenario() {
@@ -147,197 +160,24 @@ function Summary(plan) {
     // maximumFractionDigits: 0,
   });
 
-  /* Age: function findYearByYearRetirementAge(calculations) {
-        for (let i = 56; i < 93; i++) {
-        Age = i;
-        return this.Age;
-    }},
-    Earnings: function findYearByYearRetirementEarnings(calculations) {
-        for (let i = calculations.age?.[56]; i < calculations.age?.[93]; i++) {
-            Earnings = i;
-            return this.Earnings;
-        }},
-    // Could I turn age into a function that starts at retirementAge and iterates through until age 90 or 93? */
+  const data = [];
+  for (const [Age, Earnings] of Object.entries(calculations.age || {})) {
+    data.push({ Age, Earnings });
+  }
 
+  // Make scenario name mandatory first, make scenario as an object with scenarioName as a key
 
-    // I could create a seperate function that determines objects that can be added to the data object and then have another function with if/else statements that decides which get added. Would be best to just ask Vivek about this. 
+  // Make scenario as a seperate document & model in the database, scenario and plan are seperate entities
 
-    const data = [
-      {
-        Age: function findYearByYearRetirementAge() {
-          for (let i = 56; i < 93; i++) {
-          Age = i;
-          return Age;
-          }},
-        Earnings: 500, /* function findYearByYearRetirementEarnings(calculations) {
-          for (let i = calculations.age?.[key]; i < calculations.age?.[93]; i++) {
-          Earnings = i;
-          return this.Earnings;
-        }}, */
-      }
-    ]
-
-  /* const data = [
-    {
-      Age: 56,
-      Earnings: calculations.age?.[56],
-    },
-    {
-      Age: 57,
-      Earnings: calculations.age?.[57],
-    },
-    {
-      Age: 58,
-      Earnings: calculations.age?.[58],
-    },
-    {
-      Age: 59,
-      Earnings: calculations.age?.[59],
-    },
-    {
-      Age: 60,
-      Earnings: calculations.age?.[60],
-    },
-    {
-      Age: 61,
-      Earnings: calculations.age?.[61],
-    },
-    {
-      Age: 62,
-      Earnings: calculations.age?.[62],
-    },
-    {
-      Age: 63,
-      Earnings: calculations.age?.[63],
-    },
-    {
-      Age: 64,
-      Earnings: calculations.age?.[64],
-    },
-    {
-      Age: 65,
-      Earnings: calculations.age?.[65],
-    },
-    {
-      Age: 66,
-      Earnings: calculations.age?.[66],
-    },
-    {
-      Age: 67,
-      Earnings: calculations.age?.[67],
-    },
-    {
-      Age: 68,
-      Earnings: calculations.age?.[68],
-    },
-    {
-      Age: 69,
-      Earnings: calculations.age?.[69],
-    },
-    {
-      Age: 70,
-      Earnings: calculations.age?.[70],
-    },
-    {
-      Age: 71,
-      Earnings: calculations.age?.[71],
-    },
-    {
-      Age: 72,
-      Earnings: calculations.age?.[72],
-    },
-    {
-      Age: 73,
-      Earnings: calculations.age?.[73],
-    },
-    {
-      Age: 74,
-      Earnings: calculations.age?.[74],
-    },
-    {
-      Age: 75,
-      Earnings: calculations.age?.[75],
-    },
-    {
-      Age: 76,
-      Earnings: calculations.age?.[76],
-    },
-    {
-      Age: 77,
-      Earnings: calculations.age?.[77],
-    },
-    {
-      Age: 78,
-      Earnings: calculations.age?.[78],
-    },
-    {
-      Age: 79,
-      Earnings: calculations.age?.[79],
-    },
-    {
-      Age: 80,
-      Earnings: calculations.age?.[80],
-    },
-    {
-      Age: 81,
-      Earnings: calculations.age?.[81],
-    },
-    {
-      Age: 82,
-      Earnings: calculations.age?.[82],
-    },
-    {
-      Age: 83,
-      Earnings: calculations.age?.[83],
-    },
-    {
-      Age: 84,
-      Earnings: calculations.age?.[84],
-    },
-    {
-      Age: 85,
-      Earnings: calculations.age?.[85],
-    },
-    {
-      Age: 86,
-      Earnings: calculations.age?.[86],
-    },
-    {
-      Age: 87,
-      Earnings: calculations.age?.[87],
-    },
-    {
-      Age: 88,
-      Earnings: calculations.age?.[88],
-    },
-    {
-      Age: 89,
-      Earnings: calculations.age?.[89],
-    },
-    {
-      Age: 90,
-      Earnings: calculations.age?.[90],
-    },
-    {
-      Age: 91,
-      Earnings: calculations.age?.[91],
-    },
-    {
-      Age: 92,
-      Earnings: calculations.age?.[92],
-    },
-    {
-      Age: 93,
-      Earnings: calculations.age?.[93],
-    },
-  ]; */
+  // In the scenario model, have a key called plan Id and pass that as well, which will pass it to the plan
 
   return (
     <div className="projectionsPage">
       <div className="projectionsHeadline">
         <h2 className="recommendationsH2">Customize Your Retirement</h2>
         <p>
-          View your retirement projections, and create your most likely scenarios.
+          View your retirement projections, and create your most likely
+          scenarios.
         </p>
       </div>
       <div className="blocksSection">
@@ -404,9 +244,7 @@ function Summary(plan) {
             </select>
           </div>
           <div className="decisionsSocialSecuritySection">
-            <p className="customizationQuestion">
-              Take Social Security At Age
-            </p>
+            <p className="customizationQuestion">Take Social Security At Age</p>
             <select
               className="formSelect"
               name="socialSecurityAge"
@@ -447,9 +285,7 @@ function Summary(plan) {
             </select>
           </div>
           <div className="decisionsSocialSecuritySection">
-            <p className="customizationQuestion">
-              My Portfolio Risk Tolerance
-            </p>
+            <p className="customizationQuestion">My Portfolio Risk Tolerance</p>
             <select
               className="formSelect"
               name="riskScore"
@@ -508,21 +344,20 @@ function Summary(plan) {
               </select>
             </div>
           )}
-          <br></br><br></br>
-          <label className="scenarioLabel">
-              Name This Scenario
-          </label><br></br>
-          <input 
-          className="scenarioFormInput"
-          name="scenarioName"
-          placeholder="Retire at Age 60 Scenario"
-          onchange={updateScenarioNameHandler}
-          >
-          </input>
+          <br></br>
+          <br></br>
+          <label className="scenarioLabel">Name This Scenario</label>
+          <br></br>
+          <input
+            className="scenarioFormInput"
+            name="scenarioName"
+            placeholder="Retire at Age 60 Scenario"
+            onchange={updateScenarioNameHandler}
+          ></input>
           <button className="saveScenarioButton" onClick={saveScenario}>
             Save Scenario
           </button>
-          </div>
+        </div>
       </div>
       <div className="projectionsButtonSection">
         <button
