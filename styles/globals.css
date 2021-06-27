@@ -1146,6 +1146,11 @@ p {
   opacity: 70%;
 }
 
+.savedMessage {
+  font-size: 14px;
+  line-height: 20px;
+}
+
 
 
 

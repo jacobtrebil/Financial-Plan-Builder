@@ -23,6 +23,9 @@ function Summary(plan) {
   }, [planId]);
 
   const [showForm, setShowForm] = useState(false);
+  const [errors, setErrors] = useState('')
+  const [savedMessage, setSavedMessage] = useState('')
+  const [nextStepsMessage, setNextStepsMessage] = useState('')
   const [calculations, setCalculations] = useState({});
   let _plan = {
     riskScore: calculations.riskScore,
@@ -100,13 +103,26 @@ function Summary(plan) {
   }
 
   function updateScenarioNameHandler(e) {
-    const updatedScenarioName = { ..._plan, scenarioName: e.target.value };
+    const updatedScenarioName = { 
+      ..._plan, 
+      scenarioName: e.target.value 
+    };
     _plan.scenarioName = updatedScenarioName.scenarioName;
     saveScenarioApiCall(_plan);
   }
 
   function saveScenario() {
-    saveScenarioApiCall(_plan);
+    console.log(_plan.scenarioName.length);
+    if (_plan.scenarioName.length > 0) {
+      setErrors('');
+      saveScenarioApiCall(_plan);
+      var frm = document.getElementById('scenarioNameInput');
+      frm.value = '';
+      setSavedMessage('Scenario Saved!');
+      setNextStepsMessage('Create another scenario or get your plan.');
+    } else if (_plan.scenarioName.length === 0) {
+      setErrors('*Please enter a valid name');
+    }
   }
 
   async function saveScenarioApiCall(_plan) {
@@ -350,13 +366,16 @@ function Summary(plan) {
           <br></br>
           <input
             className="scenarioFormInput"
+            id="scenarioNameInput"
             name="scenarioName"
             placeholder="Retire at Age 60 Scenario"
-            onchange={updateScenarioNameHandler}
+            onChange={updateScenarioNameHandler}
           ></input>
+          <p className="errors">{errors}</p>
           <button className="saveScenarioButton" onClick={saveScenario}>
             Save Scenario
           </button>
+          <p className="savedMessage">{savedMessage}<br></br>{nextStepsMessage}</p>
         </div>
       </div>
       <div className="projectionsButtonSection">

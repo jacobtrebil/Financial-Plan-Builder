@@ -49,11 +49,9 @@ export default async function handler(req,res) {
                 plan.savingsByRetirement = calculateSavingsByRetirement(plan.yearsUntilRetirement, plan.currentSavings, plan.assetValue);
                 plan.projectedRetirementIncome = calculateProjectedRetirementIncome(plan.socialSecurityEarnings, plan.savingsByRetirement, plan.lengthOfRetirement);
                 plan.retirementAnnualReturnsIncome = calculateRetirementAnnualReturnIncome(plan.savingsByRetirement, plan.rateOfReturn);
-                console.log(plan.retirementAnnualReturnsIncome);
                 plan.financialHealthScore = calculateFinancialHealthScore(plan.projectedRetirementIncome, plan.retirementIncome);
                 plan.lengthOfPension = calculateLengthOfPension(plan.pensionTimeframe);
-                plan.age = setRetirementAges(plan.pension, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
-                console.log(plan.age);
+                plan.age = setRetirementAges(plan.pension, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
                 plan.totalRetirementEarnings = calculateTotalRetirementEarnings(plan.age);
                 plan.muchLessSavings = muchLessSavingsFunction(plan.currentSavings);
                 plan.muchMoreSavings = muchMoreSavingsFunction(plan.currentSavings);

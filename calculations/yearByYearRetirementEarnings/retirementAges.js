@@ -1,25 +1,39 @@
 
 
-export default function setRetirementAges(pension, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
+export default function setRetirementAges(pension, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
+
+    function calculateRetirementAges(i, pension, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
+
+        console.log(socialSecurityAge, i);
+        if (socialSecurityAge < i) {
+            return Math.floor(retirementAnnualReturnsIncome + socialSecurityEarnings);
+        } else {
+            return Math.floor(retirementAnnualReturnsIncome);
+        }
+    }
+
+    // What else needs to be included here? Just pension for now and making sure the calculations are all accurate?
 
     const data = {}
-    for (let i = 55; i <= 95; i++) {
-        data[i] = calculateRetirementAges(i, pension, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings);
+    for (let i = 55; i <= 93; i++) {
+        data[i] = calculateRetirementAges(i, pension, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings);
     };
     return data;
 }
 
-function calculateRetirementAges(currentAge, pension, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
-    if (currentAge < 1000) {
-        return Math.floor(retirementAnnualReturnsIncome);
-    }
-    else {
-        return Math.floor(retirementAnnualReturnsIncome);
-    }
-}
+// i should start at retirementStartAge and end at ageOfDeath or whatever those variables are so that the object starts at the beginning of their retirement and goes until the end
+
+/* 
+    if (socialSecurityAge > 62 && socialSecurityAge < 67) {
+        socialSecurityEarnings = socialSecurityAge62Earnings;
+    } else if (socialSecurityAge <= 67 && socialSecurityAge < 70) {
+        socialSecurityEarnings = socialSecurityEarnings;
+    } else {
+        socialSecurityEarnings = socialSecurityAge70Earnings;
+    }; */
 
 
-
+// socialSecurityDecision should not be a thing here... the only thing is that if they choose a certain socialSecurityDecision, we should set socialSecurityAge to that value in the wizardCalculations
 
 /* export default function calculateAge93RetirementIncome(pension, pensionTimeframe, pensionEarnings, retirementAnnualReturnsIncome, socialSecurityAge62Earnings, socialSecurityDecision, socialSecurityEarnings) {
     let age93Income = 0;
@@ -33,62 +47,6 @@ function calculateRetirementAges(currentAge, pension, retirementAnnualReturnsInc
         age93Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityEarnings);
     }
     return age93Income;
-} */
-
-/* export default function calculateAge80RetirementIncome(pension, pensionTimeframe, pensionEarnings, retirementAnnualReturnsIncome, socialSecurityAge62Earnings, socialSecurityDecision, socialSecurityEarnings) {
-    let age80Income = 0;
-    if (pension === 'yes' && pensionTimeframe > 60 && socialSecurityDecision === 'Age 62') {
-        age80Income = Math.floor(pensionEarnings + retirementAnnualReturnsIncome + socialSecurityEarnings);
-    } else if (pension === 'yes' && pensionTimeframe > 60) {
-        age80Income = Math.floor(pensionEarnings + retirementAnnualReturnsIncome);
-    } else if (socialSecurityDecision === 'Age 62') {
-        age80Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityAge62Earnings);
-    } else {
-        age80Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityEarnings);
-    }
-    return age80Income;
-} */
-
-/* export default function calculateAge69RetirementIncome(pension, pensionTimeframe, pensionEarnings, retirementAnnualReturnsIncome, socialSecurityAge62Earnings, socialSecurityDecision, socialSecurityEarnings) {
-    let age69Income = 0;
-    if (pension === 'yes' && pensionTimeframe > 60 && socialSecurityDecision === 'Age 62') {
-        age69Income = Math.floor(pensionEarnings + retirementAnnualReturnsIncome + socialSecurityEarnings);
-    } else if (pension === 'yes' && pensionTimeframe > 60) {
-        age69Income = Math.floor(pensionEarnings + retirementAnnualReturnsIncome);
-    } else if (socialSecurityDecision === 'Age 62') {
-        age69Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityAge62Earnings);
-    } else {
-        age69Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityEarnings);
-    }
-    return age69Income;
-} */
-
-/* export default function calculateAge65RetirementIncome(pension, pensionTimeframe, pensionEarnings, retirementAnnualReturnsIncome, socialSecurityAge62Earnings, socialSecurityDecision) {
-    let age65Income = 0;
-    if (pension === 'yes' && pensionTimeframe > 60 && socialSecurityDecision === 'Age 62') {
-        age65Income = Math.floor(pensionEarnings + retirementAnnualReturnsIncome + socialSecurityEarnings);
-    } else if (pension === 'yes' && pensionTimeframe > 60) {
-        age65Income = Math.floor(pensionEarnings + retirementAnnualReturnsIncome);
-    } else if (socialSecurityDecision === 'Age 62') {
-        age65Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityAge62Earnings);
-    } else {
-        age65Income = Math.floor(retirementAnnualReturnsIncome);
-    }
-    return age65Income;
-} */
-
-/* export default function calculateAge62RetirementIncome(pension, pensionTimeframe, pensionEarnings, retirementAnnualReturnsIncome, socialSecurityAge62Earnings, socialSecurityDecision) {
-    let age62Income = 0;
-    if (pension === 'yes' && pensionTimeframe > 60 && socialSecurityDecision === 'Age 62') {
-        age62Income = Math.floor(pensionEarnings + retirementAnnualReturnsIncome + socialSecurityEarnings);
-    } else if (pension === 'yes' && pensionTimeframe > 60) {
-        age62Income = Math.floor(pensionEarnings + retirementAnnualReturnsIncome);
-    } else if (socialSecurityDecision === 'Age 62') {
-        age62Income = Math.floor(retirementAnnualReturnsIncome + socialSecurityAge62Earnings);
-    } else {
-        age62Income = Math.floor(retirementAnnualReturnsIncome);
-    }
-    return age62Income;
 } */
 
 /* 
