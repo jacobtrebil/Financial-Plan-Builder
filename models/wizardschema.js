@@ -89,10 +89,11 @@ var PlanModel = new mongoose.Schema({
     majorPurchasesDecision: String, Number,
     partTimeWorkDecision: String, Number,
     retirementAnnualReturnsIncome: Number,
-    totalRetirementEarnings: Number,
+    totalRetirementEarnings: Number, String, 
     investmentProfileDecision: String, Number,
     retirementIncomeDecision: String, Number,
     projectedRetirementIncomeAfterSsDecision: String, Number,
+    ageOfDeath: Number,
     riskScoreFromFormValues: String, 
     age: {
         55: Number, 

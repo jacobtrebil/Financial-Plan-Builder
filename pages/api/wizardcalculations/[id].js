@@ -23,6 +23,7 @@ import calculateSocialSecurityAge from '../../../calculations/socialSecurity/soc
 import setPartTimeWorkDecision from '../../../calculations/partTimeWork';
 import calculateRiskScoreFromFormValues from '../../../calculations/riskScore/riskScoreFromFormValues';
 import setRetirementAges from '../../../calculations/yearByYearRetirementEarnings/retirementAges';
+import setAgeOfDeath from '../../../calculations/ageOfDeath';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -51,7 +52,8 @@ export default async function handler(req,res) {
                 plan.retirementAnnualReturnsIncome = calculateRetirementAnnualReturnIncome(plan.savingsByRetirement, plan.rateOfReturn);
                 plan.financialHealthScore = calculateFinancialHealthScore(plan.projectedRetirementIncome, plan.retirementIncome);
                 plan.lengthOfPension = calculateLengthOfPension(plan.pensionTimeframe);
-                plan.age = setRetirementAges(plan.pension, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
+                plan.ageOfDeath = setAgeOfDeath();
+                plan.age = setRetirementAges(plan.retirementAge, plan.ageOfDeath, plan.pension, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
                 plan.totalRetirementEarnings = calculateTotalRetirementEarnings(plan.age);
                 plan.muchLessSavings = muchLessSavingsFunction(plan.currentSavings);
                 plan.muchMoreSavings = muchMoreSavingsFunction(plan.currentSavings);

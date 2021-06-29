@@ -25,7 +25,6 @@ function Summary(plan) {
   const [showForm, setShowForm] = useState(false);
   const [errors, setErrors] = useState('')
   const [savedMessage, setSavedMessage] = useState('')
-  const [nextStepsMessage, setNextStepsMessage] = useState('')
   const [calculations, setCalculations] = useState({});
   let _plan = {
     riskScore: calculations.riskScore,
@@ -108,7 +107,6 @@ function Summary(plan) {
       scenarioName: e.target.value 
     };
     _plan.scenarioName = updatedScenarioName.scenarioName;
-    saveScenarioApiCall(_plan);
   }
 
   function saveScenario() {
@@ -119,7 +117,9 @@ function Summary(plan) {
       var frm = document.getElementById('scenarioNameInput');
       frm.value = '';
       setSavedMessage('Scenario Saved!');
-      setNextStepsMessage('Create another scenario or get your plan.');
+      setTimeout(function() {
+        setSavedMessage('');
+      }, 2000);
     } else if (_plan.scenarioName.length === 0) {
       setErrors('*Please enter a valid name');
     }
@@ -375,7 +375,7 @@ function Summary(plan) {
           <button className="saveScenarioButton" onClick={saveScenario}>
             Save Scenario
           </button>
-          <p className="savedMessage">{savedMessage}<br></br>{nextStepsMessage}</p>
+          <p className="savedMessage">{savedMessage}</p>
         </div>
       </div>
       <div className="projectionsButtonSection">

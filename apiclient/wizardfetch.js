@@ -120,19 +120,7 @@ export const createPlan = async (plan) => {
 
   export const addScenario = async (id, plan) => {
     const response = await fetch(`/api/addNewScenario/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(plan)
-    })
-    return await response.json();
-  }
-
-  export const addScenarioName = async (id, plan) => {
-    const response = await fetch(`/api/addScenarioName/${id}`, {
-      method: 'PUT',
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
