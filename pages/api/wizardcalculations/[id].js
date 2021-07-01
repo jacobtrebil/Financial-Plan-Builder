@@ -24,6 +24,8 @@ import setPartTimeWorkDecision from '../../../calculations/partTimeWork';
 import calculateRiskScoreFromFormValues from '../../../calculations/riskScore/riskScoreFromFormValues';
 import setRetirementAges from '../../../calculations/yearByYearRetirementEarnings/retirementAges';
 import setAgeOfDeath from '../../../calculations/ageOfDeath';
+import calculatePartTimeWorkEarnings from '../../../calculations/partTimeWorkEarnings';
+import calculateRetirementExpenses from '../../../calculations/retirementExpenses';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -52,9 +54,11 @@ export default async function handler(req,res) {
                 plan.retirementAnnualReturnsIncome = calculateRetirementAnnualReturnIncome(plan.savingsByRetirement, plan.rateOfReturn);
                 plan.financialHealthScore = calculateFinancialHealthScore(plan.projectedRetirementIncome, plan.retirementIncome);
                 plan.lengthOfPension = calculateLengthOfPension(plan.pensionTimeframe);
-                plan.ageOfDeath = setAgeOfDeath();
-                plan.age = setRetirementAges(plan.retirementAge, plan.ageOfDeath, plan.pension, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
+                plan.ageOfDeath = setAgeOfDeath(plan.gender);
+                plan.partTimeWorkEarnings = calculatePartTimeWorkEarnings(plan.currentEarnings);
+                plan.age = setRetirementAges(plan.retirementAge, plan.ageOfDeath, plan.pension, plan.pensionStartAge, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
                 plan.totalRetirementEarnings = calculateTotalRetirementEarnings(plan.age);
+                plan.retirementExpense = calculateRetirementExpenses(plan.retirementAge, plan.ageOfDeath, plan.livingExpense);
                 plan.muchLessSavings = muchLessSavingsFunction(plan.currentSavings);
                 plan.muchMoreSavings = muchMoreSavingsFunction(plan.currentSavings);
                 plan.slightlyLessSavings = slightlyLessSavingsFunction(plan.currentSavings);

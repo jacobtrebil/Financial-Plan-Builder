@@ -8,7 +8,6 @@ import {
   updateRetirementAge,
   updatePension,
   addScenario,
-  addScenarioName,
 } from "../../apiclient/wizardFetch";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
@@ -32,7 +31,7 @@ function Summary(plan) {
     retirementAge: calculations.retirementAge,
     partTimeWorkDecision: calculations.partTimeWorkDecision,
     currentSavings: calculations.currentSavings,
-    pensionStartAge: "",
+    pensionStartAge: calculations.pensionStartAge,
     scenarioName: "",
   };
 
@@ -110,7 +109,6 @@ function Summary(plan) {
   }
 
   function saveScenario() {
-    console.log(_plan.scenarioName.length);
     if (_plan.scenarioName.length > 0) {
       setErrors('');
       saveScenarioApiCall(_plan);
@@ -133,7 +131,6 @@ function Summary(plan) {
     const wizardCalculationsFunction = await planCalculations(planId, plan);
     setCalculations(wizardCalculationsFunction);
     let calculatedPlan = wizardCalculationsFunction;
-    console.log(calculatedPlan);
     /* _setPlan(wizardCalculationsFunction); */
     showPension();
   }
@@ -181,12 +178,6 @@ function Summary(plan) {
     data.push({ Age, Earnings });
   }
 
-  // Make scenario name mandatory first, make scenario as an object with scenarioName as a key
-
-  // Make scenario as a seperate document & model in the database, scenario and plan are seperate entities
-
-  // In the scenario model, have a key called plan Id and pass that as well, which will pass it to the plan
-
   return (
     <div className="projectionsPage">
       <div className="projectionsHeadline">
@@ -208,7 +199,7 @@ function Summary(plan) {
           >
             <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" />
             <YAxis
-              name="Age"
+              name="Earnings"
               stroke="grey"
               fontSize="12px"
               dataKey="Earnings"
@@ -341,6 +332,11 @@ function Summary(plan) {
                 value={_plan.pensionStartAge}
                 onChange={updatePensionHandler}
               >
+                <option>50</option>
+                <option>51</option>
+                <option>52</option>
+                <option>53</option>
+                <option>54</option>
                 <option>55</option>
                 <option>56</option>
                 <option>57</option>

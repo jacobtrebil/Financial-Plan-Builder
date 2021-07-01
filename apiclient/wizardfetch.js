@@ -107,7 +107,7 @@ export const createPlan = async (plan) => {
   }
 
   export const updatePension = async (id, plan) => {
-    const response = await fetch(`/api/updateSocialSecurity/${id}`, {
+    const response = await fetch(`/api/updatePension/${id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',

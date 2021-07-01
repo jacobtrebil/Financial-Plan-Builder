@@ -8,7 +8,7 @@ var ScenarioModel = new mongoose.Schema({
     retirementAge: Number,
     riskScore: String, Number,
     partTimeWorkDecision: String,
-    pensionTimeframe: String, Number,
+    pensionStartAge: Number,
 });
 
 module.exports = mongoose.models.Scenarios || mongoose.model("Scenarios", ScenarioModel);

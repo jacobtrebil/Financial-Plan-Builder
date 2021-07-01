@@ -1,8 +1,8 @@
 
 
-export default function setRetirementAges(retirementAge, ageOfDeath, pension, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
+export default function setRetirementAges(retirementAge, ageOfDeath, pension, pensionStartAge, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
 
-    function calculateRetirementAges(i, retirementAge, ageOfDeath, pension, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
+    function calculateRetirementAges(i, retirementAge, ageOfDeath, pension, pensionStartAge, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
 
         let socialSecurityScenarioEarnings = 0;
 
@@ -14,23 +14,25 @@ export default function setRetirementAges(retirementAge, ageOfDeath, pension, re
             socialSecurityScenarioEarnings = socialSecurityAge62Earnings;
         }
 
-        if (socialSecurityAge < i) {
+        if (socialSecurityAge <= i && pensionStartAge <= i) {
+            return Math.floor(retirementAnnualReturnsIncome + socialSecurityScenarioEarnings + pensionEarnings)
+        } else if (pensionStartAge <= i) {
+            return Math.floor(retirementAnnualReturnsIncome + pensionEarnings)
+        } else if (socialSecurityAge <= i) {
             return Math.floor(retirementAnnualReturnsIncome + socialSecurityScenarioEarnings);
         } else {
             return Math.floor(retirementAnnualReturnsIncome);
         }
     }
 
-    // What else needs to be included here? Just pension for now and making sure the calculations are all accurate?
+    // Include inflations, healthcare, and medicare as well. (maybe capital gains/account fees/taxes as well)
 
     const data = {}
     for (let i = retirementAge; i <= ageOfDeath; i++) {
-        data[i] = calculateRetirementAges(i, retirementAge, ageOfDeath, pension, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings);
+        data[i] = calculateRetirementAges(i, retirementAge, ageOfDeath, pension, pensionStartAge, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings);
     };
     return data;
 }
-
-// i should start at retirementAge and end at ageOfDeath or whatever those variables are so that the object starts at the beginning of their retirement and goes until the end
 
 /* 
     if (socialSecurityAge > 62 && socialSecurityAge < 67) {

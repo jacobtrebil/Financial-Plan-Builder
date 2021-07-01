@@ -38,12 +38,13 @@ export default function Step1({}) {
     const [dateOfBirthMonth, setDateOfBirthMonth] = useState('January')
     const [maritalStatus, setMaritalStatus] = useState('Married')
     const [spousesFullName, setSpousesFullName] = useState('')
+    const [gender, setGender] = useState('Male');
 
     let [_plan, _setPlan] = useState({plan});
     
     const { _id } = plan;
 
-    _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, maritalStatus, firstName, spousesFullName };
+    _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, gender, maritalStatus, firstName, spousesFullName };
     
     return (
         <div>
@@ -108,6 +109,20 @@ export default function Step1({}) {
                         }
                         type="input"
                     /><br></br>
+                </div>
+                <div className="inputDiv">
+                    <label className="inputLabel">Gender</label><br></br>
+                    <select
+                    name="gender"
+                    className="formSelect"
+                    value={gender}
+                    onChange={e=> { 
+                        setGender(e.target.value)
+                        }}>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Prefer not to say</option>
+                    </select><br></br>
                 </div>
                 <div className="inputDiv">
                     <label className="inputLabel">Marital Status</label><br></br>

@@ -33,6 +33,12 @@ export default function Step2({ plan, pageProps }) {
             } else if (retirementIncome > 0) {
                 setErrors3('')
             }
+            if (livingExpense.length === 0) {
+                setErrors4('*Please enter a valid number')
+                scrollOnError();
+            } else if (livingExpense > 0) {
+                setErrors4('')
+            }
         } 
         else {
             onUpdatePlan(_plan)
@@ -45,6 +51,7 @@ export default function Step2({ plan, pageProps }) {
 
     const [errors2, setErrors2] = useState('')
     const [errors3, setErrors3] = useState('')
+    const [errors4, setErrors4] = useState('')
     const [showForm, setShowForm] = useState(false)  
     const [retirementAge, setRetirementAge] = useState('')
     const [retirementIncome, setRetirementIncome] = useState('')
@@ -53,6 +60,7 @@ export default function Step2({ plan, pageProps }) {
     const [increaseIncome, setIncreaseIncome] = useState('No')
     const [increaseIncomeAmount, setIncreaseIncomeAmount] = useState('')
     const [outOfWork, setOutOfWork] = useState('No')
+    const [livingExpense, setLivingExpense] = useState('')
 
     let [_plan, _setPlan] = useState({plan});
 
@@ -60,7 +68,7 @@ export default function Step2({ plan, pageProps }) {
         _setPlan({ ..._plan, ...changes})
     }
 
-    _plan = { outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, care, health };
+    _plan = { outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, care, health, livingExpense };
     
     return (
         <div>
@@ -91,6 +99,18 @@ export default function Step2({ plan, pageProps }) {
                     >
                     </input><br></br>
                     <p className="errors">{errors3}</p>
+                </div>
+                <div className="inputDiv">
+                    <label className="inputLabel">What will your annual living expense be throughout retirement?</label><br></br>
+                    <input 
+                    className="formInputPages"
+                    name="livingExpense"
+                    placeholder ="$50,000" 
+                    value={livingExpense}
+                    onChange={e=> setLivingExpense(e.target.value)}
+                    >
+                    </input><br></br>
+                    <p className="errors">{errors4}</p>
                 </div>
                 <div className="inputDiv">
                     <label className="inputLabel">Do you expect your income to increase within the next 10 years?</label><br></br>

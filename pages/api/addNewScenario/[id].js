@@ -9,8 +9,8 @@ export default async function handler(req,res) {
     switch (method) {
         case 'POST':
             try {;
-                const { scenarioName, socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionTimeframe } = req.body
-                const scenario = Scenarios.create({ scenarioName, socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionTimeframe })
+                const { scenarioName, socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionStartAge } = req.body
+                const scenario = Scenarios.create({ scenarioName, socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionStartAge })
                 res.status(200).json( scenario );
                 return;
             } catch (error) {

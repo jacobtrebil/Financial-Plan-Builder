@@ -20,7 +20,7 @@ export default function Step3({ plan, pageProps }) {
     }
 
     function completePlan(){
-        if (currentEarnings.length === 0 || currentSavings.length === 0 || assetValue.length === 0) {
+        if (currentEarnings.length === 0 || currentSavings.length === 0 || assetValue.length === 0 || pension === 'Yes' && pensionEarnings.length === 0) {
             if (currentEarnings.length === 0) {
                 setErrors('*Please enter a valid number')
                 scrollOnError();
@@ -39,6 +39,14 @@ export default function Step3({ plan, pageProps }) {
             } else if (assetValue.length > 0) {
                 setErrors3('')
             }
+            if (pension === 'Yes') {
+                if (pensionEarnings.length === 0) {
+                    setErrors4('*Please enter a valid number')
+                    scrollOnError();
+                } else if (pensionEarnings.length > 0) {
+                    setErrors4('')
+                }
+            }
         } 
         else {
             onUpdatePlan(_plan)
@@ -52,6 +60,7 @@ export default function Step3({ plan, pageProps }) {
     const [errors, setErrors] = useState('')
     const [errors2, setErrors2] = useState('')
     const [errors3, setErrors3] = useState('')
+    const [errors4, setErrors4] = useState('')
     const [showForm14, setShowForm14] = useState(false)
     const [showForm15, setShowForm15] = useState(false)
     const [currentEarnings, setCurrentEarnings] = useState('')
@@ -168,6 +177,7 @@ export default function Step3({ plan, pageProps }) {
                     name="pensionEarnings"
                     onChange={e=> setPensionEarnings(e.target.value)}
                     /><br></br>
+                    <p className="errors">{errors4}</p>
                 </div>
                 <div className="inputDiv">
                     <label className="inputLabel">Will your pension earnings increase with the cost of inflation?</label><br></br>
