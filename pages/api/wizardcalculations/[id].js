@@ -26,6 +26,7 @@ import setRetirementAges from '../../../calculations/yearByYearRetirementEarning
 import setAgeOfDeath from '../../../calculations/ageOfDeath';
 import calculatePartTimeWorkEarnings from '../../../calculations/partTimeWorkEarnings';
 import calculateRetirementExpenses from '../../../calculations/retirementExpenses';
+import calculateNetWorth from '../../../calculations/netWorth';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -59,6 +60,7 @@ export default async function handler(req,res) {
                 plan.age = setRetirementAges(plan.retirementAge, plan.ageOfDeath, plan.pension, plan.pensionStartAge, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
                 plan.totalRetirementEarnings = calculateTotalRetirementEarnings(plan.age);
                 plan.retirementExpense = calculateRetirementExpenses(plan.retirementAge, plan.ageOfDeath, plan.livingExpense);
+                plan.netWorth = calculateNetWorth(plan.retirementAge, plan.ageOfDeath);
                 plan.muchLessSavings = muchLessSavingsFunction(plan.currentSavings);
                 plan.muchMoreSavings = muchMoreSavingsFunction(plan.currentSavings);
                 plan.slightlyLessSavings = slightlyLessSavingsFunction(plan.currentSavings);
