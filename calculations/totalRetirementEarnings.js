@@ -17,7 +17,5 @@ export default function calculateTotalRetirementEarnings(age) {
     }; 
     const totalRetirementEarnings = Object.values(age).reduce((a, b) => a + b); */
     let totalRetirementEarnings = age[70];
-    console.log(age);
-    console.log(totalRetirementEarnings);
     return totalRetirementEarnings;
 } 
