@@ -25,6 +25,24 @@ export default function setRetirementAges(retirementAge, ageOfDeath, pension, pe
         }
     }
 
+    /**
+     * take the number of years from FE -> 10
+     * 
+     * Take out that many records and update them
+     * count = parseInt('First 10 Years')
+     * count = parseInt('10')
+     * 
+     * Object.keys(age).slice(count).forEach(key => {
+     *
+     * age[key] += FIXED_AMOUNT})
+     * }
+     */
+
+// Save partTimeWorkDecision as 5, 10, or 20, not the strings
+
+    if (asdf === 'First 5 Years') {
+    }
+
     // Include inflations, healthcare, and medicare as well. (maybe capital gains/account fees/taxes as well)
 
     const data = {}

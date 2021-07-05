@@ -1159,13 +1159,13 @@ p {
 
 .planResultsPageTitle {
   text-align: center;
-  margin: 0px auto -5px auto;
+  margin: 0px auto 35px auto;
 }
 
 .planResultsSection {
   border: solid 1px #a5a5a5;
   border-radius: 4px;
-  width: 70%;
+  width: 75%;
   margin: 50px auto 25px auto;
   padding: 0px 0px 50px 0px;
 }
@@ -1247,4 +1247,20 @@ p {
 
 .planResultsLeftBlock {
   float: left;
+}
+
+.savingsNeededBlock {
+  margin: 40px 0px 50px 0px;
+}
+
+.savingsNeededBlock p {
+  font-size: 14px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.savingsNeededBlock h2 {
+  font-size: 36px;
+  margin: 0px;
+  padding: 10px 0px 12px 0px;
 }
