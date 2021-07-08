@@ -1,16 +1,11 @@
 
 
-export default function calculateNetWorth(retirementAge, ageOfDeath) {
-
-    function calculateNetWorthByAge(i) {
-        if (i => 0) {
-        return Math.floor(5);
-        }
-    }
-
+export default function calculateNetWorth(retirementAge, ageOfDeath, savingsByRetirement, rateOfReturn, retirementExpenses) {
     const data = {}
+    let previousValue = savingsByRetirement;
     for (let i = retirementAge; i <= ageOfDeath; i++) {
-        data[i] = calculateNetWorthByAge(i);
+            data[i] = Math.floor((previousValue * rateOfReturn) - retirementExpenses[i]);
+            previousValue = data[i];
     };
     return data;
 }

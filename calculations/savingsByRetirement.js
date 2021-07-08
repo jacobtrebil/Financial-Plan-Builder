@@ -12,19 +12,25 @@ export default function calculateSavingsByRetirement(
     const savingsByRetirement = endValueOfInitialAssets + totalEndValueOfAllCurrentSavings;
     return savingsByRetirement; */
 
+    /* let savingsWithReturns = {};
+
     function calculateEndValueOfCurrentSavings(i, rateOfReturn, currentSavings) {
-        return currentSavings * (rateOfReturn ** i);
-    }
+        savingsWithReturns[i] = currentSavings * (rateOfReturn ** i);
+        console.log('savings with returns: ', savingsWithReturns);
+        return savingsWithReturns;
+    } */
 
     const data = {}
-    for (let i = yearsUntilRetirement; i < 0; i--) {
-        data[i] = calculateEndValueOfCurrentSavings(i, rateOfReturn, currentSavings);
+    for (let i = 0; i < yearsUntilRetirement; i++) {
+        data[i] = Math.floor(currentSavings * (rateOfReturn ** i));
     };
 
-    const cumulativeAnnualSavings = currentSavings * yearsUntilRetirement;
-    const savingsByRetirement = cumulativeAnnualSavings + assetValue
+    const cumulativeSavingsWithReturns = Object.values(data).reduce(
+        (acc, curr) => (curr && !isNaN(curr) ? acc + curr : acc), 0);
+    const savingsByRetirement = cumulativeSavingsWithReturns + assetValue;
     return savingsByRetirement;
 }
+  
 
 // A better way to do this would be to do lengthOfRetirement and a decreasing for loop so
 // we can take the savings amount to the power of the key for that key.

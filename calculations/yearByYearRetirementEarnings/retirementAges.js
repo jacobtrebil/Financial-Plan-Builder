@@ -1,8 +1,8 @@
 
 
-export default function setRetirementAges(retirementAge, ageOfDeath, pension, pensionStartAge, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
+export default function setRetirementAges(yearsOfPartTimeWork, partTimeWorkEarnings, retirementAge, ageOfDeath, pension, pensionStartAge, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
 
-    function calculateRetirementAges(i, retirementAge, ageOfDeath, pension, pensionStartAge, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
+    function calculateRetirementAges(i, yearsOfPartTimeWork, partTimeWorkEarnings, retirementAge, ageOfDeath, pension, pensionStartAge, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
 
         let socialSecurityScenarioEarnings = 0;
 
@@ -25,6 +25,16 @@ export default function setRetirementAges(retirementAge, ageOfDeath, pension, pe
         }
     }
 
+    function addPartTimeWorkEarnings(i, yearsOfPartTimeWork, partTimeWorkEarnings) {
+        if (yearsOfPartTimeWork === '5') {
+        Object.keys(data).slice(0, 5).forEach(data => {
+            data[i] += partTimeWorkEarnings;
+        });
+    } else {
+        data[i];
+    }
+    }
+
     /**
      * take the number of years from FE -> 10
      * 
@@ -40,14 +50,17 @@ export default function setRetirementAges(retirementAge, ageOfDeath, pension, pe
 
 // Save partTimeWorkDecision as 5, 10, or 20, not the strings
 
-    if (asdf === 'First 5 Years') {
-    }
-
     // Include inflations, healthcare, and medicare as well. (maybe capital gains/account fees/taxes as well)
+
+    /* This made the object start high and decrease by partTimeWorkEarnings until the end of the objectObject.keys(data).slice(yearsOfPartTimeWork)
+    .forEach(key => {
+        data[key] += partTimeWorkEarnings
+    });*/ 
 
     const data = {}
     for (let i = retirementAge; i <= ageOfDeath; i++) {
-        data[i] = calculateRetirementAges(i, retirementAge, ageOfDeath, pension, pensionStartAge, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings);
+        data[i] = calculateRetirementAges(i, yearsOfPartTimeWork, partTimeWorkEarnings, retirementAge, ageOfDeath, pension, pensionStartAge, retirementAnnualReturnsIncome, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings);
+        /* data[i] = addPartTimeWorkEarnings(i, yearsOfPartTimeWork, partTimeWorkEarnings); */
     };
     return data;
 }

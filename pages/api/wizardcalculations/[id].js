@@ -25,8 +25,11 @@ import calculateRiskScoreFromFormValues from '../../../calculations/riskScore/ri
 import setRetirementAges from '../../../calculations/yearByYearRetirementEarnings/retirementAges';
 import setAgeOfDeath from '../../../calculations/ageOfDeath';
 import calculatePartTimeWorkEarnings from '../../../calculations/partTimeWorkEarnings';
-import calculateRetirementExpenses from '../../../calculations/retirementExpenses';
 import calculateNetWorth from '../../../calculations/netWorth';
+import setYearsOfPartTimeWork from '../../../calculations/setYearsOfPartTimeWork';
+import calculateRetirementExpenses from '../../../calculations/calculateRetirementExpenses';
+import calculateHealthcareStartingExpense from '../../../calculations/calculateHealthcareStartingExpense';
+import calculateRetirementEarningsSections from '../../../calculations/calculateRetirementEarningsSections';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -56,11 +59,14 @@ export default async function handler(req,res) {
                 plan.financialHealthScore = calculateFinancialHealthScore(plan.projectedRetirementIncome, plan.retirementIncome);
                 plan.lengthOfPension = calculateLengthOfPension(plan.pensionTimeframe);
                 plan.ageOfDeath = setAgeOfDeath(plan.gender);
+                plan.yearsOfPartTimeWork = setYearsOfPartTimeWork(plan.partTimeWorkDecision);
                 plan.partTimeWorkEarnings = calculatePartTimeWorkEarnings(plan.currentEarnings);
-                plan.age = setRetirementAges(plan.retirementAge, plan.ageOfDeath, plan.pension, plan.pensionStartAge, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
+                plan.healthcareStartingExpense = calculateHealthcareStartingExpense(plan.health);
+                plan.retirementExpenses = calculateRetirementExpenses(plan.retirementAge, plan.ageOfDeath, plan.livingExpense, plan.healthcareStartingExpense);
+                plan.age = setRetirementAges(plan.yearsOfPartTimeWork, plan.partTimeWorkEarnings, plan.retirementAge, plan.ageOfDeath, plan.pension, plan.pensionStartAge, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
                 plan.totalRetirementEarnings = calculateTotalRetirementEarnings(plan.age);
-                plan.retirementExpense = calculateRetirementExpenses(plan.retirementAge, plan.ageOfDeath, plan.livingExpense);
-                plan.netWorth = calculateNetWorth(plan.retirementAge, plan.ageOfDeath);
+                plan.netWorth = calculateNetWorth(plan.retirementAge, plan.ageOfDeath, plan.savingsByRetirement, plan.rateOfReturn, plan.retirementExpenses);
+                plan.retirementEarningsSections = calculateRetirementEarningsSections(plan.yearsOfPartTimeWork, plan.partTimeWorkEarnings, plan.pension, plan.pensionStartAge, plan.retirementAnnualReturnsIncome, plan.retirementAge, plan.ageOfDeath, plan.livingExpense, plan.healthcareStartingExpense, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
                 plan.muchLessSavings = muchLessSavingsFunction(plan.currentSavings);
                 plan.muchMoreSavings = muchMoreSavingsFunction(plan.currentSavings);
                 plan.slightlyLessSavings = slightlyLessSavingsFunction(plan.currentSavings);

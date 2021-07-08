@@ -6,9 +6,8 @@ import {
   YAxis, 
   Tooltip, 
   CartesianGrid, 
-  PieChart, 
-  Pie, 
-  ResponsiveContainer 
+  AreaChart,
+  Area
 } from "recharts";
 import { useRouter } from "next/router";
 import {
@@ -34,35 +33,17 @@ export function onePagePlan(plan) {
     const data = [];
     for (const [Age, Earnings] of Object.entries(calculations.age || {})) {
       data.push({ Age, Earnings });
-    }
+    };
 
-    const expensesData = [];
+    /* const expensesData = [];
     for (const [Age, Expenses] of Object.entries(calculations.retirementExpense || {})) {
       expensesData.push({ Age, Expenses });
-    }; 
+    }; */
 
     const netWorthData = [];
     for (const [Age, netWorth] of Object.entries(calculations.netWorth || {})) {
       netWorthData.push({ Age, netWorth });
     }; 
-
-    const data01 = [
-      { name: 'Group A', value: 400 },
-      { name: 'Group B', value: 300 },
-      { name: 'Group C', value: 300 },
-      { name: 'Group D', value: 200 },
-      { name: 'Group E', value: 278 },
-      { name: 'Group F', value: 189 },
-    ];
-    
-    const data02 = [
-      { name: 'Group A', value: 2400 },
-      { name: 'Group B', value: 4567 },
-      { name: 'Group C', value: 1398 },
-      { name: 'Group D', value: 9800 },
-      { name: 'Group E', value: 3908 },
-      { name: 'Group F', value: 4800 },
-    ];
 
     return (
       <div>
@@ -100,10 +81,46 @@ export function onePagePlan(plan) {
                 barSize={5}
               />
             </BarChart>
+            <AreaChart
+                width={500}
+                height={400}
+                data={expensesData}
+                margin={{
+                  top: 10,
+                  right: 30,
+                  left: 0,
+                  bottom: 0
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Area type="monotone" dataKey="Expenses" stroke="#8884d8" fill="#8884d8" />
+            </AreaChart>
             </div>
             <div>
               <p>Annual Retirement Expenses</p>
-              <BarChart
+            </div>
+            <div>
+              <p>Net Worth</p>
+            </div>
+              <p>Investment Portfolio</p>
+        </div>
+        <div>
+          <button 
+          className="planResultsDashboardButton"
+          onClick={function clickHandler() {
+          router.push(`../?planId=${plan._id}`);
+          }}
+          >Back to Dashboard →</button>
+        </div>
+      </div>
+    )}
+
+
+
+    /* <BarChart
                 className="barChart"
                 width={550}
                 height={250}
@@ -126,11 +143,9 @@ export function onePagePlan(plan) {
                 stroke="rgb(4, 187, 172)"
                 barSize={5}
               />
-            </BarChart>
-            </div>
-            <div>
-              <p>Net Worth</p>
-              <BarChart
+            </BarChart> 
+            
+            <BarChart
                 className="barChart"
                 width={550}
                 height={250}
@@ -153,37 +168,7 @@ export function onePagePlan(plan) {
                 stroke="rgb(4, 187, 172)"
                 barSize={5}
               />
-            </BarChart>
-            </div>
-              <p>Investment Portfolio</p>
-            <div>
-            </div>
-            <ResponsiveContainer width="100%" height="100%">
-        <PieChart width={400} height={400}>
-          <Pie
-            dataKey="value"
-            data={data01}
-            cx="50%"
-            cy="50%"
-            outerRadius={80}
-            fill="#8884d8"
-            label
-          />
-          <Tooltip />
-        </PieChart>
-      </ResponsiveContainer>
-        </div>
-        <div>
-          <button 
-          className="planResultsDashboardButton"
-          onClick={function clickHandler() {
-          router.push(`../?planId=${plan._id}`);
-          }}
-          >Back to Dashboard →</button>
-        </div>
-      </div>
-    )}
-
+            </BarChart>*/
 
 
 // I should create 5 different pie charts, based on the 5 freedom pies in the RJ Freedom collection

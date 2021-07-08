@@ -4,8 +4,6 @@ import { useRouter } from "next/router";
 
 export default async function handler(req, res) {
   const { method } = req;
-  //const router = useRouter();/\
-  console.log('tthe reqeust is =====', req)
   const { id } = req.query;
 
   await dbConnect();

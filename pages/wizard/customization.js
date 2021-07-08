@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, PureComponent } from "react";
 import {
   planCalculations,
   updateCurrentSavings,
@@ -11,7 +11,7 @@ import {
 } from "../../apiclient/wizardFetch";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer} from "recharts";
 
 function Summary(plan) {
   const router = useRouter();
@@ -174,9 +174,37 @@ function Summary(plan) {
   });
 
   const data = [];
-  for (const [Age, Earnings] of Object.entries(calculations.age || {})) {
-    data.push({ Age, Earnings });
+  for (const [Age, Expenses] of Object.entries(calculations.retirementExpenses || {})) {
+    data.push({ Age, Expenses });
   }
+
+  const netWorthData = [];
+  for (const [Age, netWorth] of Object.entries(calculations.netWorth || {})) {
+    netWorthData.push({ Age, netWorth });
+  }
+
+  const toPercent = (decimal, fixed = 0) => `$${(decimal * 100).toFixed(fixed)}`;
+
+  const toUSDThousands = (fixed) => `$${fixed / 1000}K`;
+  const toUSDMillions = (fixed) => `$${fixed / 1000000}M`;
+
+  // networth = pension + earning + SS
+  // 3 different keys would be required, not 3 different objects
+
+  // I'll push 2 more keys [ {Age, netWorth, pension, earnings} ]
+
+  /**   for (const [Age, {Earnings, SSAmount}] of Object.entries(calculations.age || {})) {
+    data.push({ Age, Earnings });
+  } */
+
+  /**
+   * [
+   * 60: {
+   * Earnings: '',
+   * SSAmount: ''}
+   * ]
+   */
+
 
   return (
     <div className="projectionsPage">
@@ -189,39 +217,58 @@ function Summary(plan) {
       </div>
       <div className="blocksSection">
         <div className="block1">
-          <p className="chartHeadline">Annual Retirement Earnings</p>
-          <BarChart
+          <p className="chartHeadline">Retirement Earnings</p>
+          <AreaChart
             className="barChart"
             width={550}
-            height={250}
+            height={180}
             data={data}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
             <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" />
             <YAxis
-              name="Earnings"
+              name="Expenses"
               stroke="grey"
               fontSize="12px"
-              dataKey="Earnings"
+              dataKey="Expenses"
+              tickFormatter={toUSDThousands}
             />
             <Tooltip fontSize="12px" />
             <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-            <Bar
-              dataKey="Earnings"
+            <Area
+              dataKey="Expenses"
               fontSize="12px"
               fill="rgb(4, 187, 172)"
               stroke="rgb(4, 187, 172)"
-              barSize={5}
             />
-          </BarChart>
+          </AreaChart>
           <p className="chartDescription">Age</p>
-          <div className="summaryOption">
-            <p className="totalRetirementEarnings">Total Retirement Earnings</p>
-            <p className="lifetimeEarnings">
-              <br></br>
-              {convertToUsd.format(calculations.totalRetirementEarnings)}
-            </p>
-          </div>
+          <p className="chartHeadline">Net Worth</p>
+          <AreaChart
+            className="barChart"
+            width={550}
+            height={180}
+            data={netWorthData}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" tickMargin='3'/>
+            <YAxis
+              name="netWorth"
+              stroke="grey"
+              fontSize="12px"
+              dataKey="netWorth"
+              tickFormatter={toUSDMillions}
+            />
+            <Tooltip fontSize="12px" />
+            <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+            <Area
+              dataKey="netWorth"
+              fontSize="12px"
+              fill="rgb(4, 187, 172)"
+              stroke="rgb(4, 187, 172)"
+            />
+          </AreaChart>
+          <p className="chartDescription">Age</p>
         </div>
         <div className="block2">
           <div className="decisionsSocialSecuritySection">
@@ -403,3 +450,12 @@ export default Summary;
                             <option>$50,000/Year</option>
                         </select>
                     </div> */
+
+
+                    /* <div className="summaryOption">
+            <p className="totalRetirementEarnings">Total Retirement Earnings</p>
+            <p className="lifetimeEarnings">
+              <br></br>
+              {convertToUsd.format(calculations.totalRetirementEarnings)}
+            </p>
+          </div> */
