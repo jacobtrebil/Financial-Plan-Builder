@@ -3,11 +3,10 @@ import {
   planCalculations,
   updateCurrentSavings,
   updateRiskScore,
-  updatePartTimeWork,
-  updateSocialSecurity,
   updateRetirementAge,
   updatePension,
   addScenario,
+  updateLivingExpense,
 } from "../../apiclient/wizardFetch";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
@@ -21,17 +20,14 @@ function Summary(plan) {
     doWizardCalculations();
   }, [planId]);
 
-  const [showForm, setShowForm] = useState(false);
   const [errors, setErrors] = useState('')
   const [savedMessage, setSavedMessage] = useState('')
   const [calculations, setCalculations] = useState({});
   let _plan = {
     riskScore: calculations.riskScore,
-    socialSecurityAge: calculations.socialSecurityAge,
     retirementAge: calculations.retirementAge,
-    partTimeWorkDecision: calculations.partTimeWorkDecision,
     currentSavings: calculations.currentSavings,
-    pensionStartAge: calculations.pensionStartAge,
+    livingExpense: calculations.livingExpense,
     scenarioName: "",
   };
 
@@ -59,24 +55,13 @@ function Summary(plan) {
     ); */
   }
 
-  function updatePartTimeWorkHandler(e) {
-    const updatedPartTimeWorkDecision = {
-      ..._plan,
-      partTimeWorkDecision: e.target.value,
+  function updateLivingExpenseHandler(e) {
+    const updatedLivingExpense = {
+      ..._plan, 
+      livingExpense: Math.floor(Number(e.target.value.replace(/[^0-9.-]+/g, ""))),
     };
-    _plan.partTimeWorkDecision =
-      updatedPartTimeWorkDecision.partTimeWorkDecision;
-    updatePartTimeWorkApiCall(_plan);
-    doWizardCalculations();
-  }
-
-  function updateSocialSecurityHandler(e) {
-    const updatedSocialSecurityAge = {
-      ..._plan,
-      socialSecurityAge: e.target.value,
-    };
-    _plan.socialSecurityAge = updatedSocialSecurityAge.socialSecurityAge;
-    updateSocialSecurityApiCall(_plan);
+    _plan.livingExpense = updatedLivingExpense.livingExpense;
+    updateLivingExpenseApiCall(_plan);
     doWizardCalculations();
   }
 
@@ -87,16 +72,6 @@ function Summary(plan) {
     };
     _plan.currentSavings = updatedCurrentSavings.currentSavings;
     updateCurrentSavingsApiCall(_plan);
-    doWizardCalculations();
-  }
-
-  function updatePensionHandler(e) {
-    const updatedPensionStartAge = {
-      ..._plan,
-      pensionStartAge: e.target.value,
-    };
-    _plan.pensionStartAge = updatedPensionStartAge.pensionStartAge;
-    updatePensionApiCall(_plan);
     doWizardCalculations();
   }
 
@@ -132,15 +107,10 @@ function Summary(plan) {
     setCalculations(wizardCalculationsFunction);
     let calculatedPlan = wizardCalculationsFunction;
     /* _setPlan(wizardCalculationsFunction); */
-    showPension();
   }
-
-  function showPension(_plan) {
-    if (calculations.pension === "Yes") {
-      setShowForm(true);
-    } else if (calculations.pension === "No") {
-      setShowForm(false);
-    }
+  
+  async function updateLivingExpenseApiCall(_plan) {
+    await updateLivingExpense(planId, _plan);
   }
 
   async function updateRiskScoreApiCall(_plan) {
@@ -151,20 +121,8 @@ function Summary(plan) {
     await updateRetirementAge(planId, _plan);
   }
 
-  async function updatePartTimeWorkApiCall(_plan) {
-    await updatePartTimeWork(planId, _plan);
-  }
-
-  async function updateSocialSecurityApiCall(_plan) {
-    await updateSocialSecurity(planId, _plan);
-  }
-
   async function updateCurrentSavingsApiCall(_plan) {
     await updateCurrentSavings(planId, _plan);
-  }
-
-  async function updatePensionApiCall(_plan) {
-    await updatePension(planId, _plan);
   }
 
   const convertToUsd = new Intl.NumberFormat("en-US", {
@@ -172,6 +130,30 @@ function Summary(plan) {
     currency: "USD",
     // maximumFractionDigits: 0,
   });
+  
+  const CustomTooltipToThousands = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="customTooltip">
+          <p className="tooltipP">{`Age ${label}: $${Math.round(payload[0].value / 1000)}K`}</p>
+        </div>
+      );
+    }
+  
+    return null;
+  };
+
+  const CustomTooltipToMillions = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="customTooltip">
+          <p className="tooltipP">{`Age ${label}: $${Math.round(payload[0].value / 100000) / 10}M`}</p>
+        </div>
+      );
+    }
+  
+    return null;
+  };
 
   const data = [];
   for (const [Age, Expenses] of Object.entries(calculations.retirementExpenses || {})) {
@@ -183,27 +165,8 @@ function Summary(plan) {
     netWorthData.push({ Age, netWorth });
   }
 
-  const toPercent = (decimal, fixed = 0) => `$${(decimal * 100).toFixed(fixed)}`;
-
   const toUSDThousands = (fixed) => `$${fixed / 1000}K`;
   const toUSDMillions = (fixed) => `$${fixed / 1000000}M`;
-
-  // networth = pension + earning + SS
-  // 3 different keys would be required, not 3 different objects
-
-  // I'll push 2 more keys [ {Age, netWorth, pension, earnings} ]
-
-  /**   for (const [Age, {Earnings, SSAmount}] of Object.entries(calculations.age || {})) {
-    data.push({ Age, Earnings });
-  } */
-
-  /**
-   * [
-   * 60: {
-   * Earnings: '',
-   * SSAmount: ''}
-   * ]
-   */
 
 
   return (
@@ -218,6 +181,7 @@ function Summary(plan) {
       <div className="blocksSection">
         <div className="block1">
           <p className="chartHeadline">Retirement Earnings</p>
+          <p className="chartSubheadline">Including Inflation & Healthcare Expenses</p>
           <AreaChart
             className="barChart"
             width={550}
@@ -233,7 +197,7 @@ function Summary(plan) {
               dataKey="Expenses"
               tickFormatter={toUSDThousands}
             />
-            <Tooltip fontSize="12px" />
+            <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipToThousands}/>
             <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
             <Area
               dataKey="Expenses"
@@ -244,6 +208,7 @@ function Summary(plan) {
           </AreaChart>
           <p className="chartDescription">Age</p>
           <p className="chartHeadline">Net Worth</p>
+          <p className="chartSubheadline">After Retirement Expenses</p>
           <AreaChart
             className="barChart"
             width={550}
@@ -259,7 +224,7 @@ function Summary(plan) {
               dataKey="netWorth"
               tickFormatter={toUSDMillions}
             />
-            <Tooltip fontSize="12px" />
+            <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipToMillions}/>
             <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
             <Area
               dataKey="netWorth"
@@ -298,20 +263,6 @@ function Summary(plan) {
             </select>
           </div>
           <div className="decisionsSocialSecuritySection">
-            <p className="customizationQuestion">Take Social Security At Age</p>
-            <select
-              className="formSelect"
-              name="socialSecurityAge"
-              value={_plan.socialSecurityAge}
-              onChange={updateSocialSecurityHandler}
-            >
-              <option>62</option>
-              <option>67</option>
-              <option>70</option>
-            </select>
-          </div>
-          <br></br>
-          <div className="decisionsSocialSecuritySection">
             <p className="customizationQuestion">
               Annual Savings Until Retirement
             </p>
@@ -338,6 +289,7 @@ function Summary(plan) {
               </option>
             </select>
           </div>
+          <br></br>
           <div className="decisionsSocialSecuritySection">
             <p className="customizationQuestion">My Portfolio Risk Tolerance</p>
             <select
@@ -353,8 +305,89 @@ function Summary(plan) {
               <option>aggressive</option>
             </select>
           </div>
+          <div className="decisionsSocialSecuritySection">
+            <p className="customizationQuestion">
+              Annual Living Expense Throughout Retirement
+            </p>
+            <select
+              className="formSelect"
+              name="livingExpense"
+              value={_plan.livingExpense}
+              onChange={updateLivingExpenseHandler}
+            >
+              <option>{convertToUsd.format(calculations.livingExpense)}</option>
+              <option>{convertToUsd.format(calculations.muchLowerLivingExpense)}</option>
+              <option>{convertToUsd.format(calculations.slightlyLowerLivingExpense)}</option>
+              <option>{convertToUsd.format(calculations.slightlyHigherLivingExpense)}</option>
+              <option>{convertToUsd.format(calculations.muchHigherLivingExpense)}</option>
+            </select>
+          </div>
           <br></br>
           <div className="decisionsSocialSecuritySection">
+            <p className="customizationQuestion">
+              Add One Time Expense
+            </p>
+            <button className="plusButton">+ Add</button>
+          </div>
+          <br></br>
+          <div className="createNewScenario">
+            <label className="scenarioLabel">Name This Scenario</label>
+            <br></br>
+            <input
+              className="scenarioFormInput"
+              id="scenarioNameInput"
+              name="scenarioName"
+              placeholder="Retire at Age 60 Scenario"
+              onChange={updateScenarioNameHandler}
+            ></input>
+            <p className="errors">{errors}</p>
+            <button className="saveScenarioButton" onClick={saveScenario}>
+              Save Scenario
+            </button>
+            <p className="savedMessage">{savedMessage}</p>
+          </div>
+        </div>
+      </div>
+      <div className="projectionsButtonSection">
+        <button
+          className="scorecardButton"
+          onClick={function clickHandler() {
+            router.push(`/wizard/planResults/?planId=${calculations._id}`);
+          }}
+        >
+          Get My Plan →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default Summary;
+
+/*  <div className="decisionssocialsecuritysection">
+                        <p className="customization-question">Annual Retirement Costs (Trips, Charity, etc.)</p>
+                        <select
+                        className="form-select"
+                        name="annualRetirementCostsDecision"
+                        value={annualRetirementCostsDecision}
+                        onChange={e=> { setAnnualRetirementCostsDecision(e.target.value); doWizardCalculations();}}>
+                            <option>None</option>
+                            <option>$10,000/Year</option>
+                            <option>$30,000/Year</option>
+                            <option>$50,000/Year</option>
+                        </select>
+                    </div> */
+
+
+                    /* <div className="summaryOption">
+            <p className="totalRetirementEarnings">Total Retirement Earnings</p>
+            <p className="lifetimeEarnings">
+              <br></br>
+              {convertToUsd.format(calculations.totalRetirementEarnings)}
+            </p>
+          </div> */
+
+          /*  <div className="decisionsSocialSecuritySection">
             <p className="customizationQuestion">
               Part-Time Work During Retirement
             </p>
@@ -369,8 +402,37 @@ function Summary(plan) {
               <option>First 10 Years</option>
               <option>First 20 Years</option>
             </select>
-          </div>
-          {showForm && (
+          </div> */
+
+          /*           <div className="decisionsSocialSecuritySection">
+            <p className="customizationQuestion">Take Social Security At Age</p>
+            <select
+              className="formSelect"
+              name="socialSecurityAge"
+              value={_plan.socialSecurityAge}
+              onChange={updateSocialSecurityHandler}
+            >
+              <option>62</option>
+              <option>67</option>
+              <option>70</option>
+            </select>
+          </div> 
+          
+            function updateSocialSecurityHandler(e) {
+    const updatedSocialSecurityAge = {
+      ..._plan,
+      socialSecurityAge: e.target.value,
+    };
+    _plan.socialSecurityAge = updatedSocialSecurityAge.socialSecurityAge;
+    updateSocialSecurityApiCall(_plan);
+    doWizardCalculations();
+  }
+  
+    async function updateSocialSecurityApiCall(_plan) {
+    await updateSocialSecurity(planId, _plan);
+  }*/
+
+  /* {showForm && (
             <div className="decisionsSocialSecuritySection">
               <p className="customizationQuestion">Take Pension at</p>
               <select
@@ -402,60 +464,28 @@ function Summary(plan) {
                 <option>70</option>
               </select>
             </div>
-          )}
-          <br></br>
-          <br></br>
-          <label className="scenarioLabel">Name This Scenario</label>
-          <br></br>
-          <input
-            className="scenarioFormInput"
-            id="scenarioNameInput"
-            name="scenarioName"
-            placeholder="Retire at Age 60 Scenario"
-            onChange={updateScenarioNameHandler}
-          ></input>
-          <p className="errors">{errors}</p>
-          <button className="saveScenarioButton" onClick={saveScenario}>
-            Save Scenario
-          </button>
-          <p className="savedMessage">{savedMessage}</p>
-        </div>
-      </div>
-      <div className="projectionsButtonSection">
-        <button
-          className="scorecardButton"
-          onClick={function clickHandler() {
-            router.push(`/wizard/planResults/?planId=${calculations._id}`);
-          }}
-        >
-          Get My Plan
-        </button>
-      </div>
-    </div>
-  );
-}
-
-export default Summary;
-
-/*  <div className="decisionssocialsecuritysection">
-                        <p className="customization-question">Annual Retirement Costs (Trips, Charity, etc.)</p>
-                        <select
-                        className="form-select"
-                        name="annualRetirementCostsDecision"
-                        value={annualRetirementCostsDecision}
-                        onChange={e=> { setAnnualRetirementCostsDecision(e.target.value); doWizardCalculations();}}>
-                            <option>None</option>
-                            <option>$10,000/Year</option>
-                            <option>$30,000/Year</option>
-                            <option>$50,000/Year</option>
-                        </select>
-                    </div> */
-
-
-                    /* <div className="summaryOption">
-            <p className="totalRetirementEarnings">Total Retirement Earnings</p>
-            <p className="lifetimeEarnings">
-              <br></br>
-              {convertToUsd.format(calculations.totalRetirementEarnings)}
-            </p>
-          </div> */
+          )} 
+          
+            const [showForm, setShowForm] = useState(false);
+            
+              function showPension(_plan) {
+    if (calculations.pension === "Yes") {
+      setShowForm(true);
+    } else if (calculations.pension === "No") {
+      setShowForm(false);
+    }
+  }
+  
+    function updatePensionHandler(e) {
+    const updatedPensionStartAge = {
+      ..._plan,
+      pensionStartAge: e.target.value,
+    };
+    _plan.pensionStartAge = updatedPensionStartAge.pensionStartAge;
+    updatePensionApiCall(_plan);
+    doWizardCalculations();
+  }
+  
+    async function updatePensionApiCall(_plan) {
+    await updatePension(planId, _plan);
+  }*/

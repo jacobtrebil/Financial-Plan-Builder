@@ -23,26 +23,26 @@ export function App() {
 
   return (
     <div>
-     <div className="app">
-        <div className="plans">
-           <div id="plansSection">
-              <p className="plansSubtitle">Plans</p>
-              <Link href="/createPlan"><button className="plansButton">+ Add Plan</button></Link>
-              <hr className="plansSolidHr"></hr>
-              <div className="dashboardPlanBox">
-                <p className="dashboardLeftTitle">Jacob's Retirement Plan</p>
-                <button 
-                className="dashboardButton"
-                onClick={function clickHandler() {
-                  router.push(`/wizard/planResults`);
-                }}
-                > View Plan</button>
-              </div>
-              <p id="noPlansMessage">You currently have 0 plans created. Click the button above to create a plan.</p>
-        </div>
-    </div>
-        <NavComponent />
-    </div> 
+      <div className="dashboardMain">
+      <h1 className="plansH1">Plans</h1>
+      <div className="newPlansSection">
+        <p><b>Jacob's Financial Plan</b></p>
+        <hr className="planProgressBar"></hr>
+        <p>45% Complete</p>
+        <button 
+        className="dashboardButton"
+        onClick={function clickHandler() {
+          router.push(`/wizard/planResults`);
+        }}
+        > View Plan</button>
+      </div>
+      <Link href="/createPlan">
+      <button
+      className="plansButton">
+      Create Plan →</button>
+      </Link>
+      </div>
+      <NavComponent />
         <FooterComponent />
     </div>
   );

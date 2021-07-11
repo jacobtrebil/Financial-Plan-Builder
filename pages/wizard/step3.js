@@ -105,7 +105,7 @@ export default function Step3({ plan, pageProps }) {
                     <p className="errors">{errors}</p>
                 </div>
                 <div className="inputDiv">
-                    <label className="inputLabel">How much do you currently save per year?</label><br></br>
+                    <label className="inputLabel">How much do you currently save or invest per year?</label><br></br>
                     <input
                     className="formInputPages"
                     placeholder={'$50,000'}
@@ -286,7 +286,7 @@ export default function Step3({ plan, pageProps }) {
             </div>
             </div>
             <div className='wizardFooter'>
-                <button onClick={completePlan} className="wizardFooterButton">Next</button>
+                <button onClick={completePlan} className="wizardFooterButton">Next →</button>
             </div>
             </div>
     )

@@ -30,75 +30,87 @@ export function onePagePlan(plan) {
       setCalculations(wizardCalculationsFunction);
     }
 
-    const data = [];
-    for (const [Age, Earnings] of Object.entries(calculations.age || {})) {
-      data.push({ Age, Earnings });
+    const CustomTooltipToThousands = ({ active, payload, label }) => {
+      if (active && payload && payload.length) {
+        return (
+          <div className="customTooltip">
+            <p className="tooltipP">{`Age ${label}: $${Math.round(payload[0].value / 1000)}K`}</p>
+          </div>
+        );
+      }
+    
+      return null;
+    };
+  
+    const CustomTooltipToMillions = ({ active, payload, label }) => {
+      if (active && payload && payload.length) {
+        return (
+          <div className="customTooltip">
+            <p className="tooltipP">{`Age ${label}: $${Math.round(payload[0].value / 100000) / 10}M`}</p>
+          </div>
+        );
+      }
+    
+      return null;
     };
 
-    /* const expensesData = [];
-    for (const [Age, Expenses] of Object.entries(calculations.retirementExpense || {})) {
-      expensesData.push({ Age, Expenses });
-    }; */
-
+    const data = [];
+    for (const [Age, Expenses] of Object.entries(calculations.retirementExpenses || {})) {
+      data.push({ Age, Expenses });
+    }
+  
     const netWorthData = [];
     for (const [Age, netWorth] of Object.entries(calculations.netWorth || {})) {
       netWorthData.push({ Age, netWorth });
-    }; 
+    }
+  
+    const toUSDThousands = (fixed) => `$${fixed / 1000}K`;
+    const toUSDMillions = (fixed) => `$${fixed / 1000000}M`;
 
     return (
       <div>
         <div className="planResultsSection">
-            <h1 className="planResultsPageTitle">Your Financial Plan</h1>
-            <hr></hr>
             <div className="savingsNeededBlock">
+              <h1>Retirement Income</h1>
+              <p>See how much you'll live off of throughout retirement and where you'll get the money from.</p>
+              <div className="planBlock">
+              <div className="planLeftSide">
+                <p>Retire at age: {calculations.retirementAge}</p>
+                <p>Take Social Security at age: {calculations.socialSecurityAge}</p>
+              </div>
+              <div className="planRightSide">
+              <AreaChart
+                className="barChart"
+                width={550}
+                height={180}
+                data={data}
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              >
+              <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" />
+              <YAxis
+                name="Expenses"
+                stroke="grey"
+                fontSize="12px"
+                dataKey="Expenses"
+                tickFormatter={toUSDThousands}
+              />
+              <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipToThousands}/>
+              <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+              <Area
+              dataKey="Expenses"
+              fontSize="12px"
+              fill="rgb(4, 187, 172)"
+              stroke="rgb(4, 187, 172)"
+            />
+            </AreaChart>
+              </div>
+              </div>
               <p>To reach your goals of retiring at age 60 and living off of $100,000<br></br> a year throughout retirement, you will need to save...</p>
               <h2>$300/Month</h2>
               <p>For the next 28 years and put those savings into a <br></br>portfolio earning 6% a year in annual returns.</p>
             </div>
             <div>
               <p>Annual Retirement Income</p>
-              <BarChart
-                className="barChart"
-                width={550}
-                height={250}
-                data={data}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-              <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" />
-              <YAxis
-                name="Earnings"
-                stroke="grey"
-                fontSize="12px"
-                dataKey="Earnings"
-              />
-              <Tooltip fontSize="12px" />
-              <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-              <Bar
-                dataKey="Earnings"
-                fontSize="12px"
-                fill="rgb(4, 187, 172)"
-                stroke="rgb(4, 187, 172)"
-                barSize={5}
-              />
-            </BarChart>
-            <AreaChart
-                width={500}
-                height={400}
-                data={expensesData}
-                margin={{
-                  top: 10,
-                  right: 30,
-                  left: 0,
-                  bottom: 0
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Area type="monotone" dataKey="Expenses" stroke="#8884d8" fill="#8884d8" />
-            </AreaChart>
-            </div>
             <div>
               <p>Annual Retirement Expenses</p>
             </div>
@@ -107,14 +119,7 @@ export function onePagePlan(plan) {
             </div>
               <p>Investment Portfolio</p>
         </div>
-        <div>
-          <button 
-          className="planResultsDashboardButton"
-          onClick={function clickHandler() {
-          router.push(`../?planId=${plan._id}`);
-          }}
-          >Back to Dashboard →</button>
-        </div>
+      </div>
       </div>
     )}
 

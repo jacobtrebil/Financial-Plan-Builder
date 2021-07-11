@@ -1,6 +1,5 @@
 import Scenarios from "../../../models/scenarioSchema";
 import dbConnect from "../../../util/wizardDbConnect";
-import { useRouter } from "next/router";
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -11,16 +10,14 @@ export default async function handler(req, res) {
   switch (method) {
     case "POST":
       try {
-        const { scenarioName, socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionStartAge } = req.body
+        const { scenarioName, currentSavings, livingExpense, retirementAge, riskScore } = req.body
         const scenario = Scenarios.create({
           planId: id,
           scenarioName,
-          socialSecurityAge,
           currentSavings,
+          livingExpense,
           retirementAge,
-          riskScore,
-          partTimeWorkDecision,
-          pensionStartAge,
+          riskScore
         });
         res.status(200).json(scenario);
         return;

@@ -6,6 +6,7 @@ var ScenarioModel = new mongoose.Schema({
   Number,
   socialSecurityAge: Number,
   currentSavings: Number,
+  livingExpense: Number,
   String,
   retirementAge: Number,
   riskScore: String,

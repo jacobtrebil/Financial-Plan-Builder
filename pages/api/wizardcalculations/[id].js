@@ -30,6 +30,10 @@ import setYearsOfPartTimeWork from '../../../calculations/setYearsOfPartTimeWork
 import calculateRetirementExpenses from '../../../calculations/calculateRetirementExpenses';
 import calculateHealthcareStartingExpense from '../../../calculations/calculateHealthcareStartingExpense';
 import calculateRetirementEarningsSections from '../../../calculations/calculateRetirementEarningsSections';
+import slightlyHigherLivingExpenseFunction from '../../../calculations/livingExpenseOptions/slightlyHigherLivingExpense';
+import slightlyLowerLivingExpenseFunction from '../../../calculations/livingExpenseOptions/slightlyLowerLivingExpense';
+import muchHigherLivingExpenseFunction from '../../../calculations/livingExpenseOptions/muchHigherLivingExpense';
+import muchLowerLivingExpenseFunction from '../../../calculations/livingExpenseOptions/muchLowerLivingExpense';
 
 export default async function handler(req,res) {
     const { method } = req
@@ -71,7 +75,14 @@ export default async function handler(req,res) {
                 plan.muchMoreSavings = muchMoreSavingsFunction(plan.currentSavings);
                 plan.slightlyLessSavings = slightlyLessSavingsFunction(plan.currentSavings);
                 plan.slightlyMoreSavings = slightlyMoreSavingsFunction(plan.currentSavings);
+                plan.muchLowerLivingExpense = muchLowerLivingExpenseFunction(plan.livingExpense);
+                plan.muchHigherLivingExpense = muchHigherLivingExpenseFunction(plan.livingExpense);
+                plan.slightlyLowerLivingExpense = slightlyLowerLivingExpenseFunction(plan.livingExpense);
+                plan.slightlyHigherLivingExpense = slightlyHigherLivingExpenseFunction(plan.livingExpense);
                 await plan.save()
+
+                // I coule create a seperate API call that is only done the first time, and then not include all of the 
+                // Calculations for slighltyMore, muchMore, etc. so that they're all only done once.
 
                 // turn this into a service pattern - research how to do this
                 // minimize saves in db calls, db calls are expensive

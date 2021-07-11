@@ -84,7 +84,7 @@ export const createPlan = async (plan) => {
 
   export const updatePartTimeWork = async (id, plan) => {
     const response = await fetch(`/api/updatePartTimeWork/${id}`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -108,6 +108,18 @@ export const createPlan = async (plan) => {
 
   export const updatePension = async (id, plan) => {
     const response = await fetch(`/api/updatePension/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(plan)
+    })
+    return await response.json();
+  }
+
+  export const updateLivingExpense = async (id, plan) => {
+    const response = await fetch(`/api/updateLivingExpense/${id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',

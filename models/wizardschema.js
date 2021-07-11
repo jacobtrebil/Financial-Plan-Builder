@@ -98,9 +98,13 @@ var PlanModel = new mongoose.Schema({
     ageOfDeath: Number,
     riskScoreFromFormValues: String, 
     partTimeWorkEarnings: Number, 
-    livingExpense: Number, 
+    livingExpense: Number,
     healthcareStartingExpense: Number,
     yearsOfPartTimeWork: Number,
+    slightlyLowerLivingExpense: Number,
+    slightlyHigherLivingExpense: Number,
+    muchLowerLivingExpense: Number,
+    muchHigherLivingExpense: Number,
     netWorth: {
         55: Number,
         56: Number,
@@ -465,13 +469,11 @@ var PlanModel = new mongoose.Schema({
         },
     },
     scenario: {
-        socialSecurityAge: Number,
         currentSavings: Number, String,
         retirementAge: Number,
         riskScore: String, Number,
-        partTimeWorkDecision: String,
-        pensionTimeframe: String, Number,
         scenarioName: String, Number,
+        livingExpense: Number,
     },
 });
 

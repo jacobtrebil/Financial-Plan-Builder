@@ -68,3 +68,20 @@ export default function calculateRetirementEarningsSections(yearsOfPartTimeWork,
 Then I can get Vivek's help with turning them into this object and displaying
 them in the chart.
  */
+
+ // networth = pension + earning + SS
+  // 3 different keys would be required, not 3 different objects
+
+  // I'll push 2 more keys [ {Age, netWorth, pension, earnings} ]
+
+  /**   for (const [Age, {Earnings, SSAmount}] of Object.entries(calculations.age || {})) {
+    data.push({ Age, Earnings });
+  } */
+
+  /**
+   * [
+   * 60: {
+   * Earnings: '',
+   * SSAmount: ''}
+   * ]
+   */

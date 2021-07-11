@@ -170,7 +170,7 @@ export default function Step1({}) {
             </div>
             </div>
             <div className='wizardFooter'>
-            <button onClick={complete} className="wizardFooterButton">Next</button>
+            <button onClick={complete} className="wizardFooterButton">Next →</button>
         </div>
         </div>
     )

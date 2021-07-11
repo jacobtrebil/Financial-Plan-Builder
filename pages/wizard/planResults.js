@@ -12,6 +12,16 @@ export default function planResults() {
 
   return (
     <div>
+      <h1 className="planResultsPageTitle">Your Financial Plan</h1>
+      <p className="planResultsSubTitle">See and use your custom financial plan below.</p>
       <OnePagePlanComponent />
+      <div>
+          <button 
+          className="planResultsDashboardButton"
+          onClick={function clickHandler() {
+          router.push(`../?planId=${plan._id}`);
+          }}
+          >Back to Dashboard →</button>
+        </div>
     </div>
   )};
