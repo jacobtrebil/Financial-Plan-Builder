@@ -4,6 +4,7 @@ import WizardHeadline from '../../components/wizardComponents/wizardHeadline';
 import _dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { createPlan } from '../../apiclient/wizardFetch';
+import Image from 'next/image';
 
 export default function Step1({}) {
 
@@ -43,6 +44,10 @@ export default function Step1({}) {
     let [_plan, _setPlan] = useState({plan});
     
     const { _id } = plan;
+
+    function back() {
+      router.push(`/`);
+    }
 
     _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, gender, maritalStatus, firstName, spousesFullName };
     

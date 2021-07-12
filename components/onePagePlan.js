@@ -79,6 +79,8 @@ export function onePagePlan(plan) {
                 <p>Take Social Security at age: {calculations.socialSecurityAge}</p>
               </div>
               <div className="planRightSide">
+              <p>Retirement Income</p>
+              <p>Including Inflation & Healthcare Costs</p>
               <AreaChart
                 className="barChart"
                 width={550}

@@ -26,9 +26,17 @@ export function App() {
       <div className="dashboardMain">
       <h1 className="plansH1">Plans</h1>
       <div className="newPlansSection">
-        <p><b>Jacob's Financial Plan</b></p>
-        <hr className="planProgressBar"></hr>
-        <p>45% Complete</p>
+        <div className="dashboardPlanIconContainer">
+          <Image className="dashboardPlanIcon" src='/../public/Images/PlansIcon.png' width={65} height={65}></Image>
+        </div>
+        <div className="planInfo">
+          <p className="dashboardPlanHeadline"><b>Jacob's Financial Plan</b></p>
+          <p className="dashboardPlanSubheadline">Build your wealth by making progress towards your financial plan.</p>
+          <div className="planProgressBarContainer">
+            <hr className="planProgressBar"></hr>
+          </div>
+          <p className="progressAmount">45% Complete</p>
+        </div>
         <button 
         className="dashboardButton"
         onClick={function clickHandler() {
