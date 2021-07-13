@@ -69,7 +69,7 @@ export default async function handler(req,res) {
                 plan.retirementExpenses = calculateRetirementExpenses(plan.retirementAge, plan.ageOfDeath, plan.livingExpense, plan.healthcareStartingExpense);
                 plan.age = setRetirementAges(plan.yearsOfPartTimeWork, plan.partTimeWorkEarnings, plan.retirementAge, plan.ageOfDeath, plan.pension, plan.pensionStartAge, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
                 plan.totalRetirementEarnings = calculateTotalRetirementEarnings(plan.age);
-                plan.netWorth = calculateNetWorth(plan.retirementAge, plan.ageOfDeath, plan.savingsByRetirement, plan.rateOfReturn, plan.retirementExpenses);
+                plan.netWorth = calculateNetWorth(plan.retirementAge, plan.ageOfDeath, plan.savingsByRetirement, plan.rateOfReturn, plan.retirementExpenses, plan.socialSecurityEarnings);
                 plan.retirementEarningsSections = calculateRetirementEarningsSections(plan.yearsOfPartTimeWork, plan.partTimeWorkEarnings, plan.pension, plan.pensionStartAge, plan.retirementAnnualReturnsIncome, plan.retirementAge, plan.ageOfDeath, plan.livingExpense, plan.healthcareStartingExpense, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
                 plan.muchLessSavings = muchLessSavingsFunction(plan.currentSavings);
                 plan.muchMoreSavings = muchMoreSavingsFunction(plan.currentSavings);

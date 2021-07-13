@@ -15,7 +15,7 @@ function StartPlan() {
     return (
       <div>
           <div className="backArrowButton" onClick={back}>
-            <p>← back to home</p>
+            <p className="backArrowP">← back to home</p>
           </div>
           <div className="createAPlanBox">
             <h1 className="createAPlan">Create a Plan</h1>

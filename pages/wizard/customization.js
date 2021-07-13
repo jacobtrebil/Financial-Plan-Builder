@@ -4,7 +4,6 @@ import {
   updateCurrentSavings,
   updateRiskScore,
   updateRetirementAge,
-  updatePension,
   addScenario,
   updateLivingExpense,
 } from "../../apiclient/wizardFetch";
@@ -20,9 +19,19 @@ function Summary(plan) {
     doWizardCalculations();
   }, [planId]);
 
-  const [errors, setErrors] = useState('')
-  const [savedMessage, setSavedMessage] = useState('')
+  const [errors, setErrors] = useState('');
+  const [errors2, setErrors2] = useState('');
+  const [errors3, setErrors3] = useState('');
+  const [errors4, setErrors4] = useState('');
+  const [errors5, setErrors5] = useState('');
+  const [savedMessage, setSavedMessage] = useState('');
   const [calculations, setCalculations] = useState({});
+  const [showForm, setShowForm] = useState(false);
+  const [buttonShow, setButtonShow] = useState(true);
+  const [nameOfExpense, setNameOfExpense] = useState('');
+  const [ageAtPurchase, setAgeAtPurchase] = useState('');
+  const [upfrontCost, setUpfrontCost] = useState('');
+  const [annualCost, setAnnualCost] = useState('');
   let _plan = {
     riskScore: calculations.riskScore,
     retirementAge: calculations.retirementAge,
@@ -98,6 +107,27 @@ function Summary(plan) {
     }
   }
 
+  function saveExpense() {
+    if (nameOfExpense.length === 0) {
+      setErrors2('*Please enter a valid name');
+    } 
+    if (ageAtPurchase.length === 0) {
+      setErrors3('*Please enter a valid age')
+    }
+    if (upfrontCost.length === 0) {
+      setErrors4('*Please enter a valid cost')
+    }
+    if (annualCost.length === 0) {
+      setErrors5('*Please enter a valid cost')
+    } 
+    if (nameOfExpense.length > 0 && ageAtPurchase.length > 0 && upfrontCost.length > 0 && annualCost.length > 0) {
+      setErrors2('');
+      setErrors3('');
+      setErrors4('');
+      setErrors5('');
+    }
+  }
+
   async function saveScenarioApiCall(_plan) {
     await addScenario(planId, _plan);
   }
@@ -168,9 +198,15 @@ function Summary(plan) {
   const toUSDThousands = (fixed) => `$${fixed / 1000}K`;
   const toUSDMillions = (fixed) => `$${fixed / 1000000}M`;
 
+  function back() {
+    router.push(`/wizard/step3?planId=${planId}`);
+  }
 
   return (
     <div className="projectionsPage">
+      <div className="backArrowButton" onClick={back}>
+        <p className="backArrowP">← back to step 3</p>
+      </div>
       <div className="projectionsHeadline">
         <h2 className="recommendationsH2">Customize Your Retirement</h2>
         <p>
@@ -244,22 +280,22 @@ function Summary(plan) {
               value={_plan.retirementAge}
               onChange={updateRetirementAgeHandler}
             >
-              <option>55</option>
-              <option>56</option>
-              <option>57</option>
-              <option>58</option>
-              <option>59</option>
-              <option>60</option>
-              <option>61</option>
-              <option>62</option>
-              <option>63</option>
-              <option>64</option>
-              <option>65</option>
-              <option>66</option>
-              <option>67</option>
-              <option>68</option>
-              <option>69</option>
-              <option>70</option>
+              <option value="55">55</option>
+              <option value="56">56</option>
+              <option value="57">57</option>
+              <option value="58">58</option>
+              <option value="59">59</option>
+              <option value="60">60</option>
+              <option value="61">61</option>
+              <option value="62">62</option>
+              <option value="63">63</option>
+              <option value="64">64</option>
+              <option value="65">65</option>
+              <option value="66">66</option>
+              <option value="67">67</option>
+              <option value="68">68</option>
+              <option value="69">69</option>
+              <option value="70">70</option>
             </select>
           </div>
           <div className="decisionsSocialSecuritySection">
@@ -272,19 +308,19 @@ function Summary(plan) {
               value={_plan.currentSavings}
               onChange={updateCurrentSavingsHandler}
             >
-              <option>
+              <option value={calculations.currentSavings}>
                 {convertToUsd.format(calculations.currentSavings)}
               </option>
-              <option>
+              <option value={calculations.slightlyLessSavings}>
                 {convertToUsd.format(calculations.slightlyLessSavings)}
               </option>
-              <option>
+              <option value={calculations.muchLessSavings}>
                 {convertToUsd.format(calculations.muchLessSavings)}
               </option>
-              <option>
+              <option value={calculations.slightlyMoreSavings}>
                 {convertToUsd.format(calculations.slightlyMoreSavings)}
               </option>
-              <option>
+              <option value={calculations.muchMoreSavings}>
                 {convertToUsd.format(calculations.muchMoreSavings)}
               </option>
             </select>
@@ -298,11 +334,11 @@ function Summary(plan) {
               value={_plan.riskScore}
               onChange={updateRiskScoreHandler}
             >
-              <option>conservative</option>
-              <option>conservative +</option>
-              <option>moderate</option>
-              <option>moderate +</option>
-              <option>aggressive</option>
+              <option value="conservative">conservative</option>
+              <option value="conservative +">conservative +</option>
+              <option value="moderate">moderate</option>
+              <option value="moderate +">moderate +</option>
+              <option value="aggressive">aggressive</option>
             </select>
           </div>
           <div className="decisionsSocialSecuritySection">
@@ -315,11 +351,11 @@ function Summary(plan) {
               value={_plan.livingExpense}
               onChange={updateLivingExpenseHandler}
             >
-              <option>{convertToUsd.format(calculations.livingExpense)}</option>
-              <option>{convertToUsd.format(calculations.muchLowerLivingExpense)}</option>
-              <option>{convertToUsd.format(calculations.slightlyLowerLivingExpense)}</option>
-              <option>{convertToUsd.format(calculations.slightlyHigherLivingExpense)}</option>
-              <option>{convertToUsd.format(calculations.muchHigherLivingExpense)}</option>
+              <option value={calculations.livingExpense}>{convertToUsd.format(calculations.livingExpense)}</option>
+              <option value={calculations.muchLowerLivingExpense}>{convertToUsd.format(calculations.muchLowerLivingExpense)}</option>
+              <option value={calculations.slightlyLowerLivingExpense}>{convertToUsd.format(calculations.slightlyLowerLivingExpense)}</option>
+              <option value={calculations.slightlyHigherLivingExpense}>{convertToUsd.format(calculations.slightlyHigherLivingExpense)}</option>
+              <option value={calculations.muchHigherLivingExpense}>{convertToUsd.format(calculations.muchHigherLivingExpense)}</option>
             </select>
           </div>
           <br></br>
@@ -327,7 +363,47 @@ function Summary(plan) {
             <p className="customizationQuestion">
               Add One Time Expense
             </p>
-            <button className="plusButton">+ Add</button>
+            {
+            buttonShow && (
+            <button className="plusButton" onClick={function setTrue() { 
+              setShowForm(true)
+              setButtonShow(false)
+              }}>+ Add</button>
+            )}
+          {
+            showForm && (
+          <div>
+            <label className="oneTimeExpenseLabel">Name of Expense</label>
+            <input
+            name="nameOfExpense"
+            className="oneTimeExpenseFormInput"
+            placeholder='Vacation home'>
+            </input>
+            <p className="errors">{errors2}</p>
+            <label className="oneTimeExpenseLabel">Age at Purchase</label>
+            <input
+            name="ageAtPurchase"
+            className="oneTimeExpenseFormInput"
+            placeholder='65'>
+            </input>
+            <p className="errors">{errors3}</p>
+            <label className="oneTimeExpenseLabel">Upfront Cost</label>
+            <input
+            name="upfrontCost"
+            className="oneTimeExpenseFormInput"
+            placeholder='$10,000'>
+            </input>
+            <p className="errors">{errors4}</p>
+            <label className="oneTimeExpenseLabel">Annual Cost After Upfront Payment</label>
+            <input
+            name="annualCost"
+            className="oneTimeExpenseFormInput"
+            placeholder='$500'>
+            </input>
+            <p className="errors">{errors5}</p>
+          <button onClick={saveExpense} className="oneTimeExpenseButton">Save Expense</button>
+          </div>
+          )}
           </div>
           <br></br>
           <div className="createNewScenario">

@@ -105,6 +105,12 @@ var PlanModel = new mongoose.Schema({
     slightlyHigherLivingExpense: Number,
     muchLowerLivingExpense: Number,
     muchHigherLivingExpense: Number,
+    oneTimeExpense: {
+        nameOfOneTimeExpense: String,
+        ageAtOneTimeExpese: Number,
+        oneTimeExpenseUpfrontCost: Number,
+        oneTimeExpenseAnnualCost: Number,
+    },
     netWorth: {
         55: Number,
         56: Number,

@@ -85,10 +85,17 @@ export default function Step3({ plan, pageProps }) {
         _setPlan({ ..._plan, ...changes})
     }
 
+    function back() {
+        router.push(`/wizard/step2?planId=${planId}`);
+      }
+
     _plan = { currentEarnings, currentSavings, assetValue, lifeInsurance, taxPlan, will, pension, pensionStartAge, pensionEarnings, pensionInflation, socialSecurity, riskAttitude, volatility, changePortfolio, lifeInsuranceDocument };
     
     return (
         <div>
+          <div className="backArrowButton" onClick={back}>
+            <p className="backArrowP">← back to step 2</p>
+          </div>
         <WizardHeader3></WizardHeader3>
         <div className="formBorder">
         <WizardHeadline3></WizardHeadline3>

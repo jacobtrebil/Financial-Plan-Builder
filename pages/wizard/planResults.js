@@ -10,8 +10,15 @@ export default function planResults() {
   const router = useRouter();
   const { planId } = router.query;
 
+  function back() {
+    router.push(`/wizard/customization?planId=${planId}`);
+  }
+
   return (
     <div>
+      <div className="backArrowButton" onClick={back}>
+        <p className="backArrowP">← back to customization</p>
+      </div>
       <h1 className="planResultsPageTitle">Your Financial Plan</h1>
       <p className="planResultsSubTitle">See and use your custom financial plan below.</p>
       <OnePagePlanComponent />

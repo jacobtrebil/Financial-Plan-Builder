@@ -46,13 +46,16 @@ export default function Step1({}) {
     const { _id } = plan;
 
     function back() {
-      router.push(`/`);
+      router.push(`/createPlan`);
     }
 
     _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, gender, maritalStatus, firstName, spousesFullName };
     
     return (
         <div>
+          <div className="backArrowButton" onClick={back}>
+            <p className="backArrowP">← back to start</p>
+          </div>
         <WizardHeader></WizardHeader>
         <div className="formBorder">
         <WizardHeadline></WizardHeadline>
