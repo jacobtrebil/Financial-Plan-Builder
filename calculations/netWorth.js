@@ -5,7 +5,6 @@ export default function calculateNetWorth(retirementAge, ageOfDeath, savingsByRe
     let previousValue = savingsByRetirement;
     for (let i = retirementAge; i <= ageOfDeath; i++) {
             data[i] = Math.floor(((previousValue * rateOfReturn) + socialSecurityEarnings) - retirementExpenses[i]);
-            console.log(data[i]);
             previousValue = data[i];
     };
     return data;

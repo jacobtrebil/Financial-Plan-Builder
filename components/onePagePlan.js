@@ -10,6 +10,7 @@ import {
   Area
 } from "recharts";
 import { useRouter } from "next/router";
+import _dynamic from "next/dynamic";
 import {
   planCalculations,
 } from "../apiclient/wizardFetch";
@@ -29,6 +30,10 @@ export function onePagePlan(plan) {
       const wizardCalculationsFunction = await planCalculations(planId, plan);
       setCalculations(wizardCalculationsFunction);
     }
+
+    const PurchaseGoalComponent = _dynamic(() =>
+    import('../components/purchaseGoal').then((mod) => mod.purchaseGoal)
+    )
 
     const CustomTooltipToThousands = ({ active, payload, label }) => {
       if (active && payload && payload.length) {
@@ -70,17 +75,17 @@ export function onePagePlan(plan) {
     return (
       <div>
         <div className="planResultsSection">
-            <div className="savingsNeededBlock">
-              <h1>Retirement Income</h1>
-              <p>See how much you'll live off of throughout retirement and where you'll get the money from.</p>
-              <div className="planBlock">
-              <div className="planLeftSide">
-                <p>Retire at age: {calculations.retirementAge}</p>
-                <p>Take Social Security at age: {calculations.socialSecurityAge}</p>
-              </div>
-              <div className="planRightSide">
-              <p>Retirement Income</p>
-              <p>Including Inflation & Healthcare Costs</p>
+              <h1 className="financialPlanHeadline">{calculations.firstName}'s Financial Plan</h1>
+              <p className="financialPlanSubheadline">Your plan shows with your future income, future spending, how your net worth will change over time, <br></br>as well as key info for you to know regarding your financial future.</p>
+            <div>
+              <h1 className="planHeadline">Future Income</h1>
+              <p className="planSubheadline">See how much you're projected to earn in the future</p>
+            </div>
+            <div>
+              <h1 className="planHeadline">Future Spending</h1>
+              <p className="planSubheadline">See how much you're projected to spend in the future</p>
+              <p className="chartHeadline">Future Spending</p>
+              <p className="chartSubheadline">Including Purchase Goals & Healthcare Expenses</p>
               <AreaChart
                 className="barChart"
                 width={550}
@@ -103,23 +108,93 @@ export function onePagePlan(plan) {
               fontSize="12px"
               fill="rgb(4, 187, 172)"
               stroke="rgb(4, 187, 172)"
-            />
-            </AreaChart>
+              />
+              </AreaChart>
+              <p className="chartDescription">Age</p>
+              <div className="futureSpendingBlocks">
+                <p className="purchaseGoalsHeadline">
+                  Purchase Goals
+                </p>
+                <p className="purchaseGoalsSubheadline">
+                  Major purchases in the future (Home, Car, etc.)
+                </p>
+                <hr className="purchaseGoalsHr"></hr>
+                <PurchaseGoalComponent></PurchaseGoalComponent>
               </div>
+              <div className="futureSpendingBlocks">
+                <p className="retirementSpendingHeadline">
+                  Retirement Spending
+                </p>
+                <p className="retirementSpendingSubheadline">
+                  See what you will spend during retirement
+                </p>
+                <hr className="purchaseGoalsHr"></hr>
+                <p>Living Expense: {calculations.livingExpense}</p>
+                <p>Your living expenses will increase 2% a year due to inflation</p>
+                <p>Healthcare Expenses: {calculations.healthcareExpense}</p>
+                <p>Your healthcare expenses will increase 5% a year as you get older</p>
               </div>
-              <p>To reach your goals of retiring at age 60 and living off of $100,000<br></br> a year throughout retirement, you will need to save...</p>
-              <h2>$300/Month</h2>
-              <p>For the next 28 years and put those savings into a <br></br>portfolio earning 6% a year in annual returns.</p>
             </div>
             <div>
-              <p>Annual Retirement Income</p>
-            <div>
-              <p>Annual Retirement Expenses</p>
+                <h1 className="planHeadline">Net Worth</h1>
+                <p className="planSubheadline">See how your net worth will change over time</p>
+                <p className="chartHeadline">Net Worth</p>
+                <p className="chartSubheadline">After Retirement Expenses</p>
+                <AreaChart
+                  className="barChart"
+                  width={550}
+                  height={180}
+                  data={netWorthData}
+                  margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                >
+                <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" tickMargin='3'/>
+                <YAxis
+                  name="netWorth"
+                  stroke="grey"
+                  fontSize="12px"
+                  dataKey="netWorth"
+                  tickFormatter={toUSDMillions}
+                />
+                <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipToMillions}/>
+                <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+                <Area
+                  dataKey="netWorth"
+                  fontSize="12px"
+                  fill="rgb(4, 187, 172)"
+                  stroke="rgb(4, 187, 172)"
+                />
+                </AreaChart>
+                <p className="chartDescription">Age</p>
             </div>
             <div>
-              <p>Net Worth</p>
+              <h1 className="planHeadline">Key Info</h1>
+              <p className="planSubheadline">See important information regarding your financial future</p>
+              <p>Retire at age: {calculations.retirementAge}</p>
+              <p>Take Social Security at age: {calculations.socialSecurityAge}</p>
             </div>
-              <p>Investment Portfolio</p>
+            <div>
+              <h1 className="planHeadline">Add Important Documents</h1>
+              <p className="planSubheadline">Upload Documents to store safely in your Financial Plan</p>
+              <div className="planDocumentUploadBox">
+                <p className="planDocumentUploadType">Tax Plan</p>
+                <p className="noPlanDocumentFound">*No Documents Found</p>
+                <button className="planDocumentUploadButton">+ Upload Plan</button>
+              </div>
+              <div className="planDocumentUploadBox">
+                <p className="planDocumentUploadType">Estate Plan</p>
+                <p className="noPlanDocumentFound">*No Documents Found</p>
+                <button className="planDocumentUploadButton">+ Upload Plan</button>
+              </div>
+              <div className="planDocumentUploadBox">
+                <p className="planDocumentUploadType">Your Will</p>
+                <p className="noPlanDocumentFound">*No Documents Found</p>
+                <button className="planDocumentUploadButton">+ Upload Will</button>
+              </div>
+              <div className="planDocumentUploadBox">
+                <p className="planDocumentUploadType">Insurance</p>
+                <p className="noPlanDocumentFound">*No Documents Found</p>
+                <button className="planDocumentUploadButton">+ Upload Insurance</button>
+              </div>
         </div>
       </div>
       </div>
@@ -182,6 +257,10 @@ export function onePagePlan(plan) {
 // that we will be recommending to our users. 
 
 
+
+/*               <p>To reach your goals of retiring at age 60 and living off of $100,000<br></br> a year throughout retirement, you will need to save...</p>
+              <h2>$300/Month</h2>
+              <p>For the next 28 years and put those savings into a <br></br>portfolio earning 6% a year in annual returns.</p> */
 
 
     /*                 {data.map((entry, index) => (

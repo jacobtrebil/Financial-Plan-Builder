@@ -5,6 +5,7 @@ import {
   updateRiskScore,
   updateRetirementAge,
   addScenario,
+  addExpense,
   updateLivingExpense,
 } from "../../apiclient/wizardFetch";
 import { useRouter } from "next/router";
@@ -19,6 +20,10 @@ function Summary(plan) {
     doWizardCalculations();
   }, [planId]);
 
+  const PurchaseGoalComponent = _dynamic(() =>
+  import('../../components/purchaseGoal').then((mod) => mod.purchaseGoal)
+  )
+
   const [errors, setErrors] = useState('');
   const [errors2, setErrors2] = useState('');
   const [errors3, setErrors3] = useState('');
@@ -28,16 +33,18 @@ function Summary(plan) {
   const [calculations, setCalculations] = useState({});
   const [showForm, setShowForm] = useState(false);
   const [buttonShow, setButtonShow] = useState(true);
-  const [nameOfExpense, setNameOfExpense] = useState('');
-  const [ageAtPurchase, setAgeAtPurchase] = useState('');
-  const [upfrontCost, setUpfrontCost] = useState('');
-  const [annualCost, setAnnualCost] = useState('');
   let _plan = {
     riskScore: calculations.riskScore,
     retirementAge: calculations.retirementAge,
     currentSavings: calculations.currentSavings,
     livingExpense: calculations.livingExpense,
     scenarioName: "",
+  };
+  let _expense = {
+    nameOfExpense: '',
+    ageAtPurchase: '', 
+    upfrontCost: '',
+    annualCost: '',
   };
 
   if (!calculations)
@@ -46,6 +53,26 @@ function Summary(plan) {
         <p className="loading">Loading...</p>
       </div>
     );
+
+  function updateNameOfExpenseHandler(e) {
+    const updatedNameOfExpense = { ..._expense, nameOfExpense: e.target.value };
+    _expense.nameOfExpense = updatedNameOfExpense.nameOfExpense;
+  }
+
+  function updateAgeAtPurchaseHandler(e) {
+    const updatedAgeAtPurchase = { ..._expense, ageAtPurchase: e.target.value };
+    _expense.ageAtPurchase = updatedAgeAtPurchase.ageAtPurchase;
+  }
+
+  function updateUpfrontCostHandler(e) {
+    const updatedUpfrontCost = { ..._expense, upfrontCost: e.target.value };
+    _expense.upfrontCost = updatedUpfrontCost.upfrontCost;
+  }
+
+  function updateAnnualCostHandler(e) {
+    const updatedAnnualCost = { ..._expense, annualCost: e.target.value };
+    _expense.annualCost = updatedAnnualCost.annualCost;
+  }
 
   function updateRiskScoreHandler(e) {
     const updatedRiskScore = { ..._plan, riskScore: e.target.value };
@@ -108,24 +135,43 @@ function Summary(plan) {
   }
 
   function saveExpense() {
-    if (nameOfExpense.length === 0) {
+    if (_expense.nameOfExpense.length === 0) {
       setErrors2('*Please enter a valid name');
-    } 
-    if (ageAtPurchase.length === 0) {
-      setErrors3('*Please enter a valid age')
-    }
-    if (upfrontCost.length === 0) {
-      setErrors4('*Please enter a valid cost')
-    }
-    if (annualCost.length === 0) {
-      setErrors5('*Please enter a valid cost')
-    } 
-    if (nameOfExpense.length > 0 && ageAtPurchase.length > 0 && upfrontCost.length > 0 && annualCost.length > 0) {
+    } else {
       setErrors2('');
+    }
+    if (_expense.ageAtPurchase.length === 0) {
+      setErrors3('*Please enter a valid age')
+    } else {
       setErrors3('');
+    }
+    if (_expense.upfrontCost.length === 0) {
+      setErrors4('*Please enter a valid cost')
+    } else {
       setErrors4('');
+    }
+    if (_expense.annualCost.length === 0) {
+      setErrors5('*Please enter a valid cost')
+    } else {
       setErrors5('');
     }
+    if (_expense.nameOfExpense.length > 0 && _expense.ageAtPurchase.length > 0 && _expense.upfrontCost.length > 0 && _expense.annualCost.length > 0) {
+      saveExpenseApiCall(_expense);
+      var frm = document.getElementById('nameOfExpense');
+      frm.value = '';
+      var frm2 = document.getElementById('ageAtPurchase');
+      frm2.value = '';
+      var frm3 = document.getElementById('upfrontCost');
+      frm3.value = '';
+      var frm4 = document.getElementById('annualCost');
+      frm4.value = '';
+      setShowForm(false);
+      setButtonShow(true);
+    }
+  }
+
+  async function saveExpenseApiCall(_expense) {
+    await addExpense(planId, _expense);
   }
 
   async function saveScenarioApiCall(_plan) {
@@ -359,52 +405,65 @@ function Summary(plan) {
             </select>
           </div>
           <br></br>
-          <div className="decisionsSocialSecuritySection">
-            <p className="customizationQuestion">
-              Add One Time Expense
+          <div>
+            <p className="purchaseGoalsHeadline">
+              Purchase Goals
             </p>
+            <p className="purchaseGoalsSubheadline">
+              Major purchases in the future (Home, Car, etc.)
+            </p>
+            <hr className="purchaseGoalsHr"></hr>
+            <PurchaseGoalComponent></PurchaseGoalComponent>
             {
             buttonShow && (
-            <button className="plusButton" onClick={function setTrue() { 
+            <button className="purchaseGoalsButton" onClick={function setTrue() { 
               setShowForm(true)
               setButtonShow(false)
-              }}>+ Add</button>
+              }}>+ Add Goal</button>
             )}
+          </div>
           {
             showForm && (
-          <div>
-            <label className="oneTimeExpenseLabel">Name of Expense</label>
+          <div className="purchaseGoalsBox">
+            <label className="oneTimeExpenseLabel">Name of Purchase</label><br></br>
             <input
             name="nameOfExpense"
+            id="nameOfExpense"
             className="oneTimeExpenseFormInput"
-            placeholder='Vacation home'>
+            placeholder='Vacation home'
+            onChange={updateNameOfExpenseHandler}>
             </input>
             <p className="errors">{errors2}</p>
-            <label className="oneTimeExpenseLabel">Age at Purchase</label>
+            <label className="oneTimeExpenseLabel">Age at Purchase</label><br></br>
             <input
             name="ageAtPurchase"
+            id="ageAtPurchase"
             className="oneTimeExpenseFormInput"
-            placeholder='65'>
-            </input>
+            placeholder='65'
+            onChange={updateAgeAtPurchaseHandler}>
+            </input><br></br>
             <p className="errors">{errors3}</p>
-            <label className="oneTimeExpenseLabel">Upfront Cost</label>
+            <label className="oneTimeExpenseLabel">Upfront Cost</label><br></br>
             <input
             name="upfrontCost"
+            id="upfrontCost"
             className="oneTimeExpenseFormInput"
-            placeholder='$10,000'>
+            placeholder='$10,000'
+            onChange={updateUpfrontCostHandler}>
             </input>
             <p className="errors">{errors4}</p>
-            <label className="oneTimeExpenseLabel">Annual Cost After Upfront Payment</label>
+            <label className="oneTimeExpenseLabel">Ongoing Annual Cost</label><br></br>
             <input
             name="annualCost"
+            id="annualCost"
             className="oneTimeExpenseFormInput"
-            placeholder='$500'>
+            placeholder='$500'
+            onChange={updateAnnualCostHandler}>
             </input>
             <p className="errors">{errors5}</p>
-          <button onClick={saveExpense} className="oneTimeExpenseButton">Save Expense</button>
+          <button onClick={saveExpense} className="oneTimeExpenseButton">Save Goal</button>
           </div>
           )}
-          </div>
           <br></br>
           <div className="createNewScenario">
             <label className="scenarioLabel">Name This Scenario</label>

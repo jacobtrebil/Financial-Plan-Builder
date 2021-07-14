@@ -142,6 +142,18 @@ export const createPlan = async (plan) => {
     return await response.json();
   }
 
+  export const addExpense = async (id, _expense) => {
+    const response = await fetch(`/api/addExpense/${id}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(_expense)
+    })
+    return await response.json();
+  }
+
 
 
   /* Consolidate the code using something like this: 
