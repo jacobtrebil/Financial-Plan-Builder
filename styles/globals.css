@@ -1493,6 +1493,7 @@ p {
 
 .planHeadline {
   font-size: 20px;
+  margin: 0px 0px 0px 40px;
 }
 
 .planSubheadline {
@@ -1564,4 +1565,22 @@ p {
   font-weight: 400;
   color: rgb(87, 87, 87);
   margin: 0px 0px 0px 40px;
+}
+
+.retirementSpendingIncrease {
+  font-size: 12px;
+  color: rgb(87, 87, 87);
+  margin: 0px 0px 0px 0px;
+}
+
+.retirementSpendingExpense {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 20px 0px 5px 0px;
+}
+
+.keyInfoP {
+  font-size: 14px;
+  text-align: left;
+  margin: 20px 0px 0px 40px;
 }
