@@ -1426,7 +1426,7 @@ p {
   width: 50%;
   margin: 10px 10px 10px 10px;
   vertical-align: top;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #aaaaaa;
   border-radius: 4px;
   padding: 10px 10px 20px 10px;
 }
@@ -1582,5 +1582,47 @@ p {
 .keyInfoP {
   font-size: 14px;
   text-align: left;
-  margin: 20px 0px 0px 40px;
+  margin: 20px 20px 0px 40px;
+  color: black;
+  font-weight: bold;
+}
+
+.keyInfoPLight {
+  font-size: 12px;
+  text-align: left;
+  margin: 20px 20px 0px 40px;
+  color: rgb(119, 119, 119);
+}
+
+.netWorthSection {
+  margin: 0px 0px -10px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.futureIncomeSection {
+  margin: 0px 0px -10px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.retirementRecommendationsHeadline {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 15px 0px 5px 0px;
+}
+
+.retirementRecommendationsSubheadline {
+  margin: 0px 0px 10px 0px;
+  color: rgb(119, 119, 119);
+  font-size: 12px;
+}
+
+.retirementRecommendationsHr {
+  width: 70%;
+}
+
+.keyInfoBlock {
+  display: inline-block;
+  width: 40%;
+  margin: 20px 0px 0px 0px;
+  vertical-align: top;
 }

@@ -72,6 +72,11 @@ export function onePagePlan(plan) {
     const toUSDThousands = (fixed) => `$${fixed / 1000}K`;
     const toUSDMillions = (fixed) => `$${fixed / 1000000}M`;
 
+    // Key Info should basically be split into retirement dates/recommendations (SS, Pension, Retirement Age, etc.)
+    // And their portfolio recommendations. 
+
+    // Retirement Recommendations & Asset Portfolio w/ Headline & Subheadline
+
     return (
       <div>
         <div className="planResultsSection">
@@ -80,12 +85,26 @@ export function onePagePlan(plan) {
             <div>
               <h1 className="planHeadline">Key Info</h1>
               <p className="planSubheadline">See important information regarding your financial future</p>
-              <p className="keyInfoP">Retire at age: {calculations.retirementAge}</p>
-              <p className="keyInfoP">Take Social Security at age: {calculations.socialSecurityAge}</p>
-              <p className="keyInfoP">Risk Tolerance: {calculations.riskScore}</p>
-              <p className="keyInfoP">Based on your risk tolerance, we recommend you invest in the portfolio below</p>
+              <div className="keyInfoBlock">
+                <p className="retirementRecommendationsHeadline">
+                  Retirement Recommendations
+                </p>
+                <p className="retirementRecommendationsSubheadline">
+                  See our recommendations for your retirement
+                </p>
+                <hr className="retirementRecommendationsHr"></hr>
+                <p className="keyInfoP">Retire at age: {calculations.retirementAge}</p>
+                <p className="keyInfoP">Take Social Security at age: {calculations.socialSecurityAge}</p>
+              </div>
+              <div className="keyInfoBlock">
+                <p className="retirementRecommendationsHeadline">Investment Portfolio</p>
+                <p className="retirementRecommendationsSubheadline">We recommend that you roll over all of your assets & investments into this investment portfolio that is tailored to your financial goals</p>
+                <hr className="retirementRecommendationsHr"></hr>
+                <p className="keyInfoP">Risk Tolerance: {calculations.riskScore}</p>
+                <p className="keyInfoPLight">Based on your risk tolerance, we recommend you invest in the portfolio below</p>
+              </div>
             </div>
-            <div>
+            <div className="futureIncomeSection">
               <h1 className="planHeadline">Future Income</h1>
               <p className="planSubheadline">See how much you're projected to earn in the future</p>
               <p className="chartHeadline">Future Income</p>
@@ -170,7 +189,7 @@ export function onePagePlan(plan) {
                 <p className="retirementSpendingIncrease">Your healthcare expenses will increase 5% a year as you get older</p>
               </div>
             </div>
-            <div>
+            <div className="netWorthSection">
                 <h1 className="planHeadline">Net Worth</h1>
                 <p className="planSubheadline">See how your net worth will change over time</p>
                 <p className="chartHeadline">Net Worth</p>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, PureComponent } from "react";
+import React, { useState, useEffect } from "react";
 import {
   planCalculations,
   updateCurrentSavings,
@@ -10,42 +10,113 @@ import {
 } from "../../apiclient/wizardFetch";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
-import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer} from "recharts";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
 
 function Summary(plan) {
   const router = useRouter();
   const { planId } = router.query;
 
-  useEffect(() => {
-    doWizardCalculations();
-  }, [planId]);
-
   const PurchaseGoalComponent = _dynamic(() =>
-  import('../../components/purchaseGoal').then((mod) => mod.purchaseGoal)
-  )
+    import("../../components/purchaseGoal").then((mod) => mod.purchaseGoal)
+  );
 
-  const [errors, setErrors] = useState('');
-  const [errors2, setErrors2] = useState('');
-  const [errors3, setErrors3] = useState('');
-  const [errors4, setErrors4] = useState('');
-  const [errors5, setErrors5] = useState('');
-  const [savedMessage, setSavedMessage] = useState('');
+  const [errors, setErrors] = useState("");
+  const [errors2, setErrors2] = useState("");
+  const [errors3, setErrors3] = useState("");
+  const [errors4, setErrors4] = useState("");
+  const [errors5, setErrors5] = useState("");
+  const [savedMessage, setSavedMessage] = useState("");
   const [calculations, setCalculations] = useState({});
   const [showForm, setShowForm] = useState(false);
   const [buttonShow, setButtonShow] = useState(true);
-  let _plan = {
+  const [planVariables, setPlanVariables] = useState({
     riskScore: calculations.riskScore,
     retirementAge: calculations.retirementAge,
     currentSavings: calculations.currentSavings,
     livingExpense: calculations.livingExpense,
     scenarioName: "",
-  };
-  let _expense = {
-    nameOfExpense: '',
-    ageAtPurchase: '', 
-    upfrontCost: '',
-    annualCost: '',
-  };
+  });
+  const [expense, setExpense] = useState({
+    nameOfExpense: "",
+    ageAtPurchase: "",
+    upfrontCost: "",
+    annualCost: "",
+  });
+
+  useEffect(() => {
+    setPlanVariables({
+      ...planVariables,
+      riskScore: calculations.riskScore,
+      retirementAge: calculations.retirementAge,
+      currentSavings: calculations.currentSavings,
+      livingExpense: calculations.livingExpense,
+    });
+  }, [calculations]);
+
+  const [fields, setFields] = useState({
+    riskScore: '', 
+    retirementAge: '',
+    currentSavings: '',
+    livingExpense: '',
+  });
+    
+   useEffect(() => {
+    if (!fields.riskScore && !fields.retirementAge && !fields.currentSavings && !fields.livingExpense) {
+     setFields()
+    }
+   }, [planVariables]);
+
+
+
+  /**
+   * Refactors:
+   * 1. Separate the data variables for graph(this is calculation) and the dropdown
+   * 2. Drive data calculate while updating the plan (whenver you update the plan, run the calculations in BE)
+   * 3. Keep a flag which will tell you when to run calculations (Whenever you are on the page where the graph is, just pass this flag)
+   * eg: PUT /update_plan
+   * Body: enableCalculation = true
+   * In the backend , look for this variable, if it is true then run the calculation.
+   * 
+   * The result of update Plan should drive all the drive.
+   * We should take out graph data from Update call response as well.(Single Source)
+   * 
+   * 
+   * The update call should be 1 singular call, for all the fields
+   * 
+   * updatePlanApiCall(enableCalculation = true)
+   * 
+   * Don't use API response for changing selection fields (Use separate state varialbe)
+   * const [fields, setFields] = useState({field1: '', filed2: ''})
+   * 
+   * useEffect(() => {
+   *  if (!fields.field1 && !fields.fields2) {
+   *   setField()
+   *  }
+   *  
+   * }, [planVariables])
+   * 
+   * The variable fields will be populated using the API call only initially, then it will use state to update them.
+   * Only the charts will use data from the API call. 
+   * Do DB variable update for all variables AND all of the wizard calculations in 1 singular API call. 
+   * This will also solve the annual living expense & annual savings inputs problem of always updating the numbers. 
+   * Adding a purchase goal will have to trigger the API call & update all of the calculations as well.
+   * Purchase goals should not affect the fields that are displayed. 
+   */
+
+  useEffect(() => {
+    //doWizardCalculations(planVariables);
+  }, [planId, planVariables]);
+
+  useEffect(() => {
+    //updateCurrentSavingsApiCall(planVariables, true)
+  }, [planVariables])
 
   if (!calculations)
     return (
@@ -55,150 +126,139 @@ function Summary(plan) {
     );
 
   function updateNameOfExpenseHandler(e) {
-    const updatedNameOfExpense = { ..._expense, nameOfExpense: e.target.value };
-    _expense.nameOfExpense = updatedNameOfExpense.nameOfExpense;
+    setExpense({ ...expense, nameOfExpense: e.target.value });
   }
 
   function updateAgeAtPurchaseHandler(e) {
-    const updatedAgeAtPurchase = { ..._expense, ageAtPurchase: e.target.value };
-    _expense.ageAtPurchase = updatedAgeAtPurchase.ageAtPurchase;
+    setExpense({ ...expense, ageAtPurchase: e.target.value });
   }
 
   function updateUpfrontCostHandler(e) {
-    const updatedUpfrontCost = { ..._expense, upfrontCost: e.target.value };
-    _expense.upfrontCost = updatedUpfrontCost.upfrontCost;
+    setExpense({ ...expense, upfrontCost: e.target.value });
   }
 
   function updateAnnualCostHandler(e) {
-    const updatedAnnualCost = { ..._expense, annualCost: e.target.value };
-    _expense.annualCost = updatedAnnualCost.annualCost;
+    setExpense({ ...expense, annualCost: e.target.value });
   }
 
   function updateRiskScoreHandler(e) {
-    const updatedRiskScore = { ..._plan, riskScore: e.target.value };
-    _plan.riskScore = updatedRiskScore.riskScore;
-    updateRiskScoreApiCall(_plan);
-    doWizardCalculations();
+    setPlanVariables({ ...planVariables, riskScore: e.target.value });
+    updateRiskScoreApiCall(planVariables);
+    //doWizardCalculations();
   }
 
   function updateRetirementAgeHandler(e) {
-    const updatedRetirementAge = { ..._plan, retirementAge: e.target.value };
-    _plan.retirementAge = updatedRetirementAge.retirementAge;
-    updateRetirementAgeApiCall(_plan);
-    doWizardCalculations();
-    /* router.push(
-      `../wizard/customization?planId=${planId}?retirementAge=${calculations.retirementAge}?socialSecurityAge=${calculations.socialsSecurityAge}?currentSavings=${calculations.currentSavings}?riskScore=${calculations.riskScore}?partTimeWorkDecision=${calculations.partTimeWorkDecision}`
-    ); */
+    const updatedPlanVariables = { ...planVariables, retirementAge: e.target.value }
+    setPlanVariables(updatedPlanVariables);
+    console.log('retirement age:', planVariables.retirementAge);
+    updateRetirementAgeApiCall(updatedPlanVariables);
+    //doWizardCalculations(updatedPlanVariables);
   }
 
+  // the setPlanVariables({}) function is not setting the variables to the new values like it should be doing. 
+
+  // Update with new setPlan({}) format, expense as well. 
+
   function updateLivingExpenseHandler(e) {
-    const updatedLivingExpense = {
-      ..._plan, 
-      livingExpense: Math.floor(Number(e.target.value.replace(/[^0-9.-]+/g, ""))),
-    };
-    _plan.livingExpense = updatedLivingExpense.livingExpense;
-    updateLivingExpenseApiCall(_plan);
-    doWizardCalculations();
+    setPlanVariables({ ...planVariables, livingExpense: Math.floor(Number(e.target.value.replace(/[^0-9.-]+/g, ""))) });
+    updateLivingExpenseApiCall(planVariables);
+    //doWizardCalculations();
   }
 
   function updateCurrentSavingsHandler(e) {
-    const updatedCurrentSavings = {
-      ..._plan,
-      currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g, "")),
-    };
-    _plan.currentSavings = updatedCurrentSavings.currentSavings;
-    updateCurrentSavingsApiCall(_plan);
-    doWizardCalculations();
+    setPlanVariables({ ...planVariables, currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g, "")) });
+    //updateCurrentSavingsApiCall(planVariables);
+    //doWizardCalculations();
   }
 
   function updateScenarioNameHandler(e) {
-    const updatedScenarioName = { 
-      ..._plan, 
-      scenarioName: e.target.value 
-    };
-    _plan.scenarioName = updatedScenarioName.scenarioName;
+    setPlanVariables({ ...planVariables, scenarioName: e.target.value });
   }
 
   function saveScenario() {
-    if (_plan.scenarioName.length > 0) {
-      setErrors('');
-      saveScenarioApiCall(_plan);
-      var frm = document.getElementById('scenarioNameInput');
-      frm.value = '';
-      setSavedMessage('Scenario Saved!');
-      setTimeout(function() {
-        setSavedMessage('');
+    if (planVariables.scenarioName.length > 0) {
+      setErrors("");
+      saveScenarioApiCall(planVariables);
+      var frm = document.getElementById("scenarioNameInput");
+      frm.value = "";
+      setSavedMessage("Scenario Saved!");
+      setTimeout(function () {
+        setSavedMessage("");
       }, 2000);
-    } else if (_plan.scenarioName.length === 0) {
-      setErrors('*Please enter a valid name');
+    } else if (planVariables.scenarioName.length === 0) {
+      setErrors("*Please enter a valid name");
     }
   }
 
   function saveExpense() {
-    if (_expense.nameOfExpense.length === 0) {
-      setErrors2('*Please enter a valid name');
+    if (expense.nameOfExpense.length === 0) {
+      setErrors2("*Please enter a valid name");
     } else {
-      setErrors2('');
+      setErrors2("");
     }
-    if (_expense.ageAtPurchase.length === 0) {
-      setErrors3('*Please enter a valid age')
+    if (expense.ageAtPurchase.length === 0) {
+      setErrors3("*Please enter a valid age");
     } else {
-      setErrors3('');
+      setErrors3("");
     }
-    if (_expense.upfrontCost.length === 0) {
-      setErrors4('*Please enter a valid cost')
+    if (expense.upfrontCost.length === 0) {
+      setErrors4("*Please enter a valid cost");
     } else {
-      setErrors4('');
+      setErrors4("");
     }
-    if (_expense.annualCost.length === 0) {
-      setErrors5('*Please enter a valid cost')
+    if (expense.annualCost.length === 0) {
+      setErrors5("*Please enter a valid cost");
     } else {
-      setErrors5('');
+      setErrors5("");
     }
-    if (_expense.nameOfExpense.length > 0 && _expense.ageAtPurchase.length > 0 && _expense.upfrontCost.length > 0 && _expense.annualCost.length > 0) {
-      saveExpenseApiCall(_expense);
-      var frm = document.getElementById('nameOfExpense');
-      frm.value = '';
-      var frm2 = document.getElementById('ageAtPurchase');
-      frm2.value = '';
-      var frm3 = document.getElementById('upfrontCost');
-      frm3.value = '';
-      var frm4 = document.getElementById('annualCost');
-      frm4.value = '';
+    if (
+      expense.nameOfExpense.length > 0 &&
+      expense.ageAtPurchase.length > 0 &&
+      expense.upfrontCost.length > 0 &&
+      expense.annualCost.length > 0
+    ) {
+      saveExpenseApiCall(expense);
+      var frm = document.getElementById("nameOfExpense");
+      frm.value = "";
+      var frm2 = document.getElementById("ageAtPurchase");
+      frm2.value = "";
+      var frm3 = document.getElementById("upfrontCost");
+      frm3.value = "";
+      var frm4 = document.getElementById("annualCost");
+      frm4.value = "";
       setShowForm(false);
       setButtonShow(true);
     }
   }
 
-  async function saveExpenseApiCall(_expense) {
-    await addExpense(planId, _expense);
+  async function saveExpenseApiCall(expense) {
+    await addExpense(planId, expense);
   }
 
-  async function saveScenarioApiCall(_plan) {
-    await addScenario(planId, _plan);
+  async function saveScenarioApiCall(planVariables) {
+    await addScenario(planId, planVariables);
   }
 
-  async function doWizardCalculations() {
-    const wizardCalculationsFunction = await planCalculations(planId, plan);
+  async function doWizardCalculations(updatedPlanVariables) {
+    const wizardCalculationsFunction = await planCalculations(planId, updatedPlanVariables);
     setCalculations(wizardCalculationsFunction);
     let calculatedPlan = wizardCalculationsFunction;
-    /* _setPlan(wizardCalculationsFunction); */
-  }
-  
-  async function updateLivingExpenseApiCall(_plan) {
-    await updateLivingExpense(planId, _plan);
   }
 
-  async function updateRiskScoreApiCall(_plan) {
-    await updateRiskScore(planId, _plan);
+  async function updateLivingExpenseApiCall(planVariables) {
+    await updateLivingExpense(planId, planVariables);
   }
 
-  async function updateRetirementAgeApiCall(_plan) {
-    await updateRetirementAge(planId, _plan);
+  async function updateRiskScoreApiCall(planVariables) {
+    await updateRiskScore(planId, planVariables);
   }
 
-  async function updateCurrentSavingsApiCall(_plan) {
-    await updateCurrentSavings(planId, _plan);
+  async function updateRetirementAgeApiCall(planVariables) {
+    await updateRetirementAge(planId, planVariables);
+  }
+
+  async function updateCurrentSavingsApiCall(planVariables, enableCalculation) {
+    await updateCurrentSavings(planId, planVariables, enableCalculation);
   }
 
   const convertToUsd = new Intl.NumberFormat("en-US", {
@@ -206,16 +266,18 @@ function Summary(plan) {
     currency: "USD",
     // maximumFractionDigits: 0,
   });
-  
+
   const CustomTooltipToThousands = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
         <div className="customTooltip">
-          <p className="tooltipP">{`Age ${label}: $${Math.round(payload[0].value / 1000)}K`}</p>
+          <p className="tooltipP">{`Age ${label}: $${Math.round(
+            payload[0].value / 1000
+          )}K`}</p>
         </div>
       );
     }
-  
+
     return null;
   };
 
@@ -223,16 +285,20 @@ function Summary(plan) {
     if (active && payload && payload.length) {
       return (
         <div className="customTooltip">
-          <p className="tooltipP">{`Age ${label}: $${Math.round(payload[0].value / 100000) / 10}M`}</p>
+          <p className="tooltipP">{`Age ${label}: $${
+            Math.round(payload[0].value / 100000) / 10
+          }M`}</p>
         </div>
       );
     }
-  
+
     return null;
   };
 
   const data = [];
-  for (const [Age, Expenses] of Object.entries(calculations.retirementExpenses || {})) {
+  for (const [Age, Expenses] of Object.entries(
+    calculations.retirementExpenses || {}
+  )) {
     data.push({ Age, Expenses });
   }
 
@@ -263,7 +329,9 @@ function Summary(plan) {
       <div className="blocksSection">
         <div className="block1">
           <p className="chartHeadline">Retirement Earnings</p>
-          <p className="chartSubheadline">Including Inflation & Healthcare Expenses</p>
+          <p className="chartSubheadline">
+            Including Inflation & Healthcare Expenses
+          </p>
           <AreaChart
             className="barChart"
             width={550}
@@ -279,7 +347,11 @@ function Summary(plan) {
               dataKey="Expenses"
               tickFormatter={toUSDThousands}
             />
-            <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipToThousands}/>
+            <Tooltip
+              cursor={{ stroke: "black" }}
+              fontSize="12px"
+              content={CustomTooltipToThousands}
+            />
             <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
             <Area
               dataKey="Expenses"
@@ -298,7 +370,13 @@ function Summary(plan) {
             data={netWorthData}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
-            <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" tickMargin='3'/>
+            <XAxis
+              name="Age"
+              dataKey="Age"
+              stroke="grey"
+              fontSize="12px"
+              tickMargin="3"
+            />
             <YAxis
               name="netWorth"
               stroke="grey"
@@ -306,7 +384,11 @@ function Summary(plan) {
               dataKey="netWorth"
               tickFormatter={toUSDMillions}
             />
-            <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipToMillions}/>
+            <Tooltip
+              cursor={{ stroke: "black" }}
+              fontSize="12px"
+              content={CustomTooltipToMillions}
+            />
             <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
             <Area
               dataKey="netWorth"
@@ -323,7 +405,7 @@ function Summary(plan) {
             <select
               className="formSelect"
               name="retirementAge"
-              value={_plan.retirementAge}
+              value={planVariables.retirementAge}
               onChange={updateRetirementAgeHandler}
             >
               <option value="55">55</option>
@@ -351,7 +433,7 @@ function Summary(plan) {
             <select
               className="formSelect"
               name="currentSavings"
-              value={_plan.currentSavings}
+              value={planVariables.currentSavings}
               onChange={updateCurrentSavingsHandler}
             >
               <option value={calculations.currentSavings}>
@@ -377,7 +459,7 @@ function Summary(plan) {
             <select
               className="formSelect"
               name="riskScore"
-              value={_plan.riskScore}
+              value={planVariables.riskScore}
               onChange={updateRiskScoreHandler}
             >
               <option value="conservative">conservative</option>
@@ -394,75 +476,93 @@ function Summary(plan) {
             <select
               className="formSelect"
               name="livingExpense"
-              value={_plan.livingExpense}
+              value={planVariables.livingExpense}
               onChange={updateLivingExpenseHandler}
             >
-              <option value={calculations.livingExpense}>{convertToUsd.format(calculations.livingExpense)}</option>
-              <option value={calculations.muchLowerLivingExpense}>{convertToUsd.format(calculations.muchLowerLivingExpense)}</option>
-              <option value={calculations.slightlyLowerLivingExpense}>{convertToUsd.format(calculations.slightlyLowerLivingExpense)}</option>
-              <option value={calculations.slightlyHigherLivingExpense}>{convertToUsd.format(calculations.slightlyHigherLivingExpense)}</option>
-              <option value={calculations.muchHigherLivingExpense}>{convertToUsd.format(calculations.muchHigherLivingExpense)}</option>
+              <option value={calculations.livingExpense}>
+                {convertToUsd.format(calculations.livingExpense)}
+              </option>
+              <option value={calculations.muchLowerLivingExpense}>
+                {convertToUsd.format(calculations.muchLowerLivingExpense)}
+              </option>
+              <option value={calculations.slightlyLowerLivingExpense}>
+                {convertToUsd.format(calculations.slightlyLowerLivingExpense)}
+              </option>
+              <option value={calculations.slightlyHigherLivingExpense}>
+                {convertToUsd.format(calculations.slightlyHigherLivingExpense)}
+              </option>
+              <option value={calculations.muchHigherLivingExpense}>
+                {convertToUsd.format(calculations.muchHigherLivingExpense)}
+              </option>
             </select>
           </div>
           <br></br>
           <div>
-            <p className="purchaseGoalsHeadline">
-              Purchase Goals
-            </p>
+            <p className="purchaseGoalsHeadline">Purchase Goals</p>
             <p className="purchaseGoalsSubheadline">
               Major purchases in the future (Home, Car, etc.)
             </p>
             <hr className="purchaseGoalsHr"></hr>
             <PurchaseGoalComponent></PurchaseGoalComponent>
-            {
-            buttonShow && (
-            <button className="purchaseGoalsButton" onClick={function setTrue() { 
-              setShowForm(true)
-              setButtonShow(false)
-              }}>+ Add Goal</button>
+            {buttonShow && (
+              <button
+                className="purchaseGoalsButton"
+                onClick={function setTrue() {
+                  setShowForm(true);
+                  setButtonShow(false);
+                }}
+              >
+                + Add Goal
+              </button>
             )}
           </div>
-          {
-            showForm && (
-          <div className="purchaseGoalsBox">
-            <label className="oneTimeExpenseLabel">Name of Purchase</label><br></br>
-            <input
-            name="nameOfExpense"
-            id="nameOfExpense"
-            className="oneTimeExpenseFormInput"
-            placeholder='Vacation home'
-            onChange={updateNameOfExpenseHandler}>
-            </input>
-            <p className="errors">{errors2}</p>
-            <label className="oneTimeExpenseLabel">Age at Purchase</label><br></br>
-            <input
-            name="ageAtPurchase"
-            id="ageAtPurchase"
-            className="oneTimeExpenseFormInput"
-            placeholder='65'
-            onChange={updateAgeAtPurchaseHandler}>
-            </input><br></br>
-            <p className="errors">{errors3}</p>
-            <label className="oneTimeExpenseLabel">Upfront Cost</label><br></br>
-            <input
-            name="upfrontCost"
-            id="upfrontCost"
-            className="oneTimeExpenseFormInput"
-            placeholder='$10,000'
-            onChange={updateUpfrontCostHandler}>
-            </input>
-            <p className="errors">{errors4}</p>
-            <label className="oneTimeExpenseLabel">Ongoing Annual Cost</label><br></br>
-            <input
-            name="annualCost"
-            id="annualCost"
-            className="oneTimeExpenseFormInput"
-            placeholder='$500'
-            onChange={updateAnnualCostHandler}>
-            </input>
-            <p className="errors">{errors5}</p>
-          <button onClick={saveExpense} className="oneTimeExpenseButton">Save Goal</button>
-          </div>
+          {showForm && (
+            <div className="purchaseGoalsBox">
+              <label className="oneTimeExpenseLabel">Name of Purchase</label>
+              <br></br>
+              <input
+                name="nameOfExpense"
+                id="nameOfExpense"
+                className="oneTimeExpenseFormInput"
+                placeholder="Vacation home"
+                onChange={updateNameOfExpenseHandler}
+              ></input>
+              <p className="errors">{errors2}</p>
+              <label className="oneTimeExpenseLabel">Age at Purchase</label>
+              <br></br>
+              <input
+                name="ageAtPurchase"
+                id="ageAtPurchase"
+                className="oneTimeExpenseFormInput"
+                placeholder="65"
+                onChange={updateAgeAtPurchaseHandler}
+              ></input>
+              <br></br>
+              <p className="errors">{errors3}</p>
+              <label className="oneTimeExpenseLabel">Upfront Cost</label>
+              <br></br>
+              <input
+                name="upfrontCost"
+                id="upfrontCost"
+                className="oneTimeExpenseFormInput"
+                placeholder="$10,000"
+                onChange={updateUpfrontCostHandler}
+              ></input>
+              <p className="errors">{errors4}</p>
+              <label className="oneTimeExpenseLabel">Ongoing Annual Cost</label>
+              <br></br>
+              <input
+                name="annualCost"
+                id="annualCost"
+                className="oneTimeExpenseFormInput"
+                placeholder="$500"
+                onChange={updateAnnualCostHandler}
+              ></input>
+              <p className="errors">{errors5}</p>
+              <button onClick={saveExpense} className="oneTimeExpenseButton">
+                Save Goal
+              </button>
+            </div>
           )}
           <br></br>
           <div className="createNewScenario">
@@ -513,8 +613,7 @@ export default Summary;
                         </select>
                     </div> */
 
-
-                    /* <div className="summaryOption">
+/* <div className="summaryOption">
             <p className="totalRetirementEarnings">Total Retirement Earnings</p>
             <p className="lifetimeEarnings">
               <br></br>
@@ -522,7 +621,7 @@ export default Summary;
             </p>
           </div> */
 
-          /*  <div className="decisionsSocialSecuritySection">
+/*  <div className="decisionsSocialSecuritySection">
             <p className="customizationQuestion">
               Part-Time Work During Retirement
             </p>
@@ -539,7 +638,7 @@ export default Summary;
             </select>
           </div> */
 
-          /*           <div className="decisionsSocialSecuritySection">
+/*           <div className="decisionsSocialSecuritySection">
             <p className="customizationQuestion">Take Social Security At Age</p>
             <select
               className="formSelect"
@@ -567,7 +666,7 @@ export default Summary;
     await updateSocialSecurity(planId, _plan);
   }*/
 
-  /* {showForm && (
+/* {showForm && (
             <div className="decisionsSocialSecuritySection">
               <p className="customizationQuestion">Take Pension at</p>
               <select

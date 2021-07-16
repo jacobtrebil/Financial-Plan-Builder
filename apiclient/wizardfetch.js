@@ -46,14 +46,14 @@ export const createPlan = async (plan) => {
     return await response.json();
   }
 
-  export const updateCurrentSavings = async (id, plan) => {
+  export const updateCurrentSavings = async (id, plan, enableCalculation=false) => {
     const response = await fetch(`/api/updateCurrentSavings/${id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(plan)
+      body: JSON.stringify({plan, enableCalculation})
     })
     return await response.json();
   }
@@ -153,7 +153,30 @@ export const createPlan = async (plan) => {
     })
     return await response.json();
   }
+  
+  export const getPurchaseGoals = async (id) => {
+    const response = await fetch(`/api/getPurchaseGoals/${id}`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify()
+    })
+    return await response.json();
+  }
 
+  export const updatePlanCalculations = async (id, plan) => {
+    const response = await fetch(`/api/updatePlanCalculations/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(plan)
+    })
+    return await response.json();
+  }
 
 
   /* Consolidate the code using something like this: 
