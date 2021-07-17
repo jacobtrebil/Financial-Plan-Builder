@@ -45,7 +45,7 @@ export default async function handler(req,res) {
         case 'PUT':
             try {
                 const { livingExpense, currentSavings, retirementAge, riskScore } = req.body
-                await Plan.updateOne({ _id: id}, { livingExpense, currentSavings, retirementAge, riskScore })
+                await Plan.updateOne( id, { livingExpense, currentSavings, retirementAge, riskScore })
                 let plan = await Plan.findById(id);
                 plan.socialSecurityEarnings = calculateSocialSecurity(plan.currentEarnings);
                 plan.socialSecurityAge62Earnings = calculateSocialSecurityAge62(plan.socialSecurityEarnings);

@@ -7,6 +7,7 @@ import {
   addScenario,
   addExpense,
   updateLivingExpense,
+  updatePlanCalculations
 } from "../../apiclient/wizardFetch";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
@@ -37,10 +38,10 @@ function Summary(plan) {
   const [showForm, setShowForm] = useState(false);
   const [buttonShow, setButtonShow] = useState(true);
   const [planVariables, setPlanVariables] = useState({
-    riskScore: calculations.riskScore,
-    retirementAge: calculations.retirementAge,
-    currentSavings: calculations.currentSavings,
-    livingExpense: calculations.livingExpense,
+    riskScore: "",
+    retirementAge: "",
+    currentSavings: "",
+    livingExpense: "",
     scenarioName: "",
   });
   const [expense, setExpense] = useState({
@@ -50,7 +51,7 @@ function Summary(plan) {
     annualCost: "",
   });
 
-  useEffect(() => {
+  /* useEffect(() => {
     setPlanVariables({
       ...planVariables,
       riskScore: calculations.riskScore,
@@ -58,20 +59,13 @@ function Summary(plan) {
       currentSavings: calculations.currentSavings,
       livingExpense: calculations.livingExpense,
     });
-  }, [calculations]);
-
-  const [fields, setFields] = useState({
-    riskScore: '', 
-    retirementAge: '',
-    currentSavings: '',
-    livingExpense: '',
-  });
+  }, [calculations]); */
     
-   useEffect(() => {
+   /* useEffect(() => {
     if (!fields.riskScore && !fields.retirementAge && !fields.currentSavings && !fields.livingExpense) {
-     setFields()
+     setPlanVariables()
     }
-   }, [planVariables]);
+   }, [planVariables]); */
 
 
 
@@ -97,7 +91,8 @@ function Summary(plan) {
    * 
    * useEffect(() => {
    *  if (!fields.field1 && !fields.fields2) {
-   *   setField()
+   *   setField({
+   * retirementAge: plan.retirementAge})
    *  }
    *  
    * }, [planVariables])
@@ -110,13 +105,17 @@ function Summary(plan) {
    * Purchase goals should not affect the fields that are displayed. 
    */
 
-  useEffect(() => {
-    //doWizardCalculations(planVariables);
-  }, [planId, planVariables]);
+  // What should happen with the onChange handlers than? 
+  // It should update the values in field, as well as do whatever calls the API call as well. 
 
   useEffect(() => {
+    /* doWizardCalculations(planVariables); */
+    updatePlanCalculations(planId, planVariables);
+  }, [planId, planVariables]); 
+
+  /* useEffect(() => {
     //updateCurrentSavingsApiCall(planVariables, true)
-  }, [planVariables])
+  }, [planVariables]) */
 
   if (!calculations)
     return (
