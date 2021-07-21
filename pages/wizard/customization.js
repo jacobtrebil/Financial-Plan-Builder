@@ -20,7 +20,7 @@ import {
   CartesianGrid,
 } from "recharts";
 
-function Summary(plan) {
+function Summary(plan1) {
   const router = useRouter();
   const { planId } = router.query;
 
@@ -37,6 +37,7 @@ function Summary(plan) {
   const [calculations, setCalculations] = useState({});
   const [showForm, setShowForm] = useState(false);
   const [buttonShow, setButtonShow] = useState(true);
+  const [plan, setPlan] = useState({})
   const [planVariables, setPlanVariables] = useState({
     riskScore: "",
     retirementAge: "",
@@ -51,15 +52,33 @@ function Summary(plan) {
     annualCost: "",
   });
 
-  /* useEffect(() => {
+  console.log('===*** plan id', planId)
+
+  useEffect(async () => {
+    if(planId) {
+      const updatedPlan = await planCalculations(planId, planVariables);
+      setPlan(updatedPlan);
+    }
+  }, [planId])
+
+  const handleChange = async ({target: {name, value}}) => {
+    setPlanVariables({...planVariables, [name]: value})
+    const updatedPlan = await updatePlanCalculations(planId, planVariables)
+    setPlan(updatedPlan);
+  }
+
+  console.log('=======================plan ', plan)
+  console.log('the variblksj ar********e', planVariables)
+
+ /*useEffect(() => {
     setPlanVariables({
       ...planVariables,
-      riskScore: calculations.riskScore,
-      retirementAge: calculations.retirementAge,
-      currentSavings: calculations.currentSavings,
-      livingExpense: calculations.livingExpense,
+      riskScore: plan.riskScore,
+      retirementAge: plan.retirementAge,
+      currentSavings: plan.currentSavings,
+      livingExpense: plan.livingExpense,
     });
-  }, [calculations]); */
+  }, [plan]);*/
     
    /* useEffect(() => {
     if (!fields.riskScore && !fields.retirementAge && !fields.currentSavings && !fields.livingExpense) {
@@ -112,18 +131,18 @@ function Summary(plan) {
 
   // It should update everything properly when I separate the displayed values and the API call... maybe. We will see. 
 
+
+
   useEffect(() => {
     if (!planVariables.riskScore && !planVariables.retirementAge && !planVariables.currentSavings && !planVariables.livingExpense) {
       setPlanVariables({
-        riskScore: calculations.riskScore,
-        retirementAge: calculations.retirementAge,
-        currentSavings: calculations.currentSavings,
-        livingExpense: calculations.livingExpense,
+        riskScore: plan.riskScore,
+        retirementAge: plan.retirementAge,
+        currentSavings: plan.currentSavings,
+        livingExpense: plan.livingExpense,
       })
     }
-    doWizardCalculations(planVariables);
-    /* updatePlanCalculations(planId, planVariables); */
-  }, [planId, planVariables]); 
+  }, [planId, plan]);
 
   /* useEffect(() => {
     //updateCurrentSavingsApiCall(planVariables, true)
@@ -251,9 +270,9 @@ function Summary(plan) {
   }
 
   async function doWizardCalculations(updatedPlanVariables) {
-    const wizardCalculationsFunction = await planCalculations(planId, updatedPlanVariables);
-    setCalculations(wizardCalculationsFunction);
-    let calculatedPlan = wizardCalculationsFunction;
+    const updatedPlan = await planCalculations(planId, updatedPlanVariables);
+    setPlan(updatedPlan);
+    //let calculatedPlan = wizardCalculationsFunction;
   }
 
   async function updateLivingExpenseApiCall(planVariables) {
@@ -417,7 +436,7 @@ function Summary(plan) {
               className="formSelect"
               name="retirementAge"
               value={planVariables.retirementAge}
-              onChange={updateRetirementAgeHandler}
+              onChange={handleChange}
             >
               <option value="55">55</option>
               <option value="56">56</option>
@@ -445,7 +464,7 @@ function Summary(plan) {
               className="formSelect"
               name="currentSavings"
               value={planVariables.currentSavings}
-              onChange={updateCurrentSavingsHandler}
+              onChange={handleChange}
             >
               <option value={calculations.currentSavings}>
                 {convertToUsd.format(calculations.currentSavings)}
@@ -471,7 +490,7 @@ function Summary(plan) {
               className="formSelect"
               name="riskScore"
               value={planVariables.riskScore}
-              onChange={updateRiskScoreHandler}
+              onChange={handleChange}
             >
               <option value="conservative">conservative</option>
               <option value="conservative +">conservative +</option>
@@ -488,7 +507,7 @@ function Summary(plan) {
               className="formSelect"
               name="livingExpense"
               value={planVariables.livingExpense}
-              onChange={updateLivingExpenseHandler}
+              onChange={handleChange}
             >
               <option value={calculations.livingExpense}>
                 {convertToUsd.format(calculations.livingExpense)}
@@ -584,7 +603,7 @@ function Summary(plan) {
               id="scenarioNameInput"
               name="scenarioName"
               placeholder="Retire at Age 60 Scenario"
-              onChange={updateScenarioNameHandler}
+              onChange={handleChange}
             ></input>
             <p className="errors">{errors}</p>
             <button className="saveScenarioButton" onClick={saveScenario}>
