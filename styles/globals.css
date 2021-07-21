@@ -1564,7 +1564,7 @@ p {
 .financialPlanHeadline {
   text-align: center;
   font-size: 26px;
-  margin: 0px 0px 10px 0px;
+  margin: 10px 0px 10px 0px;
 }
 
 .financialPlanSubheadline {
@@ -1647,3 +1647,10 @@ p {
   padding: 0px;
 }
 
+.pieHeadline {
+  margin: 0px auto -20px auto;
+  font-size: 14px;
+  color:black;
+  font-weight: bold;
+  text-align: center;
+}

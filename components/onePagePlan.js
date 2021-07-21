@@ -117,11 +117,12 @@ export function onePagePlan(plan) {
               <h1 className="planHeadline">Portfolio</h1>
               <p className="planSubheadline">See an investment portfolio designed around your goals</p>
               <div className="keyInfoBlock">
-              <PieChart className="pieChart" width={225} height={225}>
-                <Pie className="pie" data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={75} fill="rgb(4, 187, 172)" Label/>
-                <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipToThousands}/>
-              </PieChart>
-              <Legend></Legend>
+                <h1 className="pieHeadline">{calculations.riskScore} portfolio</h1>
+                <PieChart className="pieChart" width={225} height={225}>
+                  <Pie className="pie" data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={75} fill="rgb(4, 187, 172)" label/>
+                  <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipToThousands}/>
+                </PieChart>
+                <Legend></Legend>
                 <p className="keyInfoPLight">The portfolio above is recommended based on your desired returns & risk tolerance.</p>
               </div>
             </div>
