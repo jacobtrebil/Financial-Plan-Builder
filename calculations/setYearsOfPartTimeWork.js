@@ -13,6 +13,5 @@ export default function setYearsOfPartTimeWork(partTimeWorkDecision) {
     } else {
         yearsOfPartTimeWork = 0;
     }
-    console.log(yearsOfPartTimeWork)
     return yearsOfPartTimeWork;
 }

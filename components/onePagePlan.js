@@ -7,7 +7,11 @@ import {
   Tooltip, 
   CartesianGrid, 
   AreaChart,
-  Area
+  Area, 
+  PieChart,
+  Pie, 
+  Label, 
+  Legend
 } from "recharts";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
@@ -77,31 +81,48 @@ export function onePagePlan(plan) {
 
     // Retirement Recommendations & Asset Portfolio w/ Headline & Subheadline
 
+    const data01 = [
+      {
+        "name": "Group A",
+        "value": 400
+      },
+      {
+        "name": "Group B",
+        "value": 300
+      },
+      {
+        "name": "Group C",
+        "value": 300
+      },
+      {
+        "name": "Group D",
+        "value": 200
+      },
+      {
+        "name": "Group E",
+        "value": 278
+      },
+      {
+        "name": "Group F",
+        "value": 189
+      }
+    ];
+
     return (
       <div>
         <div className="planResultsSection">
               <h1 className="financialPlanHeadline">{calculations.firstName}'s Financial Plan</h1>
               <p className="financialPlanSubheadline">Your plan shows with your future income, future spending, how your net worth will change over time, <br></br>as well as key info for you to know regarding your financial future.</p>
             <div>
-              <h1 className="planHeadline">Key Info</h1>
-              <p className="planSubheadline">See important information regarding your financial future</p>
+              <h1 className="planHeadline">Portfolio</h1>
+              <p className="planSubheadline">See an investment portfolio designed around your goals</p>
               <div className="keyInfoBlock">
-                <p className="retirementRecommendationsHeadline">
-                  Retirement Recommendations
-                </p>
-                <p className="retirementRecommendationsSubheadline">
-                  See our recommendations for your retirement
-                </p>
-                <hr className="retirementRecommendationsHr"></hr>
-                <p className="keyInfoP">Retire at age: {calculations.retirementAge}</p>
-                <p className="keyInfoP">Take Social Security at age: {calculations.socialSecurityAge}</p>
-              </div>
-              <div className="keyInfoBlock">
-                <p className="retirementRecommendationsHeadline">Investment Portfolio</p>
-                <p className="retirementRecommendationsSubheadline">We recommend that you roll over all of your assets & investments into this investment portfolio that is tailored to your financial goals</p>
-                <hr className="retirementRecommendationsHr"></hr>
-                <p className="keyInfoP">Risk Tolerance: {calculations.riskScore}</p>
-                <p className="keyInfoPLight">Based on your risk tolerance, we recommend you invest in the portfolio below</p>
+              <PieChart className="pieChart" width={225} height={225}>
+                <Pie className="pie" data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={75} fill="rgb(4, 187, 172)" Label/>
+                <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipToThousands}/>
+              </PieChart>
+              <Legend></Legend>
+                <p className="keyInfoPLight">The portfolio above is recommended based on your desired returns & risk tolerance.</p>
               </div>
             </div>
             <div className="futureIncomeSection">
@@ -165,29 +186,6 @@ export function onePagePlan(plan) {
               />
               </AreaChart>
               <p className="chartDescription">Age</p>
-              <div className="futureSpendingBlocks">
-                <p className="purchaseGoalsHeadline">
-                  Purchase Goals
-                </p>
-                <p className="purchaseGoalsSubheadline">
-                  Major purchases in the future (Home, Car, etc.)
-                </p>
-                <hr className="purchaseGoalsHr"></hr>
-                <PurchaseGoalComponent></PurchaseGoalComponent>
-              </div>
-              <div className="futureSpendingBlocks">
-                <p className="retirementSpendingHeadline">
-                  Retirement Spending
-                </p>
-                <p className="retirementSpendingSubheadline">
-                  See what you will spend during retirement
-                </p>
-                <hr className="purchaseGoalsHr"></hr>
-                <p className="retirementSpendingExpense">Living Expense: <b>{toUSDThousands(calculations.livingExpense)}</b></p>
-                <p className="retirementSpendingIncrease">Your living expenses will increase 2% a year due to inflation</p>
-                <p className="retirementSpendingExpense">Healthcare Expenses: <b>{toUSDThousands(calculations.healthcareStartingExpense)}</b></p>
-                <p className="retirementSpendingIncrease">Your healthcare expenses will increase 5% a year as you get older</p>
-              </div>
             </div>
             <div className="netWorthSection">
                 <h1 className="planHeadline">Net Worth</h1>
@@ -250,7 +248,32 @@ export function onePagePlan(plan) {
 
 
 
-    /* <BarChart
+    /*               <div className="futureSpendingBlocks">
+                <p className="retirementSpendingHeadline">
+                  Retirement Spending
+                </p>
+                <p className="retirementSpendingSubheadline">
+                  See what you will spend during retirement
+                </p>
+                <hr className="purchaseGoalsHr"></hr>
+                <p className="retirementSpendingExpense">Living Expense <br></br><b>{toUSDThousands(calculations.livingExpense)}</b></p>
+                <p className="retirementSpendingIncrease">Your living expenses will increase 2% a year due to inflation</p>
+                <p className="retirementSpendingExpense">Healthcare Expenses: <b>{toUSDThousands(calculations.healthcareStartingExpense)}</b></p>
+                <p className="retirementSpendingIncrease">Your healthcare expenses will increase 5% a year as you get older</p>
+              </div>
+
+              <div className="futureSpendingBlocks">
+                <p className="purchaseGoalsHeadline">
+                  Purchase Goals
+                </p>
+                <p className="purchaseGoalsSubheadline">
+                  Major purchases in the future (Home, Car, etc.)
+                </p>
+                <hr className="purchaseGoalsHr"></hr>
+                <PurchaseGoalComponent></PurchaseGoalComponent>
+              </div>
+    
+    <BarChart
                 className="barChart"
                 width={550}
                 height={250}

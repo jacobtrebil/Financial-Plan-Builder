@@ -86,7 +86,7 @@ function Summary(plan) {
    * 
    * updatePlanApiCall(enableCalculation = true)
    * 
-   * Don't use API response for changing selection fields (Use separate state varialbe)
+   * Don't use API response for changing selection fields (Use separate state variable)
    * const [fields, setFields] = useState({field1: '', filed2: ''})
    * 
    * useEffect(() => {
@@ -105,12 +105,24 @@ function Summary(plan) {
    * Purchase goals should not affect the fields that are displayed. 
    */
 
+  // All of the onChange methods should go through the same handler
+
   // What should happen with the onChange handlers than? 
   // It should update the values in field, as well as do whatever calls the API call as well. 
 
+  // It should update everything properly when I separate the displayed values and the API call... maybe. We will see. 
+
   useEffect(() => {
-    /* doWizardCalculations(planVariables); */
-    updatePlanCalculations(planId, planVariables);
+    if (!planVariables.riskScore && !planVariables.retirementAge && !planVariables.currentSavings && !planVariables.livingExpense) {
+      setPlanVariables({
+        riskScore: calculations.riskScore,
+        retirementAge: calculations.retirementAge,
+        currentSavings: calculations.currentSavings,
+        livingExpense: calculations.livingExpense,
+      })
+    }
+    doWizardCalculations(planVariables);
+    /* updatePlanCalculations(planId, planVariables); */
   }, [planId, planVariables]); 
 
   /* useEffect(() => {
@@ -143,13 +155,13 @@ function Summary(plan) {
   function updateRiskScoreHandler(e) {
     setPlanVariables({ ...planVariables, riskScore: e.target.value });
     updateRiskScoreApiCall(planVariables);
-    //doWizardCalculations();
+    // doWizardCalculations();
   }
 
   function updateRetirementAgeHandler(e) {
     const updatedPlanVariables = { ...planVariables, retirementAge: e.target.value }
     setPlanVariables(updatedPlanVariables);
-    console.log('retirement age:', planVariables.retirementAge);
+    console.log(planVariables);
     updateRetirementAgeApiCall(updatedPlanVariables);
     //doWizardCalculations(updatedPlanVariables);
   }
@@ -159,15 +171,15 @@ function Summary(plan) {
   // Update with new setPlan({}) format, expense as well. 
 
   function updateLivingExpenseHandler(e) {
-    setPlanVariables({ ...planVariables, livingExpense: Math.floor(Number(e.target.value.replace(/[^0-9.-]+/g, ""))) });
+    setPlanVariables({ ...planVariables, livingExpense: Number(e.target.value.replace(/[^0-9.-]+/g, "")) });
     updateLivingExpenseApiCall(planVariables);
-    //doWizardCalculations();
+    // doWizardCalculations();
   }
 
   function updateCurrentSavingsHandler(e) {
     setPlanVariables({ ...planVariables, currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g, "")) });
-    //updateCurrentSavingsApiCall(planVariables);
-    //doWizardCalculations();
+    updateCurrentSavingsApiCall(planVariables);
+    // doWizardCalculations();
   }
 
   function updateScenarioNameHandler(e) {

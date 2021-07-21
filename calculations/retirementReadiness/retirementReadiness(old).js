@@ -98,11 +98,11 @@ if (differenceBetweenDesiredAndActualIncome >= 40000) {
 
 /* Console Logs */
 
-console.log(Math.ceil(estimatedRetirementIncome));
+/* console.log(Math.ceil(estimatedRetirementIncome));
 console.log(Math.ceil(estimatedRetirementAge));
 console.log(Math.ceil(differenceBetweenDesiredAndActualIncome));
 console.log(retirementReadiness);
-console.log(retirementlength);
+console.log(retirementlength); */
 
 /* console.log(Math.ceil(estimatedRetirementAgeWithAdvisor)); */
 /* console.log(retirementReadinessWithAdvisor); */

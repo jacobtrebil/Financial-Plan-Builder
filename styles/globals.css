@@ -12,6 +12,11 @@ body {
   overflow-x: none;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
 a {
   color: inherit;
   text-decoration: none;
@@ -78,15 +83,16 @@ p {
 
 .plansH1 {
   margin: 60px 0px 0px 120px;
+  font-weight: 500;
 }
 
 .newPlansSection {
-  background-color: #f8f8f8;
+  background-color: #f5f8f7;
   padding: 60px 40px;
   width: 80%;
   margin: 50px auto 20px auto;
-  border-radius: 4px;
-  border: 1px solid #dddddd;
+  border-radius: 8px;
+  border: 1px solid #dee7e4;
   text-align: left;
 }
 
@@ -137,7 +143,7 @@ p {
 .plansButton {
   display: inline-block;
   float: left;
-  margin: 35px 0px 0px 120px;
+  margin: 35px 0px 0px 125px;
   background-color: rgb(4, 187, 172);
   color: white;
   border: 0px solid rgb(192, 192, 192);
@@ -189,7 +195,7 @@ p {
   font-weight: 600;
   float: right;
   display: inline-block;
-  margin: 30px 0px 0px 0px;
+  margin: 30px 20px 0px 0px;
 }
 
 .dashboardButton:hover {
@@ -203,6 +209,7 @@ p {
 
 .planInfo {
   display: inline-block;
+  margin: 0px 0px 0px 30px;
 }
 
 .backArrowButton {
@@ -1351,16 +1358,17 @@ p {
 }
 
 .dashboardPlanHeadline {
-  font-weight: 600;
   font-size: 22px;
   margin: 3px 0px 0px 0px;
+  font-weight: 900;
 }
 
 .dashboardPlanSubheadline {
   margin: 10px 0px 15px 0px;
   font-size: 16px;
-  font-weight: 400;
   color: rgb(90, 90, 90);
+  font-weight: 400;
+  font-family: 'Lato', sans-serif;
 }
 
 .dashboardPlanIconContainer {
@@ -1564,7 +1572,7 @@ p {
   text-align: center;
   font-weight: 400;
   color: rgb(87, 87, 87);
-  margin: 0px 0px 0px 40px;
+  margin: 0px 0px 20px 40px;
 }
 
 .retirementSpendingIncrease {
@@ -1626,3 +1634,16 @@ p {
   margin: 20px 0px 0px 0px;
   vertical-align: top;
 }
+
+.pieChart {
+  padding: 0px 0px 0px 0px;
+  margin: 20px auto 20px auto;
+}
+
+.pie {
+  width: 100%;
+  height: 100%;
+  margin: 0px auto 0px auto;
+  padding: 0px;
+}
+

@@ -15,7 +15,7 @@ export function purchaseGoal() {
     return (
     <div>
     <div className="purchaseGoalSection">
-        <p className="purchaseGoalP">{goals[0].purchaseName}</p>
+        <p className="purchaseGoalP">{goal.purchaseName}</p>
         <p className="purchaseGoalCost">$35k</p>
     </div>
     </div>
