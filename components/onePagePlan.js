@@ -63,6 +63,18 @@ export function onePagePlan(plan) {
       return null;
     };
 
+    const CustomTooltipPortfolios = ({ active, payload }) => {
+      if (active && payload && payload.length) {
+        return (
+          <div className="customTooltipPortfolios">
+            <p className="tooltipPPortfolios">{`${payload[0].name}: ${payload[0].value}%`}</p>
+          </div>
+        );
+      }
+    
+      return null;
+    };
+
     const data = [];
     for (const [Age, Expenses] of Object.entries(calculations.retirementExpenses || {})) {
       data.push({ Age, Expenses });
@@ -108,22 +120,157 @@ export function onePagePlan(plan) {
       }
     ];
 
+    const aggressivePortfolio = [
+      {
+        'name': 'U.S. Large Cap Equity',
+        'value': 51
+      },
+      {
+        'name': 'U.S. Small Cap Equity',
+        'value': 22
+      },
+      {
+        'name': 'Non-U.S. Developed Market Equity',
+        'value': 25
+      },
+      {
+        'name': 'Cash',
+        'value': 2
+      }
+    ];
+
+    const moderatePlusPortfolio = [
+      {
+        'name': 'U.S. Large Cap Equity',
+        'value': 59
+      },
+      {
+        'name': 'U.S. Mid Cap Equity',
+        'value': 17
+      },
+      {
+        'name': 'Non-U.S. Developed Market Equity',
+        'value': 22
+      },
+      {
+        'name': 'Cash',
+        'value': 2
+      }
+    ];
+
+    const moderatePortfolio = [
+      {
+        'name': 'U.S. Large Cap Equity',
+        'value': 43
+      },
+      {
+        'name': 'U.S. Small Cap Equity',
+        'value': 18
+      },
+      {
+        'name': 'Non-U.S. Developed Market Equity',
+        'value': 20
+      },
+      {
+        'name': 'Investment Grade Intermediate Maturity Fixed Income',
+        'value': 17
+      },
+      {
+        'name': 'Cash',
+        'value': 2
+      }
+    ];
+
+    const conservativePlusPortfolio = [
+      {
+        'name': 'U.S. Large Cap Equity',
+        'value': 35
+      },
+      {
+        'name': 'U.S. Small Cap Equity',
+        'value': 16
+      },
+      {
+        'name': 'Non-U.S. Developed Market Equity',
+        'value': 16
+      },
+      {
+        'name': 'Investment Grade Intermediate Maturity Fixed Income',
+        'value': 31
+      },
+      {
+        'name': 'Cash',
+        'value': 2
+      }
+    ];
+
+    const conservativePortfolio = [
+      {
+        'name': 'U.S. Large Cap Equity',
+        'value': 15
+      },
+      {
+        'name': 'U.S. Mid Cap Equity',
+        'value': 15
+      },
+      {
+        'name': 'Global Equity Strategies',
+        'value': 18
+      },
+      {
+        'name': 'Investment Grade Intermediate Maturity Fixed Income',
+        'value': 35
+      },
+      {
+        'name': 'Multi-Sector Fixed Income Strategies',
+        'value': 15
+      },
+      {
+        'name': 'Cash',
+        'value': 2
+      }
+    ];
+
+    const renderLegend = (props) => {
+      const { payload } = props;
+    
+      return (
+        <ul className="legendList">
+          {
+            payload.map((entry, index) => (
+              <li className="legendItems" key={`item-${index}`}>{entry.value}</li>
+            ))
+          }
+        </ul>
+      );
+    }
+
     return (
       <div>
         <div className="planResultsSection">
               <h1 className="financialPlanHeadline">{calculations.firstName}'s Financial Plan</h1>
-              <p className="financialPlanSubheadline">Your plan shows with your future income, future spending, how your net worth will change over time, <br></br>as well as key info for you to know regarding your financial future.</p>
+              <p className="financialPlanSubheadline">Use your plan to help you achieve your financial goals</p>
+              <hr className="planHr"></hr>
             <div>
               <h1 className="planHeadline">Portfolio</h1>
-              <p className="planSubheadline">See an investment portfolio designed around your goals</p>
+              <p className="planSubheadline">Your portfolio is designed based on your desired returns & risk tolerance</p>
               <div className="keyInfoBlock">
-                <h1 className="pieHeadline">{calculations.riskScore} portfolio</h1>
-                <PieChart className="pieChart" width={225} height={225}>
-                  <Pie className="pie" data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={75} fill="rgb(4, 187, 172)" label/>
-                  <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipToThousands}/>
+                <h1 className="chartHeadlinePortfolio">{calculations.riskScore} Portfolio</h1>
+                <p className="chartSubheadlinePortfolio">Your portfolio aims to achieve 6% annual returns with moderate risk</p>
+                <PieChart className="pieChart" width={225} height={320}>
+                  <Pie className="pie" data={aggressivePortfolio} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={75} fill="rgb(4, 187, 172)"/>
+                  <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipPortfolios}/>
+                  <Legend content={renderLegend} payload={
+    [
+      { value: 'U.S. Large Cap Equity (51%)', type: 'square', color: 'rgb(4, 187, 172)'},
+      { value: 'U.S. Small Cap Equity (22%)', type: 'square', color: 'rgb(4, 187, 172)'},
+      { value: 'Non-U.S. Developed Market Equity (25%)', type: 'square' , color: 'rgb(4, 187, 172)'},
+      { value: 'Cash (2%)', type: 'square', color: 'rgb(4, 187, 172)'},
+    ]
+   }/>
                 </PieChart>
-                <Legend></Legend>
-                <p className="keyInfoPLight">The portfolio above is recommended based on your desired returns & risk tolerance.</p>
+                <p className="keyInfoPLightPortfolio">We recommend rolling your assets and savings into your portfolio.</p>
+                <button className="portfolioButton">Invest Now →</button>
               </div>
             </div>
             <div className="futureIncomeSection">

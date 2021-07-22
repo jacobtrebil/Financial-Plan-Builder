@@ -206,7 +206,7 @@ function Summary(plan1) {
   }
 
   function saveScenario() {
-    if (planVariables.scenarioName.length > 0) {
+    if (plan.scenarioName.length > 0) {
       setErrors("");
       saveScenarioApiCall(planVariables);
       var frm = document.getElementById("scenarioNameInput");
@@ -215,7 +215,7 @@ function Summary(plan1) {
       setTimeout(function () {
         setSavedMessage("");
       }, 2000);
-    } else if (planVariables.scenarioName.length === 0) {
+    } else if (plan.scenarioName.length === 0) {
       setErrors("*Please enter a valid name");
     }
   }
@@ -327,13 +327,13 @@ function Summary(plan1) {
 
   const data = [];
   for (const [Age, Expenses] of Object.entries(
-    calculations.retirementExpenses || {}
+    plan.retirementExpenses || {}
   )) {
     data.push({ Age, Expenses });
   }
 
   const netWorthData = [];
-  for (const [Age, netWorth] of Object.entries(calculations.netWorth || {})) {
+  for (const [Age, netWorth] of Object.entries(plan.netWorth || {})) {
     netWorthData.push({ Age, netWorth });
   }
 
@@ -435,7 +435,7 @@ function Summary(plan1) {
             <select
               className="formSelect"
               name="retirementAge"
-              value={planVariables.retirementAge}
+              value={plan.retirementAge}
               onChange={handleChange}
             >
               <option value="55">55</option>
@@ -463,23 +463,23 @@ function Summary(plan1) {
             <select
               className="formSelect"
               name="currentSavings"
-              value={planVariables.currentSavings}
+              value={plan.currentSavings}
               onChange={handleChange}
             >
-              <option value={calculations.currentSavings}>
-                {convertToUsd.format(calculations.currentSavings)}
+              <option value={plan.currentSavings}>
+                {convertToUsd.format(plan.currentSavings)}
               </option>
-              <option value={calculations.slightlyLessSavings}>
-                {convertToUsd.format(calculations.slightlyLessSavings)}
+              <option value={plan.slightlyLessSavings}>
+                {convertToUsd.format(plan.slightlyLessSavings)}
               </option>
-              <option value={calculations.muchLessSavings}>
-                {convertToUsd.format(calculations.muchLessSavings)}
+              <option value={plan.muchLessSavings}>
+                {convertToUsd.format(plan.muchLessSavings)}
               </option>
-              <option value={calculations.slightlyMoreSavings}>
-                {convertToUsd.format(calculations.slightlyMoreSavings)}
+              <option value={plan.slightlyMoreSavings}>
+                {convertToUsd.format(plan.slightlyMoreSavings)}
               </option>
-              <option value={calculations.muchMoreSavings}>
-                {convertToUsd.format(calculations.muchMoreSavings)}
+              <option value={plan.muchMoreSavings}>
+                {convertToUsd.format(plan.muchMoreSavings)}
               </option>
             </select>
           </div>
@@ -489,14 +489,14 @@ function Summary(plan1) {
             <select
               className="formSelect"
               name="riskScore"
-              value={planVariables.riskScore}
+              value={plan.riskScore}
               onChange={handleChange}
             >
-              <option value="conservative">conservative</option>
-              <option value="conservative +">conservative +</option>
-              <option value="moderate">moderate</option>
-              <option value="moderate +">moderate +</option>
-              <option value="aggressive">aggressive</option>
+              <option value="conservative">Conservative</option>
+              <option value="conservative +">Conservative +</option>
+              <option value="moderate">Moderate</option>
+              <option value="moderate +">Moderate +</option>
+              <option value="aggressive">Aggressive</option>
             </select>
           </div>
           <div className="decisionsSocialSecuritySection">
@@ -506,23 +506,23 @@ function Summary(plan1) {
             <select
               className="formSelect"
               name="livingExpense"
-              value={planVariables.livingExpense}
+              value={plan.livingExpense}
               onChange={handleChange}
             >
-              <option value={calculations.livingExpense}>
-                {convertToUsd.format(calculations.livingExpense)}
+              <option value={plan.livingExpense}>
+                {convertToUsd.format(plan.livingExpense)}
               </option>
-              <option value={calculations.muchLowerLivingExpense}>
-                {convertToUsd.format(calculations.muchLowerLivingExpense)}
+              <option value={plan.muchLowerLivingExpense}>
+                {convertToUsd.format(plan.muchLowerLivingExpense)}
               </option>
-              <option value={calculations.slightlyLowerLivingExpense}>
-                {convertToUsd.format(calculations.slightlyLowerLivingExpense)}
+              <option value={plan.slightlyLowerLivingExpense}>
+                {convertToUsd.format(plan.slightlyLowerLivingExpense)}
               </option>
-              <option value={calculations.slightlyHigherLivingExpense}>
-                {convertToUsd.format(calculations.slightlyHigherLivingExpense)}
+              <option value={plan.slightlyHigherLivingExpense}>
+                {convertToUsd.format(plan.slightlyHigherLivingExpense)}
               </option>
-              <option value={calculations.muchHigherLivingExpense}>
-                {convertToUsd.format(calculations.muchHigherLivingExpense)}
+              <option value={plan.muchHigherLivingExpense}>
+                {convertToUsd.format(plan.muchHigherLivingExpense)}
               </option>
             </select>
           </div>
@@ -617,7 +617,7 @@ function Summary(plan1) {
         <button
           className="scorecardButton"
           onClick={function clickHandler() {
-            router.push(`/wizard/planResults/?planId=${calculations._id}`);
+            router.push(`/wizard/planResults/?planId=${plan._id}`);
           }}
         >
           Get My Plan →

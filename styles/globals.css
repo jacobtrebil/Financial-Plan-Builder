@@ -303,11 +303,11 @@ p {
 }
 
 .accountContainer {
-  border: 1px solid #a1a0a0;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.2);
-  border-radius: 4px;
+  background-color: #f5f8f7;
   margin: 20px 0px 20px 0px;
   padding: 20px 0px 20px 0px;
+  border-radius: 8px;
+  border: 1px solid #dee7e4;
 }
 
 #cancelMethodTitle {
@@ -1395,6 +1395,18 @@ p {
   font-weight: 400;
 }
 
+.customTooltipPortfolios {
+  background-color: white;
+  padding: 0px 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.tooltipPPortfolios {
+  font-size: 14px;
+  font-weight: 400;
+}
+
 
 
 
@@ -1572,7 +1584,7 @@ p {
   text-align: center;
   font-weight: 400;
   color: rgb(87, 87, 87);
-  margin: 0px 0px 20px 40px;
+  margin: 0px 0px 20px 0px;
 }
 
 .retirementSpendingIncrease {
@@ -1598,7 +1610,7 @@ p {
 .keyInfoPLight {
   font-size: 12px;
   text-align: left;
-  margin: 20px 20px 0px 40px;
+  margin: 10px 20px 20px 40px;
   color: rgb(119, 119, 119);
 }
 
@@ -1653,4 +1665,61 @@ p {
   color:black;
   font-weight: bold;
   text-align: center;
+}
+
+.portfolioButton {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  border-radius: 40px; 
+  padding: 12px 24px;
+  font-size: 18px;
+  margin: 5px 0px 0px 0px;
+}
+
+.portfolioButton:hover {
+  cursor: pointer;
+  background-color:rgb(238, 238, 238);
+}
+
+.chartHeadlinePortfolio {
+  margin: -20px 0px 0px 0px;
+  font-size: 14px;
+  color:black;
+  font-weight: bold;
+  text-align: center;
+}
+
+.chartSubheadlinePortfolio {
+  margin: 5px 0px -20px 0px;
+  color: rgb(119, 119, 119);
+  font-size: 12px;
+}
+
+.planHr {
+  width: 35%;
+  color: #a1a0a0;
+  border: 1px solid #a1a0a0; 
+}
+
+.legendItems {
+  font-size: 12px;
+  text-align: left;
+  vertical-align: top;
+  padding: 0px 0px 10px 0px;
+  color:rgb(2, 177, 162);
+  font-weight: bold;
+}
+
+.legendList {
+  margin: 0px 0px 0px 0px;
+  vertical-align: top;
+}
+
+.keyInfoPLightPortfolio {
+  font-size: 12px;
+  text-align: left;
+  margin: -10px 20px 20px 40px;
+  color: rgb(119, 119, 119);
 }

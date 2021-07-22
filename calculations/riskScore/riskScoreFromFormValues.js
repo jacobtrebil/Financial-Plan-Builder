@@ -39,18 +39,18 @@ export default function calculateRiskScoreFromFormValues(changePortfolio, riskAt
 
     const totalScore = (changePortfolioScore + riskAttitudeScore + volatilityScore);
 
-    let riskScoreFromFormValues = 'conservative +';
+    let riskScoreFromFormValues = 'Conservative +';
 
     if (totalScore < 0) {
-        riskScoreFromFormValues = 'conservative';
+        riskScoreFromFormValues = 'Conservative';
     } else if (totalScore < 15) {
-        riskScoreFromFormValues = 'conservative +';
+        riskScoreFromFormValues = 'Conservative +';
     } else if (totalScore < 25) {
-        riskScoreFromFormValues = 'moderate';
+        riskScoreFromFormValues = 'Moderate';
     } else if (totalScore < 32) {
-        riskScoreFromFormValues = 'moderate +';
+        riskScoreFromFormValues = 'Moderate +';
     } else if (totalScore > 37) {
-        riskScoreFromFormValues = 'aggressive';
+        riskScoreFromFormValues = 'Aggressive';
     }
 
     return riskScoreFromFormValues;
