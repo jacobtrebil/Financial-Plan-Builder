@@ -11,7 +11,9 @@ import {
   PieChart,
   Pie, 
   Label, 
-  Legend
+  Legend,
+  Sector, 
+  Cell
 } from "recharts";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
@@ -123,19 +125,23 @@ export function onePagePlan(plan) {
     const aggressivePortfolio = [
       {
         'name': 'U.S. Large Cap Equity',
-        'value': 51
+        'value': 51,
+        'color': 'rgb(4, 187, 172)'
       },
       {
         'name': 'U.S. Small Cap Equity',
-        'value': 22
+        'value': 22,
+        'color': 'rgb(3, 187, 172)'
       },
       {
         'name': 'Non-U.S. Developed Market Equity',
-        'value': 25
+        'value': 25,        
+        'color': 'rgb(2, 187, 172)'
       },
       {
         'name': 'Cash',
-        'value': 2
+        'value': 2,
+        'color': 'rgb(1, 187, 172)'
       }
     ];
 
@@ -245,6 +251,8 @@ export function onePagePlan(plan) {
       );
     }
 
+  const COLORS = ['rgb(4, 187, 172)', 'rgba(4, 187, 172, 0.75)', 'rgba(4, 187, 172, 0.5)', 'rgba(4, 187, 172, 0.35)'];
+
     return (
       <div>
         <div className="planResultsSection">
@@ -257,15 +265,19 @@ export function onePagePlan(plan) {
               <div className="keyInfoBlock">
                 <h1 className="chartHeadlinePortfolio">{calculations.riskScore} Portfolio</h1>
                 <p className="chartSubheadlinePortfolio">Your portfolio aims to achieve 6% annual returns with moderate risk</p>
-                <PieChart className="pieChart" width={225} height={320}>
-                  <Pie className="pie" data={aggressivePortfolio} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={75} fill="rgb(4, 187, 172)"/>
-                  <Tooltip cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipPortfolios}/>
+                <PieChart className="pieChart" width={250} height={400}>
+                  <Pie className="pie" data={aggressivePortfolio} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} >{data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>
+                  ))}
+                  </Pie>
+                  <Label position="outside">51%</Label>
+                  <Tooltip offset={75} cursor={{ stroke: 'black' }} fontSize="12px" content={CustomTooltipPortfolios}/>
                   <Legend content={renderLegend} payload={
     [
       { value: 'U.S. Large Cap Equity (51%)', type: 'square', color: 'rgb(4, 187, 172)'},
-      { value: 'U.S. Small Cap Equity (22%)', type: 'square', color: 'rgb(4, 187, 172)'},
-      { value: 'Non-U.S. Developed Market Equity (25%)', type: 'square' , color: 'rgb(4, 187, 172)'},
-      { value: 'Cash (2%)', type: 'square', color: 'rgb(4, 187, 172)'},
+      { value: 'U.S. Small Cap Equity (22%)', type: 'square', color: 'rgba(4, 187, 172, 0.75)'},
+      { value: 'Non-U.S. Developed Market Equity (25%)', type: 'square' , color: 'rgba(4, 187, 172, 0.5)'},
+      { value: 'Cash (2%)', type: 'square', color: 'rgba(4, 187, 172, 0.35)'},
     ]
    }/>
                 </PieChart>

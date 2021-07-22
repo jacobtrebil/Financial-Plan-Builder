@@ -1222,7 +1222,7 @@ p {
 .planResultsSection {
   border: solid 2px #a5a5a5;
   border-radius: 4px;
-  width: 850px;
+  width: 950px;
   margin: 40px auto 25px auto;
   padding: 0px 0px 50px 0px;
 }
@@ -1333,7 +1333,7 @@ p {
 }
 
 .planProgressBar {
-  border: 2px solid rgb(4, 187, 172);
+  border: 2px solid rgba(4, 187, 172, 0.575);
   width: 45%;
   margin: 0px 0px 0px 0px;
   border-radius: 6px;
@@ -1404,7 +1404,8 @@ p {
 
 .tooltipPPortfolios {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: normal;
+  color:black;
 }
 
 
@@ -1704,17 +1705,18 @@ p {
 }
 
 .legendItems {
-  font-size: 12px;
+  font-size: 14px;
   text-align: left;
   vertical-align: top;
   padding: 0px 0px 10px 0px;
-  color:rgb(2, 177, 162);
+  color:rgb(0, 160, 147);
   font-weight: bold;
 }
 
 .legendList {
   margin: 0px 0px 0px 0px;
   vertical-align: top;
+  float: right;
 }
 
 .keyInfoPLightPortfolio {
