@@ -7,7 +7,7 @@ import {
   addScenario,
   addExpense,
   updateLivingExpense,
-  updatePlanCalculations
+  updatePlanCalculations,
 } from "../../apiclient/wizardFetch";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
@@ -37,7 +37,7 @@ function Summary(plan1) {
   const [calculations, setCalculations] = useState({});
   const [showForm, setShowForm] = useState(false);
   const [buttonShow, setButtonShow] = useState(true);
-  const [plan, setPlan] = useState({})
+  const [plan, setPlan] = useState({});
   const [planVariables, setPlanVariables] = useState({
     riskScore: "",
     retirementAge: "",
@@ -51,42 +51,32 @@ function Summary(plan1) {
     upfrontCost: "",
     annualCost: "",
   });
-
-  console.log('===*** plan id', planId)
+  const [currentSavingsOptions, setCurrentSavingsOptions] = useState([]);
+  const [livingExpenseOptions, setLivingExpenseOptions] = useState([]);
+ 
+  //console.log('===*** plan id', planId)
 
   useEffect(async () => {
-    if(planId) {
+    if (planId) {
       const updatedPlan = await planCalculations(planId, planVariables);
       setPlan(updatedPlan);
     }
-  }, [planId])
+  }, [planId]);
 
-  const handleChange = async ({target: {name, value}}) => {
-    setPlanVariables({...planVariables, [name]: value})
-    const updatedPlan = await updatePlanCalculations(planId, planVariables)
+  const handleChange = async ({ target: { name, value } }) => {
+    const updatedPlanVariables = { ...planVariables, [name]: value };
+    setPlanVariables(updatedPlanVariables);
+    const updatedPlan = await updatePlanCalculations(
+      planId,
+      updatedPlanVariables
+    );
     setPlan(updatedPlan);
-  }
+  };
 
-  console.log('=======================plan ', plan)
-  console.log('the variblksj ar********e', planVariables)
+  // Update Living Expense to work. retirementAge options should be an array as well.
 
- /*useEffect(() => {
-    setPlanVariables({
-      ...planVariables,
-      riskScore: plan.riskScore,
-      retirementAge: plan.retirementAge,
-      currentSavings: plan.currentSavings,
-      livingExpense: plan.livingExpense,
-    });
-  }, [plan]);*/
-    
-   /* useEffect(() => {
-    if (!fields.riskScore && !fields.retirementAge && !fields.currentSavings && !fields.livingExpense) {
-     setPlanVariables()
-    }
-   }, [planVariables]); */
-
-
+  //console.log("=======================plan ", currentSavingsOptions);
+  //console.log('the variblksj ar********e', planVariables)
 
   /**
    * Refactors:
@@ -96,51 +86,91 @@ function Summary(plan1) {
    * eg: PUT /update_plan
    * Body: enableCalculation = true
    * In the backend , look for this variable, if it is true then run the calculation.
-   * 
+   *
    * The result of update Plan should drive all the drive.
    * We should take out graph data from Update call response as well.(Single Source)
-   * 
-   * 
+   *
+   *
    * The update call should be 1 singular call, for all the fields
-   * 
+   *
    * updatePlanApiCall(enableCalculation = true)
-   * 
+   *
    * Don't use API response for changing selection fields (Use separate state variable)
    * const [fields, setFields] = useState({field1: '', filed2: ''})
-   * 
+   *
    * useEffect(() => {
    *  if (!fields.field1 && !fields.fields2) {
    *   setField({
    * retirementAge: plan.retirementAge})
    *  }
-   *  
+   *
    * }, [planVariables])
-   * 
+   *
    * The variable fields will be populated using the API call only initially, then it will use state to update them.
-   * Only the charts will use data from the API call. 
-   * Do DB variable update for all variables AND all of the wizard calculations in 1 singular API call. 
-   * This will also solve the annual living expense & annual savings inputs problem of always updating the numbers. 
+   * Only the charts will use data from the API call.
+   * Do DB variable update for all variables AND all of the wizard calculations in 1 singular API call.
+   * This will also solve the annual living expense & annual savings inputs problem of always updating the numbers.
    * Adding a purchase goal will have to trigger the API call & update all of the calculations as well.
-   * Purchase goals should not affect the fields that are displayed. 
+   * Purchase goals should not affect the fields that are displayed.
    */
 
   // All of the onChange methods should go through the same handler
 
-  // What should happen with the onChange handlers than? 
-  // It should update the values in field, as well as do whatever calls the API call as well. 
+  // What should happen with the onChange handlers than?
+  // It should update the values in field, as well as do whatever calls the API call as well.
 
-  // It should update everything properly when I separate the displayed values and the API call... maybe. We will see. 
-
-
+  // It should update everything properly when I separate the displayed values and the API call... maybe. We will see.
 
   useEffect(() => {
-    if (!planVariables.riskScore && !planVariables.retirementAge && !planVariables.currentSavings && !planVariables.livingExpense) {
-      setPlanVariables({
-        riskScore: plan.riskScore,
-        retirementAge: plan.retirementAge,
-        currentSavings: plan.currentSavings,
-        livingExpense: plan.livingExpense,
-      })
+    if (Object.keys(plan).length) {
+      if (
+        !planVariables.riskScore &&
+        !planVariables.retirementAge &&
+        !planVariables.currentSavings &&
+        !planVariables.livingExpense
+      ) {
+        setPlanVariables({
+          riskScore: plan.riskScore,
+          retirementAge: plan.retirementAge,
+          currentSavings: plan.currentSavings,
+          livingExpense: plan.livingExpense,
+        });
+      }
+      if (!currentSavingsOptions.length) {
+        const {
+          currentSavings,
+          slightlyLessSavings,
+          muchLessSavings,
+          slightlyMoreSavings,
+          muchMoreSavings,
+        } = plan;
+
+        setCurrentSavingsOptions([
+          currentSavings,
+          slightlyLessSavings,
+          muchLessSavings,
+          slightlyMoreSavings,
+          muchMoreSavings,
+        ]);
+
+        if (!livingExpenseOptions.length) {
+          const {
+            livingExpense,
+            muchLowerLivingExpense,
+            slightlyLowerLivingExpense,
+            slightlyHigherLivingExpense,
+            muchHigherLivingExpense,
+          } = plan;
+
+        setLivingExpenseOptions([
+          livingExpense,
+          muchLowerLivingExpense,
+          slightlyLowerLivingExpense,
+          slightlyHigherLivingExpense,
+          muchHigherLivingExpense,
+        ]);
+      }
+      }
     }
   }, [planId, plan]);
 
@@ -178,25 +208,34 @@ function Summary(plan1) {
   }
 
   function updateRetirementAgeHandler(e) {
-    const updatedPlanVariables = { ...planVariables, retirementAge: e.target.value }
+    const updatedPlanVariables = {
+      ...planVariables,
+      retirementAge: e.target.value,
+    };
     setPlanVariables(updatedPlanVariables);
     console.log(planVariables);
     updateRetirementAgeApiCall(updatedPlanVariables);
     //doWizardCalculations(updatedPlanVariables);
   }
 
-  // the setPlanVariables({}) function is not setting the variables to the new values like it should be doing. 
+  // the setPlanVariables({}) function is not setting the variables to the new values like it should be doing.
 
-  // Update with new setPlan({}) format, expense as well. 
+  // Update with new setPlan({}) format, expense as well.
 
   function updateLivingExpenseHandler(e) {
-    setPlanVariables({ ...planVariables, livingExpense: Number(e.target.value.replace(/[^0-9.-]+/g, "")) });
+    setPlanVariables({
+      ...planVariables,
+      livingExpense: Number(e.target.value.replace(/[^0-9.-]+/g, "")),
+    });
     updateLivingExpenseApiCall(planVariables);
     // doWizardCalculations();
   }
 
   function updateCurrentSavingsHandler(e) {
-    setPlanVariables({ ...planVariables, currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g, "")) });
+    setPlanVariables({
+      ...planVariables,
+      currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g, "")),
+    });
     updateCurrentSavingsApiCall(planVariables);
     // doWizardCalculations();
   }
@@ -326,9 +365,7 @@ function Summary(plan1) {
   };
 
   const data = [];
-  for (const [Age, Expenses] of Object.entries(
-    plan.retirementExpenses || {}
-  )) {
+  for (const [Age, Expenses] of Object.entries(plan.retirementExpenses || {})) {
     data.push({ Age, Expenses });
   }
 
@@ -435,7 +472,7 @@ function Summary(plan1) {
             <select
               className="formSelect"
               name="retirementAge"
-              value={plan.retirementAge}
+              value={planVariables.retirementAge}
               onChange={handleChange}
             >
               <option value="55">55</option>
@@ -463,24 +500,12 @@ function Summary(plan1) {
             <select
               className="formSelect"
               name="currentSavings"
-              value={plan.currentSavings}
+              value={planVariables.currentSavings}
               onChange={handleChange}
             >
-              <option value={plan.currentSavings}>
-                {convertToUsd.format(plan.currentSavings)}
-              </option>
-              <option value={plan.slightlyLessSavings}>
-                {convertToUsd.format(plan.slightlyLessSavings)}
-              </option>
-              <option value={plan.muchLessSavings}>
-                {convertToUsd.format(plan.muchLessSavings)}
-              </option>
-              <option value={plan.slightlyMoreSavings}>
-                {convertToUsd.format(plan.slightlyMoreSavings)}
-              </option>
-              <option value={plan.muchMoreSavings}>
-                {convertToUsd.format(plan.muchMoreSavings)}
-              </option>
+              {currentSavingsOptions.map((val) => (
+                <option value={val}>{convertToUsd.format(val)}</option>
+              ))}
             </select>
           </div>
           <br></br>
@@ -489,14 +514,14 @@ function Summary(plan1) {
             <select
               className="formSelect"
               name="riskScore"
-              value={plan.riskScore}
+              value={planVariables.riskScore}
               onChange={handleChange}
             >
-              <option value="conservative">Conservative</option>
-              <option value="conservative +">Conservative +</option>
-              <option value="moderate">Moderate</option>
-              <option value="moderate +">Moderate +</option>
-              <option value="aggressive">Aggressive</option>
+              <option value="Conservative">Conservative</option>
+              <option value="Conservative +">Conservative +</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Moderate +">Moderate +</option>
+              <option value="Aggressive">Aggressive</option>
             </select>
           </div>
           <div className="decisionsSocialSecuritySection">
@@ -506,24 +531,12 @@ function Summary(plan1) {
             <select
               className="formSelect"
               name="livingExpense"
-              value={plan.livingExpense}
+              value={planVariables.livingExpense}
               onChange={handleChange}
             >
-              <option value={plan.livingExpense}>
-                {convertToUsd.format(plan.livingExpense)}
-              </option>
-              <option value={plan.muchLowerLivingExpense}>
-                {convertToUsd.format(plan.muchLowerLivingExpense)}
-              </option>
-              <option value={plan.slightlyLowerLivingExpense}>
-                {convertToUsd.format(plan.slightlyLowerLivingExpense)}
-              </option>
-              <option value={plan.slightlyHigherLivingExpense}>
-                {convertToUsd.format(plan.slightlyHigherLivingExpense)}
-              </option>
-              <option value={plan.muchHigherLivingExpense}>
-                {convertToUsd.format(plan.muchHigherLivingExpense)}
-              </option>
+              {livingExpenseOptions.map((val) => (
+                <option value={val}>{convertToUsd.format(val)}</option>
+              ))}
             </select>
           </div>
           <br></br>

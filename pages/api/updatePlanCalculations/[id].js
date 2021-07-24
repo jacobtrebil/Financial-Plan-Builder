@@ -1,39 +1,5 @@
 import dbConnect from "../../../util/wizardDbConnect";
 import Plan from "../../../models/wizardSchema";
-import calculateSocialSecurity from "../../../calculations/socialSecurity/socialSecurity";
-import lengthOfRetirementFunction from "../../../calculations/lengthOfRetirement";
-import healthcare from "../../../calculations/healthcare/healthcare";
-import calculateSocialSecurityAge62 from "../../../calculations/socialSecurity/socialSecurityAge62";
-import calculateSocialSecurityAge70 from "../../../calculations/socialSecurity/socialSecurityAge70";
-import calculateCurrentAge from "../../../calculations/currentAge/currentAge";
-import calculateYearsUntilRetirement from "../../../calculations/yearsUntilRetirement/yearsUntilRetirement";
-import calculateSavingsByRetirement from "../../../calculations/savingsByRetirement";
-import calculateProjectedRetirementIncome from "../../../calculations/projectedRetirementIncome/calculateProjectedRetirementIncome";
-import calculateFinancialHealthScore from "../../../calculations/financialHealthScore";
-import calculateLengthOfPension from "../../../calculations/pension/lengthOfPension";
-import calculateRateOfReturn from "../../../calculations/rateOfReturn";
-import calculateRiskScore from "../../../calculations/riskScore/riskScore";
-import calculateRetirementAnnualReturnIncome from "../../../calculations/projectedRetirementIncome/calculateRetirementAnnualReturnIncome";
-import calculateTotalRetirementEarnings from "../../../calculations/totalRetirementEarnings";
-import slightlyLessSavingsFunction from "../../../calculations/annualSavingsOptions/slightlyLessSavings";
-import slightlyMoreSavingsFunction from "../../../calculations/annualSavingsOptions/slightlyMoreSavings";
-import muchLessSavingsFunction from "../../../calculations/annualSavingsOptions/muchLessSavings";
-import muchMoreSavingsFunction from "../../../calculations/annualSavingsOptions/muchMoreSavings";
-import calculateSocialSecurityAge from "../../../calculations/socialSecurity/socialSecurityAge";
-import setPartTimeWorkDecision from "../../../calculations/partTimeWork";
-import calculateRiskScoreFromFormValues from "../../../calculations/riskScore/riskScoreFromFormValues";
-import setRetirementAges from "../../../calculations/yearByYearRetirementEarnings/retirementAges";
-import setAgeOfDeath from "../../../calculations/ageOfDeath";
-import calculatePartTimeWorkEarnings from "../../../calculations/partTimeWorkEarnings";
-import calculateNetWorth from "../../../calculations/netWorth";
-import setYearsOfPartTimeWork from "../../../calculations/setYearsOfPartTimeWork";
-import calculateRetirementExpenses from "../../../calculations/calculateRetirementExpenses";
-import calculateHealthcareStartingExpense from "../../../calculations/calculateHealthcareStartingExpense";
-import calculateRetirementEarningsSections from "../../../calculations/calculateRetirementEarningsSections";
-import slightlyHigherLivingExpenseFunction from "../../../calculations/livingExpenseOptions/slightlyHigherLivingExpense";
-import slightlyLowerLivingExpenseFunction from "../../../calculations/livingExpenseOptions/slightlyLowerLivingExpense";
-import muchHigherLivingExpenseFunction from "../../../calculations/livingExpenseOptions/muchHigherLivingExpense";
-import muchLowerLivingExpenseFunction from "../../../calculations/livingExpenseOptions/muchLowerLivingExpense";
 import WizardCalculationHelper from "../helper/wizardCalculationsHelper";
 
 export default async function handler(req, res) {
@@ -45,9 +11,11 @@ export default async function handler(req, res) {
   switch (method) {
     case "PUT":
       try {
+        console.log('req body ==========', req.body);
+        console.log(id);
         const { livingExpense, currentSavings, retirementAge, riskScore } = req.body;
 
-        await Plan.updateOne(id, {
+        await Plan.updateOne({_id: id}, {
           livingExpense,
           currentSavings,
           retirementAge,
