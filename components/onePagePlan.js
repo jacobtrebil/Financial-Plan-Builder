@@ -95,33 +95,6 @@ export function onePagePlan(plan) {
 
     // Retirement Recommendations & Asset Portfolio w/ Headline & Subheadline
 
-    const data01 = [
-      {
-        "name": "Group A",
-        "value": 400
-      },
-      {
-        "name": "Group B",
-        "value": 300
-      },
-      {
-        "name": "Group C",
-        "value": 300
-      },
-      {
-        "name": "Group D",
-        "value": 200
-      },
-      {
-        "name": "Group E",
-        "value": 278
-      },
-      {
-        "name": "Group F",
-        "value": 189
-      }
-    ];
-
     const aggressivePortfolio = [
       {
         'name': 'U.S. Large Cap Equity',
@@ -266,7 +239,7 @@ export function onePagePlan(plan) {
                 <h1 className="chartHeadlinePortfolio">{calculations.riskScore} Portfolio</h1>
                 <p className="chartSubheadlinePortfolio">Your portfolio aims to achieve 6% annual returns with moderate risk</p>
                 <PieChart className="pieChart" width={250} height={400}>
-                  <Pie className="pie" data={aggressivePortfolio} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} >{data.map((entry, index) => (
+                  <Pie className="pie" data={moderatePortfolio} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} >{data.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>
                   ))}
                   </Pie>
@@ -278,6 +251,7 @@ export function onePagePlan(plan) {
       { value: 'U.S. Small Cap Equity (22%)', type: 'square', color: 'rgba(4, 187, 172, 0.75)'},
       { value: 'Non-U.S. Developed Market Equity (25%)', type: 'square' , color: 'rgba(4, 187, 172, 0.5)'},
       { value: 'Cash (2%)', type: 'square', color: 'rgba(4, 187, 172, 0.35)'},
+      { value: 'Investment Grade Intermediate Maturity Fixed Income', type: 'square', color: 'rgba(4, 187, 172, 0.25)'},
     ]
    }/>
                 </PieChart>
@@ -399,7 +373,11 @@ export function onePagePlan(plan) {
               <div className="planDocumentUploadBox">
                 <p className="planDocumentUploadType">Insurance</p>
                 <p className="noPlanDocumentFound">*No Documents Found</p>
-                <button type="file" className="planDocumentUploadButton">+ Upload Insurance</button>
+                <input 
+                type="file" 
+                className="inputFile"
+                ></input>
+                <label for="file" className="planDocumentUploadButton">+ Upload Insurance</label>
               </div>
         </div>
       </div>

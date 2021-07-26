@@ -1028,7 +1028,7 @@ p {
   display: inline-block;
   width: 50%;
   float: left;
-  margin: 50px 0px 0px 0px;
+  margin: 20px 0px 0px 0px;
   padding: 0px;
 }
 
@@ -1537,6 +1537,8 @@ p {
   font-weight: bold;
   border-radius: 40px; 
   padding: 8px 12px;
+  font-size: 14px;
+  margin: 5px 0px 0px 0px;
 }
 
 .planDocumentUploadButton:hover {
@@ -1551,7 +1553,7 @@ p {
 }
 
 .noPlanDocumentFound {
-  margin: 15px 0px 15px 0px;
+  margin: 15px 0px 20px 0px;
   color: rgb(87, 87, 87);
   font-size: 14px;
 }
@@ -1724,4 +1726,28 @@ p {
   text-align: left;
   margin: -10px 20px 20px 40px;
   color: rgb(119, 119, 119);
+}
+
+
+/* File Upload Buttons */
+
+.inputFile {
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute !important;
+	z-index: -1;
+}
+
+.inputfile label {
+  font-size: 1em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.inputfile label {
+	cursor: pointer; /* "hand" cursor */
 }

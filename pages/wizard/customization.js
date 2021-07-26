@@ -204,7 +204,6 @@ function Summary(plan1) {
   function updateRiskScoreHandler(e) {
     setPlanVariables({ ...planVariables, riskScore: e.target.value });
     updateRiskScoreApiCall(planVariables);
-    // doWizardCalculations();
   }
 
   function updateRetirementAgeHandler(e) {
@@ -245,7 +244,7 @@ function Summary(plan1) {
   }
 
   function saveScenario() {
-    if (plan.scenarioName.length > 0) {
+    if (planVariables.scenarioName.length > 0) {
       setErrors("");
       saveScenarioApiCall(planVariables);
       var frm = document.getElementById("scenarioNameInput");
@@ -254,7 +253,7 @@ function Summary(plan1) {
       setTimeout(function () {
         setSavedMessage("");
       }, 2000);
-    } else if (plan.scenarioName.length === 0) {
+    } else if (planVariables.scenarioName.length === 0) {
       setErrors("*Please enter a valid name");
     }
   }
@@ -540,25 +539,6 @@ function Summary(plan1) {
             </select>
           </div>
           <br></br>
-          <div>
-            <p className="purchaseGoalsHeadline">Purchase Goals</p>
-            <p className="purchaseGoalsSubheadline">
-              Major purchases in the future (Home, Car, etc.)
-            </p>
-            <hr className="purchaseGoalsHr"></hr>
-            <PurchaseGoalComponent></PurchaseGoalComponent>
-            {buttonShow && (
-              <button
-                className="purchaseGoalsButton"
-                onClick={function setTrue() {
-                  setShowForm(true);
-                  setButtonShow(false);
-                }}
-              >
-                + Add Goal
-              </button>
-            )}
-          </div>
           {showForm && (
             <div className="purchaseGoalsBox">
               <label className="oneTimeExpenseLabel">Name of Purchase</label>
@@ -641,6 +621,27 @@ function Summary(plan1) {
 }
 
 export default Summary;
+
+/*           <div>
+            <p className="purchaseGoalsHeadline">Purchase Goals</p>
+            <p className="purchaseGoalsSubheadline">
+              Major purchases in the future (Home, Car, etc.)
+            </p>
+            <hr className="purchaseGoalsHr"></hr>
+            <PurchaseGoalComponent></PurchaseGoalComponent>
+            {buttonShow && (
+              <button
+                className="purchaseGoalsButton"
+                onClick={function setTrue() {
+                  setShowForm(true);
+                  setButtonShow(false);
+                }}
+              >
+                + Add Goal
+              </button>
+            )}
+          </div>
+          */
 
 /*  <div className="decisionssocialsecuritysection">
                         <p className="customization-question">Annual Retirement Costs (Trips, Charity, etc.)</p>
