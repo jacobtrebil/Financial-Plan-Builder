@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { 
-  BarChart, 
-  Bar, 
   XAxis, 
   YAxis, 
   Tooltip, 
@@ -12,7 +10,6 @@ import {
   Pie, 
   Label, 
   Legend,
-  Sector, 
   Cell
 } from "recharts";
 import { useRouter } from "next/router";
@@ -31,15 +28,15 @@ export function onePagePlan(plan) {
     }, [planId]);
 
     const [calculations, setCalculations] = useState({});
+    const [portfolio, setPortfolio] = useState([]);
+    const [portfolioSubheadline, setPortfolioSubheadline] = useState('');
 
     async function doWizardCalculations() {
       const wizardCalculationsFunction = await planCalculations(planId, plan);
       setCalculations(wizardCalculationsFunction);
+      assignPortfolio();
+      assignPortfolioSubheadline();
     }
-
-    const PurchaseGoalComponent = _dynamic(() =>
-    import('../components/purchaseGoal').then((mod) => mod.purchaseGoal)
-    )
 
     const CustomTooltipToThousands = ({ active, payload, label }) => {
       if (active && payload && payload.length) {
@@ -90,10 +87,37 @@ export function onePagePlan(plan) {
     const toUSDThousands = (fixed) => `$${fixed / 1000}K`;
     const toUSDMillions = (fixed) => `$${fixed / 1000000}M`;
 
-    // Key Info should basically be split into retirement dates/recommendations (SS, Pension, Retirement Age, etc.)
-    // And their portfolio recommendations. 
+    function assignPortfolio() {
+      if (calculations.riskScore === 'Conservative') {
+        setPortfolio(conservativePortfolio);
+      } else if (calculations.riskScore === 'Conservative +') {
+        setPortfolio(conservativePlusPortfolio);
+      } else if (calculations.riskScore === 'Moderate') {
+        setPortfolio(moderatePortfolio);
+      } else if (calculations.riskScore === 'Moderate +') {
+        setPortfolio(moderatePlusPortfolio);
+      } else if (calculations.riskScore === 'Aggressive') {
+        setPortfolio(aggressivePortfolio);
+      } else {
+        setPortfolio(conservativePlusPortfolio);
+      }
+    }
 
-    // Retirement Recommendations & Asset Portfolio w/ Headline & Subheadline
+    function assignPortfolioSubheadline() {
+      if (calculations.riskScore === 'Conservative') {
+        setPortfolioSubheadline('Your portfolio aims to achieve 4% annual returns with low risk');
+      } else if (calculations.riskScore === 'Conservative +') {
+        setPortfolioSubheadline('Your portfolio aims to achieve 5% annual returns with low risk');
+      } else if (calculations.riskScore === 'Moderate') {
+        setPortfolioSubheadline('Your portfolio aims to achieve 6% annual returns with moderate risk');
+      } else if (calculations.riskScore === 'Moderate +') {
+        setPortfolioSubheadline('Your portfolio aims to achieve 7% annual returns with moderate risk');
+      } else if (calculations.riskScore === 'Aggressive') {
+        setPortfolioSubheadline('Your portfolio aims to achieve 8% annual returns with high risk');
+      } else {
+        setPortfolioSubheadline('Your portfolio aims to achieve 5% annual returns with low risk');
+      }
+    }
 
     const aggressivePortfolio = [
       {
@@ -224,7 +248,7 @@ export function onePagePlan(plan) {
       );
     }
 
-  const COLORS = ['rgb(4, 187, 172)', 'rgba(4, 187, 172, 0.75)', 'rgba(4, 187, 172, 0.5)', 'rgba(4, 187, 172, 0.35)'];
+  const COLORS = ['rgb(4, 187, 172)', 'rgba(4, 187, 172, 0.75)', 'rgba(4, 187, 172, 0.6)', 'rgba(4, 187, 172, 0.5)', 'rgba(4, 187, 172, 0.40)', 'rgba(4, 187, 172, 0.20)'];
 
     return (
       <div>
@@ -237,9 +261,9 @@ export function onePagePlan(plan) {
               <p className="planSubheadline">Your portfolio is designed based on your desired returns & risk tolerance</p>
               <div className="keyInfoBlock">
                 <h1 className="chartHeadlinePortfolio">{calculations.riskScore} Portfolio</h1>
-                <p className="chartSubheadlinePortfolio">Your portfolio aims to achieve 6% annual returns with moderate risk</p>
+                <p className="chartSubheadlinePortfolio">{portfolioSubheadline}</p>
                 <PieChart className="pieChart" width={250} height={400}>
-                  <Pie className="pie" data={moderatePortfolio} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} >{data.map((entry, index) => (
+                  <Pie className="pie" data={portfolio} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} >{data.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>
                   ))}
                   </Pie>
@@ -358,33 +382,37 @@ export function onePagePlan(plan) {
               <div className="planDocumentUploadBox">
                 <p className="planDocumentUploadType">Tax Plan</p>
                 <p className="noPlanDocumentFound">*No Documents Found</p>
-                <button type="file" className="planDocumentUploadButton">+ Upload Plan</button>
+                <label for="taxPlanFile" className="planDocumentUploadButton">+ Upload Plan</label>
+                <input type="file" className="inputFile" id="taxPlanFile"></input>
               </div>
               <div className="planDocumentUploadBox">
                 <p className="planDocumentUploadType">Estate Plan</p>
                 <p className="noPlanDocumentFound">*No Documents Found</p>
-                <button type="file" className="planDocumentUploadButton">+ Upload Plan</button>
+                <label for="estatePlanFile" className="planDocumentUploadButton">+ Upload Plan</label>
+                <input type="file" className="inputFile" id="estatePlanFile"></input>
               </div>
               <div className="planDocumentUploadBox">
                 <p className="planDocumentUploadType">Your Will</p>
                 <p className="noPlanDocumentFound">*No Documents Found</p>
-                <button type="file" className="planDocumentUploadButton">+ Upload Will</button>
+                <label for="willFile" className="planDocumentUploadButton">+ Upload Will</label>
+                <input type="file" className="inputFile" id="willFile"></input>
               </div>
               <div className="planDocumentUploadBox">
                 <p className="planDocumentUploadType">Insurance</p>
                 <p className="noPlanDocumentFound">*No Documents Found</p>
-                <input 
-                type="file" 
-                className="inputFile"
-                ></input>
-                <label for="file" className="planDocumentUploadButton">+ Upload Insurance</label>
+                <label for="insuranceFile" className="planDocumentUploadButton">+ Upload Insurance</label>
+                <input type="file" className="inputFile" id="insuranceFile"></input>
               </div>
         </div>
       </div>
       </div>
     )}
 
-
+/**  <input 
+type="file" 
+className="inputFile"
+></input>
+*/
 
     /*               <div className="futureSpendingBlocks">
                 <p className="retirementSpendingHeadline">

@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {
   planCalculations,
-  updateCurrentSavings,
-  updateRiskScore,
-  updateRetirementAge,
   addScenario,
   addExpense,
-  updateLivingExpense,
   updatePlanCalculations,
 } from "../../apiclient/wizardFetch";
 import { useRouter } from "next/router";
@@ -73,54 +69,6 @@ function Summary(plan1) {
     setPlan(updatedPlan);
   };
 
-  // Update Living Expense to work. retirementAge options should be an array as well.
-
-  //console.log("=======================plan ", currentSavingsOptions);
-  //console.log('the variblksj ar********e', planVariables)
-
-  /**
-   * Refactors:
-   * 1. Separate the data variables for graph(this is calculation) and the dropdown
-   * 2. Drive data calculate while updating the plan (whenver you update the plan, run the calculations in BE)
-   * 3. Keep a flag which will tell you when to run calculations (Whenever you are on the page where the graph is, just pass this flag)
-   * eg: PUT /update_plan
-   * Body: enableCalculation = true
-   * In the backend , look for this variable, if it is true then run the calculation.
-   *
-   * The result of update Plan should drive all the drive.
-   * We should take out graph data from Update call response as well.(Single Source)
-   *
-   *
-   * The update call should be 1 singular call, for all the fields
-   *
-   * updatePlanApiCall(enableCalculation = true)
-   *
-   * Don't use API response for changing selection fields (Use separate state variable)
-   * const [fields, setFields] = useState({field1: '', filed2: ''})
-   *
-   * useEffect(() => {
-   *  if (!fields.field1 && !fields.fields2) {
-   *   setField({
-   * retirementAge: plan.retirementAge})
-   *  }
-   *
-   * }, [planVariables])
-   *
-   * The variable fields will be populated using the API call only initially, then it will use state to update them.
-   * Only the charts will use data from the API call.
-   * Do DB variable update for all variables AND all of the wizard calculations in 1 singular API call.
-   * This will also solve the annual living expense & annual savings inputs problem of always updating the numbers.
-   * Adding a purchase goal will have to trigger the API call & update all of the calculations as well.
-   * Purchase goals should not affect the fields that are displayed.
-   */
-
-  // All of the onChange methods should go through the same handler
-
-  // What should happen with the onChange handlers than?
-  // It should update the values in field, as well as do whatever calls the API call as well.
-
-  // It should update everything properly when I separate the displayed values and the API call... maybe. We will see.
-
   useEffect(() => {
     if (Object.keys(plan).length) {
       if (
@@ -174,10 +122,6 @@ function Summary(plan1) {
     }
   }, [planId, plan]);
 
-  /* useEffect(() => {
-    //updateCurrentSavingsApiCall(planVariables, true)
-  }, [planVariables]) */
-
   if (!calculations)
     return (
       <div>
@@ -199,48 +143,6 @@ function Summary(plan1) {
 
   function updateAnnualCostHandler(e) {
     setExpense({ ...expense, annualCost: e.target.value });
-  }
-
-  function updateRiskScoreHandler(e) {
-    setPlanVariables({ ...planVariables, riskScore: e.target.value });
-    updateRiskScoreApiCall(planVariables);
-  }
-
-  function updateRetirementAgeHandler(e) {
-    const updatedPlanVariables = {
-      ...planVariables,
-      retirementAge: e.target.value,
-    };
-    setPlanVariables(updatedPlanVariables);
-    console.log(planVariables);
-    updateRetirementAgeApiCall(updatedPlanVariables);
-    //doWizardCalculations(updatedPlanVariables);
-  }
-
-  // the setPlanVariables({}) function is not setting the variables to the new values like it should be doing.
-
-  // Update with new setPlan({}) format, expense as well.
-
-  function updateLivingExpenseHandler(e) {
-    setPlanVariables({
-      ...planVariables,
-      livingExpense: Number(e.target.value.replace(/[^0-9.-]+/g, "")),
-    });
-    updateLivingExpenseApiCall(planVariables);
-    // doWizardCalculations();
-  }
-
-  function updateCurrentSavingsHandler(e) {
-    setPlanVariables({
-      ...planVariables,
-      currentSavings: Number(e.target.value.replace(/[^0-9.-]+/g, "")),
-    });
-    updateCurrentSavingsApiCall(planVariables);
-    // doWizardCalculations();
-  }
-
-  function updateScenarioNameHandler(e) {
-    setPlanVariables({ ...planVariables, scenarioName: e.target.value });
   }
 
   function saveScenario() {
@@ -310,23 +212,6 @@ function Summary(plan1) {
   async function doWizardCalculations(updatedPlanVariables) {
     const updatedPlan = await planCalculations(planId, updatedPlanVariables);
     setPlan(updatedPlan);
-    //let calculatedPlan = wizardCalculationsFunction;
-  }
-
-  async function updateLivingExpenseApiCall(planVariables) {
-    await updateLivingExpense(planId, planVariables);
-  }
-
-  async function updateRiskScoreApiCall(planVariables) {
-    await updateRiskScore(planId, planVariables);
-  }
-
-  async function updateRetirementAgeApiCall(planVariables) {
-    await updateRetirementAge(planId, planVariables);
-  }
-
-  async function updateCurrentSavingsApiCall(planVariables, enableCalculation) {
-    await updateCurrentSavings(planId, planVariables, enableCalculation);
   }
 
   const convertToUsd = new Intl.NumberFormat("en-US", {

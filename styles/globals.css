@@ -1732,22 +1732,10 @@ p {
 /* File Upload Buttons */
 
 .inputFile {
-	width: 1px;
-	height: 1px;
+  height: 10px;
+  width: 10px;
 	opacity: 0;
 	overflow: hidden;
 	position: absolute !important;
-	z-index: -1;
-}
-
-.inputfile label {
-  font-size: 1em;
-  font-weight: 700;
-  color: white;
-  background-color: black;
-  display: inline-block;
-}
-
-.inputfile label {
-	cursor: pointer; /* "hand" cursor */
+	z-index: 1;
 }
