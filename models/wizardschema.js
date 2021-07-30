@@ -105,6 +105,10 @@ var PlanModel = new mongoose.Schema({
     slightlyHigherLivingExpense: Number,
     muchLowerLivingExpense: Number,
     muchHigherLivingExpense: Number,
+    taxPlanFile: Buffer,
+    estatePlanFile: Buffer,
+    willFile: Buffer,
+    insuranceFile: Buffer,
     oneTimeExpense: {
         nameOfOneTimeExpense: String,
         ageAtOneTimeExpese: Number,

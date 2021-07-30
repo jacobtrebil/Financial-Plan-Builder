@@ -49,8 +49,6 @@ function Summary(plan1) {
   });
   const [currentSavingsOptions, setCurrentSavingsOptions] = useState([]);
   const [livingExpenseOptions, setLivingExpenseOptions] = useState([]);
- 
-  //console.log('===*** plan id', planId)
 
   useEffect(async () => {
     if (planId) {

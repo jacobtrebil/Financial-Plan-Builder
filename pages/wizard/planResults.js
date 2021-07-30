@@ -1,6 +1,6 @@
 import _dynamic from 'next/dynamic';
 import { useRouter } from "next/router";
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function planResults() {
 
@@ -24,7 +24,7 @@ export default function planResults() {
           <button 
           className="planResultsDashboardButton"
           onClick={function clickHandler() {
-          router.push(`../?planId=${plan._id}`);
+          router.push(`/?planId=${planId}`);
           }}
           >Back to Dashboard →</button>
         </div>
