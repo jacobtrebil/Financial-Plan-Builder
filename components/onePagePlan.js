@@ -14,7 +14,7 @@ import {
 } from "recharts";
 import { useRouter } from "next/router";
 import _dynamic from "next/dynamic";
-import { planCalculations } from "../apiclient/wizardFetch";
+import { planCalculations, addDocuments } from "../apiclient/wizardFetch";
 
 export function onePagePlan(plan) {
   const router = useRouter();
@@ -26,15 +26,11 @@ export function onePagePlan(plan) {
     assignPortfolioSubheadline();
   }, [planId, calculations]);
 
-  useEffect(() => {
-    if (calculations.length > 0) {
-      assignPortfolio();
-      assignPortfolioSubheadline();
-    }
-  }, [planId, calculations]);
-
   // The 2nd useEffect still isn't working for some reason. 1st one will work, but it still isn't able to access
   // calculations for some reason
+
+  // I should create an API call for storing the newly uploaded files to their plan document. That should be pretty
+  // easy to implement with just a standard PUT api call. 
 
   const [calculations, setCalculations] = useState({});
   const [portfolio, setPortfolio] = useState([]);
@@ -45,14 +41,31 @@ export function onePagePlan(plan) {
     willFileName: "*No Documents Found",
     insuranceFileName: "*No Documents Found",
   });
+  const [files, setFiles] = useState({
+    taxPlanFile: '',
+    estatePlanFile: '',
+    willFile: '',
+    insuranceFile: '',
+  });
 
   const fileUploadHandler = async ({ target: { name, value } }) => {
-      const updatedFileName = { ...fileName, [name]: value };
-      setFileName(updatedFileName);
+      const updatedFiles = { ...files, [name]: value };
+      setFileName(updatedFiles);
+      const updatedDocuments = await addDocuments(
+        planId,
+        updatedFiles
+      );
   }
+
+  // How do I do this PUT call so that any files that were already uploaded aren't overridden.
 
   // The file upload handler should change the state of what is displayed as well as call the API that
   // actually uploads the file.
+
+  // The file names & the actual file documents are completely separate things. The fileUploadHandler 
+  // should deal with the files, not the names. 
+
+  // I should look at how I did this for the customization page. 
 
   async function doWizardCalculations() {
     const wizardCalculationsFunction = await planCalculations(planId, plan);
@@ -507,7 +520,7 @@ export function onePagePlan(plan) {
             <label for="taxPlanFile" className="planDocumentUploadButton">
               + Upload Plan
             </label>
-            <input type="file" className="inputFile" id="taxPlanFile" onChange={fileUploadHandler}></input>
+            <input name="taxPlanFile" type="file" className="inputFile" id="taxPlanFile" onChange={fileUploadHandler}></input>
           </div>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Estate Plan</p>
@@ -516,6 +529,7 @@ export function onePagePlan(plan) {
               + Upload Plan
             </label>
             <input
+              name="estatePlanFile"
               type="file"
               className="inputFile"
               id="estatePlanFile"
@@ -528,7 +542,7 @@ export function onePagePlan(plan) {
             <label for="willFile" className="planDocumentUploadButton">
               + Upload Will
             </label>
-            <input type="file" className="inputFile" id="willFile" onChange={fileUploadHandler}></input>
+            <input name="willFile" type="file" className="inputFile" id="willFile" onChange={fileUploadHandler}></input>
           </div>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Insurance</p>
@@ -536,7 +550,7 @@ export function onePagePlan(plan) {
             <label for="insuranceFile" className="planDocumentUploadButton">
               + Upload Insurance
             </label>
-            <input type="file" className="inputFile" id="insuranceFile" onChange={fileUploadHandler}></input>
+            <input name="insuranceFile" type="file" className="inputFile" id="insuranceFile" onChange={fileUploadHandler}></input>
           </div>
         </div>
       </div>

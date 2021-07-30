@@ -94,6 +94,18 @@ export const updatePlanCalculations = async (id, plan) => {
   return await response.json();
 };
 
+export const addDocuments = async (id, plan) => {
+  const response = await fetch(`/api/addDocuments/${id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(plan),
+  });
+  return await response.json();
+};
+
 /* Consolidate the code using something like this: 
   const sendRequest = async (url, method, body) => fetch(url, {
   method,
