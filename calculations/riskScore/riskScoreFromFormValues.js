@@ -34,9 +34,6 @@ export default function calculateRiskScoreFromFormValues(changePortfolio, riskAt
         volatilityScore = 9;
     }
 
-
-//Top total score possible is 42. 
-
     const totalScore = (changePortfolioScore + riskAttitudeScore + volatilityScore);
 
     let riskScoreFromFormValues = 'Conservative +';

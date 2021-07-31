@@ -61,11 +61,3 @@ return retirementReadiness;
 
 module.exports = retirementReadinessFunction;
 
-// Console Logs
-
-/* console.log(totalSavings);
-console.log(estimatedMonthlyRetirementIncome);
-console.log(monthlyRetirementIncome);
-console.log(readinessRatio);
-console.log(retirementReadiness); */
-

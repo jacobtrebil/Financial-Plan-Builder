@@ -49,13 +49,17 @@ export function onePagePlan(plan) {
   });
 
   const fileUploadHandler = async ({ target: { name, value } }) => {
-      const updatedFiles = { ...files, [name]: value };
+      const updatedFiles = { ...fileName, [name]: value };
       setFileName(updatedFiles);
       const updatedDocuments = await addDocuments(
         planId,
-        updatedFiles
+        files
       );
   }
+
+  // Get Viveks help with this and the portfolio stuff. 
+
+  // The api call should pass in the files, not the file names. 
 
   // How do I do this PUT call so that any files that were already uploaded aren't overridden.
 
@@ -537,7 +541,7 @@ export function onePagePlan(plan) {
             ></input>
           </div>
           <div className="planDocumentUploadBox">
-            <p className="planDocumentUploadType">Your Will</p>
+            <p className="planDocumentUploadType">Will</p>
             <p className="noPlanDocumentFound">{fileName.willFileName}</p>
             <label for="willFile" className="planDocumentUploadButton">
               + Upload Will
@@ -558,143 +562,3 @@ export function onePagePlan(plan) {
   );
 }
 
-// The document screenshot & title display & the API call should be separate, not linked together, similar
-// to how the customization page was done so that everything is displayed as quickly as possible.
-
-// There should be a useEffect that sets the state of the stuff in the file setion to "no documents found"
-// otherwise it is set to whatever the state is (the name of the file). The state should be an object as well.
-
-// The name of the file should be the value of the input once it is changed.
-
-/**  <input 
-type="file" 
-className="inputFile"
-></input>
-*/
-
-/*               <div className="futureSpendingBlocks">
-                <p className="retirementSpendingHeadline">
-                  Retirement Spending
-                </p>
-                <p className="retirementSpendingSubheadline">
-                  See what you will spend during retirement
-                </p>
-                <hr className="purchaseGoalsHr"></hr>
-                <p className="retirementSpendingExpense">Living Expense <br></br><b>{toUSDThousands(calculations.livingExpense)}</b></p>
-                <p className="retirementSpendingIncrease">Your living expenses will increase 2% a year due to inflation</p>
-                <p className="retirementSpendingExpense">Healthcare Expenses: <b>{toUSDThousands(calculations.healthcareStartingExpense)}</b></p>
-                <p className="retirementSpendingIncrease">Your healthcare expenses will increase 5% a year as you get older</p>
-              </div>
-
-              <div className="futureSpendingBlocks">
-                <p className="purchaseGoalsHeadline">
-                  Purchase Goals
-                </p>
-                <p className="purchaseGoalsSubheadline">
-                  Major purchases in the future (Home, Car, etc.)
-                </p>
-                <hr className="purchaseGoalsHr"></hr>
-                <PurchaseGoalComponent></PurchaseGoalComponent>
-              </div>
-    
-    <BarChart
-                className="barChart"
-                width={550}
-                height={250}
-                data={expensesData}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-              <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" />
-              <YAxis
-                name="Expenses"
-                stroke="grey"
-                fontSize="12px"
-                dataKey="Expenses"
-              />
-              <Tooltip fontSize="12px" />
-              <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-              <Bar
-                dataKey="Expenses"
-                fontSize="12px"
-                fill="rgb(4, 187, 172)"
-                stroke="rgb(4, 187, 172)"
-                barSize={5}
-              />
-            </BarChart> 
-            
-            <BarChart
-                className="barChart"
-                width={550}
-                height={250}
-                data={netWorthData}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-              <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" />
-              <YAxis
-                name="netWorth"
-                stroke="grey"
-                fontSize="12px"
-                dataKey="netWorth"
-              />
-              <Tooltip fontSize="12px" />
-              <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-              <Bar
-                dataKey="netWorth"
-                fontSize="12px"
-                fill="rgb(4, 187, 172)"
-                stroke="rgb(4, 187, 172)"
-                barSize={5}
-              />
-            </BarChart>*/
-
-// I should create 5 different pie charts, based on the 5 freedom pies in the RJ Freedom collection
-// that we will be recommending to our users.
-
-/*               <p>To reach your goals of retiring at age 60 and living off of $100,000<br></br> a year throughout retirement, you will need to save...</p>
-              <h2>$300/Month</h2>
-              <p>For the next 28 years and put those savings into a <br></br>portfolio earning 6% a year in annual returns.</p> */
-
-/*                 {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                ))}
-                */
-
-/* <h1 className="planResultsPageTitle">Your Financial Plan</h1>
-          <p>View your financial plan, customized to your financial goals.</p>
-          <p className="planResultsP"><br></br>We recommend that you save <b>$450</b> per month until retirement <br></br>and invest those savings into your custom <b>Moderate Portfolio</b><br></br> to have a projected average of <b>$56,000 a year</b> throughout retirement.</p>
-              <div>
-                  <div id="planResultsLeftBlock" className="planResultsBlock">
-                      <h2 className="planResultsH2">Monthly Savings Until Retirement</h2>
-                      <p>$500</p>
-                  </div>
-                  <div className="planResultsBlock">
-                      <h2 className="planResultsH2">Recommended Investment Portfolio</h2>
-                  </div>
-              </div>
-              <p className="chartHeadline">Annual Retirement Earnings</p>
-              <BarChart
-                className="barChart"
-                width={550}
-                height={250}
-                data={data}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                >
-              <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" />
-              <YAxis
-                name="Age"
-                stroke="grey"
-                fontSize="12px"
-                dataKey="Earnings"
-              />
-              <Tooltip fontSize="12px" />
-              <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-              <Bar
-                dataKey="Earnings"
-                fontSize="12px"
-                fill="rgb(4, 187, 172)"
-                stroke="rgb(4, 187, 172)"
-                barSize={5}
-              />
-              </BarChart>
-              <p className="chartDescription">Age</p>
-          </div> */

@@ -21,14 +21,6 @@ export default function calculateRetirementEarningsSections(yearsOfPartTimeWork,
             returnsEarningsSection: 0,
             pulledFromSavingsSection: 0,
     }};
-    /* for (let i = retirementAge; i <= ageOfDeath; i++) {
-        retirementEarningsSections[i] = { i: {
-            totalEarnings: calculateTotalEarnings(i),
-            ssEarningsSection: calculateSSEarningsSection(i, socialSecurityAge, socialSecurityEarnings),
-            pensionEarningsSection: calculatePensionEarningsSection(i, pension, pensionStartAge, pensionEarnings),
-            returnsEarningsSection: calculateReturnsEarningsSection(i, livingExpense, healthcareStartingExpense),
-            pulledFromSavingsSection: calculatePulledFromSavingsSection(),
-    }}; */
     };
 
     function calculateTotalEarnings(i) {
@@ -61,27 +53,3 @@ export default function calculateRetirementEarningsSections(yearsOfPartTimeWork,
 
     return data;
 };
-
-
-/** 
- * I should start by just figuring out how to calculate each of these 
-Then I can get Vivek's help with turning them into this object and displaying
-them in the chart.
- */
-
- // networth = pension + earning + SS
-  // 3 different keys would be required, not 3 different objects
-
-  // I'll push 2 more keys [ {Age, netWorth, pension, earnings} ]
-
-  /**   for (const [Age, {Earnings, SSAmount}] of Object.entries(calculations.age || {})) {
-    data.push({ Age, Earnings });
-  } */
-
-  /**
-   * [
-   * 60: {
-   * Earnings: '',
-   * SSAmount: ''}
-   * ]
-   */

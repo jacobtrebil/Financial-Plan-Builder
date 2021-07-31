@@ -7,9 +7,6 @@ const lifeexpectancy = { lifeexpectancy };
 const retirementage = { retirementage };
 const retirementlength = lifeexpectancy - retirementage;
 
-// Could be determined as their estimated retirement income / their desired retirement income. Example: $60,000 estimated / $80,000
-// desired = 75% retirement readiness score, which will also be shown as a C. 
-
 /* Variables */
 
 var annualIncome = 100000;
@@ -93,20 +90,3 @@ if (differenceBetweenDesiredAndActualIncome >= 40000) {
     } else if (differenceBetweenDesiredAndActualIncomeWithAdvisor <= 3499) {
         retirementReadinessWithAdvisor = 'A';
     }
-
-
-
-/* Console Logs */
-
-/* console.log(Math.ceil(estimatedRetirementIncome));
-console.log(Math.ceil(estimatedRetirementAge));
-console.log(Math.ceil(differenceBetweenDesiredAndActualIncome));
-console.log(retirementReadiness);
-console.log(retirementlength); */
-
-/* console.log(Math.ceil(estimatedRetirementAgeWithAdvisor)); */
-/* console.log(retirementReadinessWithAdvisor); */
-/* console.log(Math.ceil(estimatedRetirementIncomeWithAdvisor)); */
-
-// Right now the calculations are just with an added 6% increase in income. Could include things
-// like social security, etc.
