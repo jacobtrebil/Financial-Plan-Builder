@@ -129,6 +129,17 @@ export function onePagePlan(plan) {
   const toUSDThousands = (fixed) => `$${fixed / 1000}K`;
   const toUSDMillions = (fixed) => `$${fixed / 1000000}M`;
 
+  function shortenString(str) {
+    if (str.length <= 20) {
+      return str
+    } 
+    return str.slice(0, 20) + '...'
+  }
+
+  // The legend is still not completely updating based on the portfolio that is chosen. It updated to aggressive, 
+  // but without the percentages. Moderate + it just did a shit to of bullets. Same with moderate. 
+  // Conservative + displayed, but with incorrect percentages. Conservative did a shit ton of bullets too.  
+
   function assignPortfolio() {
     if (calculations.riskScore === "Conservative") {
       setPortfolio(conservativePortfolio);
@@ -139,11 +150,13 @@ export function onePagePlan(plan) {
     } else if (calculations.riskScore === "Moderate +") {
       setPortfolio(moderatePlusPortfolio);
     } else if (calculations.riskScore === "Aggressive") {
-      setPortfolio(getPortfolioByType('aggressivePortfolio'));
+      setPortfolio(aggressivePortfolio);
     } else {
       setPortfolio(conservativePlusPortfolio);
     }
   }
+
+  // getPortfolioByType('aggressivePortfolio')
 
   function assignPortfolioSubheadline() {
     console.log("riskScore:", calculations.riskScore);
@@ -294,7 +307,8 @@ export function onePagePlan(plan) {
     ],
   };
 
-  const moderatePlusPortfolio = [
+  const moderatePlusPortfolio = {
+    folio: [
     {
       name: "U.S. Large Cap Equity",
       value: 59,
@@ -311,9 +325,38 @@ export function onePagePlan(plan) {
       name: "Cash",
       value: 2,
     },
-  ];
+  ],
+  legend: [
+    {
+      value: "U.S. Large Cap Equity (51%)",
+      type: "square",
+      color: "rgb(4, 187, 172)",
+    },
+    {
+      value: "U.S. Small Cap Equity (22%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.75)",
+    },
+    {
+      value: "Non-U.S. Developed Market Equity (25%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.5)",
+    },
+    {
+      value: "Cash (2%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.35)",
+    },
+    {
+      value: "Investment Grade Intermediate Maturity Fixed Income",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.25)",
+    },
+  ],
+};
 
-  const moderatePortfolio = [
+  const moderatePortfolio = {
+    folio: [
     {
       name: "U.S. Large Cap Equity",
       value: 43,
@@ -334,7 +377,35 @@ export function onePagePlan(plan) {
       name: "Cash",
       value: 2,
     },
-  ];
+  ],
+  legend: [
+    {
+      value: "U.S. Large Cap Equity (51%)",
+      type: "square",
+      color: "rgb(4, 187, 172)",
+    },
+    {
+      value: "U.S. Small Cap Equity (22%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.75)",
+    },
+    {
+      value: "Non-U.S. Developed Market Equity (25%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.5)",
+    },
+    {
+      value: "Cash (2%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.35)",
+    },
+    {
+      value: "Investment Grade Intermediate Maturity Fixed Income",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.25)",
+    },
+  ],
+};
 
   const conservativePlusPortfolio = {
     folio: [
@@ -388,7 +459,8 @@ export function onePagePlan(plan) {
     ],
   };
 
-  const conservativePortfolio = [
+  const conservativePortfolio = {
+    folio: [
     {
       name: "U.S. Large Cap Equity",
       value: 15,
@@ -413,7 +485,35 @@ export function onePagePlan(plan) {
       name: "Cash",
       value: 2,
     },
-  ];
+  ],
+  legend: [
+    {
+      value: "U.S. Large Cap Equity (51%)",
+      type: "square",
+      color: "rgb(4, 187, 172)",
+    },
+    {
+      value: "U.S. Small Cap Equity (22%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.75)",
+    },
+    {
+      value: "Non-U.S. Developed Market Equity (25%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.5)",
+    },
+    {
+      value: "Cash (2%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.35)",
+    },
+    {
+      value: "Investment Grade Intermediate Maturity Fixed Income",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.25)",
+    },
+  ],
+};
 
   const renderLegend = (props) => {
     const { payload } = props;
@@ -461,14 +561,14 @@ export function onePagePlan(plan) {
               {calculations.riskScore} Portfolio
             </h1>
             <p className="chartSubheadlinePortfolio">{portfolioSubheadline}</p>
-            <PieChart className="pieChart" width={250} height={540}>
+            <PieChart className="pieChart" width={240} height={560}>
               <Pie
                 className="pie"
                 data={portfolio.folio}
                 dataKey="value"
                 nameKey="name"
                 cx="50%"
-                cy="38%"
+                cy="58%"
                 outerRadius={120}
               >
                 {data.map((entry, index) => (
@@ -621,7 +721,7 @@ export function onePagePlan(plan) {
           </p>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Tax Plan</p>
-            <p className="noPlanDocumentFound">{files.taxPlanFile.name}</p>
+            <p className="noPlanDocumentFound">{shortenString(files.taxPlanFile.name)}</p>
             <label for="taxPlanFile" className="planDocumentUploadButton">
               + Upload Plan
             </label>
@@ -635,7 +735,7 @@ export function onePagePlan(plan) {
           </div>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Estate Plan</p>
-            <p className="noPlanDocumentFound">{files.estatePlanFile.name}</p>
+            <p className="noPlanDocumentFound">{shortenString(files.estatePlanFile.name)}</p>
             <label for="estatePlanFile" className="planDocumentUploadButton">
               + Upload Plan
             </label>
@@ -649,7 +749,7 @@ export function onePagePlan(plan) {
           </div>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Will</p>
-            <p className="noPlanDocumentFound">{files.willFile.name}</p>
+            <p className="noPlanDocumentFound">{shortenString(files.willFile.name)}</p>
             <label for="willFile" className="planDocumentUploadButton">
               + Upload Will
             </label>
@@ -663,7 +763,7 @@ export function onePagePlan(plan) {
           </div>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Insurance</p>
-            <p className="noPlanDocumentFound">{files.insuranceFile.name}</p>
+            <p className="noPlanDocumentFound">{shortenString(files.insuranceFile.name)}</p>
             <label for="insuranceFile" className="planDocumentUploadButton">
               + Upload Insurance
             </label>
