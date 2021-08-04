@@ -20,56 +20,54 @@ export function onePagePlan(plan) {
   const router = useRouter();
   const { planId } = router.query;
 
+  // I should create an API call for storing the newly uploaded files to their plan document. That should be pretty
+  // easy to implement with just a standard PUT api call.
+
+  // Create a shortener function, don't show the file screenshot rn
+
+  const [calculations, setCalculations] = useState({});
+  const [portfolio, setPortfolio] = useState([]);
+  const [portfolioSubheadline, setPortfolioSubheadline] = useState(
+    "Your portfolio aims to achieve 5% annual returns with low risk"
+  );
+  const [files, setFiles] = useState({
+    taxPlanFile: { name: "*No Documents Found" },
+    estatePlanFile: { name: "*No Documents Found" },
+    willFile: { name: "*No Documents Found" },
+    insuranceFile: { name: "*No Documents Found" },
+  });
+
   useEffect(() => {
     doWizardCalculations();
+  }, []);
+
+  useEffect(() => {
     assignPortfolio();
     assignPortfolioSubheadline();
   }, [planId, calculations]);
 
-  // The 2nd useEffect still isn't working for some reason. 1st one will work, but it still isn't able to access
-  // calculations for some reason
-
-  // I should create an API call for storing the newly uploaded files to their plan document. That should be pretty
-  // easy to implement with just a standard PUT api call. 
-
-  const [calculations, setCalculations] = useState({});
-  const [portfolio, setPortfolio] = useState([]);
-  const [portfolioSubheadline, setPortfolioSubheadline] = useState("");
-  const [fileName, setFileName] = useState({
-    taxPlanFileName: "*No Documents Found",
-    estatePlanFileName: "*No Documents Found",
-    willFileName: "*No Documents Found",
-    insuranceFileName: "*No Documents Found",
-  });
-  const [files, setFiles] = useState({
-    taxPlanFile: '',
-    estatePlanFile: '',
-    willFile: '',
-    insuranceFile: '',
-  });
-
-  const fileUploadHandler = async ({ target: { name, value } }) => {
-      const updatedFiles = { ...fileName, [name]: value };
-      setFileName(updatedFiles);
-      const updatedDocuments = await addDocuments(
+  const fileUploadHandler = async ({ target: { name, files: fileObj } }) => {
+    console.log("the name is ====", name, files);
+    setFiles({ ...files, [name]: fileObj[0] });
+    /*const updatedDocuments = await addDocuments(
         planId,
         files
-      );
-  }
+      );*/
+  };
 
-  // Get Viveks help with this and the portfolio stuff. 
+  // Get Viveks help with this and the portfolio stuff.
 
-  // The api call should pass in the files, not the file names. 
+  // The api call should pass in the files, not the file names.
 
   // How do I do this PUT call so that any files that were already uploaded aren't overridden.
 
   // The file upload handler should change the state of what is displayed as well as call the API that
   // actually uploads the file.
 
-  // The file names & the actual file documents are completely separate things. The fileUploadHandler 
-  // should deal with the files, not the names. 
+  // The file names & the actual file documents are completely separate things. The fileUploadHandler
+  // should deal with the files, not the names.
 
-  // I should look at how I did this for the customization page. 
+  // I should look at how I did this for the customization page.
 
   async function doWizardCalculations() {
     const wizardCalculationsFunction = await planCalculations(planId, plan);
@@ -135,19 +133,20 @@ export function onePagePlan(plan) {
     if (calculations.riskScore === "Conservative") {
       setPortfolio(conservativePortfolio);
     } else if (calculations.riskScore === "Conservative +") {
-      setPortfolio(conservativePlusPortfolio);
+      setPortfolio(getPortfolioByType('conservativePlusPortfolio'));
     } else if (calculations.riskScore === "Moderate") {
       setPortfolio(moderatePortfolio);
     } else if (calculations.riskScore === "Moderate +") {
       setPortfolio(moderatePlusPortfolio);
     } else if (calculations.riskScore === "Aggressive") {
-      setPortfolio(aggressivePortfolio);
+      setPortfolio(getPortfolioByType('aggressivePortfolio'));
     } else {
       setPortfolio(conservativePlusPortfolio);
     }
   }
 
   function assignPortfolioSubheadline() {
+    console.log("riskScore:", calculations.riskScore);
     if (calculations.riskScore === "Conservative") {
       setPortfolioSubheadline(
         "Your portfolio aims to achieve 4% annual returns with low risk"
@@ -171,28 +170,129 @@ export function onePagePlan(plan) {
     }
   }
 
-  const aggressivePortfolio = [
-    {
-      name: "U.S. Large Cap Equity",
-      value: 51,
-      color: "rgb(4, 187, 172)",
+  // Create helper page w/ all of the portfolio data, and import it
+
+  const folioKeyDescriptionMapping = {
+    USLarge: "U.S. Large Cap Equity",
+    USSmall: "U.S. Small Cap Equity",
+    NonUSDeveloped: "Non-U.S. Developed Market Equity",
+    InvestmentGradeFixedIncome: "Investment Grade Intermediate Maturity Fixed Income",
+    Cash: "Cash",
+  };
+  const folioLegendMapping = {
+    conservativePlusPortfolio: [
+      {
+        value: "U.S. Large Cap Equity (21%)",
+        type: "square",
+        color: "rgb(4, 187, 172)",
+      },
+      {
+        value: "U.S. Small Cap Equity (22%)",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.75)",
+      },
+      {
+        value: "Non-U.S. Developed Market Equity (25%)",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.5)",
+      },
+      {
+        value: "Cash (2%)",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.35)",
+      },
+      {
+        value: "Investment Grade Intermediate Maturity Fixed Income",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.25)",
+      },
+    ]
+  }
+  const folioValueByType = {
+    aggressivePortfolio: {
+      USLarge: 51,
+      USSmall: 22,
+      NonUSDeveloped: 25,
+      Cash: 2,
     },
-    {
-      name: "U.S. Small Cap Equity",
-      value: 22,
-      color: "rgb(3, 187, 172)",
+    moderatePortfolio: {
+      USLarge: 59,
+      USSmall: 17,
+      NonUSDeveloped: 22,
+      Cash: 2,
     },
-    {
-      name: "Non-U.S. Developed Market Equity",
-      value: 25,
-      color: "rgb(2, 187, 172)",
-    },
-    {
-      name: "Cash",
-      value: 2,
-      color: "rgb(1, 187, 172)",
-    },
-  ];
+    conservativePlusPortfolio: {
+      USLarge: 35,
+      USSmall: 16,
+      NonUSDeveloped: 16,
+      InvestmentGradeFixedIncome: 31,
+      Cash: 2,
+    }
+  };
+  const getPortfolioByType = (type) => {
+    const result = { folio: [], legend: folioLegendMapping[type] };
+    const folio = folioValueByType[type];
+    let colorRedVal = Object.keys(folio).length
+    for (const [key, value] of Object.entries(folio)) {
+      result.folio.push({ name: folioKeyDescriptionMapping[key], value, color: `rgb(${colorRedVal}, 187, 172)` });
+      colorRedVal--;
+    }
+    return result;
+  };
+
+  // Work on generating the legend dynamically, keep all of this in a helper function and document for getPortfolioByType
+
+  const aggressivePortfolio = {
+    folio: [
+      {
+        name: "U.S. Large Cap Equity",
+        value: 51,
+        color: "rgb(4, 187, 172)",
+      },
+      {
+        name: "U.S. Small Cap Equity",
+        value: 22,
+        color: "rgb(3, 187, 172)",
+      },
+      {
+        name: "Non-U.S. Developed Market Equity",
+        value: 25,
+        color: "rgb(2, 187, 172)",
+      },
+      {
+        name: "Cash",
+        value: 2,
+        color: "rgb(1, 187, 172)",
+      },
+    ],
+    legend: [
+      {
+        value: "U.S. Large Cap Equity (51%)",
+        type: "square",
+        color: "rgb(4, 187, 172)",
+      },
+      {
+        value: "U.S. Small Cap Equity (22%)",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.75)",
+      },
+      {
+        value: "Non-U.S. Developed Market Equity (25%)",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.5)",
+      },
+      {
+        value: "Cash (2%)",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.35)",
+      },
+      {
+        value: "Investment Grade Intermediate Maturity Fixed Income",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.25)",
+      },
+    ],
+  };
 
   const moderatePlusPortfolio = [
     {
@@ -236,28 +336,57 @@ export function onePagePlan(plan) {
     },
   ];
 
-  const conservativePlusPortfolio = [
-    {
-      name: "U.S. Large Cap Equity",
-      value: 35,
-    },
-    {
-      name: "U.S. Small Cap Equity",
-      value: 16,
-    },
-    {
-      name: "Non-U.S. Developed Market Equity",
-      value: 16,
-    },
-    {
-      name: "Investment Grade Intermediate Maturity Fixed Income",
-      value: 31,
-    },
-    {
-      name: "Cash",
-      value: 2,
-    },
-  ];
+  const conservativePlusPortfolio = {
+    folio: [
+      {
+        name: "U.S. Large Cap Equity",
+        value: 35,
+      },
+      {
+        name: "U.S. Small Cap Equity",
+        value: 16,
+      },
+      {
+        name: "Non-U.S. Developed Market Equity",
+        value: 16,
+      },
+      {
+        name: "Investment Grade Intermediate Maturity Fixed Income",
+        value: 31,
+      },
+      {
+        name: "Cash",
+        value: 2,
+      },
+    ],
+    legend: [
+      {
+        value: "U.S. Large Cap Equity (21%)",
+        type: "square",
+        color: "rgb(4, 187, 172)",
+      },
+      {
+        value: "U.S. Small Cap Equity (22%)",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.75)",
+      },
+      {
+        value: "Non-U.S. Developed Market Equity (25%)",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.5)",
+      },
+      {
+        value: "Cash (2%)",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.35)",
+      },
+      {
+        value: "Investment Grade Intermediate Maturity Fixed Income",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.25)",
+      },
+    ],
+  };
 
   const conservativePortfolio = [
     {
@@ -309,6 +438,8 @@ export function onePagePlan(plan) {
     "rgba(4, 187, 172, 0.20)",
   ];
 
+  // I should set the content to the portfolios
+
   return (
     <div>
       <div className="planResultsSection">
@@ -330,15 +461,15 @@ export function onePagePlan(plan) {
               {calculations.riskScore} Portfolio
             </h1>
             <p className="chartSubheadlinePortfolio">{portfolioSubheadline}</p>
-            <PieChart className="pieChart" width={250} height={400}>
+            <PieChart className="pieChart" width={250} height={540}>
               <Pie
                 className="pie"
-                data={portfolio}
+                data={portfolio.folio}
                 dataKey="value"
                 nameKey="name"
                 cx="50%"
-                cy="50%"
-                outerRadius={100}
+                cy="38%"
+                outerRadius={120}
               >
                 {data.map((entry, index) => (
                   <Cell
@@ -354,37 +485,7 @@ export function onePagePlan(plan) {
                 fontSize="12px"
                 content={CustomTooltipPortfolios}
               />
-              <Legend
-                content={renderLegend}
-                payload={[
-                  {
-                    value: "U.S. Large Cap Equity (51%)",
-                    type: "square",
-                    color: "rgb(4, 187, 172)",
-                  },
-                  {
-                    value: "U.S. Small Cap Equity (22%)",
-                    type: "square",
-                    color: "rgba(4, 187, 172, 0.75)",
-                  },
-                  {
-                    value: "Non-U.S. Developed Market Equity (25%)",
-                    type: "square",
-                    color: "rgba(4, 187, 172, 0.5)",
-                  },
-                  {
-                    value: "Cash (2%)",
-                    type: "square",
-                    color: "rgba(4, 187, 172, 0.35)",
-                  },
-                  {
-                    value:
-                      "Investment Grade Intermediate Maturity Fixed Income",
-                    type: "square",
-                    color: "rgba(4, 187, 172, 0.25)",
-                  },
-                ]}
-              />
+              <Legend content={renderLegend} payload={portfolio.legend} />
             </PieChart>
             <p className="keyInfoPLightPortfolio">
               We recommend rolling your assets and savings into your portfolio.
@@ -520,15 +621,21 @@ export function onePagePlan(plan) {
           </p>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Tax Plan</p>
-            <p className="noPlanDocumentFound">{fileName.taxPlanFileName}</p>
+            <p className="noPlanDocumentFound">{files.taxPlanFile.name}</p>
             <label for="taxPlanFile" className="planDocumentUploadButton">
               + Upload Plan
             </label>
-            <input name="taxPlanFile" type="file" className="inputFile" id="taxPlanFile" onChange={fileUploadHandler}></input>
+            <input
+              name="taxPlanFile"
+              type="file"
+              className="inputFile"
+              id="taxPlanFile"
+              onChange={fileUploadHandler}
+            ></input>
           </div>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Estate Plan</p>
-            <p className="noPlanDocumentFound">{fileName.estatePlanFileName}</p>
+            <p className="noPlanDocumentFound">{files.estatePlanFile.name}</p>
             <label for="estatePlanFile" className="planDocumentUploadButton">
               + Upload Plan
             </label>
@@ -542,23 +649,34 @@ export function onePagePlan(plan) {
           </div>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Will</p>
-            <p className="noPlanDocumentFound">{fileName.willFileName}</p>
+            <p className="noPlanDocumentFound">{files.willFile.name}</p>
             <label for="willFile" className="planDocumentUploadButton">
               + Upload Will
             </label>
-            <input name="willFile" type="file" className="inputFile" id="willFile" onChange={fileUploadHandler}></input>
+            <input
+              name="willFile"
+              type="file"
+              className="inputFile"
+              id="willFile"
+              onChange={fileUploadHandler}
+            ></input>
           </div>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Insurance</p>
-            <p className="noPlanDocumentFound">{fileName.insuranceFileName}</p>
+            <p className="noPlanDocumentFound">{files.insuranceFile.name}</p>
             <label for="insuranceFile" className="planDocumentUploadButton">
               + Upload Insurance
             </label>
-            <input name="insuranceFile" type="file" className="inputFile" id="insuranceFile" onChange={fileUploadHandler}></input>
+            <input
+              name="insuranceFile"
+              type="file"
+              className="inputFile"
+              id="insuranceFile"
+              onChange={fileUploadHandler}
+            ></input>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
