@@ -144,7 +144,7 @@ export function onePagePlan(plan) {
     if (calculations.riskScore === "Conservative") {
       setPortfolio(conservativePortfolio);
     } else if (calculations.riskScore === "Conservative +") {
-      setPortfolio(getPortfolioByType('conservativePlusPortfolio'));
+      setPortfolio(conservativePlusPortfolio);
     } else if (calculations.riskScore === "Moderate") {
       setPortfolio(moderatePortfolio);
     } else if (calculations.riskScore === "Moderate +") {
@@ -156,7 +156,7 @@ export function onePagePlan(plan) {
     }
   }
 
-  // getPortfolioByType('aggressivePortfolio')
+  // getPortfolioByType('aggressivePortfolio') getPortfolioByType('conservativePlusPortfolio')
 
   function assignPortfolioSubheadline() {
     console.log("riskScore:", calculations.riskScore);
@@ -183,9 +183,15 @@ export function onePagePlan(plan) {
     }
   }
 
+  const convertToUsd = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
+
   // Create helper page w/ all of the portfolio data, and import it
 
-  const folioKeyDescriptionMapping = {
+  /* const folioKeyDescriptionMapping = {
     USLarge: "U.S. Large Cap Equity",
     USSmall: "U.S. Small Cap Equity",
     NonUSDeveloped: "Non-U.S. Developed Market Equity",
@@ -251,7 +257,7 @@ export function onePagePlan(plan) {
       colorRedVal--;
     }
     return result;
-  };
+  }; */
 
   // Work on generating the legend dynamically, keep all of this in a helper function and document for getPortfolioByType
 
@@ -299,11 +305,6 @@ export function onePagePlan(plan) {
         type: "square",
         color: "rgba(4, 187, 172, 0.35)",
       },
-      {
-        value: "Investment Grade Intermediate Maturity Fixed Income",
-        type: "square",
-        color: "rgba(4, 187, 172, 0.25)",
-      },
     ],
   };
 
@@ -328,17 +329,17 @@ export function onePagePlan(plan) {
   ],
   legend: [
     {
-      value: "U.S. Large Cap Equity (51%)",
+      value: "U.S. Large Cap Equity (59%)",
       type: "square",
       color: "rgb(4, 187, 172)",
     },
     {
-      value: "U.S. Small Cap Equity (22%)",
+      value: "U.S. Mid Cap Equity (17%)",
       type: "square",
       color: "rgba(4, 187, 172, 0.75)",
     },
     {
-      value: "Non-U.S. Developed Market Equity (25%)",
+      value: "Non-U.S. Developed Market Equity (22%)",
       type: "square",
       color: "rgba(4, 187, 172, 0.5)",
     },
@@ -346,11 +347,6 @@ export function onePagePlan(plan) {
       value: "Cash (2%)",
       type: "square",
       color: "rgba(4, 187, 172, 0.35)",
-    },
-    {
-      value: "Investment Grade Intermediate Maturity Fixed Income",
-      type: "square",
-      color: "rgba(4, 187, 172, 0.25)",
     },
   ],
 };
@@ -380,29 +376,29 @@ export function onePagePlan(plan) {
   ],
   legend: [
     {
-      value: "U.S. Large Cap Equity (51%)",
+      value: "U.S. Large Cap Equity (43%)",
       type: "square",
       color: "rgb(4, 187, 172)",
     },
     {
-      value: "U.S. Small Cap Equity (22%)",
+      value: "U.S. Small Cap Equity (18%)",
       type: "square",
       color: "rgba(4, 187, 172, 0.75)",
     },
     {
-      value: "Non-U.S. Developed Market Equity (25%)",
+      value: "Non-U.S. Developed Market Equity (20%)",
       type: "square",
       color: "rgba(4, 187, 172, 0.5)",
+    },
+    {
+      value: "Investment Grade Intermediate Maturity Fixed Income (17%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.25)",
     },
     {
       value: "Cash (2%)",
       type: "square",
       color: "rgba(4, 187, 172, 0.35)",
-    },
-    {
-      value: "Investment Grade Intermediate Maturity Fixed Income",
-      type: "square",
-      color: "rgba(4, 187, 172, 0.25)",
     },
   ],
 };
@@ -432,29 +428,29 @@ export function onePagePlan(plan) {
     ],
     legend: [
       {
-        value: "U.S. Large Cap Equity (21%)",
+        value: "U.S. Large Cap Equity (35%)",
         type: "square",
         color: "rgb(4, 187, 172)",
       },
       {
-        value: "U.S. Small Cap Equity (22%)",
+        value: "U.S. Small Cap Equity (16%)",
         type: "square",
         color: "rgba(4, 187, 172, 0.75)",
       },
       {
-        value: "Non-U.S. Developed Market Equity (25%)",
+        value: "Non-U.S. Developed Market Equity (16%)",
         type: "square",
         color: "rgba(4, 187, 172, 0.5)",
+      },
+      {
+        value: "Investment Grade Intermediate Maturity Fixed Income (31%)",
+        type: "square",
+        color: "rgba(4, 187, 172, 0.25)",
       },
       {
         value: "Cash (2%)",
         type: "square",
         color: "rgba(4, 187, 172, 0.35)",
-      },
-      {
-        value: "Investment Grade Intermediate Maturity Fixed Income",
-        type: "square",
-        color: "rgba(4, 187, 172, 0.25)",
       },
     ],
   };
@@ -488,29 +484,34 @@ export function onePagePlan(plan) {
   ],
   legend: [
     {
-      value: "U.S. Large Cap Equity (51%)",
+      value: "U.S. Large Cap Equity (15%)",
       type: "square",
       color: "rgb(4, 187, 172)",
     },
     {
-      value: "U.S. Small Cap Equity (22%)",
+      value: "U.S. Mid Cap Equity (15%)",
       type: "square",
       color: "rgba(4, 187, 172, 0.75)",
     },
     {
-      value: "Non-U.S. Developed Market Equity (25%)",
+      value: "Global Equity Strategies (18%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.5)",
+      color: "rgba(4, 187, 172, 0.75)",
+    },
+    {
+      value: "Investment Grade Intermediate Maturity Fixed Income (35%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.25)",
+    },
+    {
+      value: "Multi-Sector Fixed Income Strategies (15%)",
+      type: "square",
+      color: "rgba(4, 187, 172, 0.25)",
     },
     {
       value: "Cash (2%)",
       type: "square",
       color: "rgba(4, 187, 172, 0.35)",
-    },
-    {
-      value: "Investment Grade Intermediate Maturity Fixed Income",
-      type: "square",
-      color: "rgba(4, 187, 172, 0.25)",
     },
   ],
 };
@@ -551,11 +552,18 @@ export function onePagePlan(plan) {
         </p>
         <hr className="planHr"></hr>
         <div>
-          <h1 className="planHeadline">Portfolio</h1>
+          <h1 className="planHeadline">Action Plan</h1>
           <p className="planSubheadline">
-            Your portfolio is designed based on your desired returns & risk
-            tolerance
+            To achieve your financial goals, invest {convertToUsd.format(calculations.currentSavings / 12)} every month into your {calculations.riskScore} Portfolio
           </p>
+          <p className="financialStrategyP">*Your Financial Strategy: To achieve your financial goals, we recommend rolling all of your current assets & savings into the {calculations.riskScore} Portfolio we recommend for you.
+          In addition, invest {convertToUsd.format(calculations.currentSavings / 12)} every month into your {calculations.riskScore} portfolio to achieve your financial goals. <br></br><br></br> Your portfolio is designed to grow your savings
+          every single month, while staying within your risk tolerance, so that by the time you retire you'll have enough money in your portfolio to fund your goals, while being comfotable along the way.</p>
+          <div className="monthlySavingsSection">
+            <h1 className="monthlySavingsAboveHeadline">Monthly Savings until retirement</h1>
+            <h1 className="monthlySavingsHeadline">{convertToUsd.format(calculations.currentSavings / 12)}</h1>
+            <p className="monthlySavingsSubheadline">Invest {convertToUsd.format(calculations.currentSavings / 12)} per month into the portfolio below to achieve your financial goals.</p>
+          </div>
           <div className="keyInfoBlock">
             <h1 className="chartHeadlinePortfolio">
               {calculations.riskScore} Portfolio
@@ -593,7 +601,158 @@ export function onePagePlan(plan) {
             <button className="portfolioButton">Invest Now →</button>
           </div>
         </div>
-        <div className="futureIncomeSection">
+        <div ClassName="financialProjectionsSection">
+          <h1 className="planHeadline">Financial Projections</h1>
+          <p className="planSubheadline">
+            See your future earnings & net worth
+          </p>
+          <div className="futureEarningsPadding">
+          <div className="triBlock">
+            <p className="chartHeadline">Future Earnings</p>
+            <p className="chartSubheadline">
+              Including Purchase Goals & Healthcare Expenses
+            </p>
+            <AreaChart
+              className="barChart"
+              width={475}
+              height={180}
+              data={data}
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
+            <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" />
+            <YAxis
+              name="Expenses"
+              stroke="grey"
+              fontSize="12px"
+              dataKey="Expenses"
+              tickFormatter={toUSDThousands}
+            />
+            <Tooltip
+              cursor={{ stroke: "black" }}
+              fontSize="12px"
+              content={CustomTooltipToThousands}
+            />
+            <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+            <Area
+              dataKey="Expenses"
+              fontSize="12px"
+              fill="rgb(4, 187, 172)"
+              stroke="rgb(4, 187, 172)"
+            />
+            </AreaChart>
+            <p className="chartDescription">Age</p>
+          </div>
+          <div className="triBlock">
+            <p className="chartHeadline">Net Worth</p>
+            <p className="chartSubheadline">After Retirement Expenses</p>
+            <AreaChart
+              className="barChart"
+              width={475}
+              height={180}
+              data={netWorthData}
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
+            <XAxis
+              name="Age"
+              dataKey="Age"
+              stroke="grey"
+              fontSize="12px"
+              tickMargin="3"
+            />
+            <YAxis
+              name="netWorth"
+              stroke="grey"
+              fontSize="12px"
+              dataKey="netWorth"
+              tickFormatter={toUSDMillions}
+            />
+            <Tooltip
+              cursor={{ stroke: "black" }}
+              fontSize="12px"
+              content={CustomTooltipToMillions}
+            />
+            <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+            <Area
+              dataKey="netWorth"
+              fontSize="12px"
+              fill="rgb(4, 187, 172)"
+              stroke="rgb(4, 187, 172)"
+            />
+            </AreaChart>
+            <p className="chartDescription">Age</p>
+            <p className="chartDescription">At age {calculations.retirementAge} you will have {convertToUsd.format(calculations.savingsByRetirement)}, which will grow into {convertToUsd.format(calculations.savingsByRetirement)} by age {calculations.ageOfDeath} </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1 className="planHeadline">Add Important Documents</h1>
+          <p className="planSubheadline">
+            Upload Documents to store safely in your Financial Plan
+          </p>
+          <div className="planDocumentUploadBox">
+            <p className="planDocumentUploadType">Tax Plan</p>
+            <p className="noPlanDocumentFound">{shortenString(files.taxPlanFile.name)}</p>
+            <label for="taxPlanFile" className="planDocumentUploadButton">
+              + Upload Plan
+            </label>
+            <input
+              name="taxPlanFile"
+              type="file"
+              className="inputFile"
+              id="taxPlanFile"
+              onChange={fileUploadHandler}
+            ></input>
+          </div>
+          <div className="planDocumentUploadBox">
+            <p className="planDocumentUploadType">Estate Plan</p>
+            <p className="noPlanDocumentFound">{shortenString(files.estatePlanFile.name)}</p>
+            <label for="estatePlanFile" className="planDocumentUploadButton">
+              + Upload Plan
+            </label>
+            <input
+              name="estatePlanFile"
+              type="file"
+              className="inputFile"
+              id="estatePlanFile"
+              onChange={fileUploadHandler}
+            ></input>
+          </div>
+          <div className="planDocumentUploadBox">
+            <p className="planDocumentUploadType">Will</p>
+            <p className="noPlanDocumentFound">{shortenString(files.willFile.name)}</p>
+            <label for="willFile" className="planDocumentUploadButton">
+              + Upload Will
+            </label>
+            <input
+              name="willFile"
+              type="file"
+              className="inputFile"
+              id="willFile"
+              onChange={fileUploadHandler}
+            ></input>
+          </div>
+          <div className="planDocumentUploadBox">
+            <p className="planDocumentUploadType">Insurance</p>
+            <p className="noPlanDocumentFound">{shortenString(files.insuranceFile.name)}</p>
+            <label for="insuranceFile" className="planDocumentUploadButton">
+              + Upload Insurance
+            </label>
+            <input
+              name="insuranceFile"
+              type="file"
+              className="inputFile"
+              id="insuranceFile"
+              onChange={fileUploadHandler}
+            ></input>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+/*  <div className="futureIncomeSection">
           <h1 className="planHeadline">Future Income</h1>
           <p className="planSubheadline">
             See how much you're projected to earn in the future
@@ -713,70 +872,4 @@ export function onePagePlan(plan) {
             />
           </AreaChart>
           <p className="chartDescription">Age</p>
-        </div>
-        <div>
-          <h1 className="planHeadline">Add Important Documents</h1>
-          <p className="planSubheadline">
-            Upload Documents to store safely in your Financial Plan
-          </p>
-          <div className="planDocumentUploadBox">
-            <p className="planDocumentUploadType">Tax Plan</p>
-            <p className="noPlanDocumentFound">{shortenString(files.taxPlanFile.name)}</p>
-            <label for="taxPlanFile" className="planDocumentUploadButton">
-              + Upload Plan
-            </label>
-            <input
-              name="taxPlanFile"
-              type="file"
-              className="inputFile"
-              id="taxPlanFile"
-              onChange={fileUploadHandler}
-            ></input>
-          </div>
-          <div className="planDocumentUploadBox">
-            <p className="planDocumentUploadType">Estate Plan</p>
-            <p className="noPlanDocumentFound">{shortenString(files.estatePlanFile.name)}</p>
-            <label for="estatePlanFile" className="planDocumentUploadButton">
-              + Upload Plan
-            </label>
-            <input
-              name="estatePlanFile"
-              type="file"
-              className="inputFile"
-              id="estatePlanFile"
-              onChange={fileUploadHandler}
-            ></input>
-          </div>
-          <div className="planDocumentUploadBox">
-            <p className="planDocumentUploadType">Will</p>
-            <p className="noPlanDocumentFound">{shortenString(files.willFile.name)}</p>
-            <label for="willFile" className="planDocumentUploadButton">
-              + Upload Will
-            </label>
-            <input
-              name="willFile"
-              type="file"
-              className="inputFile"
-              id="willFile"
-              onChange={fileUploadHandler}
-            ></input>
-          </div>
-          <div className="planDocumentUploadBox">
-            <p className="planDocumentUploadType">Insurance</p>
-            <p className="noPlanDocumentFound">{shortenString(files.insuranceFile.name)}</p>
-            <label for="insuranceFile" className="planDocumentUploadButton">
-              + Upload Insurance
-            </label>
-            <input
-              name="insuranceFile"
-              type="file"
-              className="inputFile"
-              id="insuranceFile"
-              onChange={fileUploadHandler}
-            ></input>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+        </div> */
