@@ -1643,7 +1643,7 @@ p {
   width: 70%;
 }
 
-.keyInfoBlock {
+.lock {
   display: inline-block;
   width: 100%;
   margin: 0px 0px 0px 0px;
@@ -1687,7 +1687,7 @@ p {
 }
 
 .chartHeadlinePortfolio {
-  margin: -20px 0px 0px 0px;
+  margin: -40px 0px 0px 0px;
   font-size: 24px;
   color:black;
   font-weight: bold;
@@ -1707,7 +1707,7 @@ p {
 }
 
 .legendItems {
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
   vertical-align: top;
   padding: 0px 0px 40px 0px;
@@ -1716,7 +1716,7 @@ p {
 }
 
 .legendList {
-  margin: 0px 140px 0px 0px;
+  margin: 20px 140px 0px 0px;
   vertical-align: top;
   width: 30%;
   float: right;

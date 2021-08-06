@@ -565,15 +565,15 @@ export function onePagePlan(plan) {
               {calculations.riskScore} Portfolio
             </h1>
             <p className="pieSubheadline">{portfolioSubheadline}</p>
-            <PieChart className="pieChart" width={1000} height={560}>
+            <PieChart className="pieChart" width={1000} height={500}>
               <Pie
                 className="pie"
                 data={portfolio.folio}
                 dataKey="value"
                 nameKey="name"
                 cx="30%"
-                cy="50%"
-                outerRadius={200}
+                cy="48%"
+                outerRadius={150}
               >
                 {data.map((entry, index) => (
                   <Cell
