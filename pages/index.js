@@ -17,6 +17,10 @@ const PlanComponent = _dynamic(() =>
   import('../components/plan').then((mod) => mod.Plan)
 )
 
+const PlanBlockComponent = _dynamic(() =>
+import('../components/planBlock').then((mod) => mod.PlanBlock)
+)
+
 export function App() {
 
   const router = useRouter();
@@ -25,22 +29,7 @@ export function App() {
     <div>
       <div className="dashboardMain">
       <h1 className="plansH1">Plans</h1>
-      <div className="newPlansSection">
-        <div className="planInfo">
-          <p className="dashboardPlanHeadline"><b>Jacob's Financial Plan</b></p>
-          <p className="dashboardPlanSubheadline">Build your wealth by making progress towards your financial plan.</p>
-          <div className="planProgressBarContainer">
-            <hr className="planProgressBar"></hr>
-          </div>
-          <p className="progressAmount">45% Complete</p>
-        </div>
-        <button 
-        className="dashboardButton"
-        onClick={function clickHandler() {
-          router.push(`/wizard/planResults`);
-        }}
-        > View Plan</button>
-      </div>
+      <PlanBlockComponent />
       <Link href="/createPlan">
       <button
       className="plansButton">

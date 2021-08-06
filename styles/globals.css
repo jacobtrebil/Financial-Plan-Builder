@@ -1645,8 +1645,8 @@ p {
 
 .keyInfoBlock {
   display: inline-block;
-  width: 40%;
-  margin: 20px 0px 0px 0px;
+  width: 100%;
+  margin: 0px 0px 0px 0px;
   vertical-align: top;
 }
 
@@ -1676,8 +1676,8 @@ p {
   color: black;
   font-weight: bold;
   border-radius: 40px; 
-  padding: 12px 24px;
-  font-size: 18px;
+  padding: 16px 32px;
+  font-size: 22px;
   margin: 5px 0px 0px 0px;
 }
 
@@ -1688,7 +1688,7 @@ p {
 
 .chartHeadlinePortfolio {
   margin: -20px 0px 0px 0px;
-  font-size: 14px;
+  font-size: 24px;
   color:black;
   font-weight: bold;
   text-align: center;
@@ -1707,17 +1707,18 @@ p {
 }
 
 .legendItems {
-  font-size: 14px;
+  font-size: 18px;
   text-align: left;
   vertical-align: top;
-  padding: 0px 0px 10px 0px;
-  color:rgb(0, 160, 147);
-  font-weight: bold;
+  padding: 0px 0px 40px 0px;
+  color:black;
+  font-weight: normal;
 }
 
 .legendList {
-  margin: 0px 0px 0px 0px;
+  margin: 0px 140px 0px 0px;
   vertical-align: top;
+  width: 30%;
   float: right;
 }
 
@@ -1786,7 +1787,35 @@ p {
   text-align: left;
 }
 
+.chartDescriptionPlan {
+  font-size: 14px;
+  color: #575757;
+  font-weight: normal;
+  margin: 20px auto 0px auto;
+  padding: 0px 0px 0px 0px;
+  width: 50%;
+  text-align: center;
+}
 
+.pieSubheadline {
+  margin: 10px 0px 0px 0px;
+  color: #575757;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.noteP {
+  margin: -20px 0px 40px 0px;
+  color: #575757;
+  font-size: 14px;
+}
+
+.noPlansFound {
+  text-align: left;
+  color: #575757;
+  margin: 80px 0px 40px 140px;
+  font-weight: normal;
+}
 
 /* File Upload Buttons */
 

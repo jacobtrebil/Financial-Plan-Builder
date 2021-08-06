@@ -552,10 +552,6 @@ export function onePagePlan(plan) {
         </p>
         <hr className="planHr"></hr>
         <div>
-          <h1 className="planHeadline">Action Plan</h1>
-          <p className="planSubheadline">
-            To achieve your financial goals, invest {convertToUsd.format(calculations.currentSavings / 12)} every month into your {calculations.riskScore} Portfolio
-          </p>
           <p className="financialStrategyP">*Your Financial Strategy: To achieve your financial goals, we recommend rolling all of your current assets & savings into the {calculations.riskScore} Portfolio we recommend for you.
           In addition, invest {convertToUsd.format(calculations.currentSavings / 12)} every month into your {calculations.riskScore} portfolio to achieve your financial goals. <br></br><br></br> Your portfolio is designed to grow your savings
           every single month, while staying within your risk tolerance, so that by the time you retire you'll have enough money in your portfolio to fund your goals, while being comfotable along the way.</p>
@@ -568,16 +564,16 @@ export function onePagePlan(plan) {
             <h1 className="chartHeadlinePortfolio">
               {calculations.riskScore} Portfolio
             </h1>
-            <p className="chartSubheadlinePortfolio">{portfolioSubheadline}</p>
-            <PieChart className="pieChart" width={240} height={560}>
+            <p className="pieSubheadline">{portfolioSubheadline}</p>
+            <PieChart className="pieChart" width={1000} height={560}>
               <Pie
                 className="pie"
                 data={portfolio.folio}
                 dataKey="value"
                 nameKey="name"
-                cx="50%"
-                cy="58%"
-                outerRadius={120}
+                cx="30%"
+                cy="50%"
+                outerRadius={200}
               >
                 {data.map((entry, index) => (
                   <Cell
@@ -586,18 +582,15 @@ export function onePagePlan(plan) {
                   />
                 ))}
               </Pie>
-              <Label position="outside">51%</Label>
               <Tooltip
-                offset={75}
+                offset={0}
                 cursor={{ stroke: "black" }}
-                fontSize="12px"
+                fontSize="18px"
                 content={CustomTooltipPortfolios}
               />
-              <Legend content={renderLegend} payload={portfolio.legend} />
+              <Legend content={renderLegend} payload={portfolio.legend} verticalAlign="middle" align="center"/>
             </PieChart>
-            <p className="keyInfoPLightPortfolio">
-              We recommend rolling your assets and savings into your portfolio.
-            </p>
+            <p className="noteP">*Note: To invest in your portfolio, click the button below to get set up with a Raymond James investment account. </p>
             <button className="portfolioButton">Invest Now →</button>
           </div>
         </div>
@@ -680,8 +673,8 @@ export function onePagePlan(plan) {
             />
             </AreaChart>
             <p className="chartDescription">Age</p>
-            <p className="chartDescription">At age {calculations.retirementAge} you will have {convertToUsd.format(calculations.savingsByRetirement)}, which will grow into {convertToUsd.format(calculations.savingsByRetirement)} by age {calculations.ageOfDeath} </p>
             </div>
+            <p className="chartDescriptionPlan">These projections are based on investing your current savings as well as {convertToUsd.format(calculations.currentSavings / 12)} per month into your {calculations.riskScore} Portfolio.</p>
           </div>
         </div>
         <div>
@@ -873,3 +866,12 @@ export function onePagePlan(plan) {
           </AreaChart>
           <p className="chartDescription">Age</p>
         </div> */
+
+        /*          <h1 className="planHeadline">Action Plan</h1>
+          <p className="planSubheadline">
+            To achieve your financial goals, invest {convertToUsd.format(calculations.currentSavings / 12)} every month into your {calculations.riskScore} Portfolio
+          </p> 
+          
+                      <p className="keyInfoPLightPortfolio">
+              We recommend rolling your assets and savings into your portfolio.
+            </p>*/
