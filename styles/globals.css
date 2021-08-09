@@ -794,8 +794,9 @@ p {
 
 .wizardHeaderH2Selected {
   display: inline-block;
-  margin: 11px 10px 10px 16px;
+  margin: 11px 10px 10px 11px;
   font-size: 16px;
+  font-weight: bold;
 }
 
 .wizardHeaderHr {

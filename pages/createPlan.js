@@ -21,7 +21,7 @@ function StartPlan() {
             <h1 className="createAPlan">Create a Plan</h1>
             <h2 id="createAPlan2H2">Answer a few questions and we'll generate you a custom financial plan. </h2>
             <h2 id="createAPlanH2">Time to complete: 5 minutes</h2>
-            <Link href="/wizard/step1"><button type="submit" id="startPlanButton">Start &#8594;</button></Link>
+            <Link href="/wizard/step1"><button type="submit" id="startPlanButton">Start &#187;</button></Link>
           </div>
       </div>
     );

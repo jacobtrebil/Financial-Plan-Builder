@@ -184,7 +184,7 @@ export default function Step2({ plan, pageProps }) {
             </div>
             </div>
             <div className='wizardFooter'>
-                <button onClick={completePlan} className="wizardFooterButton">Next →</button>
+                <button onClick={completePlan} className="wizardFooterButton">Next &#187;</button>
             </div>
             </div>
     )

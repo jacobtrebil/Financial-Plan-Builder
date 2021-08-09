@@ -33,7 +33,7 @@ export function App() {
       <Link href="/createPlan">
       <button
       className="plansButton">
-      Create Plan →</button>
+      Create Plan &#187;</button>
       </Link>
       </div>
       <NavComponent />

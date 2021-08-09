@@ -62,17 +62,12 @@ export default function Step3({ plan, pageProps }) {
     const [errors3, setErrors3] = useState('')
     const [errors4, setErrors4] = useState('')
     const [showForm14, setShowForm14] = useState(false)
-    const [showForm15, setShowForm15] = useState(false)
     const [currentEarnings, setCurrentEarnings] = useState('')
-    const [lifeInsuranceDocument, setLifeInsuranceDocument] = useState()
     const [currentSavings, setCurrentSavings] = useState('')
     const [riskAttitude, setRiskAttitude] = useState('Earn more than inflation, with low risk')
     const [assetValue, setAssetValue] = useState('')
     const [changePortfolio, setChangePortfolio] = useState('Change to a more conservative portfolio')
     const [volatility, setVolatility] = useState('False')
-    const [lifeInsurance, setLifeInsurance] = useState('No')
-    const [taxPlan, setTaxPlan] = useState('No')
-    const [will, setWill] = useState('No')
     const [pension, setPension] = useState('No')
     const [pensionInflation, setPensionInflation] = useState('No')
     const [pensionStartAge, setPensionStartAge] = useState('50')
@@ -89,7 +84,7 @@ export default function Step3({ plan, pageProps }) {
         router.push(`/wizard/step2?planId=${planId}`);
       }
 
-    _plan = { currentEarnings, currentSavings, assetValue, lifeInsurance, taxPlan, will, pension, pensionStartAge, pensionEarnings, pensionInflation, socialSecurity, riskAttitude, volatility, changePortfolio, lifeInsuranceDocument };
+    _plan = { currentEarnings, currentSavings, assetValue, pension, pensionStartAge, pensionEarnings, pensionInflation, socialSecurity, riskAttitude, volatility, changePortfolio };
     
     return (
         <div>
@@ -240,60 +235,10 @@ export default function Step3({ plan, pageProps }) {
                     <option>Change to a more conservative portfolio</option>
                     </select><br></br>
                 </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">Do you have a will?</label><br></br>
-                    <select
-                    name="will"
-                    className="formSelect"
-                    value={will}
-                    onChange={e=> setWill(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">Do you have a tax plan?</label><br></br>
-                    <select
-                    name="taxPlan"
-                    className="formSelect"
-                    value={taxPlan}
-                    onChange={e=> setTaxPlan(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">Do you have life insurance?</label><br></br>
-                    <select
-                    className="formSelect"
-                    name="lifeInsurance"
-                    value={lifeInsurance}
-                    onChange={e=> {setLifeInsurance(e.target.value); setShowForm15(!showForm15)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                    showForm15 && (
-                <div className="inputDiv">
-                    <label className="inputLabel">Upload your life insurance documents below</label><br></br>
-                    <input
-                    className="formInputPages"
-                    name="lifeInsuranceDocument"
-                    type="file"
-                    value={lifeInsuranceDocument}
-                    onChange={e=> setLifeInsuranceDocument(e.target.value)}
-                    >
-                    </input><br></br>
-                </div>
-                    )}
             </div>
             </div>
             <div className='wizardFooter'>
-                <button onClick={completePlan} className="wizardFooterButton">Next →</button>
+                <button onClick={completePlan} className="wizardFooterButton">Next &#187;</button>
             </div>
             </div>
     )

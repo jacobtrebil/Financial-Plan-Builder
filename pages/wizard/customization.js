@@ -496,7 +496,7 @@ function Summary(plan1) {
             router.push(`/wizard/planResults/?planId=${plan._id}`);
           }}
         >
-          Get My Plan →
+          Get My Plan &#187;
         </button>
       </div>
     </div>

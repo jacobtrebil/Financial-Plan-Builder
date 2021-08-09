@@ -38,7 +38,7 @@ export default function Step1({}) {
     const [dateOfBirthYear, setDateOfBirthYear] = useState('')
     const [dateOfBirthMonth, setDateOfBirthMonth] = useState('January')
     const [maritalStatus, setMaritalStatus] = useState('Married')
-    const [spousesFullName, setSpousesFullName] = useState('')
+    const [spousesFirstName, setSpousesFirstName] = useState('')
     const [gender, setGender] = useState('Male');
 
     let [_plan, _setPlan] = useState({plan});
@@ -49,7 +49,7 @@ export default function Step1({}) {
       router.push(`/createPlan`);
     }
 
-    _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, gender, maritalStatus, firstName, spousesFullName };
+    _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, gender, maritalStatus, firstName, spousesFirstName };
     
     return (
         <div>
@@ -166,19 +166,19 @@ export default function Step1({}) {
                 <div className="inputDiv">
                     <label className="inputLabel">Spouses First Name</label><br></br>
                     <input
-                    name="spousesFullName"
+                    name="spousesFirstName"
                     className="formInputPages"
                     placeholder="Spouses First Name"
-                    value={spousesFullName}
+                    value={spousesFirstName}
                     onChange={e=> 
-                        setSpousesFullName(e.target.value)
+                        setSpousesFirstName(e.target.value)
                         }/>
                 </div>
                 )}
             </div>
             </div>
             <div className='wizardFooter'>
-            <button onClick={complete} className="wizardFooterButton">Next →</button>
+            <button onClick={complete} className="wizardFooterButton">Next &#187;</button>
         </div>
         </div>
     )

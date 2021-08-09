@@ -591,7 +591,7 @@ export function onePagePlan(plan) {
               <Legend content={renderLegend} payload={portfolio.legend} verticalAlign="middle" align="center"/>
             </PieChart>
             <p className="noteP">*Note: To invest in your portfolio, click the button below to get set up with a Raymond James investment account. </p>
-            <button className="portfolioButton">Invest Now →</button>
+            <button className="portfolioButton">Invest Now &#187;</button>
           </div>
         </div>
         <div ClassName="financialProjectionsSection">
@@ -725,7 +725,7 @@ export function onePagePlan(plan) {
             ></input>
           </div>
           <div className="planDocumentUploadBox">
-            <p className="planDocumentUploadType">Insurance</p>
+            <p className="planDocumentUploadType">Life Insurance</p>
             <p className="noPlanDocumentFound">{shortenString(files.insuranceFile.name)}</p>
             <label for="insuranceFile" className="planDocumentUploadButton">
               + Upload Insurance

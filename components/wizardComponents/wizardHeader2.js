@@ -9,7 +9,7 @@ export default function WizardHeader({}) {
         <h2 className="wizardHeaderH2">Personal Info</h2>
         <hr className="wizardHeaderHr"></hr>
         <div className="circle circleState">
-            <h2 className="wizardHeaderH2">2</h2>
+            <h2 className="wizardHeaderH2Selected">2</h2>
         </div>
         <h2 className="wizardHeaderH2Selected">Your Vision & Goals</h2>
         <hr className="wizardHeaderHr"></hr>

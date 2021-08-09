@@ -26,7 +26,7 @@ export default function planResults() {
           onClick={function clickHandler() {
           router.push(`/?planId=${planId}`);
           }}
-          >Back to Dashboard →</button>
+          >Back to Dashboard &#187;</button>
         </div>
     </div>
   )};

@@ -9,8 +9,8 @@ import dbConnect from '../../util/wizardDbConnect';
     switch (method) {
         case 'POST':
             try {
-                const { spouse, firstName, maritalStatus, gender, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, spousesFullName } = req.body;
-                const plan = await Plan.create( { spouse, firstName, maritalStatus, gender, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, spousesFullName } )
+                const { spouse, firstName, maritalStatus, gender, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, spousesFirstName } = req.body;
+                const plan = await Plan.create( { spouse, firstName, maritalStatus, gender, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, spousesFirstName } )
                 res.status(200).json( plan );
             } catch (error) {
                 res.status(400).json({});
