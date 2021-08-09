@@ -8,6 +8,10 @@ function StartPlan() {
 
   const router = useRouter();
 
+  const HeaderComponent = _dynamic(() =>
+  import('../components/header').then((mod) => mod.Header)
+)
+
   function back() {
     router.push(`/`);
   }
@@ -16,6 +20,9 @@ function StartPlan() {
       <div>
           <div className="backArrowButton" onClick={back}>
             <p className="backArrowP">← back to home</p>
+            <nav className="headerNav">
+              <p></p>
+            </nav>
           </div>
           <div className="createAPlanBox">
             <h1 className="createAPlan">Create a Plan</h1>

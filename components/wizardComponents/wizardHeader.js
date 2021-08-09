@@ -11,12 +11,12 @@ export default function WizardHeader({}) {
         <div className="circle">
             <h2 className="wizardHeaderH2">2</h2>
         </div>
-        <h2 className="wizardHeaderH2">Your Vision & Goals</h2>
+        <h2 className="wizardHeaderH2">Financial Info</h2>
         <hr className="wizardHeaderHr"></hr>
         <div className="circle">
             <h2 className="wizardHeaderH2">3</h2>
         </div>
-        <h2 className="wizardHeaderH2">Your Financial Statements</h2>
+        <h2 className="wizardHeaderH2">Risk Questionaire</h2>
     </div>
 )
 }

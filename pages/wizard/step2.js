@@ -52,14 +52,8 @@ export default function Step2({ plan, pageProps }) {
     const [errors2, setErrors2] = useState('')
     const [errors3, setErrors3] = useState('')
     const [errors4, setErrors4] = useState('')
-    const [showForm, setShowForm] = useState(false)  
     const [retirementAge, setRetirementAge] = useState('')
-    const [retirementIncome, setRetirementIncome] = useState('')
-    const [care, setCare] = useState('No')
     const [health, setHealth] = useState('Average')
-    const [increaseIncome, setIncreaseIncome] = useState('No')
-    const [increaseIncomeAmount, setIncreaseIncomeAmount] = useState('')
-    const [outOfWork, setOutOfWork] = useState('No')
     const [livingExpense, setLivingExpense] = useState('')
 
     let [_plan, _setPlan] = useState({plan});
@@ -72,7 +66,7 @@ export default function Step2({ plan, pageProps }) {
         router.push(`/wizard/step1?planId=${planId}`);
       }
 
-    _plan = { outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, care, health, livingExpense };
+    _plan = { retirementAge, health, livingExpense };
     
     return (
         <div>
@@ -96,18 +90,6 @@ export default function Step2({ plan, pageProps }) {
                     <p className="errors">{errors2}</p>
                 </div>
                 <div className="inputDiv">
-                    <label className="inputLabel">What is your desired retirement income?</label><br></br>
-                    <input 
-                    className="formInputPages"
-                    name="retirementIncome"
-                    placeholder ="$100,000" 
-                    value={retirementIncome}
-                    onChange={e=> setRetirementIncome(e.target.value)}
-                    >
-                    </input><br></br>
-                    <p className="errors">{errors3}</p>
-                </div>
-                <div className="inputDiv">
                     <label className="inputLabel">What will your annual living expense be throughout retirement?</label><br></br>
                     <input 
                     className="formInputPages"
@@ -120,43 +102,6 @@ export default function Step2({ plan, pageProps }) {
                     <p className="errors">{errors4}</p>
                 </div>
                 <div className="inputDiv">
-                    <label className="inputLabel">Do you expect your income to increase within the next 10 years?</label><br></br>
-                    <select
-                    className="formSelect"
-                    name="increaseIncome"
-                    value={increaseIncome}
-                    onChange={e=> {setIncreaseIncome(e.target.value); setShowForm(!showForm)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                showForm && (
-                <div className="inputDiv">
-                    <label className="inputLabel">How much do you expect your income to increase by?</label><br></br>
-                    <input
-                    name="increaseIncomeAmount"
-                    className="formInputPages"
-                    placeholder={'$10,000'}
-                    value={increaseIncomeAmount}
-                    onChange={e=> setIncreaseIncomeAmount(e.target.value)}
-                    />
-                </div>
-                )}
-                <div className="inputDiv">
-                    <label className="inputLabel">Do you expect being out of work for 1+ year anytime before retirement?</label><br></br>
-                    <select
-                    className="formSelect"
-                    name="outOfWork"
-                    value={outOfWork}
-                    onChange={e=> setOutOfWork(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                <div className="inputDiv">
                     <label className="inputLabel">What are your expected healthcare costs throughout retirement?</label><br></br>
                     <select
                     className="formSelect"
@@ -167,18 +112,6 @@ export default function Step2({ plan, pageProps }) {
                     <option>Low</option>
                     <option>Average</option>
                     <option>High</option>
-                    </select><br></br>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">Do you plan on living in long-term care throughout retirement?</label><br></br>
-                    <select
-                    className="formSelect"
-                    name="care"
-                    value={care}
-                    onChange={e=> setCare(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
                     </select><br></br>
                 </div>
             </div>

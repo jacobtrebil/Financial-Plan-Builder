@@ -4,8 +4,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Ubuntu';
     text-align: center;
   background-color: white;
   width: 100%;
@@ -16,6 +15,9 @@ body {
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Georama:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
 a {
   color: inherit;
@@ -153,6 +155,7 @@ p {
   font-weight: 600;
   bottom: 0;
   position: relative;
+  font-family: 'Ubuntu';
 }
 
 .plansButton:hover {
@@ -196,6 +199,7 @@ p {
   float: right;
   display: inline-block;
   margin: 30px 20px 0px 0px;
+  font-family: 'Ubuntu';
 }
 
 .dashboardButton:hover {
@@ -213,16 +217,18 @@ p {
 }
 
 .backArrowButton {
-  margin: 40px 0px 0px 40px;
+  padding: 20px 0px 20px 40px;
   position: relative;
   text-align: left;
-  padding: 0px;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
 }
 
 .backArrowP {
   font-size: 14px;
   margin: 0px;
   padding: 0px;
+  display: inline-block;
 }
 
 .backArrowButton:hover {
@@ -230,6 +236,10 @@ p {
   opacity: 70%;
 }
 
+.headerNav {
+  float: right;
+  display: inline-block;
+}
 
 
 
@@ -329,6 +339,7 @@ p {
   font-size: 14px;
   bottom: 0;
   position: relative;
+  font-family: 'Ubuntu';
 }
 
 .cancelButton:hover {
@@ -367,6 +378,7 @@ p {
   font-size: 14px;
   bottom: 0;
   position: relative;
+  font-family: 'Ubuntu';
 }
 
 .paymentButton:hover {
@@ -501,7 +513,9 @@ p {
 .createAPlan {
   margin: 0% auto 0% auto;
   text-align: center;
-  font-size: 46px;
+  font-size: 52px;
+  font-family: 'Ubuntu';
+  font-weight: 700;
 }
 
 .createAPlanBox {
@@ -512,12 +526,14 @@ p {
   font-weight: normal;
   font-size: 16px;
   margin: 0px 0px 0px 0px;
+  font-family: 'Ubuntu';
 }
 
 #createAPlan2H2 {
   font-weight: normal;
   font-size: 16px;
   margin: 15px 20% 10px 20%;
+  font-family: 'Ubuntu';
 }
 
 #startPlanButton {
@@ -529,6 +545,7 @@ p {
   font-size: 18px;
   margin: 30px 0px 200px 0px;
   font-weight: 600;
+  font-family: 'Ubuntu';
 }
 
 #startPlanButton:hover {
@@ -848,6 +865,7 @@ p {
   padding: 18px 28px;
   font-size: 18px;
   font-weight: 600;
+  font-family: 'Ubuntu';
 }
 
 .wizardFooterButton:hover {
@@ -1009,6 +1027,7 @@ p {
   font-size: 18px;
   font-weight: 600;
   display: block;
+  font-family: 'Ubuntu';
 }
 
 .scorecardButton:hover {
@@ -1196,6 +1215,7 @@ p {
   font-size: 18px;
   font-weight: 600;
   display: block;
+  font-family: 'Ubuntu';
 }
 
 .saveScenarioButton:hover {
@@ -1242,6 +1262,7 @@ p {
   padding: 18px 28px;
   font-size: 18px;
   font-weight: 600;
+  font-family: 'Ubuntu';
 }
 
 .planResultsDashboardButton:hover {
@@ -1680,6 +1701,7 @@ p {
   padding: 16px 32px;
   font-size: 22px;
   margin: 5px 0px 0px 0px;
+  font-family: 'Ubuntu';
 }
 
 .portfolioButton:hover {
@@ -1827,4 +1849,19 @@ p {
 	overflow: hidden;
 	position: absolute !important;
 	z-index: 1;
+}
+
+
+
+
+
+/* Header */
+
+.headerSection {
+  border-bottom: 1px #dbdbdb solid;
+}
+
+.headerLogo {
+  float: left;
+  margin: 0px 0px 0px 0px;
 }

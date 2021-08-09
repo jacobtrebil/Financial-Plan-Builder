@@ -32,13 +32,10 @@ export default function Step1({}) {
     const [plan, setPlan] = useState({});
     const [errors, setErrors] = useState('')
     const [showForm, setShowForm] = useState(false)  
-    const [spouse, setSpouse] = useState('No')
     const [firstName, setFirstName] = useState('')
     const [dateOfBirthDay, setDateOfBirthDay] = useState('')
     const [dateOfBirthYear, setDateOfBirthYear] = useState('')
     const [dateOfBirthMonth, setDateOfBirthMonth] = useState('January')
-    const [maritalStatus, setMaritalStatus] = useState('Married')
-    const [spousesFirstName, setSpousesFirstName] = useState('')
     const [gender, setGender] = useState('Male');
 
     let [_plan, _setPlan] = useState({plan});
@@ -49,7 +46,7 @@ export default function Step1({}) {
       router.push(`/createPlan`);
     }
 
-    _plan = { spouse, dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, gender, maritalStatus, firstName, spousesFirstName };
+    _plan = { dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, gender, firstName };
     
     return (
         <div>
@@ -132,49 +129,6 @@ export default function Step1({}) {
                     <option>Prefer not to say</option>
                     </select><br></br>
                 </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">Marital Status</label><br></br>
-                    <select
-                    name="maritalStatus"
-                    className="formSelect"
-                    value={maritalStatus}
-                    onChange={e=> { 
-                        setMaritalStatus(e.target.value)
-                        }}>
-                    <option>Married</option>
-                    <option>Divorced</option>
-                    <option>Widowed</option>
-                    <option>Single</option>
-                    </select><br></br>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">Include Spouse </label><br></br>
-                    <select
-                    name="spouse"
-                    className="formSelect"
-                    value={spouse}
-                    onChange={e=> { 
-                        setSpouse(e.target.value); 
-                        setShowForm(!showForm)
-                        }}>
-                    <option>Yes</option>
-                    <option>No</option>
-                    </select><br></br>
-                </div>
-                {
-                showForm && (
-                <div className="inputDiv">
-                    <label className="inputLabel">Spouses First Name</label><br></br>
-                    <input
-                    name="spousesFirstName"
-                    className="formInputPages"
-                    placeholder="Spouses First Name"
-                    value={spousesFirstName}
-                    onChange={e=> 
-                        setSpousesFirstName(e.target.value)
-                        }/>
-                </div>
-                )}
             </div>
             </div>
             <div className='wizardFooter'>
