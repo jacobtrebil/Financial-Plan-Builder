@@ -37,6 +37,7 @@ export default function Step1({}) {
     const [dateOfBirthYear, setDateOfBirthYear] = useState('')
     const [dateOfBirthMonth, setDateOfBirthMonth] = useState('January')
     const [gender, setGender] = useState('Male');
+    const [socialSecurity, setSocialSecurity] = useState('Yes')
 
     let [_plan, _setPlan] = useState({plan});
     
@@ -46,7 +47,7 @@ export default function Step1({}) {
       router.push(`/createPlan`);
     }
 
-    _plan = { dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, gender, firstName };
+    _plan = { dateOfBirthDay, dateOfBirthYear, dateOfBirthMonth, gender, firstName, socialSecurity };
     
     return (
         <div>
@@ -127,6 +128,18 @@ export default function Step1({}) {
                     <option>Male</option>
                     <option>Female</option>
                     <option>Prefer not to say</option>
+                    </select><br></br>
+                </div>
+                <div className="inputDiv">
+                    <label className="inputLabel">Are you eligible for social security? <br></br>(If unsure, choose yes)</label><br></br>
+                    <select
+                    name="socialSecurity"
+                    className="formSelect"
+                    value={socialSecurity}
+                    onChange={e=> setSocialSecurity(e.target.value)}
+                    >
+                    <option>No</option>
+                    <option>Yes</option>
                     </select><br></br>
                 </div>
             </div>

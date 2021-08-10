@@ -208,7 +208,7 @@ p {
 }
 
 .dashboardMain {
-  margin: 0px 0px 320px 0px;
+  margin: 0px 0px 400px 0px;
 }
 
 .planInfo {
@@ -433,7 +433,7 @@ p {
 
 #footerSection {
   border-top: 1px solid #dbdbdb;
-  margin: 0px 0px 0px 0px;
+  margin: auto 0px auto 0px;
   padding: 30px 0px 30px 0px;
   bottom: 0;
   width: 100%;

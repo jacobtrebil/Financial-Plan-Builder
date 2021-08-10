@@ -20,25 +20,7 @@ export default function Step3({ plan, pageProps }) {
     }
 
     function completePlan(){
-        if (currentEarnings.length === 0 || currentSavings.length === 0 || assetValue.length === 0 || pension === 'Yes' && pensionEarnings.length === 0) {
-            if (currentEarnings.length === 0) {
-                setErrors('*Please enter a valid number')
-                scrollOnError();
-            } else if (currentEarnings.length > 0) {
-                setErrors('')
-            }
-            if (currentSavings.length === 0) {
-                setErrors2('*Please enter a valid number')
-                scrollOnError();
-            } else if (currentSavings.length > 0) {
-                setErrors2('')
-            }
-            if (assetValue.length === 0) {
-                setErrors3('*Please enter a valid number')
-                scrollOnError();
-            } else if (assetValue.length > 0) {
-                setErrors3('')
-            }
+        if ( pension === 'Yes' && pensionEarnings.length === 0) {
             if (pension === 'Yes') {
                 if (pensionEarnings.length === 0) {
                     setErrors4('*Please enter a valid number')
@@ -57,22 +39,15 @@ export default function Step3({ plan, pageProps }) {
         window.scrollTo(0, 0);
     }
 
-    const [errors, setErrors] = useState('')
-    const [errors2, setErrors2] = useState('')
-    const [errors3, setErrors3] = useState('')
     const [errors4, setErrors4] = useState('')
     const [showForm14, setShowForm14] = useState(false)
-    const [currentEarnings, setCurrentEarnings] = useState('')
-    const [currentSavings, setCurrentSavings] = useState('')
     const [riskAttitude, setRiskAttitude] = useState('Earn more than inflation, with low risk')
-    const [assetValue, setAssetValue] = useState('')
     const [changePortfolio, setChangePortfolio] = useState('Change to a more conservative portfolio')
     const [volatility, setVolatility] = useState('False')
     const [pension, setPension] = useState('No')
     const [pensionInflation, setPensionInflation] = useState('No')
     const [pensionStartAge, setPensionStartAge] = useState('50')
     const [pensionEarnings, setPensionEarnings] = useState('')
-    const [socialSecurity, setSocialSecurity] = useState('Yes')
 
     let [_plan, _setPlan] = useState({plan});
 
@@ -84,7 +59,7 @@ export default function Step3({ plan, pageProps }) {
         router.push(`/wizard/step2?planId=${planId}`);
       }
 
-    _plan = { currentEarnings, currentSavings, assetValue, pension, pensionStartAge, pensionEarnings, pensionInflation, socialSecurity, riskAttitude, volatility, changePortfolio };
+    _plan = { pension, pensionStartAge, pensionEarnings, pensionInflation, riskAttitude, volatility, changePortfolio };
     
     return (
         <div>
@@ -95,51 +70,6 @@ export default function Step3({ plan, pageProps }) {
         <div className="formBorder">
         <WizardHeadline3></WizardHeadline3>
         <div className="inputsDiv1" {...pageProps}>
-                <div className="inputDiv">
-                    <label className="inputLabel">What are your average earnings over the past 5 years?</label><br></br>
-                    <input
-                    className="formInputPages"
-                    placeholder={'$50,000'}
-                    value={currentEarnings} 
-                    name="currentEarnings"
-                    onChange={e=> setCurrentEarnings(e.target.value)}
-                    /><br></br>
-                    <p className="errors">{errors}</p>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">How much do you currently save or invest per year?</label><br></br>
-                    <input
-                    className="formInputPages"
-                    placeholder={'$50,000'}
-                    value={currentSavings}
-                    name="currentSavings"
-                    onChange={e=> setCurrentSavings(e.target.value)}
-                    /><br></br>
-                    <p className="errors">{errors2}</p>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">What is the total value of your savings and assets that you own? <br></br>(Include Real Estate, Investments, Crypto, etc.)</label><br></br>
-                    <input
-                    className="formInputPages"
-                    placeholder={'$100,000'}
-                    value={assetValue}
-                    name="assetValue"
-                    onChange={e=> setAssetValue(e.target.value)}
-                    /><br></br>
-                    <p className="errors">{errors3}</p>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">Are you eligible for social security? <br></br>(If unsure, choose yes)</label><br></br>
-                    <select
-                    name="socialSecurity"
-                    className="formSelect"
-                    value={socialSecurity}
-                    onChange={e=> setSocialSecurity(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
                 <div className="inputDiv">
                     <label className="inputLabel">Do you have a pension?</label><br></br>
                     <select
