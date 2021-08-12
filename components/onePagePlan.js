@@ -547,16 +547,16 @@ export function onePagePlan(plan) {
         <h1 className="financialPlanHeadline">
           {calculations.firstName}'s Financial Plan
         </h1>
-        <p className="financialPlanSubheadline">
+        <h3 className="financialPlanSubheadline">
           Use your plan to help you achieve your financial goals
-        </p>
+        </h3>
         <hr className="planHr"></hr>
         <div>
           <p className="financialStrategyP">*Your Financial Strategy: To achieve your financial goals, we recommend rolling all of your current assets & savings into the {calculations.riskScore} Portfolio we recommend for you.
           In addition, invest {convertToUsd.format(calculations.currentSavings / 12)} every month into your {calculations.riskScore} portfolio to achieve your financial goals. <br></br><br></br> Your portfolio is designed to grow your savings
           every single month, while staying within your risk tolerance, so that by the time you retire you'll have enough money in your portfolio to fund your goals, while being comfotable along the way.</p>
           <div className="monthlySavingsSection">
-            <h1 className="monthlySavingsAboveHeadline">Monthly Savings until retirement</h1>
+            <p className="monthlySavingsAboveHeadline">Monthly Savings until retirement</p>
             <h1 className="monthlySavingsHeadline">{convertToUsd.format(calculations.currentSavings / 12)}</h1>
             <p className="monthlySavingsSubheadline">Invest {convertToUsd.format(calculations.currentSavings / 12)} per month into the portfolio below to achieve your financial goals.</p>
           </div>
@@ -564,7 +564,7 @@ export function onePagePlan(plan) {
             <h1 className="chartHeadlinePortfolio">
               {calculations.riskScore} Portfolio
             </h1>
-            <p className="pieSubheadline">{portfolioSubheadline}</p>
+            <h3 className="pieSubheadline">{portfolioSubheadline}</h3>
             <PieChart className="pieChart" width={1000} height={500}>
               <Pie
                 className="pie"
@@ -596,9 +596,9 @@ export function onePagePlan(plan) {
         </div>
         <div ClassName="financialProjectionsSection">
           <h1 className="planHeadline">Financial Projections</h1>
-          <p className="planSubheadline">
+          <h3 className="planSubheadline">
             See your future earnings & net worth
-          </p>
+          </h3>
           <div className="futureEarningsPadding">
           <div className="triBlock">
             <p className="chartHeadline">Future Earnings</p>
@@ -679,9 +679,9 @@ export function onePagePlan(plan) {
         </div>
         <div>
           <h1 className="planHeadline">Add Important Documents</h1>
-          <p className="planSubheadline">
+          <h3 className="planSubheadline">
             Upload your financial documents to store them all safely in one place
-          </p>
+          </h3>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Tax Plan</p>
             <p className="noPlanDocumentFound">{shortenString(files.taxPlanFile.name)}</p>
@@ -752,135 +752,3 @@ export function onePagePlan(plan) {
     </div>
   );
 }
-
-
-/*  <div className="futureIncomeSection">
-          <h1 className="planHeadline">Future Income</h1>
-          <p className="planSubheadline">
-            See how much you're projected to earn in the future
-          </p>
-          <p className="chartHeadline">Future Income</p>
-          <p className="chartSubheadline">
-            Including Purchase Goals & Healthcare Expenses
-          </p>
-          <AreaChart
-            className="barChart"
-            width={550}
-            height={180}
-            data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-          >
-            <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" />
-            <YAxis
-              name="Expenses"
-              stroke="grey"
-              fontSize="12px"
-              dataKey="Expenses"
-              tickFormatter={toUSDThousands}
-            />
-            <Tooltip
-              cursor={{ stroke: "black" }}
-              fontSize="12px"
-              content={CustomTooltipToThousands}
-            />
-            <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-            <Area
-              dataKey="Expenses"
-              fontSize="12px"
-              fill="rgb(4, 187, 172)"
-              stroke="rgb(4, 187, 172)"
-            />
-          </AreaChart>
-          <p className="chartDescription">Age</p>
-        </div>
-        <div>
-          <h1 className="planHeadline">Future Spending</h1>
-          <p className="planSubheadline">
-            See how much you're projected to spend in the future
-          </p>
-          <p className="chartHeadline">Future Spending</p>
-          <p className="chartSubheadline">
-            Including Purchase Goals & Healthcare Expenses
-          </p>
-          <AreaChart
-            className="barChart"
-            width={550}
-            height={180}
-            data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-          >
-            <XAxis name="Age" dataKey="Age" stroke="grey" fontSize="12px" />
-            <YAxis
-              name="Expenses"
-              stroke="grey"
-              fontSize="12px"
-              dataKey="Expenses"
-              tickFormatter={toUSDThousands}
-            />
-            <Tooltip
-              cursor={{ stroke: "black" }}
-              fontSize="12px"
-              content={CustomTooltipToThousands}
-            />
-            <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-            <Area
-              dataKey="Expenses"
-              fontSize="12px"
-              fill="rgb(4, 187, 172)"
-              stroke="rgb(4, 187, 172)"
-            />
-          </AreaChart>
-          <p className="chartDescription">Age</p>
-        </div>
-        <div className="netWorthSection">
-          <h1 className="planHeadline">Net Worth</h1>
-          <p className="planSubheadline">
-            See how your net worth will change over time
-          </p>
-          <p className="chartHeadline">Net Worth</p>
-          <p className="chartSubheadline">After Retirement Expenses</p>
-          <AreaChart
-            className="barChart"
-            width={550}
-            height={180}
-            data={netWorthData}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-          >
-            <XAxis
-              name="Age"
-              dataKey="Age"
-              stroke="grey"
-              fontSize="12px"
-              tickMargin="3"
-            />
-            <YAxis
-              name="netWorth"
-              stroke="grey"
-              fontSize="12px"
-              dataKey="netWorth"
-              tickFormatter={toUSDMillions}
-            />
-            <Tooltip
-              cursor={{ stroke: "black" }}
-              fontSize="12px"
-              content={CustomTooltipToMillions}
-            />
-            <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-            <Area
-              dataKey="netWorth"
-              fontSize="12px"
-              fill="rgb(4, 187, 172)"
-              stroke="rgb(4, 187, 172)"
-            />
-          </AreaChart>
-          <p className="chartDescription">Age</p>
-        </div> */
-
-        /*          <h1 className="planHeadline">Action Plan</h1>
-          <p className="planSubheadline">
-            To achieve your financial goals, invest {convertToUsd.format(calculations.currentSavings / 12)} every month into your {calculations.riskScore} Portfolio
-          </p> 
-          
-                      <p className="keyInfoPLightPortfolio">
-              We recommend rolling your assets and savings into your portfolio.
-            </p>*/

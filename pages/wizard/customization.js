@@ -269,10 +269,10 @@ function Summary(plan1) {
         <p className="backArrowP">← back to step 3</p>
       </div>
       <div className="projectionsHeadline">
-        <h2 className="recommendationsH2">Customize Your Retirement</h2>
-        <p>
+        <h1 className="recommendationsH2">Customize Your Retirement</h1>
+        <h3>
           Customize the elements until you've created your ideal retirement scenario
-        </p>
+        </h3>
       </div>
       <div className="blocksSection">
         <div className="block1">

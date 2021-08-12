@@ -24,7 +24,7 @@ export function App() {
   return (
     <div>
       <div className="dashboardMain">
-      <h1 className="plansH1">Plans</h1>
+      <h2 className="plansH2">Plans</h2>
       <PlanBlockComponent />
       <Link href="/createPlan">
       <button

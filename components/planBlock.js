@@ -36,7 +36,7 @@ export function PlanBlock() {
       {
         text && (
         <div>
-            <p className="noPlansFound">*No Plans Found</p>
+            <h3 className="noPlansFound">*No Plans Found</h3>
         </div>
               )}
       {
@@ -44,11 +44,11 @@ export function PlanBlock() {
       <div className="newPlansSection">
         <div className="planInfo">
           <p className="dashboardPlanHeadline"><b>{plans.firstName}'s Financial Plan</b></p>
-          <p className="dashboardPlanSubheadline">Build your wealth by making progress towards your financial plan.</p>
+          <h3 className="dashboardPlanSubheadline">Build your wealth by making progress towards your financial plan.</h3>
           <div className="planProgressBarContainer">
             <hr className="planProgressBar"></hr>
           </div>
-          <p className="progressAmount">45% Complete</p>
+          <h3 className="progressAmount">45% Complete</h3>
         </div>
         <button 
         className="dashboardButton"
