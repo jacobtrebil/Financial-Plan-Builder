@@ -54,9 +54,9 @@ export default function Step1({}) {
           <div className="backArrowButton" onClick={back}>
             <p className="backArrowP">← back to start</p>
           </div>
-        <WizardHeader></WizardHeader>
-        <div className="formBorder">
-        <WizardHeadline></WizardHeadline>
+          <WizardHeader></WizardHeader>
+          <div className="formBorder">
+          <WizardHeadline></WizardHeadline>
             <div className="inputsDiv1">
                 <div className="inputDiv">
                     <label className="inputLabel">First Name</label><br></br>
@@ -131,7 +131,8 @@ export default function Step1({}) {
                     </select><br></br>
                 </div>
                 <div className="inputDiv">
-                    <label className="inputLabel">Are you eligible for social security? <br></br>(If unsure, choose yes)</label><br></br>
+                    <label className="inputLabel">Are you eligible for social security?</label><br></br>
+                    <p className="inputLabelSubheadline">If unsure, choose yes</p>
                     <select
                     name="socialSecurity"
                     className="formSelect"
@@ -142,11 +143,9 @@ export default function Step1({}) {
                     <option>Yes</option>
                     </select><br></br>
                 </div>
+                <button onClick={complete} className="wizardButton">Next &#187;</button>
             </div>
             </div>
-            <div className='wizardFooter'>
-            <button onClick={complete} className="wizardFooterButton">Next &#187;</button>
-        </div>
         </div>
     )
 }

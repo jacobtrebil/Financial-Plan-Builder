@@ -20,13 +20,5 @@ export default function planResults() {
         <p className="backArrowP">← back to customization</p>
       </div>
       <OnePagePlanComponent />
-      <div>
-          <button 
-          className="planResultsDashboardButton"
-          onClick={function clickHandler() {
-          router.push(`/?planId=${planId}`);
-          }}
-          >Back to Dashboard &#187;</button>
-        </div>
     </div>
   )};

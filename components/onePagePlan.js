@@ -680,7 +680,7 @@ export function onePagePlan(plan) {
         <div>
           <h1 className="planHeadline">Add Important Documents</h1>
           <p className="planSubheadline">
-            Upload Documents to store safely in your Financial Plan
+            Upload your financial documents to store them all safely in one place
           </p>
           <div className="planDocumentUploadBox">
             <p className="planDocumentUploadType">Tax Plan</p>
@@ -737,6 +737,15 @@ export function onePagePlan(plan) {
               id="insuranceFile"
               onChange={fileUploadHandler}
             ></input>
+          </div>
+          <div>
+            <button 
+            className="planResultsDashboardButton"
+            onClick={function clickHandler() {
+            router.push(`/?planId=${planId}`);
+            }}
+            >Back to Home &#187;
+            </button>
           </div>
         </div>
       </div>

@@ -42,8 +42,4 @@ export function App() {
   );
 } 
 
-// add <PlanComponent /> for original dropdown style plan. Add it between the two divs next to each other towards the bottom. 
-
-//           <Image className="dashboardPlanIcon" src='/../public/Images/newPlanDesign.png' width={120} height={110}></Image>
-
 export default App;

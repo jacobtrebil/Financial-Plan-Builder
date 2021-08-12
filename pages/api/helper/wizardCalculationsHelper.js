@@ -45,7 +45,7 @@ const reCalculate = async (id) => {
     plan.socialSecurityAge = calculateSocialSecurityAge(plan.socialSecurityAge);
     plan.rateOfReturn = calculateRateOfReturn(plan.riskScore);
     plan.lengthOfRetirement = lengthOfRetirementFunction(plan.retirementAge);
-    plan.totalHealthcareCosts = healthcare(plan.lengthOfRetirement, plan.health);
+    plan.totalHealthcareCosts = healthcare(plan.lengthOfRetirement);
     plan.currentAge = calculateCurrentAge(plan.dateOfBirthYear);
     plan.partTimeWorkDecision = setPartTimeWorkDecision(plan.partTimeWorkDecision);
     plan.yearsUntilRetirement = calculateYearsUntilRetirement(plan.currentAge, plan.retirementAge);
@@ -57,7 +57,7 @@ const reCalculate = async (id) => {
     plan.ageOfDeath = setAgeOfDeath(plan.gender);
     plan.yearsOfPartTimeWork = setYearsOfPartTimeWork(plan.partTimeWorkDecision);
     plan.partTimeWorkEarnings = calculatePartTimeWorkEarnings(plan.currentEarnings);
-    plan.healthcareStartingExpense = calculateHealthcareStartingExpense(plan.health);
+    plan.healthcareStartingExpense = calculateHealthcareStartingExpense();
     plan.retirementExpenses = calculateRetirementExpenses(plan.retirementAge, plan.ageOfDeath, plan.livingExpense, plan.healthcareStartingExpense);
     plan.age = setRetirementAges(plan.yearsOfPartTimeWork, plan.partTimeWorkEarnings, plan.retirementAge, plan.ageOfDeath, plan.pension, plan.pensionStartAge, plan.retirementAnnualReturnsIncome, plan.pensionEarnings, plan.socialSecurityAge, plan.socialSecurityAge62Earnings, plan.socialSecurityEarnings, plan.socialSecurityAge70Earnings);
     plan.totalRetirementEarnings = calculateTotalRetirementEarnings(plan.age);

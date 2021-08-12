@@ -20,19 +20,7 @@ export default function Step3({ plan, pageProps }) {
     }
 
     function completePlan(){
-        if ( pension === 'Yes' && pensionEarnings.length === 0) {
-            if (pension === 'Yes') {
-                if (pensionEarnings.length === 0) {
-                    setErrors4('*Please enter a valid number')
-                    scrollOnError();
-                } else if (pensionEarnings.length > 0) {
-                    setErrors4('')
-                }
-            }
-        } 
-        else {
-            onUpdatePlan(_plan)
-        }
+        onUpdatePlan(_plan)
     }
 
     function scrollOnError() {
@@ -40,14 +28,9 @@ export default function Step3({ plan, pageProps }) {
     }
 
     const [errors4, setErrors4] = useState('')
-    const [showForm14, setShowForm14] = useState(false)
     const [riskAttitude, setRiskAttitude] = useState('Earn more than inflation, with low risk')
     const [changePortfolio, setChangePortfolio] = useState('Change to a more conservative portfolio')
     const [volatility, setVolatility] = useState('False')
-    const [pension, setPension] = useState('No')
-    const [pensionInflation, setPensionInflation] = useState('No')
-    const [pensionStartAge, setPensionStartAge] = useState('50')
-    const [pensionEarnings, setPensionEarnings] = useState('')
 
     let [_plan, _setPlan] = useState({plan});
 
@@ -59,7 +42,7 @@ export default function Step3({ plan, pageProps }) {
         router.push(`/wizard/step2?planId=${planId}`);
       }
 
-    _plan = { pension, pensionStartAge, pensionEarnings, pensionInflation, riskAttitude, volatility, changePortfolio };
+    _plan = { riskAttitude, volatility, changePortfolio };
     
     return (
         <div>
@@ -70,61 +53,6 @@ export default function Step3({ plan, pageProps }) {
         <div className="formBorder">
         <WizardHeadline3></WizardHeadline3>
         <div className="inputsDiv1" {...pageProps}>
-                <div className="inputDiv">
-                    <label className="inputLabel">Do you have a pension?</label><br></br>
-                    <select
-                    name="pension"
-                    className="formSelect"
-                    value={pension}
-                    onChange={e=> {setPension(e.target.value); setShowForm14(!showForm14)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                    showForm14 && (
-                <div>
-                <div className="inputDiv">
-                    <label className="inputLabel">At what age will your pension earnings begin?</label><br></br>
-                    <select
-                    name="pensionStartAge"
-                    className="formSelect"
-                    value={pensionStartAge}
-                    onChange={e=> {setPensionStartAge(e.target.value)}}
-                    >
-                    <option>50</option>
-                    <option>55</option>
-                    <option>60</option>
-                    <option>62</option>
-                    <option>65</option>
-                    </select><br></br>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">How much will you earn per year from your pension?</label><br></br>
-                    <input
-                    className="formInputPages"
-                    placeholder={'$40,000'}
-                    value={pensionEarnings} 
-                    name="pensionEarnings"
-                    onChange={e=> setPensionEarnings(e.target.value)}
-                    /><br></br>
-                    <p className="errors">{errors4}</p>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">Will your pension earnings increase with the cost of inflation?</label><br></br>
-                    <select
-                    name="pensionInflation"
-                    className="formSelect"
-                    value={pensionInflation}
-                    onChange={e=> {setPensionInflation(e.target.value)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                </div>
-                )}
                 <div className="inputDiv">
                     <label className="inputLabel">My main goal with my investments is to</label><br></br>
                     <select
@@ -165,10 +93,8 @@ export default function Step3({ plan, pageProps }) {
                     <option>Change to a more conservative portfolio</option>
                     </select><br></br>
                 </div>
+                <button onClick={completePlan} className="wizardButton">Submit &#187;</button>
             </div>
-            </div>
-            <div className='wizardFooter'>
-                <button onClick={completePlan} className="wizardFooterButton">Next &#187;</button>
             </div>
             </div>
     )

@@ -271,13 +271,12 @@ function Summary(plan1) {
       <div className="projectionsHeadline">
         <h2 className="recommendationsH2">Customize Your Retirement</h2>
         <p>
-          View your retirement projections, and create your most likely
-          scenarios.
+          Customize the elements until you've created your ideal retirement scenario
         </p>
       </div>
       <div className="blocksSection">
         <div className="block1">
-          <p className="chartHeadline">Retirement Earnings</p>
+          <p className="chartHeadline">Retirement Living Expense</p>
           <p className="chartSubheadline">
             Including Inflation & Healthcare Expenses
           </p>
@@ -310,8 +309,8 @@ function Summary(plan1) {
             />
           </AreaChart>
           <p className="chartDescription">Age</p>
-          <p className="chartHeadline">Net Worth</p>
-          <p className="chartSubheadline">After Retirement Expenses</p>
+          <p className="chartHeadline">Your Net Worth</p>
+          <p className="chartSubheadline">The total value of your savings & assets</p>
           <AreaChart
             className="barChart"
             width={550}
@@ -347,6 +346,7 @@ function Summary(plan1) {
             />
           </AreaChart>
           <p className="chartDescription">Age</p>
+          <p className="chartDescription">*NOTE: If the chart goes negative, you will run out of money at that time</p>
         </div>
         <div className="block2">
           <div className="decisionsSocialSecuritySection">
@@ -478,7 +478,7 @@ function Summary(plan1) {
               className="scenarioFormInput"
               id="scenarioNameInput"
               name="scenarioName"
-              placeholder="Retire at Age 60 Scenario"
+              placeholder="Retire at age 60 scenario"
               onChange={handleChange}
             ></input>
             <p className="errors">{errors}</p>
@@ -488,8 +488,6 @@ function Summary(plan1) {
             <p className="savedMessage">{savedMessage}</p>
           </div>
         </div>
-      </div>
-      <div className="projectionsButtonSection">
         <button
           className="scorecardButton"
           onClick={function clickHandler() {

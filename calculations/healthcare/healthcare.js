@@ -1,19 +1,11 @@
 
 
-function healthcare(lengthOfRetirement, health) { 
+function healthcare(lengthOfRetirement) { 
 
 
 
 const healthcareInflation = 1.05;
-let healthcareInitialCost = 4750;
-
-if (health === 'Low') {
-    healthcareInitialCost = 3000;
-} else if (health === 'Average') {
-    healthcareInitialCost = 4000;
-} else if (health === 'High') {
-    healthcareInitialCost = 5000;
-};
+let healthcareInitialCost = 4000;
 
 // I should probably turn this into an object that I can loop through and apply to every retirement age
 
