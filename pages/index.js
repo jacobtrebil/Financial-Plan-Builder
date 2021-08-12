@@ -13,10 +13,6 @@ const FooterComponent = _dynamic(() =>
   import('../components/footer').then((mod) => mod.Footer)
 )
 
-const PlanComponent = _dynamic(() =>
-  import('../components/plan').then((mod) => mod.Plan)
-)
-
 const PlanBlockComponent = _dynamic(() =>
 import('../components/planBlock').then((mod) => mod.PlanBlock)
 )

@@ -8,10 +8,6 @@ function StartPlan() {
 
   const router = useRouter();
 
-  const HeaderComponent = _dynamic(() =>
-  import('../components/header').then((mod) => mod.Header)
-)
-
   function back() {
     router.push(`/`);
   }
