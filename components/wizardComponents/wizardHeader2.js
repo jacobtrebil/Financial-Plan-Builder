@@ -8,7 +8,7 @@ export default function WizardHeader({}) {
         </div>
         <h2 className="wizardHeaderH2">Personal Info</h2>
         <hr className="wizardHeaderHr"></hr>
-        <div className="circle circleState">
+        <div className="circle selectedCircle">
             <h2 className="wizardHeaderH2SelectedCircle">2</h2>
         </div>
         <h2 className="wizardHeaderH2Selected">Financial Info</h2>

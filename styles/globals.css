@@ -134,13 +134,6 @@ button:hover {
   position: relative;
 }
 
-#noPlansMessage {
-  font-weight: normal;
-  text-align: center;
-  margin: 40px 0px 0px 0px;
-  display: none;
-}
-
 .dashboardButton {
   color: black;
   background-color: white;
@@ -199,21 +192,32 @@ button:hover {
 
 
 
-/* Images */
+/* Sidebar Section */
 
-.settings:hover {
+.settingsIcon:hover {
   opacity: 70%;
   cursor: pointer;
 }
 
-#plansSideLogo:hover {
+.plansIcon {
+  margin: 0px 64px 0px 0px;
+}
+
+.plansIcon:hover {
   cursor: pointer;
   opacity: 75%;
 }
 
-.plans {
-  margin: 0px 64px 0px 0px;
+.fpbTopLogo {
+  margin: 60px auto 0px auto;
+  display: block;
 }
+
+.sideLogo {
+  margin: 60px 0px 0px 0px;
+  opacity: 60%;
+}
+
 
 
 
@@ -223,11 +227,7 @@ button:hover {
 
 /* Settings Section */
 
-#settingsContainer {
-  padding: 0px 0px 0px 0px;
-}
-
-#settingsContent {
+.settingsContent {
   background-color: white;
   padding: 60px 0px 60px 0px;
   width: 80%;
@@ -235,7 +235,7 @@ button:hover {
   border-radius: 8px;
 }
 
-.accountContainer {
+.settingsBlock {
   background-color: #f5f8f7;
   margin: 20px 0px 20px 0px;
   padding: 20px 0px 20px 0px;
@@ -243,7 +243,7 @@ button:hover {
   border: 1px solid #dee7e4;
 }
 
-#cancelMethodTitle {
+.settingsTitle {
   margin: 15px 0px 10px 50px;
   display: inline-block;
   float: left;
@@ -262,27 +262,20 @@ button:hover {
 }
 
 .cancelButton:hover {
-  opacity: 70%;
+  background-color: rgb(209, 2, 2);
   cursor: pointer;
 }
 
-.cancelSolidHr {
+.settingsHr {
   width: 92%;
   border: 1px solid rgb(226, 225, 225);
   margin: 10px auto 0px auto;
 }
 
-#settingsMessage {
+.settingsMessage {
   font-weight: normal;
   text-align: center;
   margin: 40px 0px 20px 0px;
-}
-
-#paymentMethodTitle {
-  margin: 15px 0px 10px 50px;
-  display: inline-block;
-  float: left;
-  padding: 0px;
 }
 
 .paymentButton {
@@ -295,40 +288,6 @@ button:hover {
   position: relative;
 }
 
-.paymentSolidHr {
-  width: 92%;
-  border: 1px solid rgb(226, 225, 225);
-  margin: 10px auto 0px auto;
-}
-
-
-
-
-
-
-
-
-/* Sidebar Section */
-
-#fpbTopLogo {
-  margin: 60px auto 0px auto;
-}
-
-.sidebarLogo {
-  display: block;
-  margin: 60px 0px 0px 0px;
-}
-
-#plansSideLogo {
-  margin: 60px 0px 0px 0px;
-}
-
-.settingsSideLogo {
-  margin: 60px 0px 0px 0px;
-  opacity: 60%;
-}
-
-
 
 
 
@@ -336,7 +295,7 @@ button:hover {
 
 /* Footer Section */
 
-#footerSection {
+.footerSection {
   border-top: 1px solid #dbdbdb;
   margin: auto 0px auto 0px;
   padding: 30px 0px 30px 0px;
@@ -345,25 +304,25 @@ button:hover {
   position: relative;
 }
 
-#footerSection p {
+.footerSection p {
   font-weight: normal;
   display: inline-block;
   text-align: left;
 }
 
-#footerCopyright {
+.footerCopyright {
   float: right;
   margin: 4px 40px 0px 0px;
 }
 
-#footerNavBox {
+.footerNavBox {
   display: inline-block;
   float: left;
   margin: 0px 0px 0px 60px;
   padding: 0px 0px 30px 0px;
 }
 
-#footerCopyrightBox {
+.footerCopyrightBox {
   display: inline-block;
   float: right;
 }
@@ -389,7 +348,7 @@ button:hover {
   padding: 0px 0px 80px 0px;
 }
 
-#legalH1 {
+.legalH1 {
   margin: 20px 0px 0px 120px;
 }
 
@@ -413,7 +372,7 @@ button:hover {
 /* Create a Plan */
 
 .createAPlan {
-  margin: 0% auto 0% auto;
+  margin: 1% auto 0% auto;
   text-align: center;
   font-size: 48px;
   font-family: 'Ubuntu';
@@ -424,15 +383,15 @@ button:hover {
   margin: 12% auto 0px auto;
 }
 
-#createAPlanP {
+.createAPlanP {
   margin: 15px 20% 10px 20%;
 }
 
-#createAPlanP2 {
+.createAPlanP2 {
   margin: 0px 0px 0px 0px;
 }
 
-#startPlanButton {
+.startPlanButton {
   padding: 18px 28px;
   font-size: 18px;
   margin: 30px 0px 200px 0px;
@@ -507,7 +466,7 @@ button:hover {
   margin: 0px 0px 0px 20px
 }
 
-.circleState {
+.selectedCircle {
   background-color:rgb(4, 187, 172);
   color: white;
 }
@@ -626,10 +585,6 @@ button:hover {
   padding: 10px 0px 10px 9px;
   font-size: 14px;
   border-radius: 4px;
-}
-
-#dateOfBirth:hover {
-  cursor: pointer;
 }
 
 
@@ -936,7 +891,8 @@ button:hover {
 
 .planHeadline {
   font-size: 20px;
-  margin: 0px 0px 0px 40px;
+  margin: 40px 0px 0px 40px;
+  text-align: left;
 }
 
 .planSubheadline {
@@ -1041,7 +997,7 @@ button:hover {
 }
 
 .chartHeadlinePortfolio {
-  margin: -40px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
   font-size: 24px;
   color:black;
   font-weight: bold;
@@ -1065,7 +1021,6 @@ button:hover {
   text-align: left;
   vertical-align: top;
   padding: 0px 0px 40px 0px;
-  color:black;
   font-weight: normal;
 }
 

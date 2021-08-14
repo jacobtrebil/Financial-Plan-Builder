@@ -15,7 +15,7 @@ function Legal() {
     return (
     <div>
         <div className="legalSection">
-           <h1 id="legalH1">Terms of Use & Privacy Policy</h1>
+           <h1 className="legalH1">Terms of Use & Privacy Policy</h1>
            <p className="terms">Please read these Terms of Use ("Terms", "Terms of Use") carefully before using the
 http://www.financialplanbuilder.com website and the App operated by Financialplanbuilder LLC ("us", "we", or "our").
 Your access to and use of the Service is conditioned on your acceptance of and compliance with

@@ -19,9 +19,9 @@ function StartPlan() {
           </div>
           <div className="createAPlanBox">
             <h1 className="createAPlan">Create a Plan</h1>
-            <h3 id="createAPlanP">Answer a few questions and we'll generate you a custom financial plan. </h3>
-            <h3 id="createAPlanP2">Time to complete: 5 minutes</h3>
-            <Link href="/wizard/step1"><button type="submit" id="startPlanButton">Start &#187;</button></Link>
+            <h3 className="createAPlanP">Answer a few questions and we'll generate you a custom financial plan. </h3>
+            <h3 className="createAPlanP2">Time to complete: 5 minutes</h3>
+            <Link href="/wizard/step1"><button type="submit" className="startPlanButton">Start &#187;</button></Link>
           </div>
       </div>
     );

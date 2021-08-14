@@ -7,19 +7,19 @@ export function Account() {
     return (
     <div>
     <div>
-        <div className="accountContainer">
-            <p id="paymentMethodTitle">Payment Methods</p>   
+        <div className="settingsBlock">
+            <p className="settingsTitle">Payment Methods</p>   
             <button className="paymentButton">+ Add Payment Method</button>           
-            <hr className="paymentSolidHr"></hr>
-            <p id="settingsMessage">You currently have 0 payment methods added. Click the button above to add a payment method.</p>
+            <hr className="settingsHr"></hr>
+            <p className="settingsMessage">You currently have 0 payment methods added. Click the button above to add a payment method.</p>
         </div>
     </div>
     <div>
-        <div className="accountContainer">
-            <p id="cancelMethodTitle">Close Account & Cancel Subscription</p>   
+        <div className="settingsBlock">
+            <p className="settingsTitle">Close Account & Cancel Subscription</p>   
             <button className="cancelButton">Close Account</button>           
-            <hr className="cancelSolidHr"></hr>
-            <p id="settingsMessage">Click the button above to close your account and cancel your subscription. This can not be undone.</p>
+            <hr className="settingsHr"></hr>
+            <p className="settingsMessage">Click the button above to close your account and cancel your subscription. This can not be undone.</p>
         </div>
     </div>
     </div>

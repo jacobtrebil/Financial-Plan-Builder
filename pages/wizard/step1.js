@@ -95,7 +95,6 @@ export default function Step1({}) {
                     </select>
                     <input
                     name="dateOfBirthDay"
-                    id="dateofbirth"
                     className="formInputDob"
                     value={dateOfBirthDay}
                     placeholder="Day"
@@ -106,7 +105,6 @@ export default function Step1({}) {
                     />
                     <input
                     name="dateOfBirthYear"
-                    id="dateOfBirth"
                     className="formInputDob"
                     value={dateOfBirthYear}
                     placeholder="Year"

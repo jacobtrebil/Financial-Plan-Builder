@@ -293,17 +293,17 @@ export function onePagePlan(plan) {
       {
         value: "U.S. Small Cap Equity (22%)",
         type: "square",
-        color: "rgba(4, 187, 172, 0.75)",
+        color: "red",
       },
       {
         value: "Non-U.S. Developed Market Equity (25%)",
         type: "square",
-        color: "rgba(4, 187, 172, 0.5)",
+        color: "rgb(4, 129, 187)",
       },
       {
         value: "Cash (2%)",
         type: "square",
-        color: "rgba(4, 187, 172, 0.35)",
+        color: "rgb(4, 187, 102)",
       },
     ],
   };
@@ -336,17 +336,17 @@ export function onePagePlan(plan) {
     {
       value: "U.S. Mid Cap Equity (17%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.75)",
+      color: "red",
     },
     {
       value: "Non-U.S. Developed Market Equity (22%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.5)",
+      color: "rgb(4, 129, 187)",
     },
     {
       value: "Cash (2%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.35)",
+      color: "rgb(4, 187, 102)",
     },
   ],
 };
@@ -378,27 +378,27 @@ export function onePagePlan(plan) {
     {
       value: "U.S. Large Cap Equity (43%)",
       type: "square",
-      color: "rgb(4, 187, 172)",
+      color: "rgb(4, 187, 172)"
     },
     {
       value: "U.S. Small Cap Equity (18%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.75)",
+      color: "red",
     },
     {
       value: "Non-U.S. Developed Market Equity (20%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.5)",
+      color: "rgb(4, 129, 187)",
     },
     {
       value: "Investment Grade Intermediate Maturity Fixed Income (17%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.25)",
+      color: "rgb(4, 187, 102)",
     },
     {
       value: "Cash (2%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.35)",
+      color: "yellow",
     },
   ],
 };
@@ -435,22 +435,22 @@ export function onePagePlan(plan) {
       {
         value: "U.S. Small Cap Equity (16%)",
         type: "square",
-        color: "rgba(4, 187, 172, 0.75)",
+        color: "red",
       },
       {
         value: "Non-U.S. Developed Market Equity (16%)",
         type: "square",
-        color: "rgba(4, 187, 172, 0.5)",
+        color: "rgb(4, 129, 187)",
       },
       {
         value: "Investment Grade Intermediate Maturity Fixed Income (31%)",
         type: "square",
-        color: "rgba(4, 187, 172, 0.25)",
+        color: "rgb(4, 187, 102)",
       },
       {
         value: "Cash (2%)",
         type: "square",
-        color: "rgba(4, 187, 172, 0.35)",
+        color: "yellow",
       },
     ],
   };
@@ -491,27 +491,27 @@ export function onePagePlan(plan) {
     {
       value: "U.S. Mid Cap Equity (15%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.75)",
+      color: "red",
     },
     {
       value: "Global Equity Strategies (18%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.75)",
+      color: "rgb(4, 129, 187)",
     },
     {
       value: "Investment Grade Intermediate Maturity Fixed Income (35%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.25)",
+      color: "rgb(4, 187, 102)",
     },
     {
       value: "Multi-Sector Fixed Income Strategies (15%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.25)",
+      color: "yellow",
     },
     {
       value: "Cash (2%)",
       type: "square",
-      color: "rgba(4, 187, 172, 0.35)",
+      color: "rgb(187, 123, 4)",
     },
   ],
 };
@@ -532,11 +532,11 @@ export function onePagePlan(plan) {
 
   const COLORS = [
     "rgb(4, 187, 172)",
-    "rgba(4, 187, 172, 0.75)",
-    "rgba(4, 187, 172, 0.6)",
-    "rgba(4, 187, 172, 0.5)",
-    "rgba(4, 187, 172, 0.40)",
-    "rgba(4, 187, 172, 0.20)",
+    "red",
+    "rgb(4, 129, 187)",
+    "rgb(4, 187, 102)",
+    "yellow",
+    "rgb(187, 123, 4)",
   ];
 
   // I should set the content to the portfolios
@@ -752,3 +752,6 @@ export function onePagePlan(plan) {
     </div>
   );
 }
+
+
+/* content={renderLegend} */

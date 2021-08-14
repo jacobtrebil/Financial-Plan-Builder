@@ -346,7 +346,7 @@ function Summary(plan1) {
             />
           </AreaChart>
           <p className="chartDescription">Age</p>
-          <p className="chartDescription">*NOTE: If the chart goes negative, you will run out of money at that time</p>
+          <p className="chartDescription">*NOTES: If the chart goes negative, you will run out of money at that time. <br></br> Also, as a {plan.gender}, you're projected to live until age {plan.ageOfDeath}.</p>
         </div>
         <div className="block2">
           <div className="decisionsSocialSecuritySection">
@@ -357,6 +357,11 @@ function Summary(plan1) {
               value={planVariables.retirementAge}
               onChange={handleChange}
             >
+              <option value="50">50</option>
+              <option value="51">51</option>
+              <option value="52">52</option>
+              <option value="53">53</option>
+              <option value="54">54</option>
               <option value="55">55</option>
               <option value="56">56</option>
               <option value="57">57</option>

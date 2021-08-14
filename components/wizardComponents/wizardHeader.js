@@ -3,7 +3,7 @@ import React from 'react';
 export default function WizardHeader({}) { 
     return (
     <div className='wizardHeader'>
-        <div className="circle circleState">
+        <div className="circle selectedCircle">
             <h2 className="wizardHeaderH2SelectedCircle">1</h2>
         </div>
         <h2 className="wizardHeaderH2Selected">Personal Info</h2>

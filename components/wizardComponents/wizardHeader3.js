@@ -13,7 +13,7 @@ export default function WizardHeader3({}) {
         </div>
         <h2 className="wizardHeaderH2">Financial Info</h2>
         <hr className="wizardHeaderHr"></hr>
-        <div className="circle circleState">
+        <div className="circle selectedCircle">
             <h2 className="wizardHeaderH2SelectedCircle">3</h2>
         </div>
         <h2 className="wizardHeaderH2Selected">Risk Questionaire</h2>
