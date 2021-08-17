@@ -34,9 +34,17 @@ import slightlyHigherLivingExpenseFunction from '../../../calculations/livingExp
 import slightlyLowerLivingExpenseFunction from '../../../calculations/livingExpenseOptions/slightlyLowerLivingExpense';
 import muchHigherLivingExpenseFunction from '../../../calculations/livingExpenseOptions/muchHigherLivingExpense';
 import muchLowerLivingExpenseFunction from '../../../calculations/livingExpenseOptions/muchLowerLivingExpense';
+import setAssetValueToNumber from '../../../calculations/setAssetValueToNumber';
+import setCurrentEarningsToNumber from '../../../calculations/setCurrentEarningsToNumber';
+import setCurrentSavingsToNumber from '../../../calculations/setCurrentSavingsToNumber';
+import setLivingExpenseToNumber from '../../../calculations/setLivingExpenseToNumber';
 
 const reCalculate = async (id) => { 
     let plan = await Plan.findById(id);
+    plan.numberAssetValue = setAssetValueToNumber(plan.assetValue);
+    plan.numberCurrentSavings = setCurrentSavingsToNumber(plan.currentSavings);
+    plan.numberCurrentEarnings = setCurrentEarningsToNumber(plan.currentEarnings);
+    plan.numberLivingExpense = setLivingExpenseToNumber(plan.livingExpense);
     plan.socialSecurityEarnings = calculateSocialSecurity(plan.currentEarnings);
     plan.socialSecurityAge62Earnings = calculateSocialSecurityAge62(plan.socialSecurityEarnings);
     plan.socialSecurityAge70Earnings = calculateSocialSecurityAge70(plan.socialSecurityEarnings);

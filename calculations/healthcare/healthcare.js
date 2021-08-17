@@ -7,8 +7,6 @@ function healthcare(lengthOfRetirement) {
 const healthcareInflation = 1.05;
 let healthcareInitialCost = 4000;
 
-// I should probably turn this into an object that I can loop through and apply to every retirement age
-
 let totalHealthcareCosts = 0;
 
 const yearOneCost = healthcareInitialCost;

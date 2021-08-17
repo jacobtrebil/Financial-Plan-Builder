@@ -608,7 +608,7 @@ button:hover {
 }
 
 .scorecardButton {
-  margin: 60px auto 0px auto;
+  margin: 100px auto 0px auto;
   text-align: center;
   padding: 18px 28px;
   font-size: 18px;
@@ -763,7 +763,7 @@ button:hover {
   width: 45%;
   margin: 0px 0px 0px 0px;
   border-radius: 6px;
-  color: rgb(4, 187, 172);
+  color: rgb(5, 187, 51);
   background-color: rgb(4, 187, 172);
   height: 100%;
 }
@@ -968,15 +968,25 @@ button:hover {
 }
 
 .pieChart {
-  padding: 0px 0px 0px 0px;
-  margin: 0px auto 20px auto;
+  padding: 0px 0px 0px 100px;
+  margin: 0px 50px 20px 50px;
 }
 
 .pie {
   width: 100%;
   height: 100%;
-  margin: 40px auto 0px auto;
+  margin: 40px 0px 0px 0px;
   padding: 0px;
+}
+
+.recharts-legend-item {
+  margin: 10px 0px 20px 0px;
+  font-size: 16px;
+}
+
+.recharts-legend-item-text {
+  margin: 0px 0px 0px 5px;
+  color: #535353 !important;
 }
 
 .portfolioButton {
@@ -1022,6 +1032,11 @@ button:hover {
   vertical-align: top;
   padding: 0px 0px 40px 0px;
   font-weight: normal;
+}
+
+.legend {
+  padding: 20px 0px;
+  margin: 20px 0px;
 }
 
 .legendList {

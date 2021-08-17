@@ -14,20 +14,23 @@ export function PlanBlock() {
     checkPlans();
   }, [planId]);
 
-  const [plans, setPlans] = useState();
+  const [plans, setPlans] = useState({});
   const [block, setBlock] = useState(false);
   const [text, setText] = useState(true);
  
   async function getPlansApiCall() {
     const getPlansFunction = await getPlans();
     setPlans(getPlansFunction);
-    console.log(plans)
   }
 
   function checkPlans() {
-    if (plans) {
+    console.log(plans[0]);
+    if (plans[0]) {
         setBlock(true);
         setText(false);
+      } else {
+        setBlock(false);
+        setText(true);
       }
   }
 
@@ -43,7 +46,7 @@ export function PlanBlock() {
         block && (
       <div className="newPlansSection">
         <div className="planInfo">
-          <p className="dashboardPlanHeadline"><b>{plans.firstName}'s Financial Plan</b></p>
+          <p className="dashboardPlanHeadline"><b>{plans[0].firstName}'s Financial Plan</b></p>
           <h3 className="dashboardPlanSubheadline">Build your wealth by making progress towards your financial plan.</h3>
           <div className="planProgressBarContainer">
             <hr className="planProgressBar"></hr>

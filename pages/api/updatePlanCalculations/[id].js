@@ -24,12 +24,6 @@ export default async function handler(req, res) {
 
         await WizardCalculationHelper.reCalculate(id);
 
-        // I coule create a seperate API call that is only done the first time, and then not include all of the
-        // Calculations for slighltyMore, muchMore, etc. so that they're all only done once.
-
-        // turn this into a service pattern - research how to do this
-        // minimize saves in db calls, db calls are expensive
-
         const plan = await Plan.findById(id);
         res.status(200).json(plan);
         return;

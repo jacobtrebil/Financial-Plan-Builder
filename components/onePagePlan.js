@@ -20,11 +20,6 @@ export function onePagePlan(plan) {
   const router = useRouter();
   const { planId } = router.query;
 
-  // I should create an API call for storing the newly uploaded files to their plan document. That should be pretty
-  // easy to implement with just a standard PUT api call.
-
-  // Create a shortener function, don't show the file screenshot rn
-
   const [calculations, setCalculations] = useState({});
   const [portfolio, setPortfolio] = useState([]);
   const [portfolioSubheadline, setPortfolioSubheadline] = useState(
@@ -49,25 +44,7 @@ export function onePagePlan(plan) {
   const fileUploadHandler = async ({ target: { name, files: fileObj } }) => {
     console.log("the name is ====", name, files);
     setFiles({ ...files, [name]: fileObj[0] });
-    /*const updatedDocuments = await addDocuments(
-        planId,
-        files
-      );*/
   };
-
-  // Get Viveks help with this and the portfolio stuff.
-
-  // The api call should pass in the files, not the file names.
-
-  // How do I do this PUT call so that any files that were already uploaded aren't overridden.
-
-  // The file upload handler should change the state of what is displayed as well as call the API that
-  // actually uploads the file.
-
-  // The file names & the actual file documents are completely separate things. The fileUploadHandler
-  // should deal with the files, not the names.
-
-  // I should look at how I did this for the customization page.
 
   async function doWizardCalculations() {
     const wizardCalculationsFunction = await planCalculations(planId, plan);
@@ -136,10 +113,6 @@ export function onePagePlan(plan) {
     return str.slice(0, 20) + '...'
   }
 
-  // The legend is still not completely updating based on the portfolio that is chosen. It updated to aggressive, 
-  // but without the percentages. Moderate + it just did a shit to of bullets. Same with moderate. 
-  // Conservative + displayed, but with incorrect percentages. Conservative did a shit ton of bullets too.  
-
   function assignPortfolio() {
     if (calculations.riskScore === "Conservative") {
       setPortfolio(conservativePortfolio);
@@ -155,8 +128,6 @@ export function onePagePlan(plan) {
       setPortfolio(conservativePlusPortfolio);
     }
   }
-
-  // getPortfolioByType('aggressivePortfolio') getPortfolioByType('conservativePlusPortfolio')
 
   function assignPortfolioSubheadline() {
     console.log("riskScore:", calculations.riskScore);
@@ -189,78 +160,6 @@ export function onePagePlan(plan) {
     maximumFractionDigits: 0,
   });
 
-  // Create helper page w/ all of the portfolio data, and import it
-
-  /* const folioKeyDescriptionMapping = {
-    USLarge: "U.S. Large Cap Equity",
-    USSmall: "U.S. Small Cap Equity",
-    NonUSDeveloped: "Non-U.S. Developed Market Equity",
-    InvestmentGradeFixedIncome: "Investment Grade Intermediate Maturity Fixed Income",
-    Cash: "Cash",
-  };
-  const folioLegendMapping = {
-    conservativePlusPortfolio: [
-      {
-        value: "U.S. Large Cap Equity (21%)",
-        type: "square",
-        color: "rgb(4, 187, 172)",
-      },
-      {
-        value: "U.S. Small Cap Equity (22%)",
-        type: "square",
-        color: "rgba(4, 187, 172, 0.75)",
-      },
-      {
-        value: "Non-U.S. Developed Market Equity (25%)",
-        type: "square",
-        color: "rgba(4, 187, 172, 0.5)",
-      },
-      {
-        value: "Cash (2%)",
-        type: "square",
-        color: "rgba(4, 187, 172, 0.35)",
-      },
-      {
-        value: "Investment Grade Intermediate Maturity Fixed Income",
-        type: "square",
-        color: "rgba(4, 187, 172, 0.25)",
-      },
-    ]
-  }
-  const folioValueByType = {
-    aggressivePortfolio: {
-      USLarge: 51,
-      USSmall: 22,
-      NonUSDeveloped: 25,
-      Cash: 2,
-    },
-    moderatePortfolio: {
-      USLarge: 59,
-      USSmall: 17,
-      NonUSDeveloped: 22,
-      Cash: 2,
-    },
-    conservativePlusPortfolio: {
-      USLarge: 35,
-      USSmall: 16,
-      NonUSDeveloped: 16,
-      InvestmentGradeFixedIncome: 31,
-      Cash: 2,
-    }
-  };
-  const getPortfolioByType = (type) => {
-    const result = { folio: [], legend: folioLegendMapping[type] };
-    const folio = folioValueByType[type];
-    let colorRedVal = Object.keys(folio).length
-    for (const [key, value] of Object.entries(folio)) {
-      result.folio.push({ name: folioKeyDescriptionMapping[key], value, color: `rgb(${colorRedVal}, 187, 172)` });
-      colorRedVal--;
-    }
-    return result;
-  }; */
-
-  // Work on generating the legend dynamically, keep all of this in a helper function and document for getPortfolioByType
-
   const aggressivePortfolio = {
     folio: [
       {
@@ -288,22 +187,22 @@ export function onePagePlan(plan) {
       {
         value: "U.S. Large Cap Equity (51%)",
         type: "square",
-        color: "rgb(4, 187, 172)",
+        color: "rgb(4, 187, 156)",
       },
       {
         value: "U.S. Small Cap Equity (22%)",
         type: "square",
-        color: "red",
+        color: "rgb(4, 187, 172)",
       },
       {
         value: "Non-U.S. Developed Market Equity (25%)",
         type: "square",
-        color: "rgb(4, 129, 187)",
+        color: "rgb(4, 159, 187)",
       },
       {
         value: "Cash (2%)",
         type: "square",
-        color: "rgb(4, 187, 102)",
+        color: "rgb(4, 129, 187)",
       },
     ],
   };
@@ -331,22 +230,22 @@ export function onePagePlan(plan) {
     {
       value: "U.S. Large Cap Equity (59%)",
       type: "square",
-      color: "rgb(4, 187, 172)",
+      color: "rgb(4, 187, 156)",
     },
     {
       value: "U.S. Mid Cap Equity (17%)",
       type: "square",
-      color: "red",
+      color: "rgb(4, 187, 172)",
     },
     {
       value: "Non-U.S. Developed Market Equity (22%)",
       type: "square",
-      color: "rgb(4, 129, 187)",
+      color: "rgb(4, 159, 187)",
     },
     {
       value: "Cash (2%)",
       type: "square",
-      color: "rgb(4, 187, 102)",
+      color: "rgb(4, 129, 187)",
     },
   ],
 };
@@ -378,27 +277,27 @@ export function onePagePlan(plan) {
     {
       value: "U.S. Large Cap Equity (43%)",
       type: "square",
-      color: "rgb(4, 187, 172)"
+      color: "rgb(4, 187, 156)"
     },
     {
       value: "U.S. Small Cap Equity (18%)",
       type: "square",
-      color: "red",
+      color: "rgb(4, 187, 172)",
     },
     {
       value: "Non-U.S. Developed Market Equity (20%)",
       type: "square",
-      color: "rgb(4, 129, 187)",
+      color: "rgb(4, 159, 187)",
     },
     {
       value: "Investment Grade Intermediate Maturity Fixed Income (17%)",
       type: "square",
-      color: "rgb(4, 187, 102)",
+      color: "rgb(4, 129, 187)",
     },
     {
       value: "Cash (2%)",
       type: "square",
-      color: "yellow",
+      color:"rgb(4, 109, 187)",
     },
   ],
 };
@@ -430,27 +329,27 @@ export function onePagePlan(plan) {
       {
         value: "U.S. Large Cap Equity (35%)",
         type: "square",
-        color: "rgb(4, 187, 172)",
+        color: "rgb(4, 187, 156)",
       },
       {
         value: "U.S. Small Cap Equity (16%)",
         type: "square",
-        color: "red",
+        color: "rgb(4, 187, 172)",
       },
       {
         value: "Non-U.S. Developed Market Equity (16%)",
         type: "square",
-        color: "rgb(4, 129, 187)",
+        color: "rgb(4, 159, 187)",
       },
       {
         value: "Investment Grade Intermediate Maturity Fixed Income (31%)",
         type: "square",
-        color: "rgb(4, 187, 102)",
+        color: "rgb(4, 129, 187)",
       },
       {
         value: "Cash (2%)",
         type: "square",
-        color: "yellow",
+        color: "rgb(4, 109, 187)",
       },
     ],
   };
@@ -486,32 +385,32 @@ export function onePagePlan(plan) {
     {
       value: "U.S. Large Cap Equity (15%)",
       type: "square",
-      color: "rgb(4, 187, 172)",
+      color: "rgb(4, 187, 156)",
     },
     {
       value: "U.S. Mid Cap Equity (15%)",
       type: "square",
-      color: "red",
+      color: "rgb(4, 187, 172)",
     },
     {
       value: "Global Equity Strategies (18%)",
       type: "square",
-      color: "rgb(4, 129, 187)",
+      color: "rgb(4, 159, 187)",
     },
     {
       value: "Investment Grade Intermediate Maturity Fixed Income (35%)",
       type: "square",
-      color: "rgb(4, 187, 102)",
+      color: "rgb(4, 129, 187)",
     },
     {
       value: "Multi-Sector Fixed Income Strategies (15%)",
       type: "square",
-      color: "yellow",
+      color: "rgb(4, 109, 187)",
     },
     {
       value: "Cash (2%)",
       type: "square",
-      color: "rgb(187, 123, 4)",
+      color: "rgb(4, 79, 187)",
     },
   ],
 };
@@ -521,8 +420,8 @@ export function onePagePlan(plan) {
 
     return (
       <ul className="legendList">
-        {payload.map((entry, index) => (
-          <li className="legendItems" key={`item-${index}`}>
+        {payload.map((entry, index, color) => (
+          <li color={entry.color} className="legendItems" key={`item-${index}`}>
             {entry.value}
           </li>
         ))}
@@ -531,15 +430,13 @@ export function onePagePlan(plan) {
   };
 
   const COLORS = [
+    "rgb(4, 187, 156)",
     "rgb(4, 187, 172)",
-    "red",
+    "rgb(4, 159, 187)",
     "rgb(4, 129, 187)",
-    "rgb(4, 187, 102)",
-    "yellow",
-    "rgb(187, 123, 4)",
+    "rgb(4, 109, 187)",
+    "rgb(4, 79, 187)",
   ];
-
-  // I should set the content to the portfolios
 
   return (
     <div>
@@ -552,11 +449,10 @@ export function onePagePlan(plan) {
         </h3>
         <hr className="planHr"></hr>
         <div>
-          <p className="financialStrategyP">*Your Financial Strategy: To achieve your financial goals, we recommend rolling all of your current assets & savings into the {calculations.riskScore} Portfolio we recommend for you.
-          In addition, invest {convertToUsd.format(calculations.currentSavings / 12)} every month into your {calculations.riskScore} portfolio to achieve your financial goals. <br></br><br></br> Your portfolio is designed to grow your savings
+          <p className="financialStrategyP">*Your Financial Strategy: To achieve your financial goals, we recommend investing {convertToUsd.format(calculations.currentSavings / 12)} every month into your {calculations.riskScore} portfolio to achieve your financial goals. <br></br><br></br> Your portfolio is designed to grow your savings
           every single month, while staying within your risk tolerance, so that by the time you retire you'll have enough money in your portfolio to fund your goals, while being comfotable along the way.</p>
           <div className="monthlySavingsSection">
-            <p className="monthlySavingsAboveHeadline">Monthly Savings until retirement</p>
+            <p className="monthlySavingsAboveHeadline">Monthly Savings until retirement</p> 
             <h1 className="monthlySavingsHeadline">{convertToUsd.format(calculations.currentSavings / 12)}</h1>
             <p className="monthlySavingsSubheadline">Invest {convertToUsd.format(calculations.currentSavings / 12)} per month into the portfolio below to achieve your financial goals.</p>
           </div>
@@ -565,7 +461,7 @@ export function onePagePlan(plan) {
               {calculations.riskScore} Portfolio
             </h1>
             <h3 className="pieSubheadline">{portfolioSubheadline}</h3>
-            <PieChart className="pieChart" width={1000} height={500}>
+            <PieChart className="pieChart" width={850} height={500}>
               <Pie
                 className="pie"
                 data={portfolio.folio}
@@ -588,7 +484,7 @@ export function onePagePlan(plan) {
                 fontSize="18px"
                 content={CustomTooltipPortfolios}
               />
-              <Legend content={renderLegend} payload={portfolio.legend} verticalAlign="middle" align="center"/>
+              <Legend iconType="square" payload={portfolio.legend} verticalAlign="middle" align="right" layout="vertical" width="35%"/>
             </PieChart>
             <p className="noteP">*Note: To invest in your portfolio, click the button below to get set up with a Raymond James investment account. </p>
             <button className="portfolioButton">Invest Now &#187;</button>
@@ -752,6 +648,3 @@ export function onePagePlan(plan) {
     </div>
   );
 }
-
-
-/* content={renderLegend} */

@@ -11,7 +11,6 @@ export default async function handler(req, res) {
     case "POST":
       try {
         const { ageAtPurchase, annualCost, nameOfExpense, upfrontCost } = req.body
-        /* console.log(req.body); */
         const expense = Expenses.create({
             planId: id, 
             ageAtPurchase, 

@@ -215,7 +215,6 @@ function Summary(plan1) {
   const convertToUsd = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-    // maximumFractionDigits: 0,
   });
 
   const CustomTooltipToThousands = ({ active, payload, label }) => {

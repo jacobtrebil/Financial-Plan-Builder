@@ -228,17 +228,3 @@ export default function Step2({ plan, pageProps }) {
             </div>
     )
 }
-
-/*                 <div className="inputDiv">
-                    <label className="inputLabel">What are your expected healthcare costs throughout retirement?</label><br></br>
-                    <select
-                    className="formSelect"
-                    name="health"
-                    value={health}
-                    onChange={e=> setHealth(e.target.value)}
-                    >
-                    <option>Low</option>
-                    <option>Average</option>
-                    <option>High</option>
-                    </select><br></br>
-                </div>     const [health, setHealth] = useState('Average')*/
