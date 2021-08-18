@@ -1,27 +1,32 @@
-import Plan from '../../../models/wizardschema';
-import dbConnect from '../../../util/wizarddbconnect';
+import Scenarios from "../../../models/scenarioSchema";
+import dbConnect from "../../../util/wizardDbConnect";
 
-export default async function handler(req,res) {
-    const { method } = req
-    const id = req.query.id;
+export default async function handler(req, res) {
+  const { method } = req;
+  const { id } = req.query;
 
-    await dbConnect();
+  await dbConnect();
 
-    switch (method) {
-        case 'PUT':
-            try {
-                const { socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionTimeframe } = req.body
-                await Plan.updateOne({ _id: id}, { scenario: { socialSecurityAge, currentSavings, retirementAge, riskScore, partTimeWorkDecision, pensionTimeframe }})
-                const plan = await Plan.findById(id)
-                res.status(200).json( plan )
-                return;
-            } catch (error) {
-                console.log(error)
-                res.status(400).json()
-                return;
-            }
-            default: 
-            res.status(400).json()
-            break
-    }
+  switch (method) {
+    case "POST":
+      try {
+        const { scenarioName, currentSavings, livingExpense, retirementAge, riskScore } = req.body
+        const scenario = Scenarios.create({
+          planId: id,
+          scenarioName,
+          currentSavings,
+          livingExpense,
+          retirementAge,
+          riskScore
+        });
+        res.status(200).json(scenario);
+        return;
+      } catch (error) {
+        res.status(400).json();
+        return;
+      }
+    default:
+      res.status(400).json();
+      break;
+  }
 }

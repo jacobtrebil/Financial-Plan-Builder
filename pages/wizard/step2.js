@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import WizardHeader2 from '../../components/wizard/WizardHeader2';
-import WizardHeadline2 from '../../components/wizard/WizardHeadline2';
+import WizardHeader2 from '../../components/wizardComponents/wizardHeader2';
+import WizardHeadline2 from '../../components/wizardComponents/wizardHeadline2';
 import _dynamic from 'next/dynamic';
 import { updatePlan } from '../../apiclient/wizardFetch';
 
@@ -20,18 +20,42 @@ export default function Step2({ plan, pageProps }) {
     }
 
     function completePlan(){
-        if (retirementAge.length === 0 || retirementIncome.length === 0) {
+        if (currentEarnings.length === 0 || currentSavings.length === 0 || assetValue.length === 0 || retirementAge.length === 0 || livingExpense.length === 0 || pension === 'Yes' && pensionEarnings.length === 0) {
+            if (currentEarnings.length === 0) {
+                setErrors('*Please enter a valid number')
+                scrollOnError();
+            } else if (currentEarnings.length > 0) {
+                setErrors('')
+            }
+            if (currentSavings.length === 0) {
+                setErrors('*Please enter a valid number')
+                scrollOnError();
+            } else if (currentSavings.length > 0) {
+                setErrors2('')
+            }
+            if (assetValue.length === 0) {
+                setErrors3('*Please enter a valid number')
+                scrollOnError();
+            } else if (assetValue.length > 0) {
+                setErrors3('')
+            }
             if (retirementAge.length === 0) {
                 setErrors2('*Please enter a valid number')
                 scrollOnError();
             } else if (retirementAge.length > 0) {
                 setErrors2('')
             } 
-            if (retirementIncome.length === 0) {
-                setErrors3('*Please enter a valid number')
+            if (livingExpense.length === 0) {
+                setErrors4('*Please enter a valid number')
                 scrollOnError();
-            } else if (retirementIncome > 0) {
-                setErrors3('')
+            } else if (livingExpense > 0) {
+                setErrors4('')
+            }
+            if (pensionEarnings.length === 0) {
+                setErrors4('*Please enter a valid number')
+                scrollOnError();
+            } else if (pensionEarnings.length > 0) {
+                setErrors4('')
             }
         } 
         else {
@@ -43,16 +67,21 @@ export default function Step2({ plan, pageProps }) {
         window.scrollTo(0, 0);
     }
 
+    const [errors, setErrors] = useState('')
+    const [errors1, setErrors1] = useState('')
     const [errors2, setErrors2] = useState('')
     const [errors3, setErrors3] = useState('')
-    const [showForm, setShowForm] = useState(false)  
+    const [errors4, setErrors4] = useState('')
+    const [showForm5, setShowForm5] = useState(false)
     const [retirementAge, setRetirementAge] = useState('')
-    const [retirementIncome, setRetirementIncome] = useState('')
-    const [care, setCare] = useState('No')
-    const [health, setHealth] = useState('Average')
-    const [increaseIncome, setIncreaseIncome] = useState('No')
-    const [increaseIncomeAmount, setIncreaseIncomeAmount] = useState('')
-    const [outOfWork, setOutOfWork] = useState('No')
+    const [livingExpense, setLivingExpense] = useState('')
+    const [currentEarnings, setCurrentEarnings] = useState('')
+    const [currentSavings, setCurrentSavings] = useState('')
+    const [assetValue, setAssetValue] = useState('')
+    const [pension, setPension] = useState('No')
+    const [pensionInflation, setPensionInflation] = useState('No')
+    const [pensionStartAge, setPensionStartAge] = useState('50')
+    const [pensionEarnings, setPensionEarnings] = useState('')
 
     let [_plan, _setPlan] = useState({plan});
 
@@ -60,10 +89,17 @@ export default function Step2({ plan, pageProps }) {
         _setPlan({ ..._plan, ...changes})
     }
 
-    _plan = { outOfWork, increaseIncome, increaseIncomeAmount, retirementAge, retirementIncome, care, health };
+    function back() {
+        router.push(`/wizard/step1?planId=${planId}`);
+      }
+
+    _plan = { pension, pensionStartAge, pensionEarnings, pensionInflation, retirementAge, livingExpense, assetValue, currentEarnings, currentSavings };
     
     return (
         <div>
+          <div className="backArrowButton" onClick={back}>
+            <p className="backArrowP">← back to step 1</p>
+          </div>
         <WizardHeader2></WizardHeader2>
         <div className="formBorder">
         <WizardHeadline2></WizardHeadline2>
@@ -81,163 +117,59 @@ export default function Step2({ plan, pageProps }) {
                     <p className="errors">{errors2}</p>
                 </div>
                 <div className="inputDiv">
-                    <label className="inputLabel">What is your desired retirement income?</label><br></br>
+                    <label className="inputLabel">What will your annual living expense be throughout retirement?</label><br></br>
+                    <p className="inputLabelSubheadline">Most people spend between 55-80% of their current annual income in retirement</p>
                     <input 
                     className="formInputPages"
-                    name="retirementIncome"
-                    placeholder ="$100,000" 
-                    value={retirementIncome}
-                    onChange={e=> setRetirementIncome(e.target.value)}
+                    name="livingExpense"
+                    placeholder ="$50,000" 
+                    value={livingExpense}
+                    onChange={e=> setLivingExpense(e.target.value)}
                     >
                     </input><br></br>
+                    <p className="errors">{errors4}</p>
+                </div>
+                <div className="inputDiv">
+                    <label className="inputLabel">What are your average earnings over the past 5 years?</label><br></br>
+                    <input
+                    className="formInputPages"
+                    placeholder={'$50,000'}
+                    value={currentEarnings} 
+                    name="currentEarnings"
+                    onChange={e=> setCurrentEarnings(e.target.value)}
+                    /><br></br>
+                    <p className="errors">{errors}</p>
+                </div>
+                <div className="inputDiv">
+                    <label className="inputLabel">How much do you currently save or invest per year?</label><br></br>
+                    <input
+                    className="formInputPages"
+                    placeholder={'$50,000'}
+                    value={currentSavings}
+                    name="currentSavings"
+                    onChange={e=> setCurrentSavings(e.target.value)}
+                    /><br></br>
+                    <p className="errors">{errors1}</p>
+                </div>
+                <div className="inputDiv">
+                    <label className="inputLabel">What is the total value of your savings and assets that you own?</label><br></br>
+                    <p className="inputLabelSubheadline">Include real estate, investments, crypto, etc.</p>
+                    <input
+                    className="formInputPages"
+                    placeholder={'$100,000'}
+                    value={assetValue}
+                    name="assetValue"
+                    onChange={e=> setAssetValue(e.target.value)}
+                    /><br></br>
                     <p className="errors">{errors3}</p>
                 </div>
                 <div className="inputDiv">
-                    <label className="inputLabel">Do you expect your income to increase within the next 10 years?</label><br></br>
+                    <label className="inputLabel">Do you have a pension?</label><br></br>
                     <select
+                    name="pension"
                     className="formSelect"
-                    name="increaseIncome"
-                    value={increaseIncome}
-                    onChange={e=> {setIncreaseIncome(e.target.value); setShowForm(!showForm)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                showForm && (
-                <div className="inputDiv">
-                    <label className="inputLabel">How much do you expect your income to increase by?</label><br></br>
-                    <input
-                    name="increaseIncomeAmount"
-                    className="formInputPages"
-                    placeholder={'$10,000'}
-                    value={increaseIncomeAmount}
-                    onChange={e=> setIncreaseIncomeAmount(e.target.value)}
-                    />
-                </div>
-                )}
-                <div className="inputDiv">
-                    <label className="inputLabel">Do you expect being out of work for 1+ year anytime before retirement?</label><br></br>
-                    <select
-                    className="formSelect"
-                    name="outOfWork"
-                    value={outOfWork}
-                    onChange={e=> setOutOfWork(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">What are your expected healthcare costs throughout retirement?</label><br></br>
-                    <select
-                    className="formSelect"
-                    name="health"
-                    value={health}
-                    onChange={e=> setHealth(e.target.value)}
-                    >
-                    <option>Low</option>
-                    <option>Average</option>
-                    <option>High</option>
-                    </select><br></br>
-                </div>
-                <div className="inputDiv">
-                    <label className="inputLabel">Do you plan on living in long-term care throughout retirement?</label><br></br>
-                    <select
-                    className="formSelect"
-                    name="care"
-                    value={care}
-                    onChange={e=> setCare(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-            </div>
-            </div>
-            <div className='wizardFooter'>
-                <button onClick={completePlan} className="wizardFooterButton">Next</button>
-            </div>
-            </div>
-    )
-}
-
-/*                                                            <div className="input-div">
-                    <label className="input-label">Would you like to make any major purchases in the future?</label><br></br>
-                    <select 
-                    className="form-select"
-                    name="majorPurchases"
-                    value={majorPurchases}
-                    onChange={e=> {setMajorPurchases(e.target.value); setShowForm2(!showForm2)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                showForm2 && (
-                <div className="input-div">
-                    <label className="input-label">How much would you like to spend on these purchases?</label><br></br>
-                    <input 
-                    className="form-input-pages"
-                    name="purchasescost"
-                    placeholder ="$100,000" 
-                    value={purchasesCost}
-                    onChange={e=> setPurchasesCost(e.target.value)}
-                    >
-                    </input><br></br>
-                </div>
-                )}
-
-{
-                showForm3 && (
-                <div className="input-div">
-                    <label className="input-label">How much do you expect spending to support others?</label><br></br>
-                    <input 
-                    className="form-input-pages"
-                    name="supportCost"
-                    placeholder ="$50,000" 
-                    value={supportCost}
-                    onChange={e=> setSupportCost(e.target.value)}
-                    >
-                    </input><br></br>
-                </div>
-                )}     
-
-<div className="input-div">
-                    <label className="input-label">Do you have kids or expect to have kids in the future?</label><br></br>
-                    <select
-                    className="form-select"
-                    name="kids"
-                    value={kids}
-                    onChange={e=> {setKids(e.target.value); setShowForm4(!showForm4)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                showForm4 && (
-                <div>
-                <div className="input-div">
-                    <label className="input-label">How many kids do you have/expect?</label><br></br>
-                    <input 
-                    className="form-input-pages"
-                    name="numberOfKids"
-                    placeholder ="2" 
-                    value={numberOfKids}
-                    onChange={e=> setNumberOfKids(e.target.value)}
-                    >
-                    </input><br></br>
-                </div>
-                <div className="input-div">
-                    <label className="input-label">Do you plan on paying for some or all of your kids college?</label><br></br>
-                    <select
-                    className="form-select"
-                    name="college"
-                    value={college}
-                    onChange={e=> {setCollege(e.target.value); setShowForm5(!showForm5)}}
+                    value={pension}
+                    onChange={e=> {setPension(e.target.value); setShowForm5(!showForm5)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
@@ -245,126 +177,54 @@ export default function Step2({ plan, pageProps }) {
                 </div>
                 {
                     showForm5 && (
-                <div className="input-div">
-                    <label className="input-label">How much would you like to spend on your kids college? (total)</label><br></br>
-                    <input 
-                    className="form-input-pages"
-                    name="collegeSpendingAmount"
-                    placeholder ="$50,000" 
-                    value={collegeSpendingAmount}
-                    onChange={e=> setCollegeSpendingAmount(e.target.value)}
-                    >
-                    </input><br></br>
-                </div>
-                )}
-                </div>
-                )}
-
-<div className="input-div">
-                    <label className="input-label">Would you like to start a business during retirement?</label><br></br>
+                <div>
+                <div className="inputDiv">
+                    <label className="inputLabel">At what age will your pension earnings begin?</label><br></br>
                     <select
-                    className="form-select"
-                    name="business"
-                    value={business}
-                    onChange={e=> {setBusiness(e.target.value); setShowForm(!showForm)}}
+                    name="pensionStartAge"
+                    className="formSelect"
+                    value={pensionStartAge}
+                    onChange={e=> {setPensionStartAge(e.target.value)}}
+                    >
+                    <option>50</option>
+                    <option>55</option>
+                    <option>57</option>
+                    <option>60</option>
+                    <option>62</option>
+                    <option>65</option>
+                    <option>66</option>
+                    <option>67</option>
+                    <option>70</option>
+                    </select><br></br>
+                </div>
+                <div className="inputDiv">
+                    <label className="inputLabel">How much will you earn per year from your pension?</label><br></br>
+                    <input
+                    className="formInputPages"
+                    placeholder={'$40,000'}
+                    value={pensionEarnings} 
+                    name="pensionEarnings"
+                    onChange={e=> setPensionEarnings(e.target.value)}
+                    /><br></br>
+                    <p className="errors">{errors4}</p>
+                </div>
+                <div className="inputDiv">
+                    <label className="inputLabel">Will your pension earnings increase with the cost of inflation?</label><br></br>
+                    <select
+                    name="pensionInflation"
+                    className="formSelect"
+                    value={pensionInflation}
+                    onChange={e=> {setPensionInflation(e.target.value)}}
                     >
                     <option>No</option>
                     <option>Yes</option>
                     </select><br></br>
                 </div>
-                {
-                showForm && (
-                <div className="input-div">
-                    <label className="input-label">How much will you need to start the business?</label><br></br>
-                    <input 
-                    className="form-input-pages"
-                    name="businessMoneyNeeded"
-                    placeholder ="$200,000" 
-                    value={businessMoneyNeeded}
-                    onChange={e=> setBusinessMoneyNeeded(e.target.value)}
-                    >
-                    </input><br></br>
                 </div>
                 )}
-
-<div className="input-div">
-                    <label className="input-label">How much do you expect to work throughout retirement?</label><br></br>
-                    <select
-                    name="workAmount"
-                    className="form-select"
-                    value={workAmount}
-                    onChange={e=> setWorkAmount(e.target.value)}
-                    >
-                    <option>No work</option>
-                    <option>Part-time</option>
-                    <option>Full-time</option>
-                    </select><br></br>
-                </div>      
-
-<div className="input-div">
-                    <label className="input-label">Would you like to make any major purchases in the future?</label><br></br>
-                    <select 
-                    className="form-select"
-                    name="majorPurchases"
-                    value={majorPurchases}
-                    onChange={e=> {setMajorPurchases(e.target.value); setShowForm2(!showForm2)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-                {
-                showForm2 && (
-                <div className="input-div">
-                    <label className="input-label">How much would you like to spend on these purchases?</label><br></br>
-                    <input 
-                    className="form-input-pages"
-                    name="purchasescost"
-                    placeholder ="$100,000" 
-                    value={purchasesCost}
-                    onChange={e=> setPurchasesCost(e.target.value)}
-                    >
-                    </input><br></br>
-                </div>
-                )}
-
-<div className="input-div">
-                    <label className="input-label">Do you plan on financially supporting your parents or other family members?</label><br></br>
-                    <select 
-                    className="form-select"
-                    name="support"
-                    value={support}
-                    onChange={e=> {setSupport(e.target.value); setShowForm3(!showForm3)}}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-
-<div className="input-div">
-                    <label className="input-label">Would you like to give to charity throughout retirement?</label><br></br>
-                    <select 
-                    className="form-select"
-                    name="charity"
-                    value={charity}
-                    onChange={e=> setCharity(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-
-<div className="input-div">
-                    <label className="input-label">Do you expect to have any major health issues in the future?</label><br></br>
-                    <select
-                    className="form-select"
-                    name="health"
-                    value={health}
-                    onChange={e=> setHealth(e.target.value)}
-                    >
-                    <option>No</option>
-                    <option>Yes</option>
-                    </select><br></br>
-                </div>
-
-*/
+                <button onClick={completePlan} className="wizardButton">Next &#187;</button>
+            </div>
+            </div>
+            </div>
+    )
+}

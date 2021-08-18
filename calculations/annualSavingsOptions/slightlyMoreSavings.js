@@ -1,6 +1,6 @@
 
 
-export default function slightlyMoreSavingsFunction(currentSavings) {
-    const slightlyMoreSavings = Math.floor(currentSavings * 1.25);
+export default function slightlyMoreSavingsFunction(numberCurrentSavings) {
+    const slightlyMoreSavings = Math.floor(numberCurrentSavings * 1.25);
     return slightlyMoreSavings;
 }

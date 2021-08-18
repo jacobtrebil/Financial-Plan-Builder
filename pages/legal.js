@@ -15,7 +15,7 @@ function Legal() {
     return (
     <div>
         <div className="legalSection">
-           <h1 id="legalH1">Terms of Use & Privacy Policy</h1>
+           <h1 className="legalH1">Terms of Use & Privacy Policy</h1>
            <p className="terms">Please read these Terms of Use ("Terms", "Terms of Use") carefully before using the
 http://www.financialplanbuilder.com website and the App operated by Financialplanbuilder LLC ("us", "we", or "our").
 Your access to and use of the Service is conditioned on your acceptance of and compliance with
@@ -69,6 +69,7 @@ such content, goods or services available on or through any such web sites or se
 
 <h2 className="termsH2">Attribution</h2>
 
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 

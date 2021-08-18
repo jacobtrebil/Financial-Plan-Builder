@@ -2,15 +2,15 @@
 
 export default function calculateRateOfReturn(riskScore) {
     let rateOfReturn = 1.05;
-    if (riskScore === 'conservative') {
+    if (riskScore === 'Conservative') {
         rateOfReturn = 1.04;
-    } else if (riskScore === 'conservative +') {
+    } else if (riskScore === 'Conservative +') {
         rateOfReturn = 1.05;
-    } else if (riskScore === 'moderate') {
+    } else if (riskScore === 'Moderate') {
         rateOfReturn = 1.06;
-    } else if (riskScore === 'moderate +') {
+    } else if (riskScore === 'Moderate +') {
         rateOfReturn = 1.07;
-    } else if (riskScore === 'aggressive') {
+    } else if (riskScore === 'Aggressive') {
         rateOfReturn = 1.08;
     }
 

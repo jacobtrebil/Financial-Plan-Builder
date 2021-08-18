@@ -1,6 +1,6 @@
 
 
-export default function muchMoreSavingsFunction(currentSavings) {
-    const muchMoreSavings = currentSavings * 2;
+export default function muchMoreSavingsFunction(numberCurrentSavings) {
+    const muchMoreSavings = numberCurrentSavings * 2;
     return muchMoreSavings;
 }

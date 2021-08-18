@@ -1,5 +1,6 @@
-
-export default function calculateTotalRetirementEarnings(age60Income, age61Income, age62Income, age63Income, age64Income, age65Income, age66Income, age67Income, age68Income, age69Income, age70Income, age71Income, age72Income, age73Income, age74Income, age75Income, age76Income, age77Income, age78Income, age79Income, age80Income, age81Income, age82Income, age83Income, age84Income, age85Income, age86Income, age87Income, age88Income, age89Income, age90Income, age91Income, age92Income, age93Income) {
-    const totalRetirementEarnings = Math.floor(age60Income + age61Income + age62Income + age63Income + age64Income + age65Income + age66Income + age67Income + age68Income + age69Income + age70Income + age71Income + age72Income + age73Income + age74Income + age75Income + age76Income + age77Income + age78Income + age79Income + age80Income + age81Income + age82Income + age83Income + age84Income + age85Income + age86Income + age87Income + age88Income + age89Income + age90Income + age91Income + age92Income + age93Income);
-    return totalRetirementEarnings;
+export default function calculateTotalRetirementEarnings(age) {
+  return Object.values(age).reduce(
+    (acc, curr) => (curr && !isNaN(curr) ? acc + curr : acc),
+    0
+  );
 }

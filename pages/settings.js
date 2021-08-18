@@ -8,7 +8,7 @@ const NavComponent = _dynamic(() =>
 )
 
 const AccountComponent = _dynamic(() =>
-  import('../components/account').then((mod) => mod.Account)
+  import('../components/settingsContent').then((mod) => mod.Account)
 )
 
 const FooterComponent = _dynamic(() =>
@@ -18,10 +18,10 @@ const FooterComponent = _dynamic(() =>
 function Settings() {
 
     return (
-      <div id="settingsContainer">
+      <div>
        <div>
            <NavComponent />
-           <div id="settingsContent">
+           <div className="settingsContent">
               <div>
               <AccountComponent />
               </div>
