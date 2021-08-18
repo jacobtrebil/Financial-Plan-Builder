@@ -1,6 +1,6 @@
 
 
-export default function muchLessSavingsFunction(currentSavings) {
-    const muchLessSavings = currentSavings * 0.25;
+export default function muchLessSavingsFunction(numberCurrentSavings) {
+    const muchLessSavings = numberCurrentSavings * 0.25;
     return muchLessSavings;
 }

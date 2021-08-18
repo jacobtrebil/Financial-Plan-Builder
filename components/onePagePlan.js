@@ -449,12 +449,12 @@ export function onePagePlan(plan) {
         </h3>
         <hr className="planHr"></hr>
         <div>
-          <p className="financialStrategyP">*Your Financial Strategy: To achieve your financial goals, we recommend investing {convertToUsd.format(calculations.currentSavings / 12)} every month into your {calculations.riskScore} portfolio to achieve your financial goals. <br></br><br></br> Your portfolio is designed to grow your savings
+          <p className="financialStrategyP">*Your Financial Strategy: To achieve your financial goals, we recommend investing {convertToUsd.format(calculations.numberCurrentSavings / 12)} every month into your {calculations.riskScore} portfolio to achieve your financial goals. <br></br><br></br> Your portfolio is designed to grow your savings
           every single month, while staying within your risk tolerance, so that by the time you retire you'll have enough money in your portfolio to fund your goals, while being comfotable along the way.</p>
           <div className="monthlySavingsSection">
             <p className="monthlySavingsAboveHeadline">Monthly Savings until retirement</p> 
-            <h1 className="monthlySavingsHeadline">{convertToUsd.format(calculations.currentSavings / 12)}</h1>
-            <p className="monthlySavingsSubheadline">Invest {convertToUsd.format(calculations.currentSavings / 12)} per month into the portfolio below to achieve your financial goals.</p>
+            <h1 className="monthlySavingsHeadline">{convertToUsd.format(calculations.numberCurrentSavings / 12)}</h1>
+            <p className="monthlySavingsSubheadline">Invest {convertToUsd.format(calculations.numberCurrentSavings / 12)} per month into the portfolio below to achieve your financial goals.</p>
           </div>
           <div className="keyInfoBlock">
             <h1 className="chartHeadlinePortfolio">
@@ -487,7 +487,7 @@ export function onePagePlan(plan) {
               <Legend iconType="square" payload={portfolio.legend} verticalAlign="middle" align="right" layout="vertical" width="35%"/>
             </PieChart>
             <p className="noteP">*Note: To invest in your portfolio, click the button below to get set up with a Raymond James investment account. </p>
-            <button className="portfolioButton">Invest Now &#187;</button>
+            <a href="https://clientaccess.rjf.com/go/?inviteId=C7440901D542352EE05361702D0AD014"><button className="portfolioButton">Invest Now &#187;</button></a>
           </div>
         </div>
         <div ClassName="financialProjectionsSection">
@@ -570,7 +570,7 @@ export function onePagePlan(plan) {
             </AreaChart>
             <p className="chartDescription">Age</p>
             </div>
-            <p className="chartDescriptionPlan">These projections are based on investing your current savings as well as {convertToUsd.format(calculations.currentSavings / 12)} per month into your {calculations.riskScore} Portfolio.</p>
+            <p className="chartDescriptionPlan">These projections are based on investing your current savings as well as {convertToUsd.format(calculations.numberCurrentSavings / 12)} per month into your {calculations.riskScore} Portfolio.</p>
           </div>
         </div>
         <div>

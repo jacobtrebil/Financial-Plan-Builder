@@ -84,7 +84,7 @@ function Summary(plan1) {
       }
       if (!currentSavingsOptions.length) {
         const {
-          currentSavings,
+          numberCurrentSavings,
           slightlyLessSavings,
           muchLessSavings,
           slightlyMoreSavings,
@@ -92,7 +92,7 @@ function Summary(plan1) {
         } = plan;
 
         setCurrentSavingsOptions([
-          currentSavings,
+          numberCurrentSavings,
           slightlyLessSavings,
           muchLessSavings,
           slightlyMoreSavings,
@@ -101,7 +101,7 @@ function Summary(plan1) {
 
         if (!livingExpenseOptions.length) {
           const {
-            livingExpense,
+            numberLivingExpense,
             muchLowerLivingExpense,
             slightlyLowerLivingExpense,
             slightlyHigherLivingExpense,
@@ -109,7 +109,7 @@ function Summary(plan1) {
           } = plan;
 
         setLivingExpenseOptions([
-          livingExpense,
+          numberLivingExpense,
           muchLowerLivingExpense,
           slightlyLowerLivingExpense,
           slightlyHigherLivingExpense,

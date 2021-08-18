@@ -1,6 +1,6 @@
 
 
-export default function calculateRetirementEarningsSections(yearsOfPartTimeWork, partTimeWorkEarnings, pension, pensionStartAge, retirementAnnualReturnsIncome, retirementAge, ageOfDeath, livingExpense, healthcareStartingExpense, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
+export default function calculateRetirementEarningsSections(yearsOfPartTimeWork, partTimeWorkEarnings, pension, pensionStartAge, retirementAnnualReturnsIncome, retirementAge, ageOfDeath, numberLivingExpense, healthcareStartingExpense, pensionEarnings, socialSecurityAge, socialSecurityAge62Earnings, socialSecurityEarnings, socialSecurityAge70Earnings) {
     
     let socialSecurityScenarioEarnings = 0;
 
@@ -24,7 +24,7 @@ export default function calculateRetirementEarningsSections(yearsOfPartTimeWork,
     };
 
     function calculateTotalEarnings(i) {
-        return Math.floor((livingExpense * (1.02 ** ((i) - retirementAge))) + (healthcareStartingExpense * (1.05 ** ((i) - retirementAge))));
+        return Math.floor((numberLivingExpense * (1.02 ** ((i) - retirementAge))) + (healthcareStartingExpense * (1.05 ** ((i) - retirementAge))));
     };
 
     function calculateSSEarningsSection(i, socialSecurityAge, socialSecurityEarnings) {
@@ -43,8 +43,8 @@ export default function calculateRetirementEarningsSections(yearsOfPartTimeWork,
     }
     }
 
-    function calculateReturnsEarningsSection(i, livingExpense, healthcareStartingExpense) {
-        return Math.floor(livingExpense * (1.02 ** ((i) - retirementAge)) - livingExpense);
+    function calculateReturnsEarningsSection(i, numberLivingExpense, healthcareStartingExpense) {
+        return Math.floor(numberLivingExpense * (1.02 ** ((i) - retirementAge)) - numberLivingExpense);
     }
 
     function calculatePulledFromSavingsSection() {

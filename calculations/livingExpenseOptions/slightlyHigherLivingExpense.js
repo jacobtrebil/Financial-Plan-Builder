@@ -1,6 +1,6 @@
 
 
-export default function slightlyHigherLivingExpenseFunction(livingExpense) {
-    const slightlyHigherLivingExpense = livingExpense * 1.25;
+export default function slightlyHigherLivingExpenseFunction(numberLivingExpense) {
+    const slightlyHigherLivingExpense = numberLivingExpense * 1.25;
     return slightlyHigherLivingExpense;
 }

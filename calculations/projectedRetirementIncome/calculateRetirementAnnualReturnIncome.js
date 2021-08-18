@@ -1,6 +1,6 @@
 
 export default function calculateRetirementAnnualReturnIncome(savingsByRetirement, rateOfReturn) {
     const returnPercent = rateOfReturn - 1;
-    const retirementAnnualReturnsIncome = savingsByRetirement * returnPercent;
+    const retirementAnnualReturnsIncome = Math.floor(savingsByRetirement * returnPercent);
     return retirementAnnualReturnsIncome;
 }
