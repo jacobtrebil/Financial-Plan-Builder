@@ -87,7 +87,7 @@ export function PlanBlock() {
             <div className="planProgressBarContainer">
               <hr className="planProgressBar"></hr>
             </div>
-            <h3 className="progressAmount">45% Complete</h3>
+            <h3 className="progressAmount">75% Complete</h3>
           </div>
           <button
             className="dashboardButton"
