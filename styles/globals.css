@@ -760,7 +760,7 @@ button:hover {
 
 .planProgressBar {
   border: 2px solid rgba(4, 187, 172, 0.575);
-  width: 45%;
+  width: 75%;
   margin: 0px 0px 0px 0px;
   border-radius: 6px;
   color: rgb(5, 187, 51);

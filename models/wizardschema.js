@@ -501,6 +501,7 @@ var PlanModel = new mongoose.Schema({
         scenarioName: String, Number,
         livingExpense: Number,
     },
+    lastStep: String,
 });
 
 module.exports = mongoose.models.Plan || mongoose.model("Plan", PlanModel);

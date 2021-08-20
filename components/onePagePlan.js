@@ -449,7 +449,7 @@ export function onePagePlan(plan) {
         </h3>
         <hr className="planHr"></hr>
         <div>
-          <p className="financialStrategyP">*Your Financial Strategy: To achieve your financial goals, we recommend investing {convertToUsd.format(calculations.numberCurrentSavings / 12)} every month into your {calculations.riskScore} portfolio to achieve your financial goals. <br></br><br></br> Your portfolio is designed to grow your savings
+          <p className="financialStrategyP">*Your Financial Strategy: To achieve your financial goals, we recommend investing {convertToUsd.format(calculations.numberCurrentSavings / 12)} every month into your {calculations.riskScore} portfolio. <br></br><br></br> Your portfolio is designed to grow your savings
           every single month, while staying within your risk tolerance, so that by the time you retire you'll have enough money in your portfolio to fund your goals, while being comfotable along the way.</p>
           <div className="monthlySavingsSection">
             <p className="monthlySavingsAboveHeadline">Monthly Savings until retirement</p> 
